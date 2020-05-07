@@ -1,0 +1,54 @@
+Pre; Hey <target>, baby.
+
+Can I set my Heartstone at your place tonight?'
+Was your father a rogue? ‘Cause someone stole the stars from the sky and put them in your eyes.
+Hey, Baby! Anybody ever tell you I have beautiful eyes?
+My name is <name>> - a <Sex;Man|Woman> of the Universe. A popular <girl|boy> like you is going to need some wooing
+Enough about you, let's talk about me, <name>.
+I seem to have lost my Heartstone. Can I have yours?
+They say the Darkmoon Faire is the happiest place on earth. Well apparently, no one has ever been standing next to you.
+I’m not a black smith, but I can melt me and you together.
+Is there an Flight master nearby or is it my heart taking off?
+Do you play Heartstone? I can show you my deck.
+That tabard looks great on you… as a matter of fact, so would I.
+you’re so hot, you make the Tanaris look like the Northrend.
+
+to:
+[blood elf, void elf, night elf,nightborne] Hey <name>, your leafy long ears remind of the trees at my mother's home"
+[vulpen]Hey Foxy <Mama|Poppa>, You smell kinda pretty. Wanna smell me? Hoo-hah!
+[to: Dranei]]as you father an Dranei? Because there’s nothing else like you on Azeroth!
+[to: rogue]You don’t need [Confusion] to drive me crazy.
+[to: firemage] My buddies bet me that I wouldn’t be able to start a conversation with the hottest person in the bar. Wanna buy some drinks with their money?
+[to:mage, priest, paladin, warlock, monk] They say that you have spells of love, so would you mind starting to cast one on me?
+[to: priest] Do you take confessions? Because I want to gently whisper them to you.
+[to: priest, mage, paladin, monk] Did you have buffs for breakfast? Because you look magically delicious!
+[to: undead] Do you have a shovel? Because I’m digging you.
+[to: druid] Are you in sea lion form? Because I can sea you lion in my bed tonight.
+[to: hunter] Your arrow hit my heart
+[to: warlock] Talk Demonic to me!
+[to: warlock] I don't mind when your imps are looking at us.
+[to: warrior] Wanna explore fifty shades of plate with me?
+
+[from-to-rogue]:  Let us let only leather stand between our love.
+[from-to-paladin]: I can swing my hammer and you read your divine libram
+
+From:
+[worgen, tauren, vulpen]: Hey <name>, Wanna see me comb my hair, really fast?
+[worgen, tauren, vulpen]: My name isn’t Elmo, but you can tickle me any time you want to.
+[from: hunter] I tracked your Heartstone back to me.
+[from:rogue] Hello, I’m a rogue, and I’m here to steal your Heartstone.
+[from: void elf] If the void is eternal, will you be my void?
+[from: shaman] If i would learn any new spell, it would be a love totem to entangle you
+[paladin, lightforged dranei]: You're my light in the darkness
+[warrior, paladin, mechanognome, demon hunter, death night]: My armor is bending bending just by looking at you!
+[death knight, undead]: let's marry until decay takes us apart
+[troll, mag'har] Hey baby, don't jinx it and do some voodoo with me.
+[druid] You ever had the chance to hug a tree without feeling you are the only one?
+[Goblin] Treat me like a pirate and give me that booty.
+[goblin, gnome] Ride with me away. We doesn't have much time. My leggins are tight. So onto my love rocket, climb
+[goblin, gnome] Fly away in my space rocket. You no need put money in my pocket
+[vulpen, worgen, tauren] If being a furry in Azeroth is wrong, I can also keep you as my favourite pet!
+
+todo:
+
+I must be in a museum, because you truly are a work of art.

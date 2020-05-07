@@ -1,0 +1,42 @@
+non-target:
+'Hey love crusader, I want to be your space invader'
+'Tom bo li de se de moi ya, yeah jambo jambo'
+'are we' .. race .. 'or are we dancers'
+
+
+target:
+'name .. ', dance with me baby!' .. race
+'are we' .. race .. 'or are we dancers'
+gender ? 'His' : 'Her' .. 'name was' .. name .. ', ' .. gender ? 'he' : 'she' .. was a ... gender ? 'showguy' : 'showgirl'
+'Hey '.. name ..' love crusader, I want to be your space invader'
+'I\'m gonna take my ' .. name .. ' to the hotel room”)
+
+
+
+
+--
+--function ExpressYourElf.DanceWithMe.getDanceMessage()
+----    local rand_number
+----     DEFAULT_CHAT_FRAME:AddMessage('Target is ' .. genderTable[UnitSex("target")] .. '.');
+---- [UnitRace, UnitSex, FollowUnit, UnitName, UnitClass, UnitLevel]
+--
+----    if(UnitName("target")) then
+----
+----        t = {
+----            "%T, Dance with me baby!",
+----            "Hey %T lovecrusader, I want to be your spaceinvader!",
+----            "Hey %T, ride with me away!"
+----        }
+----    else
+----        t = {
+----            "1",
+----            "2",
+----            "3"
+----        }
+----    end
+----
+----    SendChatMessage(listWithoutTarget[1]) , "SAY", nil, index);
+----    DoEmote("DANCE", "");
+----    local characterInfo = ExpressYourElf.Helpers.GetPlayerInformation()
+----    GetPlayerInformation.GetPlayerInformation()
+--end

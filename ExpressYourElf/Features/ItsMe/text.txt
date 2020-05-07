@@ -1,0 +1,9 @@
+[UnitRace, UnitSex, FollowUnit, UnitName, UnitClass, UnitLevel]
+
+
+non-target:
+'Howdy, I am ' .. name .. ', I'm the sheriff of <random emoji>'
+'I put on my robe and wizard hat'
+
+target:
+

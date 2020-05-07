@@ -1,0 +1,10 @@
+[UnitRace, UnitSex, FollowUnit, UnitName, UnitClass, UnitLevel]
+
+random things to say to a person:
+
+'I steal yo soul and cast Lightning Lvl. 1,000,000 Your body explodes into a fine bloody mist, because you are only a Lvl. ' .. level ..' '.. class ..'.'
+
+
+Random things to say:
+'King Arthur congratulates me for destroying Dr. Robotnik's evil army of Robot Socialist Republics. The cold war ends. Reagan steals my accomplishments and makes like it was cause of him.'
+[to:priest] Would you grab my arm, so I can tell my friends I’ve been touched by a Priest.
