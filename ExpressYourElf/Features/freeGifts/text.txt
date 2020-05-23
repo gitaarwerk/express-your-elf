@@ -1,6 +1,0 @@
-[UnitRace, UnitSex, FollowUnit, UnitName, UnitClass, UnitLevel]
-
-
-target (say)
-'<me> gives <target> a [Free pen].'
-'<me> gives <target a [Mars].'
