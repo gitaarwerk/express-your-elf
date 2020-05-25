@@ -78,7 +78,7 @@ function getCharacterinfo(target)
     local gender = genderTable[UnitSex(target)]
     local race, raceEn = UnitRace(target);
 
-    return name, gender, playerClass, raceEn, unitLevel
+    return name, gender, playerClass, race, unitLevel
 end
 
 
