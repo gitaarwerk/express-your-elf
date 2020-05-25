@@ -1,0 +1,12 @@
+## Interface: 80300
+## Title: Express your Elf
+## Version: 1.0
+## Author: Darkrider - Talnivarr (EU)
+## Notes: Express oneself in a more casual and fun way.
+## SavedVariablesPerCharacter: ExpressYourElfIsShown
+## X-Category: Fun, Communication, Miscellaneous
+## X-Credits: JJnl, Some pick-up lines from https://www.pickuplinesgalore.com/warcraft.html
+## X-Date: May. 07, 2020
+## X-License: All Rights Reserved
+
+Main.xml

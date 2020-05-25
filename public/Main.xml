@@ -1,0 +1,136 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\FrameXML\UI.xsd"
+>
+    <!-- main initialisation -->
+    <Script file="Interface.lua"/>
+    <Script file="Helpers.lua"/>
+    <!--<Script file="Interface.lua"/>-->
+
+    <!-- load helper functions -->
+    <!-- load all features -->
+    <Script file="Features/DanceWithMe/DanceWithMe.lua"/>
+    <Script file="Features/Flirt/Flirt.lua"/>
+    <Script file="Features/GivePresent/GivePresent.lua"/>
+    <Script file="Features/RandomPhrases/RandomPhrases.lua"/>
+    <!-- start addon -->
+
+    <Frame name="ExpressYourElf_Frame" toplevel="true" frameStrata="DIALOG" movable="true" enableMouse="true" hidden="true" parent="UIParent">
+        <Scripts>
+            <OnLoad>
+                self:RegisterEvent("ADDON_LOADED");
+                self:RegisterEvent("PLAYER_TARGET_CHANGED");
+                self:RegisterForDrag("LeftButton");
+
+                local dancingButton = CreateFrame("Button","dancingButton",ExpressYourElf_Frame, "SecureActionButtonTemplate,ActionButtonTemplate")
+                dancingButton:SetScale(1)
+                dancingButton:SetText("Dance")
+                dancingButton:SetPoint("TOPLEFT", "ExpressYourElf_Frame", "TOPLEFT", 7, -7);
+                dancingButton:SetPushedTexture("Interface\\Icons\\inv_misc_firedancer_01")
+                dancingButton:SetHighlightTexture("Interface\\Icons\\inv_misc_firedancer_01")
+                dancingButton:SetNormalTexture("Interface\\Icons\\inv_misc_firedancer_01")
+                dancingButton:GetNormalTexture():SetAllPoints(dancingButton)
+                dancingButton:SetToplevel(true)
+                dancingButton:SetScript("OnClick",function()
+                    ExpressYourElf.DanceWithMe.run()
+                end)
+
+
+                local randomButton = CreateFrame("Button","randomButton",ExpressYourElf_Frame, "SecureActionButtonTemplate,ActionButtonTemplate")
+                randomButton:SetScale(1)
+                randomButton:SetText("Random")
+                randomButton:SetPoint("TOPLEFT", "ExpressYourElf_Frame", "TOPLEFT", 47, -7);
+                randomButton:SetPushedTexture("Interface\\Icons\\ability_warrior_commandingshout")
+                randomButton:SetHighlightTexture("Interface\\Icons\\ability_warrior_commandingshout")
+                randomButton:SetNormalTexture("Interface\\Icons\\ability_warrior_commandingshout")
+                randomButton:GetNormalTexture():SetAllPoints(randomButton)
+                randomButton:SetToplevel(true)
+                randomButton:SetScript("OnClick",function()
+                    ExpressYourElf.RandomPhrases.run()
+                end)
+
+
+                local flirtButton = CreateFrame("Button","flirtButton",ExpressYourElf_Frame, "SecureActionButtonTemplate,ActionButtonTemplate")
+                flirtButton:SetScale(1)
+                flirtButton:SetPoint("TOPLEFT", "ExpressYourElf_Frame", "TOPLEFT", 87, -7);
+                flirtButton:SetPushedTexture("Interface\\Icons\\spell_shadow_seduction")
+                flirtButton:SetHighlightTexture("Interface\\Icons\\spell_shadow_seduction")
+                flirtButton:SetNormalTexture("Interface\\Icons\\spell_shadow_seduction")
+                flirtButton:GetNormalTexture():SetAllPoints(flirtButton)
+                flirtButton:SetText("Flirt")
+                flirtButton:Disable()
+                flirtButton:SetAlpha(.3)
+                flirtButton:SetToplevel(true)
+                flirtButton:SetScript("OnClick",function()
+                    ExpressYourElf.Flirt.run()
+                end)
+
+
+                local giftButton = CreateFrame("Button","giftButton",ExpressYourElf_Frame, "SecureActionButtonTemplate,ActionButtonTemplate")
+                giftButton:SetScale(1)
+                giftButton:SetPoint("TOPLEFT", "ExpressYourElf_Frame", "TOPLEFT", 127, -7);
+                giftButton:SetPushedTexture("Interface\\Icons\\item_shop_giftbox01")
+                giftButton:SetHighlightTexture("Interface\\Icons\\item_shop_giftbox01")
+                giftButton:SetNormalTexture("Interface\\Icons\\item_shop_giftbox01")
+                giftButton:GetNormalTexture():SetAllPoints(giftButton)
+                giftButton:SetText("Gift")
+                giftButton:SetAlpha(.3)
+                giftButton:Disable()
+                giftButton:SetToplevel(true)
+                giftButton:SetScript("OnClick",function()
+                    ExpressYourElf.GivePresent.run()
+                end)
+
+
+                ExpressYourElf_GiftButton = giftButton
+                ExpressYourElf_FlirtButton = flirtButton
+
+                local function eventHandler(self, event, arg1, ...)
+                    if event == "PLAYER_TARGET_CHANGED" and UnitName("target") and UnitPlayerControlled("target") then
+                        ExpressYourElf_GiftButton:Enable()
+                        ExpressYourElf_FlirtButton:Enable()
+                        ExpressYourElf_GiftButton:SetAlpha(1)
+                        ExpressYourElf_FlirtButton:SetAlpha(1)
+                    elseif event == "ADDON_LOADED" and arg1 == "ExpressYourElf" then
+                        if ExpressYourElfIsShown == nil then
+                            ExpressYourElfIsShown = false
+                        end
+
+                        if ExpressYourElfIsShown == true then
+                            self:Show();
+                        end
+                        if ExpressYourElfIsShown == false then
+                            self:Hide();
+                        end
+                    else
+                        ExpressYourElf_GiftButton:Disable()
+                        ExpressYourElf_FlirtButton:Disable()
+                        ExpressYourElf_GiftButton:SetAlpha(.3)
+                        ExpressYourElf_FlirtButton:SetAlpha(.3)
+                    end
+                end
+                ExpressYourElf_Frame:SetScript("OnEvent", eventHandler);
+            </OnLoad>
+            <OnDragStart>self:StartMoving();</OnDragStart>
+            <OnDragStop>self:StopMovingOrSizing();</OnDragStop>
+        </Scripts>
+        <Size>
+            <AbsDimension x="170" y="50"/>
+        </Size>
+        <Anchors>
+            <Anchor point="CENTER"/>
+            <Offset><AbsDimension x="-200" y="200"/></Offset>
+        </Anchors>
+        <Backdrop bgFile="Interface\TutorialFrame\TutorialFrameBackground" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true" alphaMode="DISABLE">
+            <EdgeSize>
+                <AbsValue val="3"/>
+            </EdgeSize>
+            <TileSize>
+                <AbsValue val="3"/>
+            </TileSize>
+            <BackgroundInsets>
+                <AbsInset left="3" right="3" top="3" bottom="3"/>
+            </BackgroundInsets>
+        </Backdrop>
+    </Frame>
+</Ui>
