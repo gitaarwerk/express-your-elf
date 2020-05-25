@@ -2,12 +2,8 @@ package-as: ExpressYourElf
 
 enable-nolib-creation: no
 
-move-folders:
-  public: ExpressYourElf
-
 
 ignore: # Files and directories beginning with a dot (such as .git) are automatically ignored, as is the pgkmeta file itself.
-  - public
   - README.md
   - .gitignore
 
