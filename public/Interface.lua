@@ -20,13 +20,11 @@ local function ExpressYourElf_Commands(msg)
         -- If not handled above, display some sort of help message
         print("To show or hide the interface, use one of these commands");
         print("Syntax: /eyelf toggle");
-        print("Syntax: /eyelf show");
-        print("Syntax: /eyelf hide");
         print("Or...target someone and then use any of the following commands (and use them as a Macro)");
         print("Syntax: /eyelf dance");
+        print("Syntax: /eyelf phrase");
         print("Syntax: /eyelf flirt");
         print("Syntax: /eyelf gift");
-        print("Syntax: /eyelf phrase");
     end
 end
 
