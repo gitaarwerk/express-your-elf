@@ -1,51 +1,51 @@
 <p><strong>Who is this person behind that mighty item level 400+ armor? Introduce the real you!</strong></p>
-<p>&nbsp;</p>
-<h2>Features</h2>
+<h3>Features</h3>
 <ul>
-<li>Woo your favourite player with impressive pick-up lines</li>
-<li>Appreciate your fellow-players with something truly special</li>
-<li>Dance away into the night and sing lyrics from famous Azerothian singers</li>
-<li>Express yourself with catchy phrases</li>
+    <li>Woo your favourite player with impressive pick-up lines</li>
+    <li>Appreciate your fellow-players with something truly special</li>
+    <li>Dance away into the night and sing lyrics from famous Azerothian singers</li>
+    <li>Express yourself with catchy phrases</li>
 </ul>
+
 <p>All expressions are randomised and contextual (based on race, gender and class), to make them more..., you know,... YOU!</p>
 <p>&nbsp;</p>
-<p>&nbsp;</p>
-<h2>Commands</h2>
+
+<h3>Commands</h3>
 <table>
-<tbody>
-<tr>
-<th><strong>Command</strong></th>
-<th><strong>Description</strong></th>
-</tr>
-<tr>
-<td>/eyelf</td>
-<td>See all commands</td>
-</tr>
-<tr>
-<td colspan="2">&nbsp;</td>
-</tr>
-<tr>
-<td>/eyelf toggle</td>
-<td>Toggle the interface to use the press buttons to do the commands stated below.</td>
-</tr>
-<tr>
-<td colspan="2">&nbsp;</td>
-</tr>
-<tr>
-<td>/eyelf dance</td>
-<td>Express your joy and dance with or without someone.</td>
-</tr>
-<tr>
-<td>/eyelf phrase</td>
-<td>Hard to start a conversation? Provoke your co-players with a catchy phrase!</td>
-</tr>
-<tr>
-<td>/eyelf flirt</td>
-<td>Tell how you really feel. Okay, some times, it may come out a little weird. Hey, we all gotta learn, right?</td>
-</tr>
-<tr>
-<td>/eyelf gift</td>
-<td>Surprise someone with a meaningful gift, show them how much you care.</td>
-</tr>
-</tbody>
+    <tbody>
+        <tr>
+            <th width="80"><strong>Command</strong></th>
+            <th><strong>Description</strong></th>
+        </tr>
+        <tr>
+            <td width="80">/eyelf</td>
+            <td>See all commands</td>
+        </tr>
+        <tr>
+            <td colspan="2">&nbsp;</td>
+        </tr>
+        <tr>
+            <td width="80">/eyelf toggle</td>
+            <td>Toggle the interface to use the press buttons to do the commands stated below.</td>
+        </tr>
+        <tr>
+            <td colspan="2">&nbsp;</td>
+        </tr>
+        <tr>
+            <td width="80">/eyelf dance</td>
+            <td>Express your joy and dance with or without someone.</td>
+        </tr>
+        <tr>
+            <td width="80">/eyelf phrase</td>
+            <td>Hard to start a conversation? Provoke your co-players with a catchy phrase!</td>
+        </tr>
+        <tr>
+            <td width="80">/eyelf flirt</td>
+            <td>Tell how you really feel. Okay, some times, it may come out a little weird. Hey, we all gotta learn, right?</td>
+        </tr>
+        <tr>
+            <td width="80">/eyelf gift</td>
+            <td>Surprise someone with a meaningful gift, show them how much you care.</td>
+        </tr>
+    </tbody>
 </table>

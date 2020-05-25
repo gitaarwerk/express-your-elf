@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5228af4b-791d-4da7-ad15-11edd215fd5d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/curseforgeText.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkgmeta.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pkgmeta.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/Interface.lua" beforeDir="false" afterPath="$PROJECT_DIR$/public/Interface.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/curseforgeText.txt" beforeDir="false" afterPath="$PROJECT_DIR$/curseforgeText.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/Helpers.lua" beforeDir="false" afterPath="$PROJECT_DIR$/public/Helpers.lua" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -23,20 +21,20 @@
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pkgmeta.yaml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="22" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
+            <state relative-caret-position="225">
+              <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/Helpers.lua">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-626">
-              <caret line="17" column="37" lean-forward="true" selection-start-line="17" selection-start-column="37" selection-end-line="17" selection-end-column="37" />
+            <state relative-caret-position="319">
+              <caret line="80" column="42" selection-start-line="80" selection-start-column="42" selection-end-line="80" selection-end-column="42" />
             </state>
           </provider>
         </entry>
@@ -53,8 +51,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/curseforgeText.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="526">
-              <caret line="45" column="4" lean-forward="true" selection-start-line="45" selection-start-column="4" selection-end-line="45" selection-end-column="4" />
+            <state relative-caret-position="468">
+              <caret line="43" column="28" lean-forward="true" selection-end-line="50" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -73,6 +71,7 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>print</find>
+      <find>width</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -82,10 +81,11 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/public/ExpressYourElf.toc" />
-        <option value="$PROJECT_DIR$/public/Helpers.lua" />
         <option value="$PROJECT_DIR$/public/Interface.lua" />
         <option value="$PROJECT_DIR$/public/curseforgeText.txt" />
         <option value="$PROJECT_DIR$/pkgmeta.yaml" />
+        <option value="$PROJECT_DIR$/curseforgeText.txt" />
+        <option value="$PROJECT_DIR$/public/Helpers.lua" />
       </list>
     </option>
   </component>
@@ -160,12 +160,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1590398148135</updated>
-      <workItem from="1590398150558" duration="4371000" />
+      <workItem from="1590398150558" duration="5136000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4371000" />
+    <option name="totallyTimeSpent" value="5136000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="808" extended-state="6" />
@@ -208,13 +208,6 @@
     <entry file="file://$PROJECT_DIR$/public/Features/BattleCries/text.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/Helpers.lua">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-626">
-          <caret line="17" column="37" lean-forward="true" selection-start-line="17" selection-start-column="37" selection-end-line="17" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/Interface.lua">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="390">
@@ -222,17 +215,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/curseforgeText.txt">
+    <entry file="file://$PROJECT_DIR$/pkgmeta.yaml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="526">
-          <caret line="45" column="4" lean-forward="true" selection-start-line="45" selection-start-column="4" selection-end-line="45" selection-end-column="4" />
+        <state relative-caret-position="225">
+          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pkgmeta.yaml">
+    <entry file="file://$PROJECT_DIR$/curseforgeText.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="22" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
+        <state relative-caret-position="468">
+          <caret line="43" column="28" lean-forward="true" selection-end-line="50" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/Helpers.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="319">
+          <caret line="80" column="42" selection-start-line="80" selection-start-column="42" selection-end-line="80" selection-end-column="42" />
         </state>
       </provider>
     </entry>
