@@ -62,7 +62,7 @@ function ExpressYourElf.Flirt.GetMessage(
         table.insert(flirtLines, "I tracked your Heartstone back to me.")
     end
 
-    if (playerRace == "VoidElf" or playerClass == "Warlock") then
+    if (playerRace == "Void Elf" or playerClass == "Warlock") then
         table.insert(flirtLines, "If the void is eternal, will you be my void?")
     end
 
@@ -79,15 +79,15 @@ function ExpressYourElf.Flirt.GetMessage(
         table.insert(flirtLines, "Do you feel it? And that just my Devotion Aura.")
     end
 
-    if (playerRace == "LightforgedDraenei" or playerClass == "Paladin" or playerClass == "Priest") then
+    if (playerRace == "Lightforged Draenei" or playerClass == "Paladin" or playerClass == "Priest") then
         table.insert(flirtLines, "You're my light in the darkness.")
     end
 
-    if (playerGender == "male" and (playerClass == "Warrior" or playerClass == "Paladin" or playerClass == "Demon Hunter" or playerClass == "DeathKnight" or playerRace == "Mechagnome")) then
+    if (playerGender == "male" and (playerClass == "Warrior" or playerClass == "Paladin" or playerClass == "Demon Hunter" or playerClass == "Death Knight" or playerRace == "Mechagnome")) then
         table.insert(flirtLines, "My armor is bending bending just by looking at you!")
     end
 
-    if (playerClass == "DeathKnight" or playerRace == "Mechagnome") then
+    if (playerClass == "Death Knight" or playerRace == "Mechagnome") then
         table.insert(flirtLines, "Let's be ${playerManWoman} and ${targetManWoman} until decay makes us fall apart.")
     end
 
@@ -124,7 +124,7 @@ function ExpressYourElf.Flirt.GetMessage(
     end
 
 
-    if (playerRace == "ZandalariTroll" or playerRace == "Troll") then
+    if (playerRace == "Zandalari Troll" or playerRace == "Troll") then
         table.insert(flirtLines, "Don't jinx it and do some voodoo with me.")
     end
 
@@ -139,7 +139,7 @@ function ExpressYourElf.Flirt.GetMessage(
         table.insert(flirtLines, "You must be Sally Whitemane, because you just made my champion arise!")
     end
 
-    if (targetRace == "VoidElf" and targetRace == "BloodElf" and targetRace == "VoidElf" and targetRace == "Nightborne") then
+    if (targetRace == "Void Elf" or targetRace == "Blood Elf" or targetRace == "Nightborne") then
         table.insert(flirtLines, "Your leafy long ears remind of the trees at my mother's home")
     end
 
@@ -148,8 +148,8 @@ function ExpressYourElf.Flirt.GetMessage(
         table.insert(flirtLines, "Foxy ${targetPoppaMomma}, You smell kinda pretty. Wanna smell me? Hoo-hah!")
     end
 
-    if (targetRace == "Draenei" and targetRace == "LightforgedDraenei") then
-        table.insert(flirtLines, "Was you father an Dranei? Because there’s nothing else like you on Azeroth!")
+    if (targetRace == "Draenei" and targetRace == "Lightforged Draenei") then
+        table.insert(flirtLines, "Was you father an Draenei? Because there’s nothing else like you on Azeroth!")
     end
 
     if (targetClass == "Rogue") then
@@ -180,7 +180,7 @@ function ExpressYourElf.Flirt.GetMessage(
         table.insert(flirtLines, "Do you have a shovel? Because I’m digging you.")
     end
 
-    if (targetClass == "Warrior" or targetClass == "Paladin" or targetClass == "Demon Hunter" or targetClass == "DeathKnight") then
+    if (targetClass == "Warrior" or targetClass == "Paladin" or targetClass == "Demon Hunter" or targetClass == "Death Knight") then
         table.insert(flirtLines, "Wanna explore fifty shades of plate with me?")
     end
 
