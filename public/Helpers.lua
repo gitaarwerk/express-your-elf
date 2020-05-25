@@ -3,7 +3,6 @@ ExpressYourElf = {}
 ExpressYourElf.Helpers = {}
 
 function ExpressYourElf.Helpers.ToggleVisibility()
-    print('toggle itttttt')
         local frame = getglobal("ExpressYourElf_Frame");
         if (frame) then
             if(  frame:IsVisible() ) then
