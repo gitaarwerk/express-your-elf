@@ -44,6 +44,13 @@ function ExpressYourElf.Helpers.GetHeShe(gender)
   return "she"
 end
 
+function ExpressYourElf.Helpers.GetSirMam(gender)
+    if (gender == "male") then
+        return "sir"
+    end
+
+    return "ma'm"
+end
 
 function ExpressYourElf.Helpers.GetGuyGirl(gender)
   if (gender == "male") then
