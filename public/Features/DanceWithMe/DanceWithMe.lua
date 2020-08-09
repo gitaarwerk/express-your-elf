@@ -3,7 +3,6 @@
 ExpressYourElf.DanceWithMe = {}
 
 ExpressYourElf.DanceWithMe.list = {
-    'Hey love crusader, I want to be your space invader!',
     'Tom bo li de se de moi ya, yeah jambo jambo.',
     'Are we ${race}, or are we dancers.',
     "Beats so big I'm stepping on gnomes.",
@@ -13,7 +12,10 @@ ExpressYourElf.DanceWithMe.list = {
     "Is this the real life? Is this just fantasy?",
     "${race} ${girlBoy}s, we're so unforgettable. Tiny bracers and tabards on top! Fel-kissed skin, so hot we'll melt your armor! Ooh oh ooh, Ooh oh ooh!",
     "It's murder on the dungeon floor. But you'd better not steal the moves. Yhea Yhea! Boss' gonna burn this dungeon down right now!",
-    "Like a ${race}, raiding for the very first time"
+    "Like a ${race}, raiding for the very first time",
+    "They're out to get you, there's demons closing in on every side. That this is thriller, thriller night!",
+    "What you gon' do with all that junk? All that junk inside that trunk? I'ma get, get, get, get, you drunk, Get you love drunk off my hump. My hump my hump my hump my hump my hump",
+    "I just want to show you off to all of my ${race}s friends, make them drool on their chiny, chin, chins."
 }
 
 ExpressYourElf.DanceWithMe.listWithTarget = {
@@ -22,7 +24,8 @@ ExpressYourElf.DanceWithMe.listWithTarget = {
     '${hisHer} name was ${name}, ${heShe} was a show ${guyGirl}.',
     'Hey ${name} love crusader, I want to be your space invader.',
     "I'm gonna take my ${name} to the hotel room.",
-    "So, ${name} are you ok, are you ok ${name}?"
+    "So, ${name} are you ok, are you ok ${name}?",
+    "${guyGirl}, I can thrill you more than any ghost would dare to try"
 }
 
 function ExpressYourElf.DanceWithMe.getPlayerMessages(name, gender, class, race, level, girlBoy)

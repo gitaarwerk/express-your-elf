@@ -48,7 +48,12 @@ function ExpressYourElf.Flirt.GetMessage(
         'Do you play Heartstone? I can show you my deck.',
         'That tabard looks great on you… as a matter of fact, so would I.',
         'You’re so hot, you make the Tanaris look like the Northrend.',
-        'I must be in Medivh`s tower, because you are truly magical!'
+        'I must be in Medivh`s tower, because you are truly magical!',
+        'Your voice melt chocolates.',
+        'you`re so hot, my armor melts',
+        'Say baby. You`re pretty, I`m pretty, what say we go back to my place and stare at each other for a while.',
+        'If loving me is wrong, you don`t wanna be right!',
+        'How much does a Titanweigh? Enough to break the ice.'
     }
 
     -- from
@@ -141,6 +146,7 @@ function ExpressYourElf.Flirt.GetMessage(
 
     if (targetRace == "Void Elf" or targetRace == "Blood Elf" or targetRace == "Nightborne") then
         table.insert(flirtLines, "Your leafy long ears remind of the trees at my mother's home")
+        table.insert(flirtLines, "No bush is too big for me.")
     end
 
 
