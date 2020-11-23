@@ -5,9 +5,9 @@ ExpressYourElf.Flirt = {}
 function ExpressYourElf.Flirt.GetRandomPrefix()
     local prefix = {
         '${targetName}, ',
-        'Hey ${targetName} ',
+        'Hey ${targetName}. ',
         'Hey there ${targetName}! ',
-        'Hey ${targetName} baby! ',
+        'Hey ${targetName}, baby! ',
         '${targetName}, baby, ',
         '${targetName}, honey, ',
         'Hi ${targetName}, ',
@@ -40,20 +40,23 @@ function ExpressYourElf.Flirt.GetMessage(
         'Was your father a rogue? ‘Cause someone stole the stars from the sky and put them in your eyes.',
         'Anybody ever tell you I have beautiful eyes?',
         'My name is ${playerName} - a ${playerManWoman} of the Universe. A popular ${targetGuyGirl} like you is going to need some wooing.',
-        'Enough about you, let`s talk about me, ${playerName}.',
+        'Enough about you, let’s talk about me, ${playerName}.',
         'I seem to have lost my Heartstone. Can I have yours?',
         'They say the Darkmoon Faire is the happiest place on earth. Well apparently, no one has ever been standing next to you.',
         'I’m not a blacksmith, but I can melt me and you together.',
         'Is there an Flight master nearby or is it my heart taking off?',
         'Do you play Heartstone? I can show you my deck.',
         'That tabard looks great on you… as a matter of fact, so would I.',
-        'You’re so hot, you make the Tanaris look like the Northrend.',
+        'You’re so hot, you make the Northrend look like Tanaris.',
         'I must be in Medivh`s tower, because you are truly magical!',
         'Your voice melt chocolates.',
-        'you`re so hot, my armor melts',
+        'you’re so hot, my armor melts',
+        'I would give myself an A+',
         'Say baby. You`re pretty, I`m pretty, what say we go back to my place and stare at each other for a while.',
         'If loving me is wrong, you don`t wanna be right!',
-        'How much does a Titanweigh? Enough to break the ice.'
+        'How much does a Titan weigh? Enough to break the ice.',
+        'You remind me of my uncle, we should get it on!',
+        'I really like your eyebrows'
     }
 
     -- from
@@ -92,6 +95,10 @@ function ExpressYourElf.Flirt.GetMessage(
         table.insert(flirtLines, "My armor is bending bending just by looking at you!")
     end
 
+    if (playerRace == "Mechagnome") then
+        table.insert(flirtLines, "You know, I have over 200 Bionicles.")
+    end
+
     if (playerClass == "Death Knight" or playerRace == "Mechagnome") then
         table.insert(flirtLines, "Let's be ${playerManWoman} and ${targetManWoman} until decay makes us fall apart.")
     end
@@ -124,7 +131,7 @@ function ExpressYourElf.Flirt.GetMessage(
     end
 
     if (playerRace == "Goblin" or playerRace == "Gnome" or playerRace == "Mechagnome") then
-        table.insert(flirtLines, "Ride with me away. We doesn't have much time. My leggins are tight. So onto my love rocket, climb.")
+        table.insert(flirtLines, "Ride with me away. We doesn't have much time. My legging are tight. So onto my love rocket, climb.")
         table.insert(flirtLines, "Fly away in my space rocket. You no need put money in my pocket.")
     end
 
@@ -184,6 +191,7 @@ function ExpressYourElf.Flirt.GetMessage(
 
     if (targetRace == "Scourge") then
         table.insert(flirtLines, "Do you have a shovel? Because I’m digging you.")
+        table.insert(flirtLines, "Take me out tonight. Where there's music and there's people, and they're young and undead.")
     end
 
     if (targetClass == "Warrior" or targetClass == "Paladin" or targetClass == "Demon Hunter" or targetClass == "Death Knight") then

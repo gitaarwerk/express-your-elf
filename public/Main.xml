@@ -2,19 +2,12 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\FrameXML\UI.xsd"
 >
-    <!-- main initialisation -->
     <Script file="Interface.lua"/>
     <Script file="Helpers.lua"/>
-    <!--<Script file="Interface.lua"/>-->
-
-    <!-- load helper functions -->
-    <!-- load all features -->
     <Script file="Features/DanceWithMe/DanceWithMe.lua"/>
     <Script file="Features/Flirt/Flirt.lua"/>
     <Script file="Features/GivePresent/GivePresent.lua"/>
     <Script file="Features/RandomPhrases/RandomPhrases.lua"/>
-    <!-- start addon -->
-
     <Frame name="ExpressYourElf_Frame" toplevel="true" frameStrata="DIALOG" movable="true" enableMouse="true" hidden="true" parent="UIParent">
         <Scripts>
             <OnLoad>

@@ -39,13 +39,16 @@ targetHisHer
         "The world is not doing well and we're going great.",
         "What if Trump was Warchief. He would build a great, great wall.",
         "I think I am actually humble. I think I’m much more humble than you would understand.",
-        "Everything is a mount, as long as you're brave enough.",
+        "Everything is a mount, as long as you’re brave enough.",
         "Just an ordinary gas cloud. But watch out, because that's no ordinary gas cloud!",
         "I’m intelligent. Some people would say I’m very, very, very intelligent.",
         "I think the only difference between me and other guildies is that I'm more honest and my ${oppositeSex} are more beautiful.",
         "I saved a big war. I saved a couple of them.",
-        "He calls me Mr. ${playerRace}. I've known this guy forever. He used to call me, 'Hey, ${playerName}, let's go out to dinner.' You know, before, he'll go, 'Hey, let's go out to dinner.' Now he goes, 'Mr. ${playerRace}, ${playerSirMam}, how are you?'",
-        'No, no. But I don`t say -- I say flames, we`ll put out the flames. And we`ll put out in some cases just burning embers. We also have burning embers. We have embers and we do have flames. Mount Hyjal became more flame like, but it`s going to be under control.'
+        'He calls me Mr. ${playerRace}. I’ve known this guy forever. He used to call me, "Hey, ${playerName}, let’s go out to dinner."s You know, before, he’ll go, "Hey, let’s go out to dinner." Now he goes, "Mr. ${playerRace}, ${playerSirMam}, how are you?"',
+        'No, no. But I don`t say -- I say flames, we`ll put out the flames. And we`ll put out in some cases just burning embers. We also have burning embers. We have embers and we do have flames. Mount Hyjal became more flame like, but it`s going to be under control.',
+        'We have it totally under control. It’s only one person coming in from The Maw. It’s going to be just fine.',
+        'The burning legion will have much greater respect for our worlds when I am leading it than when their people have led it.',
+        'Will someone from Sylvana’s regime please inform her that I too have a Nuclear Button, but it is a much bigger and more powerful one than hers, and my Button works!'
     }
 
     -- self
@@ -64,6 +67,10 @@ targetHisHer
 
     if (playerClass == "Warlock" or playerClass == "Demon Hunter") then
         table.insert(listOfPhrases, "I never understood Fel.")
+    end
+
+    if (playerClass == "Mage") then
+        table.insert(listOfPhrases, "I was elected to represent the citizens of Dalaran, not Gnomeregan")
     end
 
     if (playerClass == "Hunter" or playerClass == "Demon Hunter") then

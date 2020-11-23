@@ -15,8 +15,14 @@ ExpressYourElf.DanceWithMe.list = {
     "Like a ${race}, raiding for the very first time",
     "They're out to get you, there's demons closing in on every side. That this is thriller, thriller night!",
     "What you gon' do with all that junk? All that junk inside that trunk? I'ma get, get, get, get, you drunk, Get you love drunk off my hump. My hump my hump my hump my hump my hump",
-    "I just want to show you off to all of my ${race}s friends, make them drool on their chiny, chin, chins."
+    "I just want to show you off to all of my ${race}s friends, make them drool on their chiny, chin, chins.",
+    "Lack toes, intolerant. It sucks when you can't stand! Lack toes, intolerant. Anything, when you can't stand!",
+    "We don't like it on this chair. We dont like it on these stairs. We don't like it on her skirt. Mommy's hair drives daddy nuts. He even found it in his butt. But he gets sad when it gets cut. Where should her hair be instead? We like her hair up on her head.",
+    "No one knows I'm cool. They all think I'm a fool. Just because I drool. And I like my pocket pool.",
+    "Silithus gel, I think it's swell. It tastes just like chicken. And when you get sickened. It makes you feel well.",
+    "Poopy-di scoop. Scoop-diddy-whoop. Whoop-di-scoop-di-poop!"
 }
+
 
 ExpressYourElf.DanceWithMe.listWithTarget = {
     'Are we ${race} or are we dancers.',
