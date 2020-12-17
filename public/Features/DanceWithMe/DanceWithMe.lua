@@ -11,11 +11,11 @@ ExpressYourElf.DanceWithMe.list = {
     "Oh, baby, when you talk like that, you make a ${race} go mad.",
     "Is this the real life? Is this just fantasy?",
     "${race} ${girlBoy}s, we're so unforgettable. Tiny bracers and tabards on top! Fel-kissed skin, so hot we'll melt your armor! Ooh oh ooh, Ooh oh ooh!",
-    "It's murder on the dungeon floor. But you'd better not steal the moves. Yhea Yhea! Boss' gonna burn this dungeon down right now!",
-    "Like a ${race}, raiding for the very first time",
+    "It's murder on the raid floor. But you'd better not steal the moves. Yhea Yhea! Boss' gonna burn this dungeon down right now!",
+    "Like a ${race}, raiding for the very first time!",
     "They're out to get you, there's demons closing in on every side. That this is thriller, thriller night!",
     "What you gon' do with all that junk? All that junk inside that trunk? I'ma get, get, get, get, you drunk, Get you love drunk off my hump. My hump my hump my hump my hump my hump",
-    "I just want to show you off to all of my ${race}s friends, make them drool on their chiny, chin, chins.",
+    "I just want to show you off to all of my ${race} friends, make them drool on their chiny, chin, chins.",
     "Lack toes, intolerant. It sucks when you can't stand! Lack toes, intolerant. Anything, when you can't stand!",
     "We don't like it on this chair. We dont like it on these stairs. We don't like it on her skirt. Mommy's hair drives daddy nuts. He even found it in his butt. But he gets sad when it gets cut. Where should her hair be instead? We like her hair up on her head.",
     "No one knows I'm cool. They all think I'm a fool. Just because I drool. And I like my pocket pool.",
@@ -27,7 +27,8 @@ ExpressYourElf.DanceWithMe.list = {
 ExpressYourElf.DanceWithMe.listWithTarget = {
     'Are we ${race} or are we dancers.',
     '${name}, dance with me baby!',
-    '${hisHer} name was ${name}, ${heShe} was a show ${guyGirl}.',
+    "${race} ${girlBoy}s, we're so unforgettable. Tiny bracers and tabards on top! Fel-kissed skin, so hot we'll melt your armor! Ooh oh ooh, Ooh oh ooh!",
+    '${hisHer} name is ${name}, ${heShe} is a show ${guyGirl}.',
     'Hey ${name} love crusader, I want to be your space invader.',
     "I'm gonna take my ${name} to the hotel room.",
     "So, ${name} are you ok, are you ok ${name}?",
@@ -81,25 +82,23 @@ function ExpressYourElf.DanceWithMe.run()
     -- Obtain all vars
     local list = {}
     local playerName, playerGender, playerClass, playerRace, playerLevel  = ExpressYourElf.Helpers.GetPlayerInformation()
-    local targetName, targetGender, targetClass, targetRace, targetLevel  = ExpressYourElf.Helpers.GetTargetInformation()
-
-    local targetHisHer = ExpressYourElf.Helpers.GetHisHer(targetGender)
-    local targetHeShe = ExpressYourElf.Helpers.GetHeShe(targetGender)
     local playerGuyGirl = ExpressYourElf.Helpers.GetGuyGirl(playerGender)
-    local targetGuyGirl = ExpressYourElf.Helpers.GetGuyGirl(targetGender)
 
-    -- format lines
-    local playerMessages = ExpressYourElf.DanceWithMe.getPlayerMessages(playerName, playerGender, playerClass, playerRace, playerLevel, playerGuyGirl)
-    local targetMessages = ExpressYourElf.DanceWithMe.getTargetMessages(targetName, targetGender, targetClass, targetRace, targetLevel, targetHisHer, targetHeShe, targetGuyGirl)
-
-    -- get random number
+    -- get random phrase
     if(UnitName("target") and UnitPlayerControlled("target")) then
-        list = ExpressYourElf.Helpers.mergeTable(playerMessages, targetMessages)
+        local targetName, targetGender, targetClass, targetRace, targetLevel  = ExpressYourElf.Helpers.GetTargetInformation()
+        local targetHisHer = ExpressYourElf.Helpers.GetHisHer(targetGender)
+        local targetHeShe = ExpressYourElf.Helpers.GetHeShe(targetGender)
+        local targetGuyGirl = ExpressYourElf.Helpers.GetGuyGirl(targetGender)
+
+        local targetMessages = ExpressYourElf.DanceWithMe.getTargetMessages(targetName, targetGender, targetClass, targetRace, targetLevel, targetHisHer, targetHeShe, targetGuyGirl)
+
+        SendChatMessage(targetMessages[math.random(1, #targetMessages)], "SAY", nil, index);
+
     else
-        -- merge tables
-        list = playerMessages
+        local playerMessages = ExpressYourElf.DanceWithMe.getPlayerMessages(playerName, playerGender, playerClass, playerRace, playerLevel, playerGuyGirl)
+        SendChatMessage(playerMessages[math.random(1, #playerMessages)], "SAY", nil, index);
     end
 
-    SendChatMessage(list[math.random(1, #list)], "SAY", nil, index);
     DoEmote("DANCE", "");
 end

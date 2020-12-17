@@ -64,7 +64,7 @@ end
 
 
 function ExpressYourElf.GivePresent.run()
-    if(UnitName("target") and UnitPlayerControlled("target")) then
+    if(UnitName("target")) then
         local playerName, playerGender, playerClass, playerRace, playerLevel  = ExpressYourElf.Helpers.GetPlayerInformation()
         local targetName, targetGender, targetClass, targetRace, targetLevel  = ExpressYourElf.Helpers.GetTargetInformation()
 

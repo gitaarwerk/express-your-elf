@@ -8,13 +8,7 @@ playerClass,
 playerRace,
 playerLevel,
 playerHisHer,
-playerSirMam,
-targetName,
-targetGender,
-targetClass,
-targetRace,
-targetLevel,
-targetHisHer
+playerSirMam
 )
     local oppositeSex = "men"
 
@@ -81,6 +75,43 @@ targetHisHer
         table.insert(listOfPhrases, "Crowded elevators smell different to gnomes.")
     end
 
+
+    pickedPhrase = listOfPhrases[math.random(1, #listOfPhrases)]
+
+    return ExpressYourElf.Helpers.parseText(
+        pickedPhrase,
+        {
+            playerName = playerName,
+            playerGender = playerGender,
+            playerClass = playerClass,
+            playerRace = playerRace,
+            playerSirMam = playerSirMam,
+            playerLevel = playerLevel,
+            playerHisHer = playerHisHer,
+            oppositeSex = oppositeSex
+        }
+    )
+end
+
+
+function ExpressYourElf.RandomPhrases.GetRandomMessageToTarget(
+playerName,
+playerGender,
+playerClass,
+playerRace,
+playerLevel,
+playerHisHer,
+playerSirMam,
+targetName,
+targetGender,
+targetClass,
+targetRace,
+targetLevel,
+targetHisHer
+)
+    local pickedPhrase
+    local listOfPhrases = {}
+
     -- target
     if (targetName) then
         table.insert(listOfPhrases, "${targetName}, You must go forth into the world, with passion, courage in your conviction, and most importantly be true to yourself. I did it!")
@@ -116,7 +147,6 @@ targetHisHer
             playerRace = playerRace,
             playerSirMam = playerSirMam,
             playerLevel = playerLevel,
-            oppositeSex = oppositeSex,
             playerHisHer = playerHisHer,
             targetName = targetName,
             targetGender = targetGender,
@@ -140,21 +170,34 @@ function ExpressYourElf.RandomPhrases.run()
         targetHisHer = string.lower(ExpressYourElf.Helpers.GetHisHer(targetGender))
     end
 
-    local RandomPhrase = ExpressYourElf.RandomPhrases.GetRandomMessage(
-        playerName,
-        playerGender,
-        playerClass,
-        playerRace,
-        playerLevel,
-        playerHisHer,
-        playerSirMam,
-        targetName,
-        targetGender,
-        targetClass,
-        targetRace,
-        targetLevel,
-        targetHisHer
-    )
-
-    SendChatMessage(RandomPhrase, "SAY", nil, index);
+    -- get random phrases
+    if(UnitName("target") and UnitPlayerControlled("target")) then
+        local RandomPhraseTargeted = ExpressYourElf.RandomPhrases.GetRandomMessageToTarget(
+            playerName,
+            playerGender,
+            playerClass,
+            playerRace,
+            playerLevel,
+            playerHisHer,
+            playerSirMam,
+            targetName,
+            targetGender,
+            targetClass,
+            targetRace,
+            targetLevel,
+            targetHisHer
+        )
+        SendChatMessage(RandomPhraseTargeted);
+    else
+        local RandomPhraseSelf = ExpressYourElf.RandomPhrases.GetRandomMessage(
+            playerName,
+            playerGender,
+            playerClass,
+            playerRace,
+            playerLevel,
+            playerHisHer,
+            playerSirMam
+        )
+        SendChatMessage(RandomPhraseSelf);
+    end
 end

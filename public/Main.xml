@@ -81,9 +81,14 @@
                 local function eventHandler(self, event, arg1, ...)
                     if event == "PLAYER_TARGET_CHANGED" and UnitName("target") and UnitPlayerControlled("target") then
                         ExpressYourElf_GiftButton:Enable()
-                        ExpressYourElf_FlirtButton:Enable()
                         ExpressYourElf_GiftButton:SetAlpha(1)
+                        ExpressYourElf_FlirtButton:Enable()
                         ExpressYourElf_FlirtButton:SetAlpha(1)
+                    elseif event == "PLAYER_TARGET_CHANGED" and UnitName("target") and UnitPlayerControlled("target") == false then
+                        ExpressYourElf_GiftButton:Enable()
+                        ExpressYourElf_GiftButton:SetAlpha(1)
+                        ExpressYourElf_FlirtButton:Disable()
+                        ExpressYourElf_FlirtButton:SetAlpha(.3)
                     elseif event == "ADDON_LOADED" and arg1 == "ExpressYourElf" then
                         if ExpressYourElfIsShown == nil then
                             ExpressYourElfIsShown = false
