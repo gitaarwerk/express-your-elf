@@ -1,6 +1,18 @@
 -- init
 ExpressYourElf.RandomPhrases = {}
 
+function ExpressYourElf.RandomPhrases.GetRandomWorld()
+    local listOfWolds = {
+        "Azeroth", 
+        "The Shadowlands", 
+        "Outland", 
+        "Argus",
+        "Draenor"
+    }
+    
+    return listOfWolds[math.random(1, #listOfWolds)]
+end 
+
 function ExpressYourElf.RandomPhrases.GetRandomMessage(
 playerName,
 playerGender,
@@ -15,6 +27,9 @@ playerSirMam
     if (playerGender == "male") then
         oppositeSex = "women"
     end
+
+    local randomWorld = ExpressYourElf.RandomPhrases.GetRandomWorld()
+
 
     local pickedPhrase
     local listOfPhrases = {
@@ -38,6 +53,8 @@ playerSirMam
         "I’m intelligent. Some people would say I’m very, very, very intelligent.",
         "I think the only difference between me and other guildies is that I'm more honest and my ${oppositeSex} are more beautiful.",
         "I saved a big war. I saved a couple of them.",
+        "Have you seen the outrageous prices here?",
+        "I am the only one who can make ${randomWorld} truly great again!",
         'He calls me Mr. ${playerRace}. I’ve known this guy forever. He used to call me, "Hey, ${playerName}, let’s go out to dinner."s You know, before, he’ll go, "Hey, let’s go out to dinner." Now he goes, "Mr. ${playerRace}, ${playerSirMam}, how are you?"',
         'No, no. But I don`t say -- I say flames, we`ll put out the flames. And we`ll put out in some cases just burning embers. We also have burning embers. We have embers and we do have flames. Mount Hyjal became more flame like, but it`s going to be under control.',
         'We have it totally under control. It’s only one person coming in from The Maw. It’s going to be just fine.',
@@ -88,7 +105,8 @@ playerSirMam
             playerSirMam = playerSirMam,
             playerLevel = playerLevel,
             playerHisHer = playerHisHer,
-            oppositeSex = oppositeSex
+            oppositeSex = oppositeSex,
+            randomWorld = randomWorld
         }
     )
 end

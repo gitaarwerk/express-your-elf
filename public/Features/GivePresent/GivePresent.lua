@@ -38,7 +38,15 @@ targetHisHer
         "gives a handy [Centaur Finger Puppet] to ${targetName}. You never know when they come in handy!",
         "gives a set of [Finger Tentacles] to ${targetName}. It's not just Pandaren who uses them.",
         "gives an [Ant Filled Watch] to ${targetName}. They are so much more reliable than those sun dials found in Uldum.",
-        "gives an [Staff with built in uranial] to ${targetName}. So handy during raiding!"
+        "gives an [Staff with built in uranial] to ${targetName}. So handy during raiding!",
+        "gives an [Arthas' Adult coloring book] to ${targetName}.",
+        "gives a [Remote Controlled Crocodile Head] to ${targetName}.",
+        "gives a [Skeleton Hand Jewelry Organizer] to ${targetName}. It looks almost like Kel'Thuzad's hand!",
+        "gives a [Customizable Branding Stick] to ${targetName}. Handy for marking your crafts,... and raid members", 
+        "gives a [The Serial Killer Cookbook] to ${targetName}. I realised this is THE PERFECT present for you!",
+        "gives a book called: [Cursed Objects: Strange but True Stories of the World's Most Infamous Items] to ${targetName}. WOW! What a gem!",
+        "gives a [Vintage Print of a Smoking kid Archimonde & a Giant Chicken] to ${targetName}. Now here's a great memory! Right!?", 
+        "gives a set of [Handmade Experimented on Human Anatomy Coasters] to ${targetName}. They said, it belonged to Professor Putricide."  
     }
 
     pickedGift = listOfGifts[math.random(1, #listOfGifts)]

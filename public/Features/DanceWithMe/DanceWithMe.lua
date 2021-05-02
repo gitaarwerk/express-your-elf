@@ -20,7 +20,12 @@ ExpressYourElf.DanceWithMe.list = {
     "We don't like it on this chair. We dont like it on these stairs. We don't like it on her skirt. Mommy's hair drives daddy nuts. He even found it in his butt. But he gets sad when it gets cut. Where should her hair be instead? We like her hair up on her head.",
     "No one knows I'm cool. They all think I'm a fool. Just because I drool. And I like my pocket pool.",
     "Silithus gel, I think it's swell. It tastes just like chicken. And when you get sickened. It makes you feel well.",
-    "Poopy-di scoop. Scoop-diddy-whoop. Whoop-di-scoop-di-poop!"
+    "Poopy-di scoop. Scoop-diddy-whoop. Whoop-di-scoop-di-poop!",
+    "Prance Forward", 
+    "Shashay Left", 
+    "Boogie Down", 
+    "Shimmy Right",
+    "I bless the rains down in Silithus"
 }
 
 
@@ -32,7 +37,8 @@ ExpressYourElf.DanceWithMe.listWithTarget = {
     'Hey ${name} love crusader, I want to be your space invader.',
     "I'm gonna take my ${name} to the hotel room.",
     "So, ${name} are you ok, are you ok ${name}?",
-    "${guyGirl}, I can thrill you more than any ghost would dare to try"
+    "${guyGirl}, I can thrill you more than any ghost would dare to try",
+    "See that ${guyGirl}, Watch ${hisHer} scream, Kicking the Dancing Queen"
 }
 
 function ExpressYourElf.DanceWithMe.getPlayerMessages(name, gender, class, race, level, girlBoy)
