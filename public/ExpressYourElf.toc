@@ -1,6 +1,6 @@
 ## Interface: 90500
 ## Title: Express Your Elf
-## Version: @project-version@
+## Version: 90500
 ## Author: Darkrider, Talnivarr (EU)
 ## Notes: Express oneself in a more casual and fun way.
 ## SavedVariablesPerCharacter: ExpressYourElfIsShown
