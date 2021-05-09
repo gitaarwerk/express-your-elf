@@ -10,7 +10,7 @@ ExpressYourElf.DanceWithMe.list = {
     "My ${race} hips don't lie.",
     "Oh, baby, when you talk like that, you make a ${race} go mad.",
     "Is this the real life? Is this just fantasy?",
-    "${race} ${girlBoy}s, we're so unforgettable. Tiny bracers and tabards on top! Fel-kissed skin, so hot we'll melt your armor! Ooh oh ooh, Ooh oh ooh!",
+    "${race} ${guyGirl}s, we're so unforgettable. Tiny bracers and tabards on top! Fel-kissed skin, so hot we'll melt your armor! Ooh oh ooh, Ooh oh ooh!",
     "It's murder on the raid floor. But you'd better not steal the moves. Yhea Yhea! Boss' gonna burn this dungeon down right now!",
     "Like a ${race}, raiding for the very first time!",
     "They're out to get you, there's demons closing in on every side. That this is thriller, thriller night!",
@@ -32,7 +32,7 @@ ExpressYourElf.DanceWithMe.list = {
 ExpressYourElf.DanceWithMe.listWithTarget = {
     'Are we ${race} or are we dancers.',
     '${name}, dance with me baby!',
-    "${race} ${girlBoy}s, we're so unforgettable. Tiny bracers and tabards on top! Fel-kissed skin, so hot we'll melt your armor! Ooh oh ooh, Ooh oh ooh!",
+    "${race} ${guyGirl}s, we're so unforgettable. Tiny bracers and tabards on top! Fel-kissed skin, so hot we'll melt your armor! Ooh oh ooh, Ooh oh ooh!",
     '${hisHer} name is ${name}, ${heShe} is a show ${guyGirl}.',
     'Hey ${name} love crusader, I want to be your space invader.',
     "I'm gonna take my ${name} to the hotel room.",

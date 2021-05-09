@@ -322,8 +322,16 @@ function ExpressYourElf.Flirt.run()
     targetPoppaMomma
         )
 
+        local emotes = {
+            'FLIRT',
+            'WINK',
+            'KISS'
+        }
+
         if (flirtLine ~= nil) then
-            DoEmote("FLIRT", "");
+            local randomEmote = emotes[math.random(1, #emotes)]
+
+            DoEmote(randomEmote, "");            
             SendChatMessage(flirtLine, "SAY", nil, index);
         end
     end
