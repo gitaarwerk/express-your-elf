@@ -35,10 +35,10 @@ function ExpressYourElf.Flirt.GetMessage(
 )
     local randomWorld = ExpressYourElf.RandomPhrases.GetRandomWorld()
 
-    local oppositeSex = "guys"
+    local playerSex = "girls"
 
     if (playerGender == "male") then
-        oppositeSex = "girls"
+        oppositeSex = "guys"
     end
     -- common
     local pickedLine
@@ -57,6 +57,7 @@ function ExpressYourElf.Flirt.GetMessage(
         'You’re so hot, you make the Northrend look like Tanaris.',
         'I must be in Medivh`s tower, because you are truly magical!',
         'Your voice melt chocolates.',
+        'Just say yes now and I won’t have to spike your drink',
         'you’re so hot, my armor melts',
         'I would give myself an A+',
         'Say baby. You`re pretty, I`m pretty, what say we go back to my place and stare at each other for a while.',

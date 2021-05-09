@@ -22,10 +22,16 @@ playerLevel,
 playerHisHer,
 playerSirMam
 )
+    -- opposite
     local oppositeSex = "men"
 
     if (playerGender == "male") then
         oppositeSex = "women"
+    end
+
+    local oppositHeShe = "he"
+    if (playerGender == "male") then
+        oppositHeShe = "she"
     end
 
     local randomWorld = ExpressYourElf.RandomPhrases.GetRandomWorld()
@@ -59,13 +65,25 @@ playerSirMam
         'No, no. But I don`t say -- I say flames, we`ll put out the flames. And we`ll put out in some cases just burning embers. We also have burning embers. We have embers and we do have flames. Mount Hyjal became more flame like, but it`s going to be under control.',
         'We have it totally under control. It’s only one person coming in from The Maw. It’s going to be just fine.',
         'The burning legion will have much greater respect for our worlds when I am leading it than when their people have led it.',
-        'Will someone from Sylvana’s regime please inform her that I too have a Nuclear Button, but it is a much bigger and more powerful one than hers, and my Button works!'
+        'Will someone from Sylvana’s regime please inform her that I too have a Nuclear Button, but it is a much bigger and more powerful one than hers, and my Button works!',
+        'If it weren’t for Kil’Jaeden, we’d all be still fighting in Gnomeregan!',
+        'I’m pretty useless at giving advice. Can I interest you in a sarcastic comment instead?',
+        'Kids believe in fairy tales. I’ve moved on to fantasy worlds. Where am I actually?',
+        'Shush! I can’t hear what the voices are saying.',
+        'Does this rag smell like chloroform to you?',
+        'How was the weekend, someone asked? Well, on my first date, ${oppositHeShe} said, “I want to take you to the cemetery to meet my parents you might be the one.”'
     }
 
     -- self
     if (playerRace == "Draenei" or playerRace == "Night Elf" or playerRace == "Tauren" or playerRace == "Highmountain Tauren" or playerRace == "Lightforged Draenei" or playerRace == "Blood Elf") then
         table.insert(listOfPhrases, "I always wanted to be taller.")
     end
+
+    if (playerGender == "male") then 
+        table.insert(listOfPhrases, "Hi, I'm the new Milkman")
+    else
+        table.insert(listOfPhrases, "Hi, I'm the new Milkwoman")
+    end 
 
     if (playerRace == "Goblin" or playerRace == "Gnome" or playerRace == "Mechagnome") then
         table.insert(listOfPhrases, "We've got new planes, we've got new rockets, new missiles, we've got new everything, and it's either here or coming in.")
@@ -92,6 +110,11 @@ playerSirMam
         table.insert(listOfPhrases, "Crowded elevators smell different to gnomes.")
     end
 
+    if (playerClass == "Demon Hunter") then
+        table.insert(listOfPhrases, "Drink fel, stay fit, die anyway.")
+    end
+
+    
 
     pickedPhrase = listOfPhrases[math.random(1, #listOfPhrases)]
 
@@ -106,7 +129,8 @@ playerSirMam
             playerLevel = playerLevel,
             playerHisHer = playerHisHer,
             oppositeSex = oppositeSex,
-            randomWorld = randomWorld
+            randomWorld = randomWorld,
+            oppositHeShe = oppositHeShe
         }
     )
 end
@@ -138,7 +162,7 @@ targetHisHer
 
     if (targetRace) then
         table.insert(listOfPhrases, "People like the Pandaren, abusing their dual factionship and smuggling in illegal ${targetRace} among other disgusting deplorables, how sad their lives must be.")
-        table.insert(listOfPhrases, "I have tremendous respect for ${targetRace}.")
+        table.insert(listOfPhrases, "I have tremendous respect for ${targetRace}s.")
     end
 
     if (targetLevel and targetLevel < 50) then
