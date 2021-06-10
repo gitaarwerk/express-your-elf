@@ -6,8 +6,10 @@
     <Script file="Helpers.lua"/>
     <Script file="Features/DanceWithMe/DanceWithMe.lua"/>
     <Script file="Features/Flirt/Flirt.lua"/>
+    <Script file="Features/Seduce/Seduce.lua"/>
     <Script file="Features/GivePresent/GivePresent.lua"/>
     <Script file="Features/RandomPhrases/RandomPhrases.lua"/>
+    <Script file="Features/Rude/Rude.lua"/>
     <Frame name="ExpressYourElf_Frame" toplevel="true" frameStrata="DIALOG" movable="true" enableMouse="true" hidden="true" parent="UIParent">
         <Scripts>
             <OnLoad>
@@ -43,9 +45,26 @@
                 end)
 
 
+                local giftButton = CreateFrame("Button","giftButton",ExpressYourElf_Frame, "SecureActionButtonTemplate,ActionButtonTemplate")
+                giftButton:SetScale(1)
+                giftButton:SetPoint("TOPLEFT", "ExpressYourElf_Frame", "TOPLEFT", 87, -7);
+                giftButton:SetPushedTexture("Interface\\Icons\\item_shop_giftbox01")
+                giftButton:SetHighlightTexture("Interface\\Icons\\item_shop_giftbox01")
+                giftButton:SetNormalTexture("Interface\\Icons\\item_shop_giftbox01")
+                giftButton:GetNormalTexture():SetAllPoints(giftButton)
+                giftButton:SetText("Gift")
+                giftButton:SetAlpha(.3)
+                giftButton:Disable()
+                giftButton:SetToplevel(true)
+                giftButton:SetScript("OnClick",function()
+                    ExpressYourElf.GivePresent.run()
+                end)
+
+                -- row 2
+
                 local flirtButton = CreateFrame("Button","flirtButton",ExpressYourElf_Frame, "SecureActionButtonTemplate,ActionButtonTemplate")
                 flirtButton:SetScale(1)
-                flirtButton:SetPoint("TOPLEFT", "ExpressYourElf_Frame", "TOPLEFT", 87, -7);
+                flirtButton:SetPoint("TOPLEFT", "ExpressYourElf_Frame", "TOPLEFT", 7, -47);
                 flirtButton:SetPushedTexture("Interface\\Icons\\spell_shadow_seduction")
                 flirtButton:SetHighlightTexture("Interface\\Icons\\spell_shadow_seduction")
                 flirtButton:SetNormalTexture("Interface\\Icons\\spell_shadow_seduction")
@@ -59,36 +78,63 @@
                 end)
 
 
-                local giftButton = CreateFrame("Button","giftButton",ExpressYourElf_Frame, "SecureActionButtonTemplate,ActionButtonTemplate")
-                giftButton:SetScale(1)
-                giftButton:SetPoint("TOPLEFT", "ExpressYourElf_Frame", "TOPLEFT", 127, -7);
-                giftButton:SetPushedTexture("Interface\\Icons\\item_shop_giftbox01")
-                giftButton:SetHighlightTexture("Interface\\Icons\\item_shop_giftbox01")
-                giftButton:SetNormalTexture("Interface\\Icons\\item_shop_giftbox01")
-                giftButton:GetNormalTexture():SetAllPoints(giftButton)
-                giftButton:SetText("Gift")
-                giftButton:SetAlpha(.3)
-                giftButton:Disable()
-                giftButton:SetToplevel(true)
-                giftButton:SetScript("OnClick",function()
-                    ExpressYourElf.GivePresent.run()
+                local seduceButton = CreateFrame("Button","seduceButton",ExpressYourElf_Frame, "SecureActionButtonTemplate,ActionButtonTemplate")
+                seduceButton:SetScale(1)
+                seduceButton:SetPoint("TOPLEFT", "ExpressYourElf_Frame", "TOPLEFT", 47, -47);
+                seduceButton:SetPushedTexture("Interface\\Icons\\spell_shadow_summonsuccubus")
+                seduceButton:SetHighlightTexture("Interface\\Icons\\spell_shadow_summonsuccubus")
+                seduceButton:SetNormalTexture("Interface\\Icons\\spell_shadow_summonsuccubus")
+                seduceButton:GetNormalTexture():SetAllPoints(seduceButton)
+                seduceButton:SetText("Seduce")
+                seduceButton:Disable()
+                seduceButton:SetAlpha(.3)
+                seduceButton:SetToplevel(true)
+                seduceButton:SetScript("OnClick",function()
+                    ExpressYourElf.Seduce.run()
+                end)
+
+
+
+                local rudeButton = CreateFrame("Button","rudeButton",ExpressYourElf_Frame, "SecureActionButtonTemplate,ActionButtonTemplate")
+                rudeButton:SetScale(1)
+                rudeButton:SetPoint("TOPLEFT", "ExpressYourElf_Frame", "TOPLEFT", 87, -47);
+                rudeButton:SetPushedTexture("Interface\\Icons\\ability_demonhunter_torment")
+                rudeButton:SetHighlightTexture("Interface\\Icons\\ability_demonhunter_torment")
+                rudeButton:SetNormalTexture("Interface\\Icons\\ability_demonhunter_torment")
+                rudeButton:GetNormalTexture():SetAllPoints(rudeButton)
+                rudeButton:SetText("Rude")
+                rudeButton:SetAlpha(.3)
+                rudeButton:Disable()
+                rudeButton:SetToplevel(true)
+                rudeButton:SetScript("OnClick",function()
+                    ExpressYourElf.IAmRude.run()
                 end)
 
 
                 ExpressYourElf_GiftButton = giftButton
+                ExpressYourElf_RudeButton = rudeButton
                 ExpressYourElf_FlirtButton = flirtButton
+                ExpressYourElf_SeduceButton = seduceButton
 
                 local function eventHandler(self, event, arg1, ...)
                     if event == "PLAYER_TARGET_CHANGED" and UnitName("target") and UnitPlayerControlled("target") then
                         ExpressYourElf_GiftButton:Enable()
                         ExpressYourElf_GiftButton:SetAlpha(1)
+                        ExpressYourElf_RudeButton:Enable()
+                        ExpressYourElf_RudeButton:SetAlpha(1)
                         ExpressYourElf_FlirtButton:Enable()
                         ExpressYourElf_FlirtButton:SetAlpha(1)
+                        ExpressYourElf_SeduceButton:Enable()
+                        ExpressYourElf_SeduceButton:SetAlpha(1)
                     elseif event == "PLAYER_TARGET_CHANGED" and UnitName("target") and UnitPlayerControlled("target") == false then
                         ExpressYourElf_GiftButton:Enable()
                         ExpressYourElf_GiftButton:SetAlpha(1)
                         ExpressYourElf_FlirtButton:Disable()
                         ExpressYourElf_FlirtButton:SetAlpha(.3)
+                        ExpressYourElf_SeduceButton:Disable()
+                        ExpressYourElf_SeduceButton:SetAlpha(.3)
+                        ExpressYourElf_RudeButton:Disable()
+                        ExpressYourElf_RudeButton:SetAlpha(.3)
                     elseif event == "ADDON_LOADED" and arg1 == "ExpressYourElf" then
                         if ExpressYourElfIsShown == nil then
                             ExpressYourElfIsShown = false
@@ -101,10 +147,14 @@
                             self:Hide();
                         end
                     else
-                        ExpressYourElf_GiftButton:Disable()
                         ExpressYourElf_FlirtButton:Disable()
-                        ExpressYourElf_GiftButton:SetAlpha(.3)
                         ExpressYourElf_FlirtButton:SetAlpha(.3)
+                        ExpressYourElf_SeduceButton:Disable()
+                        ExpressYourElf_SeduceButton:SetAlpha(.3)
+                        ExpressYourElf_GiftButton:Disable()
+                        ExpressYourElf_GiftButton:SetAlpha(.3)
+                        ExpressYourElf_RudeButton:Disable()
+                        ExpressYourElf_RudeButton:SetAlpha(.3)
                     end
                 end
                 ExpressYourElf_Frame:SetScript("OnEvent", eventHandler);
@@ -113,7 +163,7 @@
             <OnDragStop>self:StopMovingOrSizing();</OnDragStop>
         </Scripts>
         <Size>
-            <AbsDimension x="170" y="50"/>
+            <AbsDimension x="250" y="100"/>
         </Size>
         <Anchors>
             <Anchor point="CENTER"/>

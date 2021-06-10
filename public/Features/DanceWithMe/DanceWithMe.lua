@@ -30,7 +30,6 @@ ExpressYourElf.DanceWithMe.list = {
 
 
 ExpressYourElf.DanceWithMe.listWithTarget = {
-    'Are we ${race} or are we dancers.',
     '${name}, dance with me baby!',
     "${race} ${guyGirl}s, we're so unforgettable. Tiny bracers and tabards on top! Fel-kissed skin, so hot we'll melt your armor! Ooh oh ooh, Ooh oh ooh!",
     '${hisHer} name is ${name}, ${heShe} is a show ${guyGirl}.',
@@ -89,7 +88,7 @@ function ExpressYourElf.DanceWithMe.run()
     local list = {}
     local playerName, playerGender, playerClass, playerRace, playerLevel  = ExpressYourElf.Helpers.GetPlayerInformation()
     local playerGuyGirl = ExpressYourElf.Helpers.GetGuyGirl(playerGender)
-
+    
     -- get random phrase
     if(UnitName("target") and UnitPlayerControlled("target")) then
         local targetName, targetGender, targetClass, targetRace, targetLevel  = ExpressYourElf.Helpers.GetTargetInformation()
@@ -99,12 +98,18 @@ function ExpressYourElf.DanceWithMe.run()
 
         local targetMessages = ExpressYourElf.DanceWithMe.getTargetMessages(targetName, targetGender, targetClass, targetRace, targetLevel, targetHisHer, targetHeShe, targetGuyGirl)
 
-        SendChatMessage(targetMessages[math.random(1, #targetMessages)], "SAY", nil, index);
+        SendChatMessage(targetMessages[fastrandom(1, #targetMessages)], "SAY", nil, index);
 
     else
         local playerMessages = ExpressYourElf.DanceWithMe.getPlayerMessages(playerName, playerGender, playerClass, playerRace, playerLevel, playerGuyGirl)
-        SendChatMessage(playerMessages[math.random(1, #playerMessages)], "SAY", nil, index);
+        SendChatMessage(playerMessages[fastrandom(1, #playerMessages)], "SAY", nil, index);
     end
 
-    DoEmote("DANCE", "");
+    local emotes = {
+        'DANCE'
+    }
+
+    local randomEmote = emotes[fastrandom(1, #emotes)];
+
+    DoEmote(randomEmote, "");
 end

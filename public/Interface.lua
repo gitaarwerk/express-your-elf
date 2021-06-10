@@ -10,10 +10,14 @@ local function ExpressYourElf_Commands(msg)
         ExpressYourElf.DanceWithMe.run()
     elseif cmd == "flirt" then
         ExpressYourElf.Flirt.run()
+    elseif cmd == "seduce" then
+        ExpressYourElf.Seduce.run()
     elseif cmd == "gift" then
         ExpressYourElf.GivePresent.run()
     elseif cmd == "phrase" then
         ExpressYourElf.RandomPhrases.run()
+    elseif cmd == "rude" then
+        ExpressYourElf.IAmRude.run()
     elseif cmd == "toggle" then
         ExpressYourElf.Helpers.ToggleVisibility()
     else
@@ -24,7 +28,9 @@ local function ExpressYourElf_Commands(msg)
         print("Syntax: /eyelf dance");
         print("Syntax: /eyelf phrase");
         print("Syntax: /eyelf flirt");
+        print("Syntax: /eyelf seduce");
         print("Syntax: /eyelf gift");
+        print("Syntax: /eyelf rude");
     end
 end
 

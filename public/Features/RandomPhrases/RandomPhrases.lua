@@ -10,7 +10,7 @@ function ExpressYourElf.RandomPhrases.GetRandomWorld()
         "Draenor"
     }
     
-    return listOfWolds[math.random(1, #listOfWolds)]
+    return listOfWolds[fastrandom(1, #listOfWolds)]
 end 
 
 function ExpressYourElf.RandomPhrases.GetRandomMessage(
@@ -71,6 +71,15 @@ playerSirMam
         'Kids believe in fairy tales. I’ve moved on to fantasy worlds. Where am I actually?',
         'Shush! I can’t hear what the voices are saying.',
         'Does this rag smell like chloroform to you?',
+        'Yes, I am an agent of the Legion, but my duties are largely ceremonial.',
+        'Did you know my powers can only be used for good.',
+        'I don’t work here. I’m a consultant.',
+        'My toys! My toys! I can’t do this job without my toys!',
+        'It might look like I’m doing nothing, but at the cellular level I’m really quite busy.',
+        'At least I have a positive attitude about my destructive habits.',
+        'Someday, we’ll look back on this, laugh nervously and change the subject.',
+        'Remember that time when I said I were cool? I lied.',
+        'I’m really easy to get along with once you people learn to worship me.',
         'How was the weekend, someone asked? Well, on my first date, ${oppositHeShe} said, “I want to take you to the cemetery to meet my parents you might be the one.”'
     }
 
@@ -114,9 +123,8 @@ playerSirMam
         table.insert(listOfPhrases, "Drink fel, stay fit, die anyway.")
     end
 
-    
 
-    pickedPhrase = listOfPhrases[math.random(1, #listOfPhrases)]
+    pickedPhrase = listOfPhrases[fastrandom(1, #listOfPhrases)]
 
     return ExpressYourElf.Helpers.parseText(
         pickedPhrase,
@@ -178,7 +186,7 @@ targetHisHer
     end
 
 
-    pickedPhrase = listOfPhrases[math.random(1, #listOfPhrases)]
+    pickedPhrase = listOfPhrases[fastrandom(1, #listOfPhrases)]
 
     return ExpressYourElf.Helpers.parseText(
         pickedPhrase,

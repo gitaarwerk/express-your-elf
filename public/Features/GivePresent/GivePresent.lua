@@ -49,7 +49,7 @@ targetHisHer
         "gives a set of [Handmade Experimented on Human Anatomy Coasters] to ${targetName}. They said, it belonged to Professor Putricide."  
     }
 
-    pickedGift = listOfGifts[math.random(1, #listOfGifts)]
+    pickedGift = listOfGifts[fastrandom(1, #listOfGifts)]
 
     return ExpressYourElf.Helpers.parseText(
         pickedGift,
