@@ -44,7 +44,7 @@ function ExpressYourElf.IAmRude.GetMessage(
         "Any connection between ${targetName}'s reality and mine is purely coincidental.",
         "I like you, ${targetName}. You remind me of when I was young and stupid.",
         "${targetName} sounds reasonable... Time to up my medication.",
-        "Sorry {targetName}, I don’t have the energy to pretend to like you today.",
+        "Sorry ${targetName}, I don’t have the energy to pretend to like you today.",
         "${targetName}, you know they can hear you, right?",
         "${targetName}, please cancel my subscription to your issues.",
         "Everyone’s entitled to act stupid once in a while, but ${targetName} is really abusing the privilege.",
