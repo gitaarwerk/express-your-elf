@@ -1,7 +1,7 @@
 ## Title: Express Your Elf
 ## Interface: 90005
 ## X-Min-Interface: 90005
-## Version: 9.0.26
+## Version: @project-version@
 ## Author: Darkrider, Talnivarr (EU)
 ## Notes: Express oneself in a more casual and fun way.
 ## SavedVariablesPerCharacter: ExpressYourElfIsShown
@@ -9,7 +9,7 @@
 ## DefaultState: enabled
 ## X-Category: Fun, Communication, Miscellaneous
 ## X-Credits: JJnl, Some pick-up lines from https://www.pickuplinesgalore.com/warcraft.html
-## X-Date: May. 07, 2020
+## X-Date: @project-date-iso@
 ## X-License: All Rights Reserved
 ## X-Website: https://www.curseforge.com/wow/addons/express-your-elf
 ## X-Curse-Project-ID: 385234

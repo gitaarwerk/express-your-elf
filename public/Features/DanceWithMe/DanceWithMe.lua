@@ -31,7 +31,6 @@ ExpressYourElf.DanceWithMe.list = {
 
 ExpressYourElf.DanceWithMe.listWithTarget = {
     '${name}, dance with me baby!',
-    "${race} ${guyGirl}s, we're so unforgettable. Tiny bracers and tabards on top! Fel-kissed skin, so hot we'll melt your armor! Ooh oh ooh, Ooh oh ooh!",
     '${hisHer} name is ${name}, ${heShe} is a show ${guyGirl}.',
     'Hey ${name} love crusader, I want to be your space invader.',
     "I'm gonna take my ${name} to the hotel room.",
@@ -40,7 +39,7 @@ ExpressYourElf.DanceWithMe.listWithTarget = {
     "See that ${guyGirl}, Watch ${hisHer} scream, Kicking the Dancing Queen"
 }
 
-function ExpressYourElf.DanceWithMe.getPlayerMessages(name, gender, class, race, level, girlBoy)
+function ExpressYourElf.DanceWithMe.getPlayerMessages(name, gender, class, race, level, guyGirl)
     local parsedList = {}
 
     for i, line in pairs(ExpressYourElf.DanceWithMe.list) do
@@ -52,7 +51,7 @@ function ExpressYourElf.DanceWithMe.getPlayerMessages(name, gender, class, race,
                 class = class,
                 race = race,
                 level = level,
-                girlBoy = girlBoy
+                guyGirl = guyGirl
             }
         )
     end
