@@ -3,7 +3,6 @@
 ExpressYourElf.Flirt = {}
 
 function ExpressYourElf.Flirt.GetRandomPrefix()
-    print(1)
     local prefix = {
         '${targetName}, ',
         'Hey ${targetName}. ',
