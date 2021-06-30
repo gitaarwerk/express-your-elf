@@ -79,6 +79,7 @@ playerSirMam
         'At least I have a positive attitude about my destructive habits.',
         'Someday, we’ll look back on this, laugh nervously and change the subject.',
         'Remember that time when I said I were cool? I lied.',
+        'People love me. And you know what, I have been very successful. Everybody loves me. ',
         'I’m really easy to get along with once you people learn to worship me.',
         'How was the weekend, someone asked? Well, on my first date, ${oppositHeShe} said, “I want to take you to the cemetery to meet my parents you might be the one.”'
     }
