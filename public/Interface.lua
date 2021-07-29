@@ -1,7 +1,6 @@
 ExpressYourElf = {}
 
-
-local function ExpressYourElf_Commands(msg)
+local function ExpressYourElf_Init(msg)
     -- pattern matching that skips leading whitespace and whitespace between cmd and args
     -- any whitespace at end of args is retained
     local _, _, cmd, args = string.find(msg, "%s?(%w+)%s?(.*)")
@@ -22,7 +21,8 @@ local function ExpressYourElf_Commands(msg)
         ExpressYourElf.Helpers.ToggleVisibility()
     else
         -- If not handled above, display some sort of help message
-        print("To show or hide the interface, use one of these commands");
+        print("To move the frame, drag in between the buttons.");
+        print("To show or hide the interface, use one of these commands:");
         print("Syntax: /eyelf toggle");
         print("Or...target someone and then use any of the following commands (and use them as a Macro)");
         print("Syntax: /eyelf dance");
@@ -34,5 +34,7 @@ local function ExpressYourElf_Commands(msg)
     end
 end
 
-SlashCmdList["COMMANDS"] = ExpressYourElf_Commands;
-SLASH_COMMANDS1	= "/eyelf";
+SlashCmdList["EYELF"] = ExpressYourElf_Init;
+
+SLASH_EYELF1	= "/eyelf"
+SLASH_EYELF2	= "/expressyourelf"

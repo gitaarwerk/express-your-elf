@@ -16,6 +16,8 @@
                 self:RegisterEvent("ADDON_LOADED");
                 self:RegisterEvent("PLAYER_TARGET_CHANGED");
                 self:RegisterForDrag("LeftButton");
+                
+                print("Express Your Elf is loaded. To check options; type: /eyelf or /expressyourelf.")
 
                 local dancingButton = CreateFrame("Button","dancingButton",ExpressYourElf_Frame, "SecureActionButtonTemplate,ActionButtonTemplate")
                 dancingButton:SetScale(1)
