@@ -71,6 +71,7 @@ playerSirMam
         'Kids believe in fairy tales. I’ve moved on to fantasy worlds. Where am I actually?',
         'Shush! I can’t hear what the voices are saying.',
         'Does this rag smell like chloroform to you?',
+        'No matter what you do – epics, no epic – it doesn’t matter. You have people that are mentally ill. And they’re gonna come through the cracks. And they’re going to do things that ${playerRace}s will not even believe are possible.',
         'Yes, I am an agent of the Legion, but my duties are largely ceremonial.',
         'Did you know my powers can only be used for good.',
         'I don’t work here. I’m a consultant.',
@@ -78,9 +79,13 @@ playerSirMam
         'It might look like I’m doing nothing, but at the cellular level I’m really quite busy.',
         'At least I have a positive attitude about my destructive habits.',
         'Someday, we’ll look back on this, laugh nervously and change the subject.',
+        'Did you know that Zovaal, The Jailer was actually called Chaining Tatum?',
         'Remember that time when I said I were cool? I lied.',
-        'People love me. And you know what, I have been very successful. Everybody loves me. ',
         'I’m really easy to get along with once you people learn to worship me.',
+        'Please don’t tell my Arthas that I used his 2008 Frostmourne to destroy the town of Gilneas, Azeroth in 2010',
+        "Those warriors from the Maw? They've got curved swords. Curved. Swords.",
+        "Goblin wind turbines kill 13-39 million birds and bats every year!",
+        "We’re rounding ’em up in a very ${playerRace} way, in a very nice way. And they’re going to be happy because they want to be legalized. And, by the way, I know it doesn’t sound nice. But not everything is nice.",
         'How was the weekend, someone asked? Well, on my first date, ${oppositHeShe} said, “I want to take you to the cemetery to meet my parents you might be the one.”'
     }
 
@@ -106,9 +111,15 @@ playerSirMam
 
     if (playerClass == "Warlock" or playerClass == "Demon Hunter") then
         table.insert(listOfPhrases, "I never understood Fel.")
+        table.insert(listOfPhrases, "Drink fel, stay fit, die anyway.")
+    end
+
+    if (playerClass == "Death Knight" or targetRace == "Scourge" or targetRace == "Undead") then
+        table.insert(listOfPhrases, "It's true, a windmill killed me.")
     end
 
     if (playerClass == "Mage") then
+        table.insert(listOfPhrases, "Iron Sword Huh? What Are You Killing? Butterflies?")
         table.insert(listOfPhrases, "I was elected to represent the citizens of Dalaran, not Gnomeregan")
     end
 
@@ -120,8 +131,8 @@ playerSirMam
         table.insert(listOfPhrases, "Crowded elevators smell different to gnomes.")
     end
 
-    if (playerClass == "Demon Hunter") then
-        table.insert(listOfPhrases, "Drink fel, stay fit, die anyway.")
+    if (playerClass == "Paladin" or playerClass == "Priest" or playerRace == "Lightforged Draenei") then 
+        table.insert(listOfPhrases, "Is there a way we can do something like that by injection inside or almost a cleaning? It sounds interesting to me, so we'll see. But the whole concept of the light, the way it kills it in one minute. That's pretty powerful.")
     end
 
 

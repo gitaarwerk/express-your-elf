@@ -17,6 +17,10 @@ local function ExpressYourElf_Init(msg)
         ExpressYourElf.RandomPhrases.run()
     elseif cmd == "rude" then
         ExpressYourElf.IAmRude.run()
+    elseif cmd == "battleshout" then
+        ExpressYourElf.Battleshout.run()
+    elseif cmd == "panic" then
+        ExpressYourElf.Panic.run()
     elseif cmd == "toggle" then
         ExpressYourElf.Helpers.ToggleVisibility()
     else
@@ -31,6 +35,8 @@ local function ExpressYourElf_Init(msg)
         print("Syntax: /eyelf seduce");
         print("Syntax: /eyelf gift");
         print("Syntax: /eyelf rude");
+        print("Syntax: /eyelf battleshout");
+        print("Syntax: /eyelf panic");
     end
 end
 

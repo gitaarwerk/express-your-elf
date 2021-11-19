@@ -55,7 +55,11 @@ function ExpressYourElf.Seduce.GetMessage(
     }
     
     -- from
-    if (playerRace == "Worgen" or playerRace == "Tauren" or playerRace == "Vulpera" or playerRace == "Pandaren" or playerRace == "HighmountainTauren") then
+    if (playerClass == "Warlock" or playerClass == "Demon Hunter") then
+        table.insert(flirtLines, "I want you all to myself, You’re my fel juice I would like to drink more of.")
+    end
+
+    if (playerRace == "Worgen" or playerRace == "Tauren" or playerRace == "Vulpera" or playerRace == "Pandaren" or playerRace == "Highmountain Tauren") then
         table.insert(flirtLines, "If being a furry in ${randomWorld} is wrong, You can also keep me as your favourite pet!")
     end
 
@@ -250,13 +254,10 @@ function ExpressYourElf.Seduce.run()
         local emotes = {
             'FLIRT',
             'KISS',
-            'DROOL',
-            'MOAN',
             'LAYDOWN',
             'LICK',
             'LOVE',
             'MASSAGE',
-            'POUNCE',
             'PURR',
             'SEXY',
             'SNIFF',

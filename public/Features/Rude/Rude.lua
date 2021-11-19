@@ -64,9 +64,12 @@ function ExpressYourElf.IAmRude.GetMessage(
     if (targetClass == "Druid") then
         table.insert(rudeLines, "${targetName}, do you still love nature, despite what it did to you?")
         table.insert(rudeLines, "I’d slap ${targetName}, but that would be animal abuse.")
+        table.insert(rudeLines, "You'll make a fine rug, ${name}!")
     end
 
-
+    if (targetClass == "Druid" or targetRace == "Tauren" or targetRace == "Highmountain Tauren" or targetRace == "Worgen" or targetRace == "Vulpera") then
+        table.insert(rudeLines, "Is That... Fur? Coming Out Of Your Ears?")
+    end
 
     -- randomize result
     pickedLine = rudeLines[fastrandom(1, #rudeLines)]
@@ -129,11 +132,9 @@ function ExpressYourElf.IAmRude.run()
             'RUDE',
             'ANGRY',
             'BARK',
-            'BURP',
             'BITE',
             'BORED',
             'FROWN',
-            'FART',
             'GLOAT',
             'INSULT',
             'MOCK',

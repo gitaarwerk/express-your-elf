@@ -1,19 +1,17 @@
 -- init
 
 ExpressYourElf.DanceWithMe = {}
-
 ExpressYourElf.DanceWithMe.list = {
     'Tom bo li de se de moi ya, yeah jambo jambo.',
     'Are we ${race}, or are we dancers.',
     "Beats so big I'm stepping on gnomes.",
     "TELL ME WHY!?, I don't like Argus... TELL ME WHY!? I don't like Argus",
     "My ${race} hips don't lie.",
-    "Oh, baby, when you talk like that, you make a ${race} go mad.",
     "Is this the real life? Is this just fantasy?",
     "${race} ${guyGirl}s, we're so unforgettable. Tiny bracers and tabards on top! Fel-kissed skin, so hot we'll melt your armor! Ooh oh ooh, Ooh oh ooh!",
     "It's murder on the raid floor. But you'd better not steal the moves. Yhea Yhea! Boss' gonna burn this dungeon down right now!",
     "Like a ${race}, raiding for the very first time!",
-    "They're out to get you, there's demons closing in on every side. That this is thriller, thriller night!",
+    "They're out to get you, there's demons closing in on every side. That this is raiding, raid raid night!",
     "What you gon' do with all that junk? All that junk inside that trunk? I'ma get, get, get, get, you drunk, Get you love drunk off my hump. My hump my hump my hump my hump my hump",
     "I just want to show you off to all of my ${race} friends, make them drool on their chiny, chin, chins.",
     "Lack toes, intolerant. It sucks when you can't stand! Lack toes, intolerant. Anything, when you can't stand!",
@@ -21,22 +19,28 @@ ExpressYourElf.DanceWithMe.list = {
     "No one knows I'm cool. They all think I'm a fool. Just because I drool. And I like my pocket pool.",
     "Silithus gel, I think it's swell. It tastes just like chicken. And when you get sickened. It makes you feel well.",
     "Poopy-di scoop. Scoop-diddy-whoop. Whoop-di-scoop-di-poop!",
+    "Ob-La-Di, Ob-La-Da",
     "Prance Forward", 
     "Shashay Left", 
     "Boogie Down", 
     "Shimmy Right",
-    "I bless the rains down in Silithus"
+    "I bless the rains down in Silithus",
 }
 
 
 ExpressYourElf.DanceWithMe.listWithTarget = {
     '${name}, dance with me baby!',
+    "${heShe}'s optimistic bout the future of Azeroth.",
     '${hisHer} name is ${name}, ${heShe} is a show ${guyGirl}.',
     'Hey ${name} love crusader, I want to be your space invader.',
     "I'm gonna take my ${name} to the hotel room.",
     "So, ${name} are you ok, are you ok ${name}?",
+    "Oh, baby, when you talk like that, you make a ${race} go mad.",
     "${guyGirl}, I can thrill you more than any ghost would dare to try",
-    "See that ${guyGirl}, Watch ${hisHer} scream, Kicking the Dancing Queen"
+    "See that ${guyGirl}, watch ${hisHer} scream, kicking the Dancing Queen",
+    "${name} is an easy lover. ${heShe}'ll take your armor but you won't feel it",
+    "${name}, you must be this tall, to ride THIS ride at the carnival.",
+    "Hey hey, ${name} ${name}, I don't like your ${oppositeBfGf}. Hey hey, ${name} ${name}, I think you need a knew one.",
 }
 
 function ExpressYourElf.DanceWithMe.getPlayerMessages(name, gender, class, race, level, guyGirl)
@@ -73,7 +77,8 @@ function ExpressYourElf.DanceWithMe.getTargetMessages(name, gender, class, race,
                 level = level,
                 hisHer = hisHer,
                 heShe = heShe,
-                guyGirl = guyGirl
+                guyGirl = guyGirl,
+                oppositeBfGf = oppositeBfGf
             }
         )
     end
@@ -84,7 +89,6 @@ end
 
 function ExpressYourElf.DanceWithMe.run()
     -- Obtain all vars
-    local list = {}
     local playerName, playerGender, playerClass, playerRace, playerLevel  = ExpressYourElf.Helpers.GetPlayerInformation()
     local playerGuyGirl = ExpressYourElf.Helpers.GetGuyGirl(playerGender)
     
@@ -94,6 +98,7 @@ function ExpressYourElf.DanceWithMe.run()
         local targetHisHer = ExpressYourElf.Helpers.GetHisHer(targetGender)
         local targetHeShe = ExpressYourElf.Helpers.GetHeShe(targetGender)
         local targetGuyGirl = ExpressYourElf.Helpers.GetGuyGirl(targetGender)
+        local oppositeBfGf = ExpressYourElf.Helpers.oppositeBfGf(targetGender)
 
         local targetMessages = ExpressYourElf.DanceWithMe.getTargetMessages(targetName, targetGender, targetClass, targetRace, targetLevel, targetHisHer, targetHeShe, targetGuyGirl)
 

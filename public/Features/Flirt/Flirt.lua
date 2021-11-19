@@ -68,10 +68,11 @@ function ExpressYourElf.Flirt.GetMessage(
         "I think you're suffering from a lack of vitamin me.",
         "People call me ${playerName}, but you can call me tonight.",
         "I may not be the best looking ${playerGuyGirl} here. But I’m he only one talking to you.",
+        "If I said I want your armor, would you hold it against me?",
     }
     
     -- from
-    if (playerRace == "Worgen" or playerRace == "Tauren" or playerRace == "Vulpera" or playerRace == "Pandaren" or playerRace == "HighmountainTauren") then
+    if (playerRace == "Worgen" or playerRace == "Tauren" or playerRace == "Vulpera" or playerRace == "Pandaren" or playerRace == "Highmountain Tauren") then
         table.insert(flirtLines, "Wanna see me comb my hair, really fast?")
         table.insert(flirtLines, "My name isn’t Elmo, but you can tickle me any time you want to.")
     end
@@ -271,7 +272,6 @@ function ExpressYourElf.Flirt.run()
             'SHY',
             'SMIRK',
             'STARE',
-            'WHISTLE',
         }
 
         if (flirtLine ~= nil) then

@@ -52,6 +52,14 @@ function ExpressYourElf.Helpers.GetSirMam(gender)
     return "ma'm"
 end
 
+function ExpressYourElf.Helpers.oppositeBfGf(gender)
+    if (gender == "male") then
+        return "girlfriend"
+    end
+
+    return "boyfriend"
+end
+
 function ExpressYourElf.Helpers.GetGuyGirl(gender)
   if (gender == "male") then
     return "guy"

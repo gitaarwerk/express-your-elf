@@ -10,6 +10,9 @@
     <Script file="Features/GivePresent/GivePresent.lua"/>
     <Script file="Features/RandomPhrases/RandomPhrases.lua"/>
     <Script file="Features/Rude/Rude.lua"/>
+    <Script file="Features/Battleshout/Battleshout.lua"/>
+    <Script file="Features/Panic/Panic.lua"/>
+    
     <Frame name="ExpressYourElf_Frame" toplevel="true" frameStrata="DIALOG" movable="true" enableMouse="true" hidden="true" parent="UIParent">
         <Scripts>
             <OnLoad>
@@ -49,7 +52,7 @@
 
                 local giftButton = CreateFrame("Button","giftButton",ExpressYourElf_Frame, "SecureActionButtonTemplate,ActionButtonTemplate")
                 giftButton:SetScale(1)
-                giftButton:SetPoint("TOPLEFT", "ExpressYourElf_Frame", "TOPLEFT", 87, -7);
+                giftButton:SetPoint("TOPLEFT", "ExpressYourElf_Frame", "TOPLEFT", 87, -47);
                 giftButton:SetPushedTexture("Interface\\Icons\\item_shop_giftbox01")
                 giftButton:SetHighlightTexture("Interface\\Icons\\item_shop_giftbox01")
                 giftButton:SetNormalTexture("Interface\\Icons\\item_shop_giftbox01")
@@ -99,7 +102,7 @@
 
                 local rudeButton = CreateFrame("Button","rudeButton",ExpressYourElf_Frame, "SecureActionButtonTemplate,ActionButtonTemplate")
                 rudeButton:SetScale(1)
-                rudeButton:SetPoint("TOPLEFT", "ExpressYourElf_Frame", "TOPLEFT", 87, -47);
+                rudeButton:SetPoint("TOPLEFT", "ExpressYourElf_Frame", "TOPLEFT", 127, -47);
                 rudeButton:SetPushedTexture("Interface\\Icons\\ability_demonhunter_torment")
                 rudeButton:SetHighlightTexture("Interface\\Icons\\ability_demonhunter_torment")
                 rudeButton:SetNormalTexture("Interface\\Icons\\ability_demonhunter_torment")
@@ -110,6 +113,33 @@
                 rudeButton:SetToplevel(true)
                 rudeButton:SetScript("OnClick",function()
                     ExpressYourElf.IAmRude.run()
+                end)
+
+                local panicButton = CreateFrame("Button","panicButton",ExpressYourElf_Frame, "SecureActionButtonTemplate,ActionButtonTemplate")
+                panicButton:SetScale(1)
+                panicButton:SetText("Panic")
+                panicButton:SetPoint("TOPLEFT", "ExpressYourElf_Frame", "TOPLEFT", 87, -7);
+                panicButton:SetPushedTexture("Interface\\Icons\\spell_shadow_painandsuffering")
+                panicButton:SetHighlightTexture("Interface\\Icons\\spell_shadow_painandsuffering")
+                panicButton:SetNormalTexture("Interface\\Icons\\spell_shadow_painandsuffering")
+                panicButton:GetNormalTexture():SetAllPoints(panicButton)
+                panicButton:SetToplevel(true)
+                panicButton:SetScript("OnClick",function()
+                    ExpressYourElf.Panic.run()
+                end)
+
+
+                local battleshoutButton = CreateFrame("Button","battleshoutButton",ExpressYourElf_Frame, "SecureActionButtonTemplate,ActionButtonTemplate")
+                battleshoutButton:SetScale(1)
+                battleshoutButton:SetText("Battlecry")
+                battleshoutButton:SetPoint("TOPLEFT", "ExpressYourElf_Frame", "TOPLEFT", 127, -7);
+                battleshoutButton:SetPushedTexture("Interface\\Icons\\ability_warrior_battleshout")
+                battleshoutButton:SetHighlightTexture("Interface\\Icons\\ability_warrior_battleshout")
+                battleshoutButton:SetNormalTexture("Interface\\Icons\\ability_warrior_battleshout")
+                battleshoutButton:GetNormalTexture():SetAllPoints(battleshoutButton)
+                battleshoutButton:SetToplevel(true)
+                battleshoutButton:SetScript("OnClick",function()
+                    ExpressYourElf.Battleshout.run()
                 end)
 
 
