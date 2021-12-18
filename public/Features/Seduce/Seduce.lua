@@ -35,11 +35,6 @@ function ExpressYourElf.Seduce.GetMessage(
 )
     local randomWorld = ExpressYourElf.RandomPhrases.GetRandomWorld()
 
-    local playerSex = "girls"
-
-    if (playerGender == "male") then
-        oppositeSex = "guys"
-    end
     -- common
     local pickedLine
     local flirtLines = {
@@ -51,7 +46,7 @@ function ExpressYourElf.Seduce.GetMessage(
         "Nice tabard, can I talk you out of it?",
         "People call me ${playerName}, but you can call me tonight.",
         "What are you raiding tonight? Well, besides me, of course.",
-        "I heard you like bad ${oppositeSex}. Well, I’m bad at everything."
+        "I heard you like bad ${playerGuyGirl}. Well, I’m bad at everything."
     }
     
     -- from
