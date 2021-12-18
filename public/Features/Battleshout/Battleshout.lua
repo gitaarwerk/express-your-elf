@@ -76,5 +76,3 @@ function ExpressYourElf.Battleshout.run()
         SendChatMessage(pickedLine, "SAY", nil, index);
     end
 end
-
-print('battleshout loaded...')
