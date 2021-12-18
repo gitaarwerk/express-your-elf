@@ -185,7 +185,7 @@ function ExpressYourElf.Flirt.GetMessage(
         table.insert(flirtLines, "Did you have buffs for breakfast? Because you look magically delicious!")
     end
 
-    if (targetRace == "Scourge") then
+    if (targetRace == "Scourge" or targetRace == "Undead") then
         table.insert(flirtLines, "Do you have a shovel? Because I’m digging you.")
         table.insert(flirtLines, "Take me out tonight. Where there's music and there's people, and they're young and undead.")
         table.insert(flirtLines, "I can’t think of anyone else I’d rather survive a Zombie Apocalypse with.")
