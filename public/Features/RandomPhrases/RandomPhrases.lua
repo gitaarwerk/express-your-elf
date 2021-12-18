@@ -81,6 +81,7 @@ playerSirMam
         'Someday, we’ll look back on this, laugh nervously and change the subject.',
         'Did you know that Zovaal, The Jailer was actually called Chaining Tatum?',
         'Remember that time when I said I were cool? I lied.',
+        'The tortollan have been betraying me since the start! Now I kill a Tortollan a day, saving a plastic straw!', -- Wildhuntz-Bouderfist EU
         'I’m really easy to get along with once you people learn to worship me.',
         'Please don’t tell my Arthas that I used his 2008 Frostmourne to destroy the town of Gilneas, Azeroth in 2010',
         "Those warriors from the Maw? They've got curved swords. Curved. Swords.",
