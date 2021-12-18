@@ -15,6 +15,8 @@ targetRace,
 targetLevel,
 targetHisHer
 )
+
+    local splitName = targetName
     local pickedGift
     local listOfGifts = {
         "gives ${targetName} a [Free Pen] with engravings: '${playerName} <3 ${targetName}'.",
@@ -46,8 +48,37 @@ targetHisHer
         "gives a [The Serial Killer Cookbook] to ${targetName}. I realised this is THE PERFECT present for you!",
         "gives a book called: [Cursed Objects: Strange but True Stories of the World's Most Infamous Items] to ${targetName}. WOW! What a gem!",
         "gives a [Vintage Print of a Smoking kid Archimonde & a Giant Chicken] to ${targetName}. Now here's a great memory! Right!?", 
-        "gives a set of [Handmade Experimented on Human Anatomy Coasters] to ${targetName}. They said, it belonged to Professor Putricide."  
+        "gives a set of [Handmade Experimented on Human Anatomy Coasters] to ${targetName}. They said, it belonged to Professor Putricide.", 
+        "gives a Titanic umbilical cord to ${targetName}. Would animals have been created using this thing?",
+        "hands over a collection of Polaroids of Anduin being tortured by the Jailer to ${targetName}",
+        "gives a pillow of cut off hand trophy to ${targetName}.",
+        "passes a “How to traumatise your guild mates”-book to ${targetName}.",
+        "unwraps a present from ${targetName}: Oh,..a gas-proof face mask from Ice-crown citadel of Dr Putrice. The note sas: 'Don’t smell it'.",
+        "gives a par of Tauren Paw socks to ${targetName}.",
+        "hands over a duty tome to ${targetName} with the title: “The first ones Research-kit”.",
+        -- "passes an Ouija board to ${targetName} with the only letters spelling: “${splitName}”, creepy, or just really C-O-O-L?", -- add when loop will be available
+        "receives a bronze cast of ${targetName}’s sleeping body.",
+        "gives a pair of guillotine ear-rings to ${targetName}.",
+        "gives a hand-knit brain beanie.",
     }
+
+    if (playerClass == "Druid" or playerRace == "Worgen" or playerRace == "Tauren" or playerRace == "Vulpera" or playerRace == "Pandaren" or playerRace == "Highmountain Tauren") then
+        table.insert(listOfGifts, "gives ${playerName}'s paw to ${targetName}. Don’t worry, it was cut off a while ago. It no longer bleeds.")
+        table.insert(listOfGifts, "gives ${targetName} A small bag of fur.My first shedding")
+    end
+
+    if (playerClass == "Druid") then
+        table.insert(listOfGifts, "gives ${targetName} a set of bacon flavoured-bandages. It’s made from.... Bear-me.")
+    end
+
+    if (playerRace == "Troll") then
+        table.insert(listOfGifts, "hands over ${targetName} a cut off hand from a random bystander, good for in the soup. Magical taste guaranteed")
+    end
+
+    if (playerRace == "Death Knight") then
+        table.insert(listOfGifts, "hands over ${targetName} a carved steak of decaying flesh, ew!")
+    end
+
 
     pickedGift = listOfGifts[fastrandom(1, #listOfGifts)]
 
@@ -65,7 +96,8 @@ targetHisHer
             targetClass = targetClass,
             targetRace = targetRace,
             targetLevel = targetLevel,
-            targetHisHer = targetHisHer
+            targetHisHer = targetHisHer,
+            splitName = splitName,
         }
     )
 end
