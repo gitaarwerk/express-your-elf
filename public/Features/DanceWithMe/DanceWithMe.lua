@@ -30,7 +30,7 @@ ExpressYourElf.DanceWithMe.list = {
 
 ExpressYourElf.DanceWithMe.listWithTarget = {
     '${name}, dance with me baby!',
-    "${heShe}'s optimistic bout the future of Azeroth.",
+    "Look at $targetName}, ${heShe}'s optimistic bout the future of Azeroth.",
     '${hisHer} name is ${name}, ${heShe} is a show ${guyGirl}.',
     'Hey ${name} love crusader, I want to be your space invader.',
     "I'm gonna take my ${name} to the hotel room.",
@@ -38,7 +38,7 @@ ExpressYourElf.DanceWithMe.listWithTarget = {
     "Oh, baby, when you talk like that, you make a ${race} go mad.",
     "${guyGirl}, I can thrill you more than any ghost would dare to try",
     "See that ${guyGirl}, watch ${hisHer} scream, kicking the Dancing Queen",
-    "${name} is an easy lover. ${heShe}'ll take your armor but you won't feel it",
+    "${name} is an easy lover, ${heShe}'ll take your armor but you won't feel it",
     "${name}, you must be this tall, to ride THIS ride at the carnival.",
     "Hey hey, ${name} ${name}, I don't like your ${oppositeBfGf}. Hey hey, ${name} ${name}, I think you need a knew one.",
 }
@@ -63,7 +63,7 @@ function ExpressYourElf.DanceWithMe.getPlayerMessages(name, gender, class, race,
     return parsedList
 end
 
-function ExpressYourElf.DanceWithMe.getTargetMessages(name, gender, class, race, level, hisHer, heShe, guyGirl)
+function ExpressYourElf.DanceWithMe.getTargetMessages(name, gender, class, race, level, hisHer, heShe, guyGirl, oppositeBfGf)
     local parsedList = {}
 
     for i, line in pairs(ExpressYourElf.DanceWithMe.listWithTarget) do
@@ -100,7 +100,7 @@ function ExpressYourElf.DanceWithMe.run()
         local targetGuyGirl = ExpressYourElf.Helpers.GetGuyGirl(targetGender)
         local oppositeBfGf = ExpressYourElf.Helpers.oppositeBfGf(targetGender)
 
-        local targetMessages = ExpressYourElf.DanceWithMe.getTargetMessages(targetName, targetGender, targetClass, targetRace, targetLevel, targetHisHer, targetHeShe, targetGuyGirl)
+        local targetMessages = ExpressYourElf.DanceWithMe.getTargetMessages(targetName, targetGender, targetClass, targetRace, targetLevel, targetHisHer, targetHeShe, targetGuyGirl, oppositeBfGf)
 
         SendChatMessage(targetMessages[fastrandom(1, #targetMessages)], "SAY", nil, index);
 
