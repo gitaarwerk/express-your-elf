@@ -1,0 +1,240 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\FrameXML\UI.xsd"
+>
+    <Frame 
+        name="ExpressYourElf_ConfigScreen"
+        enableMouse="false" 
+        movable="true" 
+        toplevel="false"
+        frameStrata="LOW" 
+        hidden="true"
+        parent="UIParent" 
+        clampedToScreen="true"
+    >
+    <Scripts>
+        <OnLoad>
+            self:RegisterForDrag("LeftButton")
+            self:RegisterEvent("ADDON_LOADED")
+            self:RegisterEvent("CHAT_MSG_WHISPER");
+            self:RegisterEvent("PLAYER_FLAGS_CHANGED");
+
+            local function eventHandler(self, event, arg1, ...)
+                if (event == "ADDON_LOADED" and arg1 == "ExpressYourElf") then
+                    print("\124cffffcee2Express Your Elf is loaded. To check options; type: " .. ExpressYourElfMessageColor ..  "/eyelf \124ror" .. ExpressYourElfMessageColor .. " /expressyourelf\124r.")
+                    local date = GetAddOnMetadata("ExpressYourElf", "X-ResetVarsDate") 
+
+                    -- reset out of date addons
+                    if (ExpressYourElfVars and ExpressYourElfVars.lastResetDate ~= date) then 
+                        print(ExpressYourElfMessageColor .. 'Config had to be reset because of new functionality.')
+                        ExpressYourElfVars = nil
+                    end
+
+                    if (ExpressYourElfVars == nil) then 
+                        ExpressYourElfVars = {}
+                        ExpressYourElfVars.lastResetDate = date
+                        ExpressYourElfVars.buttonFrame = {}
+                        ExpressYourElfVars.buttonFrame.position = {}
+                        ExpressYourElfVars.channel = "SAY"
+                        ExpressYourElfVars.nurseNancyIsOn = true
+                        ExpressYourElfVars.answeringMachineIsOn = true
+                        ExpressYourElfVars.usePrefix = true
+                        ExpressYourElfVars.interfaceScale = 1
+                        ExpressYourElfVars.isShown = true
+
+                        -- show config screen when nothing is set
+                        ExpressYourElf_ConfigScreen:Show()
+                    end
+
+                    ExpressYourElf_ConfigScreen_ShowButtons:SetChecked(ExpressYourElfVars.isShown)
+                    ExpressYourElf_ConfigScreen_AnsweringMachine:SetChecked(ExpressYourElfVars.answeringMachineIsOn)
+                    ExpressYourElf_ConfigScreen_NurseNancy:SetChecked(ExpressYourElfVars.nurseNancyIsOn)
+                    ExpressYourElf_ConfigScreen_Scale:SetValue(ExpressYourElfVars.interfaceScale)
+                end
+
+                if (ExpressYourElfVars.answeringMachineIsOn == true and (event == "CHAT_MSG_WHISPER" or (event == "PLAYER_FLAGS_CHANGED" and arg1 == "player"))) then
+                    if (event == "PLAYER_FLAGS_CHANGED") then 
+                        ExpressYourElf.AnsweringMachine.run() -- prevent that first times not doing anithing
+                    end 
+
+                    if (event == "CHAT_MSG_WHISPER" ) then 
+                        ExpressYourElf.AnsweringMachine.run()
+                    end 
+                end
+            end
+
+            ExpressYourElf_ConfigScreen:SetScript("OnEvent", eventHandler);
+        </OnLoad>
+        <OnDragStart>
+            self:StartMoving()
+        </OnDragStart>
+        <OnDragStop>
+            self:StopMovingOrSizing()
+          </OnDragStop>
+    </Scripts>
+    <Size>
+        <AbsDimension x="540" y="320"/>
+    </Size>
+    <Anchors>
+        <Anchor point="CENTER"/>
+        <Offset><AbsDimension x="-200" y="200"/></Offset>
+    </Anchors>
+    <Layers>
+    <Layer level="BACKGROUND">
+        <Texture name="$parent_Background" setAllPoints="true">
+            <Color r="0" g="0" b="0" a="0.65" />
+            <Backdrop bgFile="Interface\TutorialFrame\TutorialFrameBackground"
+                edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+                <EdgeSize val="16"/>
+                <TileSize val="32"/>
+                <BackgroundInsets left="5" right="5" top="5" bottom="5"/>
+            </Backdrop>
+        </Texture> 	   
+    </Layer>
+        <Layer level="ARTWORK">
+            <Texture name="ExpressYourElf_ConfigScreen_Header" file="Interface\DialogFrame\UI-DialogBox-Header">
+                <Size>
+                    <AbsDimension x="356" y="64"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="TOP">
+                        <Offset>
+                            <AbsDimension x="0" y="12"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </Texture>
+            <FontString inherits="GameFontNormal" text="Express your Elf">
+                <Anchors>
+                    <Anchor point="TOP" relativeTo="ExpressYourElf_ConfigScreen_Header">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </FontString>
+        </Layer>
+    </Layers>
+    <Frames>
+    <!-- close button -->
+    <Button name="$parentButtonClose" inherits="UIPanelCloseButton" >
+      <Anchors>
+        <Anchor point="TOPRIGHT">
+        <Offset><AbsDimension x="-10" y="-10"/></Offset>
+        </Anchor>
+      </Anchors>
+      <Scripts>
+        <OnClick>ExpressYourElf_ConfigScreen:Hide(); </OnClick>
+      </Scripts>
+    </Button>
+
+    <CheckButton name="ExpressYourElf_ConfigScreen_ShowButtons" inherits="OptionsCheckButtonTemplate">
+        <Size> 
+            <AbsDimension x="25" y="25"/> 
+        </Size> 						
+        <Anchors>
+            <Anchor point="TOPLEFT">
+            <Offset><AbsDimension x="20" y="-75"/></Offset>
+            </Anchor>
+        </Anchors>
+        <Scripts>
+            <OnLoad>
+                getglobal(ExpressYourElf_ConfigScreen_ShowButtons:GetName().."Text"):SetText("Show conversational buttons");
+            </OnLoad>
+            <OnClick>
+                if ( ExpressYourElf_ConfigScreen_ShowButtons:GetChecked() ) then 
+                    ExpressYourElf_ShowButtons()
+                else 
+                    ExpressYourElf_HideButtons()
+                end
+            </OnClick>
+        </Scripts>
+    </CheckButton>
+
+    <CheckButton name="ExpressYourElf_ConfigScreen_AnsweringMachine" inherits="OptionsCheckButtonTemplate">
+        <Size> 
+            <AbsDimension x="25" y="25"/> 
+        </Size> 						
+        <Anchors>
+            <Anchor point="TOPLEFT">
+            <Offset><AbsDimension x="20" y="-105"/></Offset>
+            </Anchor>
+        </Anchors>
+        <Scripts>
+            <OnLoad>
+                getglobal(ExpressYourElf_ConfigScreen_AnsweringMachine:GetName().."Text"):SetText("AFK Answering Machine");
+        </OnLoad>
+            <OnClick>
+                if ( ExpressYourElf_ConfigScreen_AnsweringMachine:GetChecked() ) then 
+                ExpressYourElf_AnsweringMachineOn()
+            else 
+            ExpressYourElf_AnsweringMachineOff()
+            end
+                </OnClick>
+        </Scripts>
+    </CheckButton>
+            <CheckButton name="ExpressYourElf_ConfigScreen_NurseNancy" inherits="OptionsCheckButtonTemplate">
+            <Size> 
+                <AbsDimension x="25" y="25"/> 
+            </Size> 						
+            <Anchors>
+                <Anchor point="TOPLEFT">
+                <Offset><AbsDimension x="20" y="-135"/></Offset>
+                </Anchor>
+            </Anchors>
+            <Scripts>
+                <OnLoad>
+                    getglobal(ExpressYourElf_ConfigScreen_NurseNancy:GetName().."Text"):SetText("Auto ressurrection lines (soulstone, battle ress, ress, mass ress)");
+            </OnLoad>
+            <OnClick>
+                if (ExpressYourElf_ConfigScreen_NurseNancy:GetChecked() == true) then 
+                    ExpressYourElf_NurseNancyOn()
+                else 
+                    ExpressYourElf_NurseNancyOff()
+                end
+            </OnClick>
+            </Scripts>
+        </CheckButton>
+        <Slider name="ExpressYourElf_ConfigScreen_Scale" inherits="OptionsSliderTemplate" minValue="0.2" maxValue="1" valueStep="0.2">
+            <Size x="185" y="16" />
+            <Anchors>
+                <Anchor point="TOPLEFT" relativeKey="$parent.OutputDeviceDropdown" relativePoint="TOPLEFT" x="140" y="-200" />
+            </Anchors>
+            <Layers>
+                <Layer level="ARTWORK">
+                    <FontString name="$parentLabel" parentKey="Label" inherits="GameFontNormalSmall" text="Button frame scale">
+                        <Anchors>
+                            <Anchor point="RIGHT" relativePoint="LEFT" x="-17" y="0"/>
+                        </Anchors>
+                    </FontString>
+                </Layer>
+            </Layers>
+            <Scripts>
+                <OnValueChanged>ExpressYourElf_SetScale(value)</OnValueChanged>
+            </Scripts>
+        </Slider>
+        <Button name="ExpressYourElf_ConfigScreen_MoveFrame_ON" inherits="UIPanelButtonTemplate" text="Move buttons">
+            <Size x="120" y="35"/>
+            <Anchors>
+                <Anchor point="LEFT" relativeTo="$parent" relativePoint="TOPLEFT" y="-280" x="15" />
+            </Anchors>
+            <Scripts>
+                <OnClick>
+                    ExpressYourElf_StartMoving()
+                </OnClick>
+            </Scripts>
+        </Button>
+        <Button name="ExpressYourElf_ConfigScreen_MoveFrame_OFF" inherits="UIPanelButtonTemplate" text="Lock buttons">
+            <Anchors>
+                <Anchor point="LEFT" relativeTo="ExpressYourElf_ConfigScreen_MoveFrame_ON" relativePoint="TOPLEFT"  y="-17" x="130"/>
+            </Anchors>
+            <Size x="120" y="35"/>
+            <Scripts>
+                <OnClick>
+                    ExpressYourElf_StopMoving()
+                </OnClick>
+            </Scripts>
+        </Button>
+    </Frames> 
+</Frame>
+</Ui>

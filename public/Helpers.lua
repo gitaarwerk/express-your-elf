@@ -2,19 +2,6 @@ ExpressYourElf = {}
 
 ExpressYourElf.Helpers = {}
 
-function ExpressYourElf.Helpers.ToggleVisibility()
-        local frame = getglobal("ExpressYourElf_Frame");
-        if (frame) then
-            if(  frame:IsVisible() ) then
-                ExpressYourElfIsShown = false
-                frame:Hide();
-            else
-                ExpressYourElfIsShown = true
-                frame:Show();
-            end
-        end
-end
-
 function ExpressYourElf.Helpers.parseText(s, tab)
   return (s:gsub('($%b{})', function(w) return tab[w:sub(3, -2)] or w end))
 end
@@ -105,8 +92,25 @@ function ExpressYourElf.Helpers.GetTargetInformation()
     return nil
 end
 
+function ExpressYourElf.Helpers.GetTargetInformationByUID(uid)
+  local genderTable = { "neutral or unknown", "male", "female" };
+  local targetClass, engClass, targetRace, engRace, gender, targetName, server = GetPlayerInfoByGUID(uid)
+  local targetGender = genderTable[UnitSex(uid)]
 
+  return targetName, targetGender, targetClass, targetRace
+end
 
 function ExpressYourElf.Helpers.GetPlayerInformation()
     return getCharacterinfo("player")
+end
+
+
+function ExpressYourElf.Helpers.tableContainsValue(table, val)
+  for index, value in ipairs(table) do
+      if value == val then
+          return true
+      end
+  end
+
+  return false
 end

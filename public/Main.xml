@@ -12,15 +12,16 @@
     <Script file="Features/Rude/Rude.lua"/>
     <Script file="Features/Battleshout/Battleshout.lua"/>
     <Script file="Features/Panic/Panic.lua"/>
+    <Script file="Features/NurseNancy/NurseNancy.lua"/>
+    <Script file="Features/NurseNancy/SpellIds.lua"/>
+    <Script file="Features/AnsweringMachine/AnsweringMachine.lua"/>
     
-    <Frame name="ExpressYourElf_Frame" toplevel="true" frameStrata="DIALOG" movable="true" enableMouse="true" hidden="true" parent="UIParent">
+    <Frame name="ExpressYourElf_Frame" toplevel="true" frameStrata="DIALOG" movable="false" enableMouse="true" hidden="true" parent="UIParent" clampedToScreen="true">
         <Scripts>
             <OnLoad>
                 self:RegisterEvent("ADDON_LOADED");
                 self:RegisterEvent("PLAYER_TARGET_CHANGED");
                 self:RegisterForDrag("LeftButton");
-                
-                print("Express Your Elf is loaded. To check options; type: /eyelf or /expressyourelf.")
 
                 local dancingButton = CreateFrame("Button","dancingButton",ExpressYourElf_Frame, "SecureActionButtonTemplate,ActionButtonTemplate")
                 dancingButton:SetScale(1)
@@ -65,8 +66,6 @@
                     ExpressYourElf.GivePresent.run()
                 end)
 
-                -- row 2
-
                 local flirtButton = CreateFrame("Button","flirtButton",ExpressYourElf_Frame, "SecureActionButtonTemplate,ActionButtonTemplate")
                 flirtButton:SetScale(1)
                 flirtButton:SetPoint("TOPLEFT", "ExpressYourElf_Frame", "TOPLEFT", 7, -47);
@@ -82,7 +81,6 @@
                     ExpressYourElf.Flirt.run()
                 end)
 
-
                 local seduceButton = CreateFrame("Button","seduceButton",ExpressYourElf_Frame, "SecureActionButtonTemplate,ActionButtonTemplate")
                 seduceButton:SetScale(1)
                 seduceButton:SetPoint("TOPLEFT", "ExpressYourElf_Frame", "TOPLEFT", 47, -47);
@@ -97,7 +95,6 @@
                 seduceButton:SetScript("OnClick",function()
                     ExpressYourElf.Seduce.run()
                 end)
-
 
 
                 local rudeButton = CreateFrame("Button","rudeButton",ExpressYourElf_Frame, "SecureActionButtonTemplate,ActionButtonTemplate")
@@ -128,7 +125,6 @@
                     ExpressYourElf.Panic.run()
                 end)
 
-
                 local battleshoutButton = CreateFrame("Button","battleshoutButton",ExpressYourElf_Frame, "SecureActionButtonTemplate,ActionButtonTemplate")
                 battleshoutButton:SetScale(1)
                 battleshoutButton:SetText("Battlecry")
@@ -142,13 +138,37 @@
                     ExpressYourElf.Battleshout.run()
                 end)
 
-
                 ExpressYourElf_GiftButton = giftButton
                 ExpressYourElf_RudeButton = rudeButton
                 ExpressYourElf_FlirtButton = flirtButton
                 ExpressYourElf_SeduceButton = seduceButton
 
+                -- always on buttons
+                ExpressYourElf_DancingButton = dancingButton
+                ExpressYourElf_RandomButton = randomButton
+                ExpressYourElf_PanicButton = panicButton
+                ExpressYourElf_BattleshoutButtonn = battleshoutButton
+
+                ExpressYourElf_Reset_Tooltips()
+                
                 local function eventHandler(self, event, arg1, ...)
+                    if event == "ADDON_LOADED" and arg1 == "ExpressYourElf" then
+                        if (ExpressYourElfVars.isShown == true) then
+                            ExpressYourElf_Frame:Show()
+                        else
+                            ExpressYourElf_Frame:Hide()
+                        end
+                
+                        ExpressYourElf_Frame:SetScale(ExpressYourElfVars.interfaceScale)
+                        ExpressYourElf_Frame:ClearAllPoints(); 
+                        ExpressYourElf_Frame:SetPoint(
+                            ExpressYourElfVars.buttonFrame.position[1],
+                            ExpressYourElfVars.buttonFrame.position[2],
+                            ExpressYourElfVars.buttonFrame.position[3],
+                            ExpressYourElfVars.buttonFrame.position[4],
+                            ExpressYourElfVars.buttonFrame.position[5]
+                        ); 
+                    end
                     if event == "PLAYER_TARGET_CHANGED" and UnitName("target") and UnitPlayerControlled("target") then
                         ExpressYourElf_GiftButton:Enable()
                         ExpressYourElf_GiftButton:SetAlpha(1)
@@ -158,6 +178,8 @@
                         ExpressYourElf_FlirtButton:SetAlpha(1)
                         ExpressYourElf_SeduceButton:Enable()
                         ExpressYourElf_SeduceButton:SetAlpha(1)
+
+                        ExpressYourElf_Reset_Tooltips()
                     elseif event == "PLAYER_TARGET_CHANGED" and UnitName("target") and UnitPlayerControlled("target") == false then
                         ExpressYourElf_GiftButton:Enable()
                         ExpressYourElf_GiftButton:SetAlpha(1)
@@ -167,17 +189,8 @@
                         ExpressYourElf_SeduceButton:SetAlpha(.3)
                         ExpressYourElf_RudeButton:Disable()
                         ExpressYourElf_RudeButton:SetAlpha(.3)
-                    elseif event == "ADDON_LOADED" and arg1 == "ExpressYourElf" then
-                        if ExpressYourElfIsShown == nil then
-                            ExpressYourElfIsShown = false
-                        end
 
-                        if ExpressYourElfIsShown == true then
-                            self:Show();
-                        end
-                        if ExpressYourElfIsShown == false then
-                            self:Hide();
-                        end
+                        ExpressYourElf_Reset_Tooltips()
                     else
                         ExpressYourElf_FlirtButton:Disable()
                         ExpressYourElf_FlirtButton:SetAlpha(.3)
@@ -187,30 +200,49 @@
                         ExpressYourElf_GiftButton:SetAlpha(.3)
                         ExpressYourElf_RudeButton:Disable()
                         ExpressYourElf_RudeButton:SetAlpha(.3)
+
+                        ExpressYourElf_Reset_Tooltips()
                     end
                 end
                 ExpressYourElf_Frame:SetScript("OnEvent", eventHandler);
             </OnLoad>
             <OnDragStart>self:StartMoving();</OnDragStart>
-            <OnDragStop>self:StopMovingOrSizing();</OnDragStop>
+            <OnDragStop>
+                self:StopMovingOrSizing()
+                
+                local anchor,anchorTwo,anchorThree,x,y = self:GetPoint();
+        
+                ExpressYourElfVars.buttonFrame.position[1]=anchor;
+                ExpressYourElfVars.buttonFrame.position[2]=anchorTwo;
+                ExpressYourElfVars.buttonFrame.position[3]=anchorThree;
+                ExpressYourElfVars.buttonFrame.position[4]=x;
+                ExpressYourElfVars.buttonFrame.position[5]=y;
+            </OnDragStop>
         </Scripts>
         <Size>
-            <AbsDimension x="250" y="100"/>
+            <AbsDimension x="170" y="90"/>
         </Size>
         <Anchors>
             <Anchor point="CENTER"/>
-            <Offset><AbsDimension x="-200" y="200"/></Offset>
+            <Offset><AbsDimension x="0" y="0"/></Offset>
         </Anchors>
-        <Backdrop bgFile="Interface\TutorialFrame\TutorialFrameBackground" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true" alphaMode="DISABLE">
+        <Layers>
+            <Layer level="BACKGROUND">
+              <Texture name="ExpressYourElf_Frame_BG" hidden="true" setAllPoints="true">
+                <Color r="0.5" g="0.5" b="0" a="1" />
+              </Texture> 
+            </Layer>
+        </Layers>
+        <!-- <Backdrop bgFile="Interface\TutorialFrame\TutorialFrameBackground" edgeFile="Interface\DialogFrame\UI-Tooltip-Border" tile="true">
             <EdgeSize>
-                <AbsValue val="3"/>
+                <AbsValue val="16"/>
             </EdgeSize>
             <TileSize>
-                <AbsValue val="3"/>
+                <AbsValue val="32"/>
             </TileSize>
             <BackgroundInsets>
-                <AbsInset left="3" right="3" top="3" bottom="3"/>
+                <AbsInset left="5" right="5" top="5" bottom="5"/>
             </BackgroundInsets>
-        </Backdrop>
+        </Backdrop> -->
     </Frame>
 </Ui>
