@@ -46,6 +46,7 @@ function ExpressYourElf.IAmRude.GetMessage(
         "${targetName} sounds reasonable... Time to up my medication.",
         "Sorry ${targetName}, I don’t have the energy to pretend to like you today.",
         "${targetName}, you know they can hear you, right?",
+        "I want to live like Donald Duck, ${targetName}. Without pants, and without you.",
         "${targetName}, please cancel my subscription to your issues.",
         "Everyone’s entitled to act stupid once in a while, but ${targetName} is really abusing the privilege.",
         "Mirrors don’t lie, and lucky for ${targetName}, they also don’t laugh.",
