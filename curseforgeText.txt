@@ -1,12 +1,54 @@
-<p><strong>Who is this person behind that mighty item level 400+ armor? Introduce the real you!</strong></p>
-<h3>Features</h3>
+<p><strong>Who is this person behind that mighty item level 200+ armor? Introduce the real you!&nbsp;</strong></p>
+<p>&nbsp;</p>
+<h2>Features</h2>
+<h4>Button frame</h4>
 <ul>
-<li>Woo your favourite player with impressive pick-up lines</li>
-<li>Appreciate your fellow-players with something truly special</li>
-<li>Dance away into the night and sing lyrics from famous Azerothian singers</li>
-<li>Express yourself with catchy phrases</li>
+<li>Woo your favorite player with impressive pick-up lines, or go a little further by being more naughty than nice.&nbsp;</li>
+<li>Appreciate your fellow-players with something truly special.</li>
+<li>Dance away into the night and sing lyrics from famous Azerothian singers.</li>
+<li>Express yourself with catchy phrases.</li>
+<li>Don't be swayed away by rude people, have the final word!</li>
 </ul>
-<p>All expressions are randomised and contextual (based on race, gender and class), to make them more..., you know,... YOU!</p>
+<p>&nbsp;</p>
+<h4>Nurse Nancy: Resurrection Messages</h4>
+<ul>
+<li>A redeemer alternative</li>
+<li>Random messages when casting Mass Resurrection, Single Resurrection, Battle ress, soulstones, ankh, etc.</li>
+</ul>
+<p>&nbsp;</p>
+<h5><strong>Supported Spells:</strong></h5>
+<ul>
+<li>Warlock: Soulstone</li>
+<li>Paladin: Redemption, Absolution</li>
+<li>Priest: Resurrection, Mass Resurrection</li>
+<li>Shaman: Ancestral spirit, Reincarnation, Ancestral Vision</li>
+<li>Druid: Revive, Rebirth, Revitalize</li>
+<li>Monk: Resuscitate, Reawaken</li>
+<li>Death Knight: Raise Ally</li>
+<li>Hunter: Gift of Chi-ji</li>
+<li>Engineering: Goblin Jumper cables, Goblin Jumper cables XL, Gnomish army knife</li>
+<li>Other: Darkmoon Card: Twisting Nether</li>
+</ul>
+<p>&nbsp;</p>
+<h5><strong>Side note:</strong></h5>
+<p>Nurse Nancy cannot tell in public chat channels as this is hooked to events. This is disabled by Blizzard, so will only be done in instance, raid and party chat.<br />SUUEEGAH!</p>
+<p>&nbsp;</p>
+<h4><strong>The Azeroth Answering Machine</strong></h4>
+<p>No longer want to be sitting behind your computer to answer all those whispers for you? The answering machine gets rid.. err.. helps<br />you answer your contacts when as they whisper you. Success guaranteed! No goblins or gnomes have been used engineering this machine.</p>
+<p>Just do <strong>/afk</strong> or go AFK by default and Express Your Elf it will automatically set a message.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h4><strong>Configuration screen</strong></h4>
+<ul>
+<li>Sets the size and position of the Expression Buttons</li>
+<li>Activate different features</li>
+</ul>
+<p>&nbsp;</p>
+<h3>General notice</h3>
+<ul>
+<li>All expressions are randomized and contextual (based on race, gender and class), to make them more..., you know,... YOU!</li>
+<li>Sometimes, when updating this add-on, new features have been added. Which means you may experience a reset of of settings once a while.</li>
+</ul>
 <p>&nbsp;</p>
 <h3>Commands</h3>
 <table>
@@ -16,15 +58,26 @@
 <th><strong>Description</strong></th>
 </tr>
 <tr>
-<td width="80">/eyelf</td>
-<td>See all commands</td>
+<td width="80"><strong>/eyelf</strong></td>
+<td><strong>See all commands and opens the configuration panel</strong></td>
 </tr>
 <tr>
 <td colspan="2">&nbsp;</td>
 </tr>
 <tr>
-<td width="80"><strong>/eyelf toggle</strong></td>
-<td><strong>Toggle the interface to use the press buttons to do the commands stated below.</strong></td>
+<td width="80"><strong>/eyelf reset</strong></td>
+<td><strong>Resets all configurations.</strong></td>
+</tr>
+<tr>
+<td colspan="2">&nbsp;</td>
+</tr>
+<tr>
+<td width="80"><strong>/eyelf show</strong></td>
+<td><strong>Shows the button interface.</strong></td>
+</tr>
+<tr>
+<td width="80"><strong>/eyelf hide</strong></td>
+<td><strong>Hides the button interface.</strong></td>
 </tr>
 <tr>
 <td colspan="2">&nbsp;</td>
@@ -51,7 +104,21 @@
 </tr>
 <tr>
 <td width="80">/eyelf rude</td>
-<td>Do others annoy you? you don't have to like everyone, and it's fine to show...sometimes.</td>
+<td>
+<p>Do others annoy you? you don't have to like everyone, and it's fine to show...sometimes.</p>
+</td>
+</tr>
+<tr>
+<td width="80">/eyelf battleshout</td>
+<td>
+<p>LEEEROY JENKINS!!!!</p>
+</td>
+</tr>
+<tr>
+<td width="80">/eyelf panic</td>
+<td>
+<p>Too panicking to communicate? press this button to let everyone know you're in a state of frenzy! It may... help?</p>
+</td>
 </tr>
 </tbody>
 </table>
