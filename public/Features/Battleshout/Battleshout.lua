@@ -15,16 +15,18 @@ function ExpressYourElf.Battleshout.GetMessage(
     local listOfPhrases = {
         'SPOON!!!!',
         'NOT IN THE FACE!, NOT IN THE FACE!',
-        "Tulta munille!",
+        -- "Tulta munille!",
         "Leeeroy Jennnkins!",
-        "I am the Love Angel, I am Wedding Peach, and I am very angry with you!",
+        --"I am the Love Angel, I am Wedding Peach, and I am very angry with you!",
         "Oorah!",
-        "Barritus!",
+        --"Barritus!",
         "Quick, while the First Ones aren't watching!",
         "Everybody aim for that one guy on the left!",
-        "Cake or Death!",
-        "Uulwi ifis halahs gag erh'ongg w'ss!",
+        -- "Cake or Death!",
+        -- "Uulwi ifis halahs gag erh'ongg w'ss!",
         "Mrggllggllggll!",
+        "FOR KING AND COUNTRY!",
+        "FOR GNOMEREGAN!"
     }
 
     

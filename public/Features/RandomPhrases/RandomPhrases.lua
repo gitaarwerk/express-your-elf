@@ -49,10 +49,17 @@ playerSirMam
         "My fingers are long and beautiful, as, it has been well documented, are various other parts of my body.",
         "I have never seen a thin Elf drinking Diet Coke.",
         "Brb, my goldfish is on fire.",
+        "My teeth itch.",
+        "My nipple is broken.",
+        "My hair hurts.",
+        "If it weren’t for the kobolds, we’d all be watching TV by candlelight.",
+        "My eye socket is warm.",
+        "Have you ever tried sleeping in water?",
+        "I'm going to get my toe nail pierced this weekend, you?",
         "There are only three things in life that truly matter: loot, kill and respawn.",
         "It's freezing in Winterspring, we need global warming!",
         "The world is not doing well and we're going great.",
-        "What if Trump was Warchief. He would build a great, great wall.",
+        "What if Jaina was Warchief. She would build great, great wall of ice.",
         "I think I am actually humble. I think I’m much more humble than you would understand.",
         "Everything is a mount, as long as you’re brave enough.",
         "Just an ordinary gas cloud. But watch out, because that's no ordinary gas cloud!",
@@ -105,6 +112,10 @@ playerSirMam
         table.insert(listOfPhrases, "We've got new planes, we've got new rockets, new missiles, we've got new everything, and it's either here or coming in.")
     end
 
+    if (playerRace == "Tauren" or playerRace == "Highmountain Tauren") then
+        table.insert(listOfPhrases, "Chocolate milk comes from me, you know?")
+    end
+
     if (playerRace == "Draenei" or playerRace == "Lightforged Draenei") then
         table.insert(listOfPhrases, "T'paartos greets puny one.")
         table.insert(listOfPhrases, "T'paartos!")
@@ -117,6 +128,7 @@ playerSirMam
 
     if (playerClass == "Death Knight" or targetRace == "Scourge" or targetRace == "Undead") then
         table.insert(listOfPhrases, "It's true, a windmill killed me.")
+        table.insert(listOfPhrases, "My parents moved a lot when I died as a kid. But I always found them.")
     end
 
     if (playerClass == "Mage") then
@@ -135,6 +147,11 @@ playerSirMam
     if (playerClass == "Paladin" or playerClass == "Priest" or playerRace == "Lightforged Draenei") then 
         table.insert(listOfPhrases, "Is there a way we can do something like that by injection inside or almost a cleaning? It sounds interesting to me, so we'll see. But the whole concept of the light, the way it kills it in one minute. That's pretty powerful.")
     end
+
+    if (playerRace == "Void Elf" or playerClass == "Warlock") then
+        table.insert(flirtLines, "I said 'No' to the voices, but they wouldn’t listen.")
+    end
+
 
 
     pickedPhrase = listOfPhrases[fastrandom(1, #listOfPhrases)]
@@ -173,7 +190,9 @@ targetLevel,
 targetHisHer
 )
     local pickedPhrase
-    local listOfPhrases = {}
+    local listOfPhrases = {
+        "Saw ${targetName}, wanted it, bought it, used it once, kept it in my house for ten years, gave it away."
+    }
 
     -- target
     if (targetName) then

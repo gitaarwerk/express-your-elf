@@ -41,7 +41,7 @@ function ExpressYourElf.Seduce.GetMessage(
         'My name is ${playerName} - a ${playerManWoman} of the Universe. A popular ${targetGuyGirl} like you is going to need some wooing.',
         'Just say yes now and I won’t have to spike your drink',
         'You remind me of my uncle, we should get it on!',
-        'You could never be ice cream because you`re so hot...and ${playerRace}',
+        'You could never be ice cream because you`re so hot...and ${targetRace}',
         "I think you're suffering from a lack of vitamin me.",
         "Nice tabard, can I talk you out of it?",
         "People call me ${playerName}, but you can call me tonight.",

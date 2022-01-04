@@ -70,11 +70,11 @@ function ExpressYourElf.AnsweringMachine.GetMessage(
         "I have nothing to say to you. So leave a message.",
         "Giving my goldfish a bath.", -- Sumana-Dunemaul, EU
         "Please leave a message. However, you have the right to remain silent. Everything you will whisper will be recorded and will be used against you.",
-        "The person you’re trying to reach Is no longer in service.",
+        "The person you're trying to reach Is no longer in service.",
         "Be back later, ${capitalCity} burning down",
         "Trying to find my keyboard keys i just smashefffff....",
         "Currently stroking many kittens to save Azeroth against the Jailer.",
-        "NOT REPLYING, NOT REPLYING, NOT REPLYING! ok..this is not me replying, but my answering machine.",
+        "NOT REPLYING, NOT REPLYING, NOT REPLYING! Ok..this is not me replying, but my answering machine.",
         "Hello. I'm ${playerName}'s answering machine. What are you?",
         "Hello. You are talking to a machine. I am capable of receiving messages. My owner does not need gold, a new weapon, windows, peace treaties, or a hot tub, and ${playerHisHer} carpets are clean. ${playerHeShe} give to charity through the office and don't need their picture taken. If you're still with me, leave your name and number and they will get back to you.",
         "WHO.... GOES... THERE?", -- Heavylight-Talnivarr, EU
@@ -86,13 +86,13 @@ function ExpressYourElf.AnsweringMachine.GetMessage(
         "I don't exist at the moment, but if you leave your message, BattleNetID, password and phone number, and I’ll take your identity.. ehh.. I mean, get back in touch with you.",
         "I don't want to bore you with metaphysics, but how do you know this is an answering machine? Maybe it's a dream, or maybe it's an illusion, or maybe YOU don't really exist. One way to find out is to leave a message, and if it's reality, I will whisper you back.",
         "Hello, this is Zovaal, The Jailer. ${playerName} can't message you right now because HE'S DEAD! Leave your message and IF I decide to resurrect him, ${playerHeShe}’ll get back to you.",
-        "You’re too late. The deadline for the ransom was 1 minute ago. ${playerName} is now gone with your gold and buying all the epics ${playerHeShe} likes from the Auction House. kthxbye.",
+        "You’re too late. The deadline for the ransom was one minute ago. ${playerName} is now gone with your gold and buying all the epics ${playerHeShe} likes from the Auction House. Kthxbye.",
         "Wrong password, You are now locked out of ${playerName}'s system. You will now be connected with a ${helpdesk} helpdesk member that may or may not scam you.",
         "Hello, this is an automated message saying that ${playerName} will be back when ${playerHeShe} is done being tortured in ${randomLocation}",
         "Gone fishing.",
         "Now I lay myself down to sleep; Leave a message at the beep. If I die before I wake, Remember to erase the tape.",
         "This is a test. This is a test of the Answering Machine Broadcast System. This is only a test.",
-        "Your message didn’t make it trough ${playerName}'ss urgency list. Goodbye",
+        "Your message didn’t make it through ${playerName}'s urgency list. Goodbye",
     }
 
     if (playerClass == "Mage") then

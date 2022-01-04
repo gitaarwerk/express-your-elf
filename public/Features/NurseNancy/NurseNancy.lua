@@ -260,7 +260,7 @@ function ExpressYourElf.NurseNancy.speakMassRess()
     local massRessLines = {
         "Wee-ooo! Wee-ooo! Wee-ooo! Wee-ooo! Wee-ooo! Wee-ooo... that's the best ambulance impression I can do.", -- Sueyen-Talnivarr, EU
         "Oh hello juicy corpses.... Your bodies are still warm... hmmmm... hmm.",
-        "Raise, Danish zombie minks, rise! My zombies.", -- somewhere in the news...I think.
+        "Raise, Danish zombie minks, rise my zombies!", -- somewhere in the news...I think.
         "Death is the wish of some, the relief of many, and just a chore for me... *sigh*.",
         "The goal of all life is death...and getting resurrected by yours truly.",
         "We all die. The goal isn't to live forever, the goal is to get epics.",
@@ -312,10 +312,19 @@ function ExpressYourElf.NurseNancy.Run()
 
     ExpressYourElf.NurseNancy.Frame:SetScript("OnEvent", function (self, event, ...)
         
-        groupChannel = IsInRaid() and "RAID" or IsInGroup(LE_PARTY_CATEGORY_INSTANCE) and "INSTANCE_CHAT" or "PARTY"
-        isInParty = UnitInParty("player")
+        local inInstance, instanceType = IsInInstance()
+        local isInParty = UnitInParty("player")
+        local isInRaid = UnitInRaid(target)
 
-        
+        if (inInstance and instanceType == "raid") then
+            groupChannel = "INSTANCE_CHAT"
+        elseif (IsInRaid()) then
+            groupChannel = "RAID"
+        elseif (isInParty) then
+            groupChannel = "PARTY"
+        else
+        end
+
         if (not(ExpressYourElfVars.nurseNancyIsOn == true and isInParty == true)) then 
             return
         end
@@ -329,9 +338,7 @@ function ExpressYourElf.NurseNancy.Run()
             end
             
             local unitIdentificator = UnitGUID(target)
-            local isInRaid = UnitInRaid(target)
-            local isInParty = UnitInParty(target)
-
+            
             local isCombatRess = ExpressYourElf.SpellIds.isCombatRess(spellId)
             local isSingleRess = ExpressYourElf.SpellIds.isSingleRess(spellId)
             local isSelfRess = ExpressYourElf.SpellIds.isSelfRess(spellId)

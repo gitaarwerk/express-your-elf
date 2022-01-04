@@ -50,6 +50,8 @@ function ExpressYourElf.IAmRude.GetMessage(
         "${targetName}, please cancel my subscription to your issues.",
         "Everyone’s entitled to act stupid once in a while, but ${targetName} is really abusing the privilege.",
         "Mirrors don’t lie, and lucky for ${targetName}, they also don’t laugh.",
+        "${targetName}, believe in yourself. Someone has to.",
+        "You may have noticed ${targetName}'s superpower. It’s invisibility.",
     }
 
     
