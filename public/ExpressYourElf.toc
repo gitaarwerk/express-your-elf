@@ -1,18 +1,20 @@
 ## Title: Express Your Elf
-## Interface: 90200
-## X-Min-Interface: 90200
-## Version: @project-version@
-## Author: Darkrider, Dunemaul (EU)
+## Interface: 90105
+## X-Min-Interface: 90105
+## Version: 1.8.0
+## Author: Darkrider, Talnivarr (EU)
 ## Notes: Express oneself in a more casual and fun way.
 ## SavedVariablesPerCharacter: ExpressYourElfVars
 ## LoadOnDemand: 0
 ## DefaultState: enabled
 ## X-Category: Fun, Communication, Miscellaneous
 ## X-Credits: JJnl, Some pick-up lines from https://www.pickuplinesgalore.com/warcraft.html
-## X-Date: @project-date-iso@
+## X-Date: 2021-06-30T5:24:53Z
 ## X-ResetVarsDate: 2021-12-18T5:00:00Z
 ## X-License: All Rights Reserved
 ## X-Website: https://www.curseforge.com/wow/addons/express-your-elf
 ## X-Curse-Project-ID: 385234
 
+AltGameTooltip.xml
+ConfigurationScreen.xml
 Main.xml
