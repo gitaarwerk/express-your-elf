@@ -79,7 +79,7 @@ function ExpressYourElf.Seduce.GetMessage(
     end
 
     if (playerGender == "male" and (playerClass == "Warrior" or playerClass == "Paladin" or playerClass == "Demon Hunter" or playerClass == "Death Knight" or playerRace == "Mechagnome")) then
-        table.insert(flirtLines, "My armor is bending bending just by looking at you!")
+        table.insert(flirtLines, "My armor is bending just by looking at you!")
     end
 
     if (playerClass == "Druid") then

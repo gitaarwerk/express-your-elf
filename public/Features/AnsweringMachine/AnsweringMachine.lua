@@ -80,12 +80,12 @@ function ExpressYourElf.AnsweringMachine.GetMessage(
         "WHO.... GOES... THERE?", -- Heavylight-Talnivarr, EU
         "Gave my laptop some tea but he didn’t like it.",
         "I can't type back right now because I have amnesia and I feel stupid talking to people I don't remember. I'd appreciate it if you could help me out by leaving my name and telling me something about myself. Thanks.",
-        "Hi, this is ${playerName}. I'm sorry I can't whjisper back right now. Leave a message, and then wait by your computer until I whisper you back.",
+        "Hi, this is ${playerName}. I'm sorry I can't whisper back right now. Leave a message, and then wait by your computer until I whisper you back.",
         "You're growing tired. Your eyelids are getting heavy. You feel very sleepy now. You are gradually losing your willpower and your ability to resist suggestions. When you hear the tone you will feel helplessly compelled to leave your name, BattleNet ID, password, and a message.",
         "As the void take hold, you feel you are losing your grip on reality. You begin to hallucinate. You see a telephone... WHAT, A TELEPHONE? DO THEY EVEN EXIST IN THIS REALITY? ... The telephone is next to an answering machine... You hear a faint click and a light flashes on the answering machine... You hear a beep...",
         "I don't exist at the moment, but if you leave your message, BattleNetID, password and phone number, and I’ll take your identity.. ehh.. I mean, get back in touch with you.",
         "I don't want to bore you with metaphysics, but how do you know this is an answering machine? Maybe it's a dream, or maybe it's an illusion, or maybe YOU don't really exist. One way to find out is to leave a message, and if it's reality, I will whisper you back.",
-        "Hello, this is Zovaal, The Jailer. ${playerName} can't message you right now because HE'S DEAD! Leave your message and IF I decide to resurrect him, ${playerHeShe}’ll get back to you.",
+        "Hello, this is Zovaal, The Jailer. ${playerName} can't message you right now because HE'S DEAD! Leave your message and IF I decide to resurrect him, ${playerHShe}’ll get back to you.",
         "You’re too late. The deadline for the ransom was one minute ago. ${playerName} is now gone with your gold and buying all the epics ${playerHeShe} likes from the Auction House. Kthxbye.",
         "Wrong password, You are now locked out of ${playerName}'s system. You will now be connected with a ${helpdesk} helpdesk member that may or may not scam you.",
         "Hello, this is an automated message saying that ${playerName} will be back when ${playerHeShe} is done being tortured in ${randomLocation}",
@@ -108,14 +108,14 @@ function ExpressYourElf.AnsweringMachine.GetMessage(
     end
 
     if (playerClass == "Paladin" or playerClass == "Priest") then
-        table.insert(answeringMachineLines, "${playerName} is currently staring into an eclipse. Thinking the world going to be ending soon, including burning ${playerHeShe} eyes.")
+        table.insert(answeringMachineLines, "${playerName} is currently staring into an eclipse. Thinking the world going to be ending soon, including burning ${playerHisHer} eyes.")
     end
 
     if (playerClass == "Priest") then
         table.insert(answeringMachineLines, "${playerName} is away touching other people and is already reported for this. For more allegations, please call 0800-touched-by-a-priest hotline.")
         table.insert(answeringMachineLines, "${playerName} is out for a seminar, learning how to avoid claims by pretending brain damage.") -- Wildhuntz-Boulderfist, EU 
     end
-
+    
     -- randomize result
     local pickedLine = answeringMachineLines[fastrandom(1, #answeringMachineLines)]
     local randomLocation = locations[fastrandom(1, #locations)]

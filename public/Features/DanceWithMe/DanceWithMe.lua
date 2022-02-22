@@ -30,7 +30,7 @@ ExpressYourElf.DanceWithMe.list = {
 
 ExpressYourElf.DanceWithMe.listWithTarget = {
     '${name}, dance with me baby!',
-    "Look at $targetName}, ${heShe}'s optimistic bout the future of Azeroth.",
+    "Look at ${name}, ${heShe}'s optimistic bout the future of Azeroth.",
     '${hisHer} name is ${name}, ${heShe} is a show ${guyGirl}.',
     'Hey ${name} love crusader, I want to be your space invader.',
     "I'm gonna take my ${name} to the hotel room.",
