@@ -68,9 +68,10 @@ function ExpressYourElf.Seduce.GetMessage(
 
     if (playerClass == "Paladin") then
         table.insert(flirtLines, "Do you feel it? And that just my Devotion Aura.")
+        table.insert(flirtLines, "I have plenty protection with me.")
     end
 
-    if (playerClass == "Priest") then
+    if (playerClass == "Priest" or targetClass == "Priest") then
         table.insert(flirtLines, "You taught me a new spell; Power Word: Undress")
     end
 
@@ -88,6 +89,7 @@ function ExpressYourElf.Seduce.GetMessage(
 
     if (playerClass == "Druid" and playerGender == "male") then
         table.insert(flirtLines, "Want to touch my Staff of Rampant Growth?")
+        table.insert(flirtLines, "I have something hidden between all this hair.")
     end
 
     if (targetClass == "Druid" and targetGender == "male") then

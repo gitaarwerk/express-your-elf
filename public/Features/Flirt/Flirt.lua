@@ -58,7 +58,7 @@ function ExpressYourElf.Flirt.GetMessage(
         'You’re so hot, you make the Northrend look like Tanaris.',
         'I must be in Medivh`s tower, because you are truly magical!',
         'Your voice melt chocolates.',
-        'you’re so hot, my armor melts',
+        'You’re so hot, my armor melts',
         'I would give myself an A+',
         'Say baby. You`re pretty, I`m pretty, what say we go back to my place and stare at each other for a while.',
         'If loving me is wrong, you don`t wanna be right!',
@@ -79,6 +79,7 @@ function ExpressYourElf.Flirt.GetMessage(
 
     if (playerClass == "Hunter") then
         table.insert(flirtLines, "I tracked your Heartstone back to me.")
+        table.insert(flirtLines, "I'm great with a comb. Wanna watch me comb my hair really fast?'.")
     end
 
     if (playerRace == "Void Elf" or playerClass == "Warlock") then
