@@ -21,6 +21,7 @@ ExpressYourElf.DanceWithMe.list = {
     "Poopy-di scoop. Scoop-diddy-whoop. Whoop-di-scoop-di-poop!",
     "Ob-La-Di, Ob-La-Da",
     "Prance Forward", 
+    "Oh, baby, when you talk like that, you make a ${race} go mad.",
     "Shashay Left", 
     "Boogie Down", 
     "Shimmy Right",
@@ -34,13 +35,13 @@ ExpressYourElf.DanceWithMe.listWithTarget = {
     '${hisHer} name is ${name}, ${heShe} is a show ${guyGirl}.',
     'Hey ${name} love crusader, I want to be your space invader.',
     "I'm gonna take my ${name} to the hotel room.",
+    "Hey ${name}, We doesn't have much time. My blue jeans is tight, So onto my love rocket, climb",
     "So, ${name} are you ok, are you ok ${name}?",
-    "Oh, baby, when you talk like that, you make a ${race} go mad.",
     "${guyGirl}, I can thrill you more than any ghost would dare to try",
     "See that ${guyGirl}, watch ${hisHer} scream, kicking the Dancing Queen",
     "${name} is an easy lover, ${heShe}'ll take your armor but you won't feel it",
     "${name}, you must be this tall, to ride THIS ride at the carnival.",
-    "Hey hey, ${name} ${name}, I don't like your ${oppositeBfGf}. Hey hey, ${name} ${name}, I think you need a knew one.",
+    "Hey hey, ${name} ${name}, I don't like your ${oppositeBfGf}. Hey hey, ${name} ${name}, I think you need a new one.",
 }
 
 function ExpressYourElf.DanceWithMe.getPlayerMessages(name, gender, class, race, level, guyGirl)

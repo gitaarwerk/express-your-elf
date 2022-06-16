@@ -41,6 +41,7 @@ playerSirMam
     local listOfPhrases = {
         "You no take candle.",
         "Knock knock",
+        'THIS IS VERY DISTURBING!!!!! I REALLY FEEL THE NEED TO TALK IN CAPS AND WITH A LOT OF EXCLAMATION MARKS!!!!!!!!!!',
         "I took an arrow to the knee.",
         "I put on my robe and wizard hat.",
         "Who likes short shorts?",
@@ -50,9 +51,10 @@ playerSirMam
         "I have never seen a thin Elf drinking Diet Coke.",
         "Brb, my goldfish is on fire.",
         "My teeth itch.",
+        "It’s happening again!",
         "My nipple is broken.",
         "My hair hurts.",
-        "If it weren’t for the kobolds, we’d all be watching TV by candlelight.",
+        "If it were for the kobolds, we’d all be watching TV by candlelight.",
         "My eye socket is warm.",
         "Have you ever tried sleeping in water?",
         "I'm going to get my toe nail pierced this weekend, you?",
@@ -88,13 +90,15 @@ playerSirMam
         'Someday, we’ll look back on this, laugh nervously and change the subject.',
         'Did you know that Zovaal, The Jailer was actually called Chaining Tatum?',
         'Remember that time when I said I were cool? I lied.',
-        'The tortollan have been betraying me since the start! Now I kill a Tortollan a day, saving a plastic straw!', -- Wildhuntz-Bouderfist EU
+        'The Tortollan have been betraying me since the start! Now I kill a Tortollan a day, saving a plastic straw!', -- Wildhuntz-Bouderfist EU
         'I’m really easy to get along with once you people learn to worship me.',
+        "Being at ease with not knowing is crucial for answers to come to you. Oh maybe just for me. It perhaps explains my rating.",
         'Please don’t tell my Arthas that I used his 2008 Frostmourne to destroy the town of Gilneas, Azeroth in 2010',
         "Those warriors from the Maw? They've got curved swords. Curved. Swords.",
         "Goblin wind turbines kill 13-39 million birds and bats every year!",
+        "When you arise in the morning think of what a privilege it is to be alive, to think, to enjoy, to love, to loot epics and respawn.",
         "We’re rounding ’em up in a very ${playerRace} way, in a very nice way. And they’re going to be happy because they want to be legalized. And, by the way, I know it doesn’t sound nice. But not everything is nice.",
-        'How was the weekend, someone asked? Well, on my first date, ${oppositHeShe} said, “I want to take you to the cemetery to meet my parents you might be the one.”'
+        'How was the weekend, someone asked? Well, on my first date, ${oppositHeShe} said, “I want to take you to the cemetery to meet my parents, you might be the one.”'
     }
 
     -- self
@@ -132,12 +136,20 @@ playerSirMam
     end
 
     if (playerClass == "Mage") then
-        table.insert(listOfPhrases, "Iron Sword Huh? What Are You Killing? Butterflies?")
+        table.insert(listOfPhrases, "Iron sword suh? What are you killing? Butterflies?")
         table.insert(listOfPhrases, "I was elected to represent the citizens of Dalaran, not Gnomeregan")
+    end
+
+    if (playerClass == "Druid") then
+        table.insert(listOfPhrases, "It is in our wild nature that we best recover from our un-nature, our spirituality.")
     end
 
     if (playerClass == "Hunter" or playerClass == "Demon Hunter") then
         table.insert(listOfPhrases, "But Hunter, where's Hunter? Where is Hunter, by the way?")
+    end
+
+    if (playerRace == "Priest") then
+        table.insert(listOfPhrases, "I have so much to do that I shall spend the first three hours casting Prayer of Mending")
     end
 
     if (playerRace == "Gnome" or playerRace == "Mechagnome") then
@@ -151,7 +163,6 @@ playerSirMam
     if (playerRace == "Void Elf" or playerClass == "Warlock") then
         table.insert(flirtLines, "I said 'No' to the voices, but they wouldn’t listen.")
     end
-
 
 
     pickedPhrase = listOfPhrases[fastrandom(1, #listOfPhrases)]

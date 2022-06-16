@@ -74,7 +74,7 @@ function ExpressYourElf.NurseNancy.speakSingleRess(targetGUID, spellId)
         "Rezzing ${targetName}. Please no one else do this, or we could end up with a split body each and that would be unfortunate.",
         "Currently interrupting %T's love affair with the floor in 3....2....1.",
         "Here lies ${targetName}, my autumn flower. A lot less attractive now that you're all corpsified and gross.",
-        "By the feeling, ${targetName} is still warm, but as I am being watched right now, i’ll just ress you instead,... of other things i wanted to do",
+        "By the feeling, ${targetName} is still warm, but as I am being watched right now, i'll just ress you instead,... of other things i wanted to do",
         "${targetName} brought to life by Spirit Travels, Inc. Have you considered our Frequent Death program?",
         "It was just an ordinary gas cloud, ${targetName} said.",
         "${targetName}, by clicking 'Accept', you, the resurrectee, hereby consign your soul to the resurrecter, i.e., me.",
@@ -91,7 +91,12 @@ function ExpressYourElf.NurseNancy.speakSingleRess(targetGUID, spellId)
         "Reports of ${targetName}'s death have been greatly exaggerated.",
         "${targetName}'s death *probably* wasn't my fault.",
         "I'm done with ${targetName} pretending to be dead. Come back and start cleaning the mess you've made!",
-        "No one can confidently say that %{targetName} will still be living in a few minutes",
+        "No one can confidently say that ${targetName} will still be living in a few minutes",
+        "${targetName} why are you licking the floor?",
+        "Here lies Mozart, Decomposing",
+        "Either ${targetName} is dead, or my watch has stopped.",
+        "Reassigning ${targetName}'s profession into professional floor inspector",
+        "This is almost as much fun as watching you sleep."
     }
 
     if (playerClass == "Shaman") then
@@ -111,6 +116,7 @@ function ExpressYourElf.NurseNancy.speakSingleRess(targetGUID, spellId)
     -- engineering's kit
     if (spellId == 8342 or spellId == 22999 or spellId == 54732) then
         table.insert(combatRessLines, "CLEAR!")
+        table.insert(combatRessLines, "Don’t struggle… I hate it when they struggle.")
         table.insert(combatRessLines, "${targetName}, you might feel a slight jolt...")
         table.insert(combatRessLines, "I'd pray for a miracle, but then ${targetName} wouldn't need these things.")
         table.insert(combatRessLines, "${targetName}'s dead...what's the worst that could happen?")
@@ -174,12 +180,13 @@ function ExpressYourElf.NurseNancy.speakCombatRess(targetGUID, spellId)
         prefix = ExpressYourElfVars.usePrefix == true and "[Combat ressing ${targetName}]: " or ""
 
         combatRessLines = {
-            "Combat ress on ${targetName}.",
+            "Being cremated is ${targetName}'s last hope for a smokin’ hot body.",
             "${targetName}, always deciding to enjoy the floor while fighting. Come on, ${playerManWoman}, accept the ress!",
             "${targetName}, stand up and walk!",
             "In Soviet ${zoneName}, life chooses ${targetName}",
             "${targetName}, please report to the land of the living. Your urgent assistance is required.",
             "Up up and ....awayyyyyyy!",
+            "Resurrecting is not changing who you are, but discarding who you are not.",
         }
 
         if (playerGender == "female") then 
@@ -258,6 +265,7 @@ function ExpressYourElf.NurseNancy.speakMassRess()
     local pickedLine
   
     local massRessLines = {
+        "Luckily, my profession is not dying.",
         "Wee-ooo! Wee-ooo! Wee-ooo! Wee-ooo! Wee-ooo! Wee-ooo... that's the best ambulance impression I can do.", -- Sueyen-Talnivarr, EU
         "Oh hello juicy corpses.... Your bodies are still warm... hmmmm... hmm.",
         "Raise, Danish zombie minks, rise my zombies!", -- somewhere in the news...I think.
@@ -268,6 +276,7 @@ function ExpressYourElf.NurseNancy.speakMassRess()
         "There are far, far better things ahead than I could leave behind, if it only wasn’t for the smell of your corpses.",
         "Look alive, chaps!", -- Some British bloke.
         "Don't worry about zombies, they only eat brains.",
+        "When you connect to the silence within you, that is when you can make sense of the disturbance going on around you. Or it means that you're all dead...",
         "Hoping not to confuse this spell with mass necromancy... oh well, if you had brains, you wouldn’t have died anyways.",
         "Oh dear, here we go again... resurrecting EVERYONE, ... AGAIN!",
         "What is ${playerName} gonna do now, buddy? oh, well, I guess I should start getting you all up.",

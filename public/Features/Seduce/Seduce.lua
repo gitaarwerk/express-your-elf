@@ -44,6 +44,7 @@ function ExpressYourElf.Seduce.GetMessage(
         'You could never be ice cream because you`re so hot...and ${targetRace}',
         "I think you're suffering from a lack of vitamin me.",
         "Nice tabard, can I talk you out of it?",
+        "You’re pretty. I bet you have a pretty scream...",
         "People call me ${playerName}, but you can call me tonight.",
         "What are you raiding tonight? Well, besides me, of course.",
         "I heard you like bad ${playerGuyGirl}. Well, I’m bad at everything."

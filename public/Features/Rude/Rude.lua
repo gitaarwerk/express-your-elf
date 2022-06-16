@@ -142,7 +142,6 @@ function ExpressYourElf.IAmRude.run()
             'INSULT',
             'MOCK',
             'MOON',
-            'PANIC',
             'SHOO',
             'PITY',
             'RASP',

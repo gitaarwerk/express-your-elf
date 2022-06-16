@@ -47,6 +47,7 @@ function ExpressYourElf.Flirt.GetMessage(
         'Can I set my Heartstone at your place tonight?',
         'Was your father a rogue? ‘Cause someone stole the stars from the sky and put them in your eyes.',
         'Anybody ever tell you I have beautiful eyes?',
+        'Hi ${playerName}, the voices in my head told me to come over and talk to you.',
         'My name is ${playerName} - a ${playerManWoman} of the Universe. A popular ${targetGuyGirl} like you is going to need some wooing.',
         'Enough about you, let’s talk about me, ${playerName}.',
         'I seem to have lost my Heartstone. Can I have yours?',
@@ -59,12 +60,16 @@ function ExpressYourElf.Flirt.GetMessage(
         'I must be in Medivh`s tower, because you are truly magical!',
         'Your voice melt chocolates.',
         'You’re so hot, my armor melts',
+        'When you look out your window tonight, you might catch a glimpse of me.',
+        'You look just like my sister… who died under mysterious circumstances.',
+        'I bet you didn’t feel me lick your ear.',
         'I would give myself an A+',
         'Say baby. You`re pretty, I`m pretty, what say we go back to my place and stare at each other for a while.',
         'If loving me is wrong, you don`t wanna be right!',
         'How much does a Titan weigh? Enough to break the ice.',
         'You could never be ice cream because you`re so hot...and ${playerRace}',
         "Did you fart? 'Cause you just blew me away.",
+        "I like you so much, I want to hug your internal organs.",
         "I think you're suffering from a lack of vitamin me.",
         "People call me ${playerName}, but you can call me tonight.",
         "I may not be the best looking ${playerGuyGirl} here. But I’m he only one talking to you.",
@@ -75,6 +80,11 @@ function ExpressYourElf.Flirt.GetMessage(
     if (playerRace == "Worgen" or playerRace == "Tauren" or playerRace == "Vulpera" or playerRace == "Pandaren" or playerRace == "Highmountain Tauren") then
         table.insert(flirtLines, "Wanna see me comb my hair, really fast?")
         table.insert(flirtLines, "My name isn’t Elmo, but you can tickle me any time you want to.")
+    end
+
+    if (playerRace == "Scourge" or playerRace == "Undead" or playerClass == "Death Knight" ) then
+        table.insert(flirtLines, "You have lovely skin. I can’t wait to wear it.")
+        table.insert(flirtLines, "The last time I saw a body like yours, I was burying it in my basement.")
     end
 
     if (playerClass == "Hunter") then
@@ -190,9 +200,8 @@ function ExpressYourElf.Flirt.GetMessage(
         table.insert(flirtLines, "Do you have a shovel? Because I’m digging you.")
         table.insert(flirtLines, "Take me out tonight. Where there's music and there's people, and they're young and undead.")
         table.insert(flirtLines, "I can’t think of anyone else I’d rather survive a Zombie Apocalypse with.")
-        
     end
-
+        
     if (playerClass == "Paladin" and targetClass == "Paladin") then
         table.insert(flirtLines, "I can swing my hammer and you read your divine libram.")
     end
