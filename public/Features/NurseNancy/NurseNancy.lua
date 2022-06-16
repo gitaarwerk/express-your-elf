@@ -311,19 +311,8 @@ function ExpressYourElf.NurseNancy.Run()
     ExpressYourElf.NurseNancy.Frame:RegisterEvent("UNIT_SPELLCAST_START")
 
     ExpressYourElf.NurseNancy.Frame:SetScript("OnEvent", function (self, event, ...)
-        
-        local inInstance, instanceType = IsInInstance()
-        local isInParty = UnitInParty("player")
-        local isInRaid = UnitInRaid(target)
-
-        if (inInstance and instanceType == "raid") then
-            groupChannel = "INSTANCE_CHAT"
-        elseif (IsInRaid()) then
-            groupChannel = "RAID"
-        elseif (isInParty) then
-            groupChannel = "PARTY"
-        else
-        end
+        groupChannel = IsInRaid() and "RAID" or IsInGroup(LE_PARTY_CATEGORY_INSTANCE) and "INSTANCE_CHAT" or "PARTY"
+        isInParty = UnitInParty("player")
 
         if (not(ExpressYourElfVars.nurseNancyIsOn == true and isInParty == true)) then 
             return
@@ -342,6 +331,10 @@ function ExpressYourElf.NurseNancy.Run()
             local isCombatRess = ExpressYourElf.SpellIds.isCombatRess(spellId)
             local isSingleRess = ExpressYourElf.SpellIds.isSingleRess(spellId)
             local isSelfRess = ExpressYourElf.SpellIds.isSelfRess(spellId)
+
+            local isInRaid = UnitInRaid(target)
+            local isInParty = UnitInParty(target)
+
 
             if (isInRaid or isInParty) then 
                 if (isSingleRess) then
