@@ -18,10 +18,6 @@ function ExpressYourElf_Reset_Tooltips()
     ExpressYourElf_SeduceButton:SetScript("OnLeave", nil)
     ExpressYourElf_RandomButton:SetScript("OnEnter", nil)
     ExpressYourElf_RandomButton:SetScript("OnLeave", nil)
-    ExpressYourElf_PanicButton:SetScript("OnEnter", nil)
-    ExpressYourElf_PanicButton:SetScript("OnLeave", nil)
-    ExpressYourElf_BattleshoutButtonn:SetScript("OnEnter", nil)
-    ExpressYourElf_BattleshoutButtonn:SetScript("OnLeave", nil)
 
     if (ExpressYourElf_DancingButton:IsEnabled()) then
         local danceText = "Dance"
@@ -114,32 +110,6 @@ function ExpressYourElf_Reset_Tooltips()
             AltGameTooltip:SetScale(1)
         end)
     end
-
-    if (ExpressYourElf_PanicButton:IsEnabled()) then
-        ExpressYourElf_PanicButton:SetScript("OnEnter", function(self)
-            AltGameTooltip:SetOwner(self, "ANCHOR_BOTTOMLEFT")
-            AltGameTooltip:SetScale(scale)
-            AltGameTooltip:SetText("Panic button" ,1.0, 0.82, 0.0, 1, true)
-            AltGameTooltip:Show()
-        end)
-        ExpressYourElf_PanicButton:SetScript("OnLeave", function(self)
-            AltGameTooltip:Hide()
-            AltGameTooltip:SetScale(1)
-        end)
-    end
-
-    if (ExpressYourElf_BattleshoutButtonn:IsEnabled()) then
-        ExpressYourElf_BattleshoutButtonn:SetScript("OnEnter", function(self)
-            AltGameTooltip:SetOwner(self, "ANCHOR_BOTTOMLEFT")
-            AltGameTooltip:SetScale(scale)
-            AltGameTooltip:SetText("Battleshout" ,1.0, 0.82, 0.0, 1, true)
-            AltGameTooltip:Show()
-        end)
-        ExpressYourElf_BattleshoutButtonn:SetScript("OnLeave", function(self)
-            AltGameTooltip:Hide()
-            AltGameTooltip:SetScale(1)
-        end)
-    end
 end
 
 function ExpressYourElf_StartMoving()
@@ -155,8 +125,6 @@ function ExpressYourElf_StartMoving()
     ExpressYourElf_RudeButton:Hide()
     ExpressYourElf_DancingButton:Hide()
     ExpressYourElf_RandomButton:Hide()
-    ExpressYourElf_PanicButton:Hide()
-    ExpressYourElf_BattleshoutButtonn:Hide()
 end
 
 function ExpressYourElf_StopMoving()
@@ -174,8 +142,6 @@ function ExpressYourElf_StopMoving()
     ExpressYourElf_RudeButton:Show()
     ExpressYourElf_DancingButton:Show()
     ExpressYourElf_RandomButton:Show()
-    ExpressYourElf_PanicButton:Show()
-    ExpressYourElf_BattleshoutButtonn:Show()
 end
 
 function ExpressYourElf_SetScale(scale)
@@ -233,10 +199,6 @@ local function ExpressYourElf_Init(msg)
         ExpressYourElf.RandomPhrases.run()
     elseif cmd == "rude" then
         ExpressYourElf.IAmRude.run()
-    elseif cmd == "battleshout" then
-        ExpressYourElf.Battleshout.run()
-    elseif cmd == "panic" then
-        ExpressYourElf.Panic.run()
     elseif cmd == "show" then
         ExpressYourElf_ShowButtons()
     elseif cmd == "hide" then
@@ -247,15 +209,6 @@ local function ExpressYourElf_Init(msg)
         print("To show or hide the interface, use one of these commands:");
         print("Syntax: /eyelf show");
         print("Syntax: /eyelf hide");
-        -- print("Or...target someone and then use any of the following commands (and use them as a Macro)");
-        -- print("Syntax: /eyelf dance");
-        -- print("Syntax: /eyelf phrase");
-        -- print("Syntax: /eyelf flirt");
-        -- print("Syntax: /eyelf seduce");
-        -- print("Syntax: /eyelf gift");
-        -- print("Syntax: /eyelf rude");
-        -- print("Syntax: /eyelf battleshout");
-        -- print("Syntax: /eyelf panic");
     end
 end
 

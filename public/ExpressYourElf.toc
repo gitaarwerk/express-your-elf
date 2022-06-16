@@ -1,6 +1,6 @@
 ## Title: Express Your Elf
-## Interface: 90200
-## X-Min-Interface: 90200
+## Interface: 90205
+## X-Min-Interface: 90205
 ## Version: @project-version@
 ## Author: Darkrider, Dunemaul (EU)
 ## Notes: Express oneself in a more casual and fun way.
