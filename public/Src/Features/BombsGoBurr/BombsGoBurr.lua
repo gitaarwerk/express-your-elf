@@ -19,7 +19,7 @@ function ExpressYourElf.BombsGoBurr.SpeakHaste(hasteType)
     end
 
     if (typeOfHaste == "Drums") then 
-        table.insert(hasteLines, "----")
+        table.insert(hasteLines, "BAM BAM BOOM BOOM!")
     end
 
     if (typeOfHaste == "Time Warp") then 
@@ -85,7 +85,7 @@ function ExpressYourElf.BombsGoBurr.Run()
             local isInParty = UnitInParty(target)
             local line = ExpressYourElf.BombsGoBurr.SpeakHaste(typeOfHaste)
 
-            if (isInRaid or isInParty) then                                                                                                                     
+            if (isInRaid or isInParty) then                                                                                   
                 SendChatMessage(line, groupChannel, nil, index)
             end
 

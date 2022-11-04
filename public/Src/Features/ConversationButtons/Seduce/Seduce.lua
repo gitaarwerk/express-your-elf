@@ -214,7 +214,7 @@ function ExpressYourElf.Seduce.GetMessage(
 
     -- Oh no, too soon!
     if (playerClass == "Priest" and targetLevel < 18) then
-        print('You should wait with flirting until ${targtName} is higher than level 18.');
+        print('You should wait with flirting until ${targtName} is higher than level 18! ;-)');
         return nil
     end
 

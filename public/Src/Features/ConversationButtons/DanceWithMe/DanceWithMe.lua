@@ -26,6 +26,7 @@ ExpressYourElf.DanceWithMe.list = {
     "Boogie Down", 
     "Shimmy Right",
     "I bless the rains down in Silithus",
+    "SWEEET CAROLINEEEEE.... OHHH OH OHHHHH",
 }
 
 

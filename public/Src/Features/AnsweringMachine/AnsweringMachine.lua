@@ -85,7 +85,7 @@ function ExpressYourElf.AnsweringMachine.GetMessage(
         "As the void take hold, you feel you are losing your grip on reality. You begin to hallucinate. You see a telephone... WHAT, A TELEPHONE? DO THEY EVEN EXIST IN THIS REALITY? ... The telephone is next to an answering machine... You hear a faint click and a light flashes on the answering machine... You hear a beep...",
         "I don't exist at the moment, but if you leave your message, BattleNetID, password and phone number, and I’ll take your identity.. ehh.. I mean, get back in touch with you.",
         "I don't want to bore you with metaphysics, but how do you know this is an answering machine? Maybe it's a dream, or maybe it's an illusion, or maybe YOU don't really exist. One way to find out is to leave a message, and if it's reality, I will whisper you back.",
-        "Hello, this is Zovaal, The Jailer. ${playerName} can't message you right now because HE'S DEAD! Leave your message and IF I decide to resurrect him, ${playerHShe}’ll get back to you.",
+        "Hello, this is Zovaal, The Jailer. ${playerName} can't message you right now because HE'S DEAD! Leave your message and IF I decide to resurrect him, ${playerHeShe}’ll get back to you.",
         "You’re too late. The deadline for the ransom was one minute ago. ${playerName} is now gone with your gold and buying all the epics ${playerHeShe} likes from the Auction House. Kthxbye.",
         "Wrong password, You are now locked out of ${playerName}'s system. You will now be connected with a ${helpdesk} helpdesk member that may or may not scam you.",
         "Hello, this is an automated message saying that ${playerName} will be back when ${playerHeShe} is done being tortured in ${randomLocation}",

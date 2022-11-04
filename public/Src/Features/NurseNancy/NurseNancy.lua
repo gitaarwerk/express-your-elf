@@ -2,7 +2,7 @@
 ExpressYourElf.NurseNancy = {}
 local feature = "NurseNancy";
 
-function ExpressYourElf.NurseNancy.speakSelfRess(spellId)
+function ExpressYourElf.NurseNancy.speakSelfRess(_, spellId)
     local prefix = ExpressYourElfVars.usePrefix == true and "[Self ress]: " or ""
     local playerName, playerGender, playerClass, playerRace, playerLevel = ExpressYourElf.Helpers.GetPlayerInformation()
     local playerGuyGirl = ExpressYourElf.Helpers.GetGuyGirl(playerGender)
@@ -109,7 +109,7 @@ function ExpressYourElf.NurseNancy.speakSingleRess(targetGUID, spellId)
     end
     
     -- engineering's kit
-    if (ExpressYourElfVars.debugMode or spellId == 8342 or spellId == 22999 or spellId == 54732) then
+    if (ExpressYourElfVars.debugMode == true or spellId == 8342 or spellId == 22999 or spellId == 54732) then
         table.insert(singleRessLines, "CLEAR!");
         table.insert(singleRessLines, "Don’t struggle… I hate it when they struggle.")
         table.insert(singleRessLines, "${targetName}, you might feel a slight jolt...")
@@ -348,7 +348,7 @@ function ExpressYourElf.NurseNancy.Run()
                     line = ExpressYourElf.NurseNancy.speakCombatRess(unitIdentificator, spellId)
                     SendChatMessage(line, groupChannel, nil, index)
                 elseif (isSelfRess) then
-                    line = ExpressYourElf.NurseNancy.speakSelfRess(spellId)
+                    line = ExpressYourElf.NurseNancy.speakSelfRess(unitIdentificator, spellId)
                     SendChatMessage(line, groupChannel, nil, index)
                 end                
             end
@@ -356,7 +356,7 @@ function ExpressYourElf.NurseNancy.Run()
             if (ExpressYourElfVars.debugMode == true) then 
                 debugPrint(feature, ExpressYourElf.NurseNancy.speakSingleRess(unitIdentificator, spellId));
                 debugPrint(feature, ExpressYourElf.NurseNancy.speakCombatRess(unitIdentificator, spellId));
-                debugPrint(feature, ExpressYourElf.NurseNancy.speakSelfRess(spellId));
+                debugPrint(feature, ExpressYourElf.NurseNancy.speakSelfRess(unitIdentificator, spellId));
             end
         end
         

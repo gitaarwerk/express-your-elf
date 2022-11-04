@@ -228,37 +228,39 @@ local function ExpressYourElf_Init(msg)
     if cmd == "dance" then
         ExpressYourElf.DanceWithMe.run()
     elseif cmd == "reset" then
-        ExpressYourElfVars = nil
+        ExpressYourElfVars = nil;
         if (ExpressYourElfVars == nil) then
             print('Express your Elf has been reset. You should now type /reload.')
         end
     elseif cmd == "flirt" then
-        ExpressYourElf.Flirt.run()
+        ExpressYourElf.Flirt.run();
     elseif cmd == "seduce" then
-        ExpressYourElf.Seduce.run()
+        ExpressYourElf.Seduce.run();
     elseif cmd == "gift" then
-        ExpressYourElf.GivePresent.run()
+        ExpressYourElf.GivePresent.run();
     elseif cmd == "phrase" then
-        ExpressYourElf.RandomPhrases.run()
+        ExpressYourElf.RandomPhrases.run();
     elseif cmd == "rude" then
-        ExpressYourElf.IAmRude.run()
+        ExpressYourElf.IAmRude.run();
     elseif cmd == "show" then
-        ExpressYourElf_ShowButtons()
+        ExpressYourElf_ShowButtons();
     elseif cmd == "hide" then
-        ExpressYourElf_HideButtons()
+        ExpressYourElf_HideButtons();
     elseif cmd == "debug" then
-        if (ExpressYourElfVars.debugMode) then 
+        if (ExpressYourElfVars and ExpressYourElfVars.debugMode) then 
             ExpressYourElf_DebugOff();
             return;
         end
 
-        ExpressYourElf_DebugOn();
+        if (not (ExpressYourElfVars) or ExpressYourElfVars and ExpressYourElfVars.debugMode == false) then 
+            ExpressYourElf_DebugOn();
+        end
         local dumpedVars = dump(ExpressYourElfVars);
         print("Dumped EYELF Vars: " .. dumpedVars);
     else
-        ExpressYourElf_ConfigScreen:Show()
+        ExpressYourElf_ConfigScreen:Show();
         -- If not handled above, display some sort of help message
-        print("To show or hide the interface, use one of these commands:");
+        print("To show or hide the button ;interface, use one of these commands:");
         print("Syntax: /eyelf show");
         print("Syntax: /eyelf hide");
         print("", "And to reset the vars");
