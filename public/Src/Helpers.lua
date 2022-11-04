@@ -1,5 +1,3 @@
-ExpressYourElf = {}
-
 ExpressYourElf.Helpers = {}
 
 function ExpressYourElf.Helpers.parseText(s, tab)
@@ -114,3 +112,4 @@ function ExpressYourElf.Helpers.tableContainsValue(table, val)
 
   return false
 end
+

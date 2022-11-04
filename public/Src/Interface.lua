@@ -1,6 +1,31 @@
 ExpressYourElf = {}
 ExpressYourElfMessageColor = "\124cffff4f98";
 
+function dump(o)
+    if type(o) == 'table' then
+        local s = '{ ';
+        for k,v in pairs(o) do
+                if type(k) ~= 'number' then k = '"'..k..'"' end
+                s = s .. '['..k..'] = ' .. dump(v) .. ',';
+        end
+        return s .. '} ';
+    else
+        return tostring(o);
+    end
+end
+
+function debugPrint(feature, message)
+    if (not(ExpressYourElfVars)) then
+        return;
+    end
+    
+    if (ExpressYourElfVars.debugMode == true) then
+        local featName = feature or "feature_not_set";
+        local prefix = "[EYELF_DEBUG (" .. feature .. ")] ";
+        print(prefix .. message);
+    end
+  end
+
 function ExpressYourElf_Reset_Tooltips()
 
     local targetName = UnitName("target")
@@ -176,6 +201,24 @@ function ExpressYourElf_NurseNancyOff()
     ExpressYourElfVars.nurseNancyIsOn = false
 end
 
+function ExpressYourElf_BombsGoBurrOn()
+    ExpressYourElfVars.bombsGoBurrIsOn = true
+end
+
+function ExpressYourElf_BombsGoBurrOff()
+    ExpressYourElfVars.bombsGoBurrIsOn = false
+end
+
+function ExpressYourElf_DebugOn()
+    print('Express Your Elf: Debug mode is now ON.')
+    ExpressYourElfVars.debugMode = true
+end
+
+function ExpressYourElf_DebugOff()
+    print('Express Your Elf: Debug mode is now OFF.')
+    ExpressYourElfVars.debugMode = false
+end
+
 
 local function ExpressYourElf_Init(msg)
     -- pattern matching that skips leading whitespace and whitespace between cmd and args
@@ -203,16 +246,27 @@ local function ExpressYourElf_Init(msg)
         ExpressYourElf_ShowButtons()
     elseif cmd == "hide" then
         ExpressYourElf_HideButtons()
+    elseif cmd == "debug" then
+        if (ExpressYourElfVars.debugMode) then 
+            ExpressYourElf_DebugOff();
+            return;
+        end
+
+        ExpressYourElf_DebugOn();
+        local dumpedVars = dump(ExpressYourElfVars);
+        print("Dumped EYELF Vars: " .. dumpedVars);
     else
         ExpressYourElf_ConfigScreen:Show()
         -- If not handled above, display some sort of help message
         print("To show or hide the interface, use one of these commands:");
         print("Syntax: /eyelf show");
         print("Syntax: /eyelf hide");
+        print("", "And to reset the vars");
+        print("Syntax: /eyelf reset");
     end
 end
 
 SlashCmdList["EYELF"] = ExpressYourElf_Init;
 
-SLASH_EYELF1	= "/eyelf"
-SLASH_EYELF2	= "/expressyourelf"
+SLASH_EYELF1 = "/eyelf"
+SLASH_EYELF2 = "/expressyourelf"

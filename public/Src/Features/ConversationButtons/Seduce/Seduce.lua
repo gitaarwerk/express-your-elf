@@ -47,7 +47,8 @@ function ExpressYourElf.Seduce.GetMessage(
         "You’re pretty. I bet you have a pretty scream...",
         "People call me ${playerName}, but you can call me tonight.",
         "What are you raiding tonight? Well, besides me, of course.",
-        "I heard you like bad ${playerGuyGirl}. Well, I’m bad at everything."
+        "I heard you like bad ${playerGuyGirl}. Well, I’m bad at everything.",
+        "You can be my Dungeon Master any night.",
     }
     
     -- from
@@ -60,7 +61,8 @@ function ExpressYourElf.Seduce.GetMessage(
     end
 
     if (playerClass == "Warlock") then
-        table.insert(flirtLines, "I would flirt with you, but I’d rather seduce you with my succubus.")
+        table.insert(flirtLines, "I would flirt with you, but I’d rather seduce you with my succubus.");
+        table.insert(flirtLines, "If you click my portal, it will get you sucked through the Celestial Plane right into my room.");
     end
 
     if (playerClass == "Shaman") then
@@ -70,6 +72,11 @@ function ExpressYourElf.Seduce.GetMessage(
     if (playerClass == "Paladin") then
         table.insert(flirtLines, "Do you feel it? And that just my Devotion Aura.")
         table.insert(flirtLines, "I have plenty protection with me.")
+        table.insert(flirtLines, "I sure must be a paladin, because I wanna lay my hands on you.");
+    end
+
+    if (playerClass == "Paladin" or playerClass == "Warrior" or playerClass == "Death Knight") then
+        table.insert(flirtLines, "Wanna wield a broadsword tonight?")
     end
 
     if (playerClass == "Priest" or targetClass == "Priest") then
@@ -89,106 +96,125 @@ function ExpressYourElf.Seduce.GetMessage(
     end
 
     if (playerClass == "Druid" and playerGender == "male") then
-        table.insert(flirtLines, "Want to touch my Staff of Rampant Growth?")
-        table.insert(flirtLines, "I have something hidden between all this hair.")
+        table.insert(flirtLines, "Want to touch my Staff of Rampant Growth?");
+        table.insert(flirtLines, "I have something hidden between all this hair.");
     end
 
     if (targetClass == "Druid" and targetGender == "male") then
-        table.insert(flirtLines, "Want to touch your Staff of Rampant Growth")
+        table.insert(flirtLines, "Want to touch your Staff of Rampant Growth");
     end
 
     if (targetRace == "Goblin") then
-        table.insert(flirtLines, "Treat me like a pirate and give me that booty.")
+        table.insert(flirtLines, "Treat me like a pirate and give me that booty.");
     end
 
     if (playerRace == "Goblin" and playerGender == "male") then
-        table.insert(flirtLines, "I'm no Kobald, but you can take my candle anytime!")
+        table.insert(flirtLines, "I'm no Kobald, but you can take my candle anytime!");
     end
 
     if ((playerRace == "Goblin" or targetRace == "Goblin") and playerGender == "female" and targetGender == "female") then
-        table.insert(flirtLines, "Scissor me timbers!")
+        table.insert(flirtLines, "Scissor me timbers!");
     end
 
     if (playerGender == "male" and targetGender == "male") then
-        table.insert(flirtLines, "Do ya wanna grind something else?")
+        table.insert(flirtLines, "Do ya wanna grind something else?");
     end
 
     if (playerRace == "Goblin" or playerRace == "Gnome" or playerRace == "Mechagnome") then
-        table.insert(flirtLines, "Ride with me away. We doesn't have much time. My legging are tight. So onto my love rocket, climb.")
+        table.insert(flirtLines, "Ride with me away. We doesn't have much time. My legging are tight. So onto my love rocket, climb.");
+        table.insert(flirtLines, "If we mixed together, would we go bang, bang!");
     end
 
 
     if (playerRace == "Zandalari Troll" or playerRace == "Troll") then
-        table.insert(flirtLines, "Don't jinx it and do some crazy voodoo with me.")
+        table.insert(flirtLines, "Don't jinx it and do some crazy voodoo with me.");
     end
 
     if (playerGender == "female") then 
         table.insert(flirtLines, "You can eat my skittles. It's the sweetest in the middle. Pink is the flavor. Solve the riddle.")
     end 
 
+    if (playerClass == "Mage") then
+        table.insert(flirtLines, "Want to see my magic wand?");
+    end
+    
     -- to
     if (targetClass == "Druid") then
-        table.insert(flirtLines, "I've heard that you are an Epic mount.")
-        table.insert(flirtLines, "Are you in Sea Lion form? Because I can sea you Lion in my bed tonight.")
+        table.insert(flirtLines, "I've heard that you are an Epic mount.");
+        table.insert(flirtLines, "Are you in Sea Lion form? Because I can sea you Lion in my bed tonight.");
+    end
+
+    if (targetClass == "Mage" and targetGender == "male") then
+        table.insert(flirtLines, "I may not be a wizard, but I’m still looking for a new staff.");
+    end
+
+    if (targetClass == "Druid" and playerClass == "Hunter") then
+        table.insert(flirtLines, "Feeling wild? That's okay. I have a talent in [Handle Animal].");
     end
 
     if (targetClass == "Priest" and targetGender == "female" and playerGender == "male") then
-        table.insert(flirtLines, "You must be Sally Whitemane, because you just made my champion arise!")
+        table.insert(flirtLines, "You must be Sally Whitemane, because you just made my champion arise!");
     end
 
     if (targetClass == "Demon Hunter") then
-        table.insert(flirtLines, "Would you ever go full fel on me?")
-        table.insert(flirtLines, "Have you ever thought of the idea I would be your succubus?")
+        table.insert(flirtLines, "Would you ever go full fel on me?");
+        table.insert(flirtLines, "Have you ever thought of the idea I would be your succubus?");
     end
 
     if (targetRace == "Demon Hunter" and playerGender == "male") and targetGender =="female" then
-        table.insert(flirtLines, "Have you ever thought of the idea I would be fine you being my succubus?")
+        table.insert(flirtLines, "Have you ever thought of the idea I would be fine you being my succubus?");
     end
 
     if (targetRace == "Night Elf" or targetRace == "Void Elf" or targetRace == "Blood Elf" or targetRace == "Nightborne") then
-        table.insert(flirtLines, "No bush is too big for me.")
+        table.insert(flirtLines, "No bush is too big for me.");
     end
 
     if (targetRace == "Vulpera") then
-        table.insert(flirtLines, "Foxy ${targetPoppaMomma}, You smell kinda pretty. Wanna smell me? Hoo-hah!")
+        table.insert(flirtLines, "Foxy ${targetPoppaMomma}, You smell kinda pretty. Wanna smell me? Hoo-hah!");
     end
+
+ 
 
     if (targetClass == "Rogue") then
-        table.insert(flirtLines, "You don’t need [Confusion] to drive me crazy.")
+        table.insert(flirtLines, "You don’t need [Confusion] to drive me crazy.");
+        table.insert(flirtLines, "I hope you built up that energy to have a go at me.");
     end
 
+    if (targetClass == "Warrior") then
+        table.insert(flirtLines, "Are you a barbarian? 'Cuz I like your rage.");
+    end
 
     if (targetClass == "Priest") then
-        table.insert(flirtLines, "You don’t need [Mind Control] to get me to do things.")
-        table.insert(flirtLines, "Do you take confessions? Because I have many to tell about you.")
+        table.insert(flirtLines, "You don’t need [Mind Control] to get me to do things.");
+        table.insert(flirtLines, "Do you take confessions? Because I have many to tell about you.");
     end
 
     if (targetClass == "Priest" or targetClass == "Paladin") then
-        table.insert(flirtLines, "Is it hot in here? Or is it the holy spirit burning inside you?")
+        table.insert(flirtLines, "Is it hot in here? Or is it the holy spirit burning inside you?");
     end
 
     if (targetClass == "Warlock") then
-        table.insert(flirtLines, "Talk Demonic to me!")
-        table.insert(flirtLines, "I don't mind when your imps are looking at us.")
-        table.insert(flirtLines, "Why don't you seduce me? My resistance is low.")
+        table.insert(flirtLines, "Talk Demonic to me!");
+        table.insert(flirtLines, "I don't mind when your imps are looking at us.");
+        table.insert(flirtLines, "Why don't you seduce me? My resistance is low.");
     end
 
     if (targetClass == "Priest" or targetClass == "Paladin" or targetClass == "Monk" or targetClass == "Warlock" or targetClass == "Mage") then
-        table.insert(flirtLines, "They say that you have spells of love, so would you mind starting to cast one on me?")
+        table.insert(flirtLines, "They say that you have spells of love, so would you mind starting to cast one on me?");
     end
 
     if (targetClass == "Warrior" or targetClass == "Paladin" or targetClass == "Demon Hunter" or targetClass == "Death Knight") then
-        table.insert(flirtLines, "Wanna explore fifty shades of plate with me?")
+        table.insert(flirtLines, "Wanna explore fifty shades of plate with me?");
     end
 
     if (playerClass == "Rogue" and targetClass == "Rogue") then
-        table.insert(flirtLines, "Let us have only leather stand between our love.")
+        table.insert(flirtLines, "Let us have only leather stand between our love.");
     end
 
 
     -- Oh no, too soon!
     if (playerClass == "Priest" and targetLevel < 18) then
-        print('You should wait with flirting until ${targtName} is higher than level 18.')
+        print('You should wait with flirting until ${targtName} is higher than level 18.');
         return nil
     end
 

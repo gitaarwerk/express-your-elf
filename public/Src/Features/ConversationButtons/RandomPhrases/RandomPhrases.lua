@@ -103,65 +103,78 @@ playerSirMam
 
     -- self
     if (playerRace == "Draenei" or playerRace == "Night Elf" or playerRace == "Tauren" or playerRace == "Highmountain Tauren" or playerRace == "Lightforged Draenei" or playerRace == "Blood Elf") then
-        table.insert(listOfPhrases, "I always wanted to be taller.")
+        table.insert(listOfPhrases, "I always wanted to be taller.");
     end
 
     if (playerGender == "male") then 
-        table.insert(listOfPhrases, "Hi, I'm the new Milkman")
+        table.insert(listOfPhrases, "Hi, I'm the new Milkman");
     else
-        table.insert(listOfPhrases, "Hi, I'm the new Milkwoman")
+        table.insert(listOfPhrases, "Hi, I'm the new Milkwoman");
     end 
 
     if (playerRace == "Goblin" or playerRace == "Gnome" or playerRace == "Mechagnome") then
-        table.insert(listOfPhrases, "We've got new planes, we've got new rockets, new missiles, we've got new everything, and it's either here or coming in.")
+        table.insert(listOfPhrases, "We've got new planes, we've got new rockets, new missiles, we've got new everything, and it's either here or coming in.");
     end
 
     if (playerRace == "Tauren" or playerRace == "Highmountain Tauren") then
-        table.insert(listOfPhrases, "Chocolate milk comes from me, you know?")
+        table.insert(listOfPhrases, "Chocolate milk comes from me, you know?");
+    end
+
+    
+    if (playerRace == "Dracthyr") then
+        table.insert(listOfPhrases, "Watch out, here be dragons!");
+        table.insert(listOfPhrases, "Yesterday, I was telling a bedtime fantastical story to my little son. The story kept dragon-on and on and on!");
+        table.insert(listOfPhrases, "Did you know that I am an extremely good guitarists. I really know all the scales!");
+        table.insert(listOfPhrases, "I am exceptional in juggling, I'm often called very talon-ted!");
+        table.insert(listOfPhrases, "Shall I just wing it?");
+        
+        if (playerGender == "female") then
+            table.insert(listOfPhrases, "Did you know, that I actualy prefer to wash my scales with Head and Smolders?");
+        end
     end
 
     if (playerRace == "Draenei" or playerRace == "Lightforged Draenei") then
-        table.insert(listOfPhrases, "T'paartos greets puny one.")
-        table.insert(listOfPhrases, "T'paartos!")
+        table.insert(listOfPhrases, "T'paartos greets puny one.");
+        table.insert(listOfPhrases, "T'paartos!");
     end
 
     if (playerClass == "Warlock" or playerClass == "Demon Hunter") then
-        table.insert(listOfPhrases, "I never understood Fel.")
-        table.insert(listOfPhrases, "Drink fel, stay fit, die anyway.")
+        table.insert(listOfPhrases, "I never understood Fel.");
+        table.insert(listOfPhrases, "Drink fel, stay fit, die anyway.");
     end
 
     if (playerClass == "Death Knight" or targetRace == "Scourge" or targetRace == "Undead") then
-        table.insert(listOfPhrases, "It's true, a windmill killed me.")
-        table.insert(listOfPhrases, "My parents moved a lot when I died as a kid. But I always found them.")
+        table.insert(listOfPhrases, "It's true, a windmill killed me.");
+        table.insert(listOfPhrases, "My parents moved a lot when I died as a kid. But I always found them.");
     end
 
     if (playerClass == "Mage") then
-        table.insert(listOfPhrases, "Iron sword suh? What are you killing? Butterflies?")
-        table.insert(listOfPhrases, "I was elected to represent the citizens of Dalaran, not Gnomeregan")
+        table.insert(listOfPhrases, "Iron sword suh? What are you killing? Butterflies?");
+        table.insert(listOfPhrases, "I was elected to represent the citizens of Dalaran, not Gnomeregan");
     end
 
     if (playerClass == "Druid") then
-        table.insert(listOfPhrases, "It is in our wild nature that we best recover from our un-nature, our spirituality.")
+        table.insert(listOfPhrases, "It is in our wild nature that we best recover from our un-nature, our spirituality.");
     end
 
     if (playerClass == "Hunter" or playerClass == "Demon Hunter") then
-        table.insert(listOfPhrases, "But Hunter, where's Hunter? Where is Hunter, by the way?")
+        table.insert(listOfPhrases, "But Hunter, where's Hunter? Where is Hunter, by the way?");
     end
 
     if (playerRace == "Priest") then
-        table.insert(listOfPhrases, "I have so much to do that I shall spend the first three hours casting Prayer of Mending")
+        table.insert(listOfPhrases, "I have so much to do that I shall spend the first three hours casting Prayer of Mending.");
     end
 
     if (playerRace == "Gnome" or playerRace == "Mechagnome") then
-        table.insert(listOfPhrases, "Crowded elevators smell different to gnomes.")
+        table.insert(listOfPhrases, "Crowded elevators smell different to gnomes.");
     end
 
     if (playerClass == "Paladin" or playerClass == "Priest" or playerRace == "Lightforged Draenei") then 
-        table.insert(listOfPhrases, "Is there a way we can do something like that by injection inside or almost a cleaning? It sounds interesting to me, so we'll see. But the whole concept of the light, the way it kills it in one minute. That's pretty powerful.")
+        table.insert(listOfPhrases, "Is there a way we can do something like that by injection inside or almost a cleaning? It sounds interesting to me, so we'll see. But the whole concept of the light, the way it kills it in one minute. That's pretty powerful.");
     end
 
     if (playerRace == "Void Elf" or playerClass == "Warlock") then
-        table.insert(flirtLines, "I said 'No' to the voices, but they wouldn’t listen.")
+        table.insert(flirtLines, "I said 'No' to the voices, but they wouldn’t listen.");
     end
 
 
@@ -200,32 +213,44 @@ targetRace,
 targetLevel,
 targetHisHer
 )
-    local pickedPhrase
+    local pickedPhrase;
     local listOfPhrases = {
         "Saw ${targetName}, wanted it, bought it, used it once, kept it in my house for ten years, gave it away."
     }
 
     -- target
     if (targetName) then
-        table.insert(listOfPhrases, "${targetName}, You must go forth into the world, with passion, courage in your conviction, and most importantly be true to yourself. I did it!")
-        table.insert(listOfPhrases, "${targetName} is somebody that I've always liked, but a lot of people like ${targetName}. Some people probably don't like ${targetName}, but ${targetName}'s somebody I've always liked.")
+        table.insert(listOfPhrases, "${targetName}, You must go forth into the world, with passion, courage in your conviction, and most importantly be true to yourself. I did it!");
+        table.insert(listOfPhrases, "${targetName} is somebody that I've always liked, but a lot of people like ${targetName}. Some people probably don't like ${targetName}, but ${targetName}'s somebody I've always liked.");
+    end
+
+    if (targetName == "Yamisuzu" and targetName == "Alhena") then
+        table.insert(listOfPhrases, "ally ally ally! OI OI OI!");
     end
 
     if (targetRace) then
-        table.insert(listOfPhrases, "People like the Pandaren, abusing their dual factionship and smuggling in illegal ${targetRace} among other disgusting deplorables, how sad their lives must be.")
-        table.insert(listOfPhrases, "I have tremendous respect for ${targetRace}s.")
+        table.insert(listOfPhrases, "People like the Pandaren, abusing their dual factionship and smuggling in illegal ${targetRace} among other disgusting deplorables, how sad their lives must be.");
+        table.insert(listOfPhrases, "I have tremendous respect for ${targetRace}s.");
     end
 
     if (targetLevel and targetLevel < 50) then
-        table.insert(listOfPhrases, 'I steal yo soul and cast Lightning level 1,000,000. Your body explodes into a fine bloody mist, because you are only a level ${targetLevel} ${targetClass}.')
+        table.insert(listOfPhrases, 'I steal yo soul and cast Lightning level 1,000,000. Your body explodes into a fine bloody mist, because you are only a level ${targetLevel} ${targetClass}.');
     end
 
     if (targetClass and targetClass == "Warlock") then
-        table.insert(listOfPhrases, 'Uh, bing, bing, bong, bong, get out, demon!')
+        table.insert(listOfPhrases, 'Uh, bing, bing, bong, bong, get out, demon!');
+    end
+
+    if (targetClass and targetClass == "Mage") then
+        table.insert(listOfPhrases, "You're a wizard, ${targetName}!");
     end
 
     if (targetClass and targetClass == "Priest") then
-        table.insert(listOfPhrases, "${targetName}, would you grab my arm, so I can tell my friends I’ve been touched by a Priest.")
+        table.insert(listOfPhrases, "${targetName}, would you grab my arm, so I can tell my friends I’ve been touched by a Priest.");
+    end
+
+    if (playerRace == "Dracthyr" and targetClass == "Paladin") then
+        table.insert(rudeLines, "I don't eat paladins because they always taste lawful!");
     end
 
 

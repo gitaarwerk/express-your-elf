@@ -54,24 +54,31 @@ function ExpressYourElf.IAmRude.GetMessage(
         "You may have noticed ${targetName}'s superpower. It’s invisibility.",
     }
 
+    if (playerName == "Monnah" or playerName == "Darkrider" or playerName == "Suyen" or playerName == "Suekiyaki" or targetName == "Subzie" or targetName == "Lightzie" or targetName == "Monnah") then 
+        table.insert(rudeLines, "${targetName}, Pannekoek!");
+    end
     
     if (targetRace == "Lightforged Draenei" or targetRace == "Draenei") then
-        table.insert(rudeLines, "Let me guess, ${targetName}... you're the first person in your family without a tail?")
+        table.insert(rudeLines, "Let me guess, ${targetName}... you're the first person in your family without a tail?");
+    end
+
+    if (targetRace == "Dracthyr") then
+        table.insert(rudeLines, "Calling ${targetName} a dragon is not only an insult, it's also a fact!");
     end
 
     if (targetClass == "Mage" or targetClass == "Priest" or targetClass == "Shaman" or targetClass == "Warlock") then
         
-        table.insert(rudeLines, "All that intellect what is on ${targetName}'s gear doesn’t boost any intellect in the skull, unfortunately.")
+        table.insert(rudeLines, "All that intellect what is on ${targetName}'s gear doesn’t boost any intellect in the skull, unfortunately.");
     end
 
     if (targetClass == "Druid") then
-        table.insert(rudeLines, "${targetName}, do you still love nature, despite what it did to you?")
-        table.insert(rudeLines, "I’d slap ${targetName}, but that would be animal abuse.")
-        table.insert(rudeLines, "You'll make a fine rug, ${name}!")
+        table.insert(rudeLines, "${targetName}, do you still love nature, despite what it did to you?");
+        table.insert(rudeLines, "I’d slap ${targetName}, but that would be animal abuse.");
+        table.insert(rudeLines, "You'll make a fine rug, ${name}!");
     end
 
     if (targetClass == "Druid" or targetRace == "Tauren" or targetRace == "Highmountain Tauren" or targetRace == "Worgen" or targetRace == "Vulpera") then
-        table.insert(rudeLines, "Is That... Fur? Coming Out Of Your Ears?")
+        table.insert(rudeLines, "Is That... Fur? Coming Out Of Your Ears?");
     end
 
     -- randomize result

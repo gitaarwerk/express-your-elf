@@ -1,14 +1,14 @@
 -- init
 ExpressYourElf.NurseNancy = {}
+local feature = "NurseNancy";
 
 function ExpressYourElf.NurseNancy.speakSelfRess(spellId)
-    local playerName, playerGender, playerClass, playerRace, playerLevel  = Ressurection.Helpers.GetPlayerInformation()
-    
+    local prefix = ExpressYourElfVars.usePrefix == true and "[Self ress]: " or ""
+    local playerName, playerGender, playerClass, playerRace, playerLevel = ExpressYourElf.Helpers.GetPlayerInformation()
     local playerGuyGirl = ExpressYourElf.Helpers.GetGuyGirl(playerGender)
     local playerManWoman = ExpressYourElf.Helpers.GetManWoman(playerGender)
-
     local playerSex = "girls"
-
+    
     if (playerGender == "male") then
         oppositeSex = "guys"
     end
@@ -18,15 +18,15 @@ function ExpressYourElf.NurseNancy.speakSelfRess(spellId)
         "I'm back by popular demand.",
         "Hiiiiii, missed me?",
     }
-
+    
     if (playerClass == "Shaman") then
-        table.insert(selfRessLines, "Nobody believed in Reincarnation. Well, here's the proof!'")
+        table.insert(selfRessLines, "Nobody believed in reincarnation. Well, here's the proof!'")
     end
-        
+    
     pickedLine = selfRessLines[fastrandom(1, #selfRessLines)]
 
     return ExpressYourElf.Helpers.parseText(
-        pickedLine, {
+        prefix .. pickedLine, {
             playerName = playerName,
             playerGender = playerGender,
             playerClass = playerClass,
@@ -34,17 +34,13 @@ function ExpressYourElf.NurseNancy.speakSelfRess(spellId)
             playerLevel = playerLevel,
             playerManWoman = playerManWoman,
             playerGuyGirl = playerGuyGirl,
-            targetName = targetName, 
-            targetGender = targetGender, 
-            targetClass = targetClass, 
-            targetRace = targetRace, 
-            targetLevel = targetLevel,
-            oppositeSex = oppositeSex,
         }
     )
 end
 
 function ExpressYourElf.NurseNancy.speakSingleRess(targetGUID, spellId)
+    local prefix = ExpressYourElfVars.usePrefix == true and "[Ressing ${targetName}]: " or ""
+
     local playerName, playerGender, playerClass, playerRace, playerLevel = ExpressYourElf.Helpers.GetPlayerInformation()
     local targetName, targetGender, targetClass, targetRace = ExpressYourElf.Helpers.GetTargetInformationByUID(targetGUID)
     
@@ -111,33 +107,30 @@ function ExpressYourElf.NurseNancy.speakSingleRess(targetGUID, spellId)
     if (targetClass == "Druid") then
         table.insert(singleRessLines, "hey ${targetName} stop growing roots there! I need you to RAWR!")
     end
-
     
     -- engineering's kit
-    if (spellId == 8342 or spellId == 22999 or spellId == 54732) then
-        table.insert(combatRessLines, "CLEAR!")
-        table.insert(combatRessLines, "Don’t struggle… I hate it when they struggle.")
-        table.insert(combatRessLines, "${targetName}, you might feel a slight jolt...")
-        table.insert(combatRessLines, "I'd pray for a miracle, but then ${targetName} wouldn't need these things.")
-        table.insert(combatRessLines, "${targetName}'s dead...what's the worst that could happen?")
-        table.insert(combatRessLines, "Don't worry, ${targetName}, I'm an Undermine, Inc. Certified Cable Jumper!")
-        table.insert(combatRessLines, "I saw this on House once. Piece of cake!")
-        table.insert(combatRessLines, "Have you hugged your engineer today?")
-        table.insert(combatRessLines, "I can rebuild ${targetName}, but there'll be a...slight chance of explosion.")
-        table.insert(combatRessLines, "One order of fried ${targetName}, comin' right up!")
-        table.insert(combatRessLines, "When the Light goes out, call in an engineer!")
-        table.insert(combatRessLines, "Let's see...orange to nipple, black to ground...or was it the other way around?")
-        table.insert(combatRessLines, "Zappy, zappy, ending ${targetName}'s nappy!")
-        table.insert(combatRessLines, "Huh...never noticed this warning label. 'ARCHSURGEON'S WARNING: High dosages of electricity are hazardous to one's health. Use only if patient is already dead.' Well, ${targetName} certainly fits the bill.")
-        table.insert(combatRessLines, "Finally, no more need to ask for ${targetName}'s permission to start experimentation!")
-        table.insert(combatRessLines, "The clamps on these cables leave some nasty bruises, but I don't think ${targetName} would prefer the alternative")
-        table.insert(combatRessLines, "Don't worry, ${targetName}, this is for SCIENCE!")
-        table.insert(combatRessLines, "Five gold says ${targetName} enjoys these clamps.")
-        table.insert(combatRessLines, "${targetName} has encountered a fatal error. Rebooting...")
+    if (ExpressYourElfVars.debugMode or spellId == 8342 or spellId == 22999 or spellId == 54732) then
+        table.insert(singleRessLines, "CLEAR!");
+        table.insert(singleRessLines, "Don’t struggle… I hate it when they struggle.")
+        table.insert(singleRessLines, "${targetName}, you might feel a slight jolt...")
+        table.insert(singleRessLines, "I'd pray for a miracle, but then ${targetName} wouldn't need these things.")
+        table.insert(singleRessLines, "${targetName}'s dead...what's the worst that could happen?")
+        table.insert(singleRessLines, "Don't worry, ${targetName}, I'm an Undermine, Inc. Certified Cable Jumper!")
+        table.insert(singleRessLines, "I saw this on House once. Piece of cake!")
+        table.insert(singleRessLines, "Have you hugged your engineer today?")
+        table.insert(singleRessLines, "I can rebuild ${targetName}, but there'll be a...slight chance of explosion.")
+        table.insert(singleRessLines, "One order of fried ${targetName}, comin' right up!")
+        table.insert(singleRessLines, "When the Light goes out, call in an engineer!")
+        table.insert(singleRessLines, "Let's see...orange to nipple, black to ground...or was it the other way around?")
+        table.insert(singleRessLines, "Zappy, zappy, ending ${targetName}'s nappy!")
+        table.insert(singleRessLines, "Huh...never noticed this warning label. 'ARCHSURGEON'S WARNING: High dosages of electricity are hazardous to one's health. Use only if patient is already dead.' Well, ${targetName} certainly fits the bill.")
+        table.insert(singleRessLines, "Finally, no more need to ask for ${targetName}'s permission to start experimentation!")
+        table.insert(singleRessLines, "The clamps on these cables leave some nasty bruises, but I don't think ${targetName} would prefer the alternative")
+        table.insert(singleRessLines, "Don't worry, ${targetName}, this is for SCIENCE!")
+        table.insert(singleRessLines, "Five gold says ${targetName} enjoys these clamps.")
+        table.insert(singleRessLines, "${targetName} has encountered a fatal error. Rebooting...")
     end 
 
-        
-    local prefix = ExpressYourElfVars.usePrefix == true and "[Ressing ${targetName}]: " or ""
     pickedLine = singleRessLines[fastrandom(1, #singleRessLines)]
 
     return ExpressYourElf.Helpers.parseText(
@@ -175,8 +168,8 @@ function ExpressYourElf.NurseNancy.speakCombatRess(targetGUID, spellId)
     end
     
     local zoneName = GetRealZoneText()
-    -- Standard combat ress prefix for all but Warlock
-    if (spellId == 20484 or spellId == 61999 or spellId == 159931 or spellId == 348477 or spellId == 345130) then
+
+    if (ExpressYourElfVars.debugMode == true or spellId == 20484 or spellId == 61999 or spellId == 159931 or spellId == 348477 or spellId == 345130) then
         prefix = ExpressYourElfVars.usePrefix == true and "[Combat ressing ${targetName}]: " or ""
 
         combatRessLines = {
@@ -210,6 +203,11 @@ function ExpressYourElf.NurseNancy.speakCombatRess(targetGUID, spellId)
         table.insert(combatRessLines, "Warm fuzzy naturey things for you, ${targetName}...now get UP!")
     end
 
+    if (playerClass == "Paladin") then
+        -- table.insert(combatRessLines, "I coulda been a bear, y'know. Or a kitty. Maybe a tree. Even one of those...whaddayacallems...owlbears. But nooooo, I had ta rez ${targetName}. Not that I'm bitter or anything.")
+        -- table.insert(combatRessLines, "Warm fuzzy naturey things for you, ${targetName}...now get UP!")
+    end
+
     if (playerClass == "Warlock") then
         prefix = ExpressYourElfVars.usePrefix == true and "[Soulstone on ${targetName}]: " or ""
         table.insert(combatRessLines, "Do not worry, ${targetName}, this soulstone - shouldn't - hurt a bit...")
@@ -228,7 +226,7 @@ function ExpressYourElf.NurseNancy.speakCombatRess(targetGUID, spellId)
         table.insert(combatRessLines, "FYI, ${targetName}, using a soulstone removes any chance of getting into heaven.")
     end
 
-        
+
     pickedLine = combatRessLines[fastrandom(1, #combatRessLines)]
 
     return ExpressYourElf.Helpers.parseText(
@@ -268,7 +266,6 @@ function ExpressYourElf.NurseNancy.speakMassRess()
         "Luckily, my profession is not dying.",
         "Wee-ooo! Wee-ooo! Wee-ooo! Wee-ooo! Wee-ooo! Wee-ooo... that's the best ambulance impression I can do.", -- Sueyen-Talnivarr, EU
         "Oh hello juicy corpses.... Your bodies are still warm... hmmmm... hmm.",
-        "Raise, Danish zombie minks, rise my zombies!", -- somewhere in the news...I think.
         "Death is the wish of some, the relief of many, and just a chore for me... *sigh*.",
         "The goal of all life is death...and getting resurrected by yours truly.",
         "We all die. The goal isn't to live forever, the goal is to get epics.",
@@ -317,13 +314,12 @@ function ExpressYourElf.NurseNancy.Run()
     ExpressYourElf.NurseNancy.Frame:RegisterEvent("UNIT_SPELLCAST_START")
     ExpressYourElf.NurseNancy.Frame:RegisterEvent("UNIT_SPELLCAST_CHANNEL_START")
     ExpressYourElf.NurseNancy.Frame:RegisterEvent("UNIT_SPELLCAST_CHANNEL_STOP")    
-    ExpressYourElf.NurseNancy.Frame:RegisterEvent("UNIT_SPELLCAST_START")
 
     ExpressYourElf.NurseNancy.Frame:SetScript("OnEvent", function (self, event, ...)
         groupChannel = IsInRaid() and "RAID" or IsInGroup(LE_PARTY_CATEGORY_INSTANCE) and "INSTANCE_CHAT" or "PARTY"
         isInParty = UnitInParty("player")
 
-        if (not(ExpressYourElfVars.nurseNancyIsOn == true and isInParty == true)) then 
+        if (not(ExpressYourElfVars.nurseNancyIsOn == true and isInParty == true) and ExpressYourElfVars.debugMode == false) then 
             return
         end
     
@@ -344,7 +340,6 @@ function ExpressYourElf.NurseNancy.Run()
             local isInRaid = UnitInRaid(target)
             local isInParty = UnitInParty(target)
 
-
             if (isInRaid or isInParty) then 
                 if (isSingleRess) then
                     line = ExpressYourElf.NurseNancy.speakSingleRess(unitIdentificator, spellId)
@@ -353,29 +348,33 @@ function ExpressYourElf.NurseNancy.Run()
                     line = ExpressYourElf.NurseNancy.speakCombatRess(unitIdentificator, spellId)
                     SendChatMessage(line, groupChannel, nil, index)
                 elseif (isSelfRess) then
-                    line = ExpressYourElf.NurseNancy.isSelfRess(unitIdentificator, spellId)
+                    line = ExpressYourElf.NurseNancy.speakSelfRess(spellId)
                     SendChatMessage(line, groupChannel, nil, index)
-                else 
-                    return
                 end                
+            end
+
+            if (ExpressYourElfVars.debugMode == true) then 
+                debugPrint(feature, ExpressYourElf.NurseNancy.speakSingleRess(unitIdentificator, spellId));
+                debugPrint(feature, ExpressYourElf.NurseNancy.speakCombatRess(unitIdentificator, spellId));
+                debugPrint(feature, ExpressYourElf.NurseNancy.speakSelfRess(spellId));
             end
         end
         
         -- do mass ress
         if (event == "UNIT_SPELLCAST_START") then 
-            local castOrigin, castGUID, spellID = ...
-            
-            if (not(castOrigin == "player")) then
+            local unitTarget, castGUID, spellID = ...
+            if (not(unitTarget == "player")) then
                 return 
             end
             
             local isMassRess = ExpressYourElf.SpellIds.isMassRess(spellID)
-            if (isMassRess == true) then
+            if (isMassRess == true and (isInRaid or isInParty)) then
                 line = ExpressYourElf.NurseNancy.speakMassRess()
-
                 SendChatMessage(line, groupChannel, nil, index)
             else
-                return
+                if (ExpressYourElfVars.debugMode == true) then 
+                    debugPrint(feature, ExpressYourElf.NurseNancy.speakMassRess());
+                end
             end
         end 
     end)    

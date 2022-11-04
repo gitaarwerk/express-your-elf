@@ -90,9 +90,12 @@ function ExpressYourElf.AnsweringMachine.GetMessage(
         "Wrong password, You are now locked out of ${playerName}'s system. You will now be connected with a ${helpdesk} helpdesk member that may or may not scam you.",
         "Hello, this is an automated message saying that ${playerName} will be back when ${playerHeShe} is done being tortured in ${randomLocation}",
         "Gone fishing.",
+        "Hello, you are talking to a machine. I am capable of receiving messages. My owner does not need siding, windows or a tub, and ${playerHisHer} carpets are clean. They give to charity at ${randomLocation} and don’t need ${playerHisHer} picture taken. If you’re still with me, leave your name and BattleNetId and ${playerHeShe} will get back to you. ",
         "Now I lay myself down to sleep; Leave a message at the beep. If I die before I wake, Remember to erase the tape.",
         "This is a test. This is a test of the Answering Machine Broadcast System. This is only a test.",
-        "Your message didn’t make it through ${playerName}'s urgency list. Goodbye",
+        "Your message didn’t make it through ${playerName}'s urgency list. Goodbye.",
+        "Hi! ${playerName}'s answering machine is broken. This is ${playerHisHer} refrigerator. Please type very slowly, and I’ll stick your message to myself with one of these magnets.",
+        "Hi. I’m probably there, I’m just avoiding someone I don’t like. Leave me a message, and if I don’t get back, it’s you.",
     }
 
     if (playerClass == "Mage") then

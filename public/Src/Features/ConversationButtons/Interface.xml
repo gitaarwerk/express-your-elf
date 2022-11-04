@@ -2,19 +2,12 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\FrameXML\UI.xsd"
 >
-    <Script file="Interface.lua"/>
-    <Script file="Helpers.lua"/>
-    <Script file="Features/DanceWithMe/DanceWithMe.lua"/>
-    <Script file="Features/Flirt/Flirt.lua"/>
-    <Script file="Features/Seduce/Seduce.lua"/>
-    <Script file="Features/GivePresent/GivePresent.lua"/>
-    <Script file="Features/RandomPhrases/RandomPhrases.lua"/>
-    <Script file="Features/Rude/Rude.lua"/>
-    <Script file="Features/Battleshout/Battleshout.lua"/>
-    <Script file="Features/Panic/Panic.lua"/>
-    <Script file="Features/NurseNancy/NurseNancy.lua"/>
-    <Script file="Features/NurseNancy/SpellIds.lua"/>
-    <Script file="Features/AnsweringMachine/AnsweringMachine.lua"/>
+    <Script file="Src/Features/ConversationButtons/DanceWithMe/DanceWithMe.lua"/>
+    <Script file="Src/Features/ConversationButtons/Flirt/Flirt.lua"/>
+    <Script file="Src/Features/ConversationButtons/Seduce/Seduce.lua"/>
+    <Script file="Src/Features/ConversationButtons/GivePresent/GivePresent.lua"/>
+    <Script file="Src/Features/ConversationButtons/RandomPhrases/RandomPhrases.lua"/>
+    <Script file="Src/Features/ConversationButtons/Rude/Rude.lua"/>
     
     <Frame name="ExpressYourElf_Frame" toplevel="true" frameStrata="DIALOG" movable="false" enableMouse="true" hidden="true" parent="UIParent" clampedToScreen="true">
         <Scripts>
@@ -22,120 +15,90 @@
                 self:RegisterEvent("ADDON_LOADED");
                 self:RegisterEvent("PLAYER_TARGET_CHANGED");
                 self:RegisterForDrag("LeftButton");
+                
+                local scale = 1;
+                local buttonHeightWidth = 45;
 
-                local dancingButton = CreateFrame("Button","dancingButton",ExpressYourElf_Frame, "SecureActionButtonTemplate,ActionButtonTemplate")
-                dancingButton:SetScale(1)
-                dancingButton:SetText("Dance")
-                dancingButton:SetPoint("TOPLEFT", "ExpressYourElf_Frame", "TOPLEFT", 7, -7);
+                local dancingButton = CreateFrame("Button","dancingButton", ExpressYourElf_Frame, "UIPanelButtonTemplate")
+                dancingButton:SetPoint("TOPLEFT", "ExpressYourElf_Frame", "TOPLEFT", 0, 0);
                 dancingButton:SetPushedTexture("Interface\\Icons\\inv_misc_firedancer_01")
-                dancingButton:SetHighlightTexture("Interface\\Icons\\inv_misc_firedancer_01")
                 dancingButton:SetNormalTexture("Interface\\Icons\\inv_misc_firedancer_01")
                 dancingButton:GetNormalTexture():SetAllPoints(dancingButton)
                 dancingButton:SetToplevel(true)
+                dancingButton:SetSize(buttonHeightWidth, buttonHeightWidth)
                 dancingButton:SetScript("OnClick",function()
                     ExpressYourElf.DanceWithMe.run()
                 end)
 
 
-                local randomButton = CreateFrame("Button","randomButton",ExpressYourElf_Frame, "SecureActionButtonTemplate,ActionButtonTemplate")
-                randomButton:SetScale(1)
-                randomButton:SetText("Random")
-                randomButton:SetPoint("TOPLEFT", "ExpressYourElf_Frame", "TOPLEFT", 47, -7);
+                local randomButton = CreateFrame("Button","randomButton",ExpressYourElf_Frame, "UIPanelButtonTemplate")
+                randomButton:SetScale(scale)
+                randomButton:SetPoint("TOPLEFT", "ExpressYourElf_Frame", "TOPLEFT", 50, 0);
                 randomButton:SetPushedTexture("Interface\\Icons\\ability_warrior_commandingshout")
-                randomButton:SetHighlightTexture("Interface\\Icons\\ability_warrior_commandingshout")
                 randomButton:SetNormalTexture("Interface\\Icons\\ability_warrior_commandingshout")
                 randomButton:GetNormalTexture():SetAllPoints(randomButton)
                 randomButton:SetToplevel(true)
+                randomButton:SetSize(buttonHeightWidth, buttonHeightWidth)
                 randomButton:SetScript("OnClick",function()
                     ExpressYourElf.RandomPhrases.run()
                 end)
 
 
-                local giftButton = CreateFrame("Button","giftButton",ExpressYourElf_Frame, "SecureActionButtonTemplate,ActionButtonTemplate")
-                giftButton:SetScale(1)
-                giftButton:SetPoint("TOPLEFT", "ExpressYourElf_Frame", "TOPLEFT", 87, -47);
+                local giftButton = CreateFrame("Button","giftButton",ExpressYourElf_Frame, "UIPanelButtonTemplate")
+                giftButton:SetScale(scale)
+                giftButton:SetPoint("TOPLEFT", "ExpressYourElf_Frame", "TOPLEFT", 100, -50);
                 giftButton:SetPushedTexture("Interface\\Icons\\item_shop_giftbox01")
-                giftButton:SetHighlightTexture("Interface\\Icons\\item_shop_giftbox01")
                 giftButton:SetNormalTexture("Interface\\Icons\\item_shop_giftbox01")
                 giftButton:GetNormalTexture():SetAllPoints(giftButton)
-                giftButton:SetText("Gift")
                 giftButton:SetAlpha(.3)
                 giftButton:Disable()
                 giftButton:SetToplevel(true)
+                giftButton:SetSize(buttonHeightWidth, buttonHeightWidth)
                 giftButton:SetScript("OnClick",function()
                     ExpressYourElf.GivePresent.run()
                 end)
 
-                local flirtButton = CreateFrame("Button","flirtButton",ExpressYourElf_Frame, "SecureActionButtonTemplate,ActionButtonTemplate")
-                flirtButton:SetScale(1)
-                flirtButton:SetPoint("TOPLEFT", "ExpressYourElf_Frame", "TOPLEFT", 7, -47);
+                local flirtButton = CreateFrame("Button","flirtButton",ExpressYourElf_Frame, "UIPanelButtonTemplate")
+                flirtButton:SetScale(scale)
+                flirtButton:SetPoint("TOPLEFT", "ExpressYourElf_Frame", "TOPLEFT", 0, -50);
                 flirtButton:SetPushedTexture("Interface\\Icons\\spell_shadow_seduction")
-                flirtButton:SetHighlightTexture("Interface\\Icons\\spell_shadow_seduction")
                 flirtButton:SetNormalTexture("Interface\\Icons\\spell_shadow_seduction")
                 flirtButton:GetNormalTexture():SetAllPoints(flirtButton)
-                flirtButton:SetText("Flirt")
                 flirtButton:Disable()
                 flirtButton:SetAlpha(.3)
                 flirtButton:SetToplevel(true)
+                flirtButton:SetSize(buttonHeightWidth, buttonHeightWidth)
                 flirtButton:SetScript("OnClick",function()
                     ExpressYourElf.Flirt.run()
                 end)
 
-                local seduceButton = CreateFrame("Button","seduceButton",ExpressYourElf_Frame, "SecureActionButtonTemplate,ActionButtonTemplate")
-                seduceButton:SetScale(1)
-                seduceButton:SetPoint("TOPLEFT", "ExpressYourElf_Frame", "TOPLEFT", 47, -47);
+                local seduceButton = CreateFrame("Button","seduceButton",ExpressYourElf_Frame, "UIPanelButtonTemplate")
+                seduceButton:SetScale(scale)
+                seduceButton:SetPoint("TOPLEFT", "ExpressYourElf_Frame", "TOPLEFT", 50, -50);
                 seduceButton:SetPushedTexture("Interface\\Icons\\spell_shadow_summonsuccubus")
-                seduceButton:SetHighlightTexture("Interface\\Icons\\spell_shadow_summonsuccubus")
                 seduceButton:SetNormalTexture("Interface\\Icons\\spell_shadow_summonsuccubus")
                 seduceButton:GetNormalTexture():SetAllPoints(seduceButton)
-                seduceButton:SetText("Seduce")
                 seduceButton:Disable()
                 seduceButton:SetAlpha(.3)
                 seduceButton:SetToplevel(true)
+                seduceButton:SetSize(buttonHeightWidth, buttonHeightWidth)
                 seduceButton:SetScript("OnClick",function()
                     ExpressYourElf.Seduce.run()
                 end)
 
 
-                local rudeButton = CreateFrame("Button","rudeButton",ExpressYourElf_Frame, "SecureActionButtonTemplate,ActionButtonTemplate")
-                rudeButton:SetScale(1)
-                rudeButton:SetPoint("TOPLEFT", "ExpressYourElf_Frame", "TOPLEFT", 127, -47);
+                local rudeButton = CreateFrame("Button","rudeButton",ExpressYourElf_Frame, "UIPanelButtonTemplate")
+                rudeButton:SetScale(scale)
+                rudeButton:SetPoint("TOPLEFT", "ExpressYourElf_Frame", "TOPLEFT", 100, 0);
                 rudeButton:SetPushedTexture("Interface\\Icons\\ability_demonhunter_torment")
-                rudeButton:SetHighlightTexture("Interface\\Icons\\ability_demonhunter_torment")
                 rudeButton:SetNormalTexture("Interface\\Icons\\ability_demonhunter_torment")
                 rudeButton:GetNormalTexture():SetAllPoints(rudeButton)
-                rudeButton:SetText("Rude")
                 rudeButton:SetAlpha(.3)
                 rudeButton:Disable()
                 rudeButton:SetToplevel(true)
+                rudeButton:SetSize(buttonHeightWidth, buttonHeightWidth)
                 rudeButton:SetScript("OnClick",function()
                     ExpressYourElf.IAmRude.run()
-                end)
-
-                local panicButton = CreateFrame("Button","panicButton",ExpressYourElf_Frame, "SecureActionButtonTemplate,ActionButtonTemplate")
-                panicButton:SetScale(1)
-                panicButton:SetText("Panic")
-                panicButton:SetPoint("TOPLEFT", "ExpressYourElf_Frame", "TOPLEFT", 87, -7);
-                panicButton:SetPushedTexture("Interface\\Icons\\spell_shadow_painandsuffering")
-                panicButton:SetHighlightTexture("Interface\\Icons\\spell_shadow_painandsuffering")
-                panicButton:SetNormalTexture("Interface\\Icons\\spell_shadow_painandsuffering")
-                panicButton:GetNormalTexture():SetAllPoints(panicButton)
-                panicButton:SetToplevel(true)
-                panicButton:SetScript("OnClick",function()
-                    ExpressYourElf.Panic.run()
-                end)
-
-                local battleshoutButton = CreateFrame("Button","battleshoutButton",ExpressYourElf_Frame, "SecureActionButtonTemplate,ActionButtonTemplate")
-                battleshoutButton:SetScale(1)
-                battleshoutButton:SetText("Battlecry")
-                battleshoutButton:SetPoint("TOPLEFT", "ExpressYourElf_Frame", "TOPLEFT", 127, -7);
-                battleshoutButton:SetPushedTexture("Interface\\Icons\\ability_warrior_battleshout")
-                battleshoutButton:SetHighlightTexture("Interface\\Icons\\ability_warrior_battleshout")
-                battleshoutButton:SetNormalTexture("Interface\\Icons\\ability_warrior_battleshout")
-                battleshoutButton:GetNormalTexture():SetAllPoints(battleshoutButton)
-                battleshoutButton:SetToplevel(true)
-                battleshoutButton:SetScript("OnClick",function()
-                    ExpressYourElf.Battleshout.run()
                 end)
 
                 ExpressYourElf_GiftButton = giftButton
@@ -146,8 +109,6 @@
                 -- always on buttons
                 ExpressYourElf_DancingButton = dancingButton
                 ExpressYourElf_RandomButton = randomButton
-                ExpressYourElf_PanicButton = panicButton
-                ExpressYourElf_BattleshoutButtonn = battleshoutButton
 
                 ExpressYourElf_Reset_Tooltips()
                 
@@ -220,7 +181,7 @@
             </OnDragStop>
         </Scripts>
         <Size>
-            <AbsDimension x="170" y="90"/>
+            <AbsDimension x="150" y="90"/>
         </Size>
         <Anchors>
             <Anchor point="CENTER"/>
@@ -233,7 +194,7 @@
               </Texture> 
             </Layer>
         </Layers>
-        <!-- <Backdrop bgFile="Interface\TutorialFrame\TutorialFrameBackground" edgeFile="Interface\DialogFrame\UI-Tooltip-Border" tile="true">
+        <Backdrop bgFile="Interface\TutorialFrame\TutorialFrameBackground" edgeFile="Interface\DialogFrame\UI-Tooltip-Border" tile="true">
             <EdgeSize>
                 <AbsValue val="16"/>
             </EdgeSize>
@@ -243,6 +204,6 @@
             <BackgroundInsets>
                 <AbsInset left="5" right="5" top="5" bottom="5"/>
             </BackgroundInsets>
-        </Backdrop> -->
+        </Backdrop>
     </Frame>
 </Ui>

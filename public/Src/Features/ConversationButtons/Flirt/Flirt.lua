@@ -2,7 +2,7 @@
 
 ExpressYourElf.Flirt = {}
 
-function ExpressYourElf.Flirt.GetRandomPrefix()
+function ExpressYourElf.Flirt.GetRandomPrefix(targetRace)
     local prefix = {
         '${targetName}, ',
         'Hey ${targetName}. ',
@@ -12,6 +12,10 @@ function ExpressYourElf.Flirt.GetRandomPrefix()
         '${targetName}, honey, ',
         'Hi ${targetName}, ',
     };
+
+    if (targetRace == "Dracthyr") then
+        table.insert(prefix, "Hey there ${targetName}, you hot wings, ");
+    end
 
     return prefix[fastrandom(1, #prefix)];
 end
@@ -72,7 +76,7 @@ function ExpressYourElf.Flirt.GetMessage(
         "I like you so much, I want to hug your internal organs.",
         "I think you're suffering from a lack of vitamin me.",
         "People call me ${playerName}, but you can call me tonight.",
-        "I may not be the best looking ${playerGuyGirl} here. But I’m he only one talking to you.",
+        "I may not be the best looking ${playerGuyGirl} here. But I’m the only one talking to you.",
         "If I said I want your armor, would you hold it against me?",
     }
     
@@ -88,128 +92,160 @@ function ExpressYourElf.Flirt.GetMessage(
     end
 
     if (playerClass == "Hunter") then
-        table.insert(flirtLines, "I tracked your Heartstone back to me.")
-        table.insert(flirtLines, "I'm great with a comb. Wanna watch me comb my hair really fast?'.")
+        table.insert(flirtLines, "I tracked your Heartstone back to me.");
+        table.insert(flirtLines, "I'm great with a comb. Wanna watch me comb my hair really fast?'.");
     end
 
     if (playerRace == "Void Elf" or playerClass == "Warlock") then
-        table.insert(flirtLines, "If the void is eternal, will you be my void?")
+        table.insert(flirtLines, "If the void is eternal, will you be my void?");
+    end
+
+    if (playerClass == "Warlock") then
+        table.insert(flirtLines, "The last time I saw a body like yours, I was burying it in my basement.");
+        table.insert(flirtLines, "I put the romance in necromancy.");
     end
 
     if (playerClass == "Rogue") then
-        table.insert(flirtLines, "I’m here to steal your Heartstone.")
+        table.insert(flirtLines, "I’m here to steal your Heartstone.");
     end
 
     if (playerClass == "Shaman") then
-        table.insert(flirtLines, "If i could learn any new spell, it would be a love totem to entangle you.")
+        table.insert(flirtLines, "If i could learn any new spell, it would be a love totem to entangle you.");
     end
 
     if (playerClass == "Paladin") then
-        table.insert(flirtLines, "${targetGuyGirl}, I have the blessing of protection!")
-        table.insert(flirtLines, "Do you feel it? And that just my Devotion Aura.")
+        table.insert(flirtLines, "${targetGuyGirl}, I have the blessing of protection!");
+        table.insert(flirtLines, "Do you feel it? And that just my Devotion Aura.");
     end
 
     if (playerClass == "Priest") then
-        table.insert(flirtLines, "You taught me a new spell; Power Word: Love")
+        table.insert(flirtLines, "You taught me a new spell; Power Word: Love");
+    end
+
+    if (playerClass == "Warrior") then
+        table.insert(flirtLines, "If you say yes now, I will never cleave your side!");
     end
 
     if (playerRace == "Lightforged Draenei" or playerClass == "Paladin" or playerClass == "Priest") then
-        table.insert(flirtLines, "You're my light in the darkness.")
+        table.insert(flirtLines, "You're my light in the darkness.");
     end
 
     if (playerGender == "male" and (playerClass == "Warrior" or playerClass == "Paladin" or playerClass == "Demon Hunter" or playerClass == "Death Knight" or playerRace == "Mechagnome")) then
-        table.insert(flirtLines, "My armor is bending bending just by looking at you!")
+        table.insert(flirtLines, "My armor is bending bending just by looking at you!");
     end
 
     if (playerRace == "Mechagnome") then
-        table.insert(flirtLines, "You know, I have over 200 Bionicles.")
+        table.insert(flirtLines, "You know, I have over 200 Bionicles.");
     end
 
     if (playerClass == "Death Knight" or playerRace == "Mechagnome") then
-        table.insert(flirtLines, "Let's be ${playerManWoman} and ${targetManWoman} until decay makes us fall apart.")
+        table.insert(flirtLines, "Let's be ${playerManWoman} and ${targetManWoman} until decay makes us fall apart.");
     end
 
     if (playerClass == "Druid") then
-        table.insert(flirtLines, "Did you ever had the chance to hug a tree without feeling you are the only one?, now is your chance!")
-        table.insert(flirtLines, "Forget that rogue. As a Druid, I've got the strength AND the agility.")
-        table.insert(flirtLines, "I'll always be your beast of burden.")        
+        table.insert(flirtLines, "Did you ever had the chance to hug a tree without feeling you are the only one?, now is your chance!");
+        table.insert(flirtLines, "Forget that rogue. As a Druid, I've got the strength AND the agility.");
+        table.insert(flirtLines, "I'll always be your beast of burden.");    
     end
 
     if (targetRace == "Goblin") then
-        table.insert(flirtLines, "I don't care if you are a gold digger.")
+        table.insert(flirtLines, "I don't care if you are a gold digger.");
     end
 
     if (playerRace == "Goblin" and playerGender == "male") then
-        table.insert(flirtLines, "I'm no Kobald, but you can take my candle anytime!")
+        table.insert(flirtLines, "I'm no Kobald, but you can take my candle anytime!");
     end
 
     if (playerRace == "Goblin" or playerRace == "Gnome" or playerRace == "Mechagnome") then
-        table.insert(flirtLines, "Fly away in my space rocket. You no need put money in my pocket.")
+        table.insert(flirtLines, "Fly away in my space rocket. You no need put money in my pocket.");
     end
 
 
     if (playerRace == "Zandalari Troll" or playerRace == "Troll") then
-        table.insert(flirtLines, "Don't jinx it and do some voodoo with me.")
+        table.insert(flirtLines, "Don't jinx it and do some voodoo with me.");
     end
 
     if (playerGender == "female") then 
-        table.insert(flirtLines, "You can eat my skittles. It's the sweetest in the middle. Pink is the flavor. Solve the riddle.")
+        table.insert(flirtLines, "You can eat my skittles. It's the sweetest in the middle. Pink is the flavor. Solve the riddle.");
     end 
+
+    if (playerRace == "Dracthyr") then
+        table.insert(flirtLines, "Do you think it's hot to know that I am a member of Imagine Dragons?");
+    end
 
 
     -- to
+    if (targetClass == "Druid" or targetRace == "Dracthyr" or targetRace == "Tauren" or targetRace == "Highmountain Tauren") then 
+        table.insert(flirtLines, "It was obvious that you were the beast of the show!");
+    end
+
     if (targetClass == "Druid") then
-        table.insert(flirtLines, "I seem to have lost my teddy bear. Would you like to be my teddy bear tonight?")
+        table.insert(flirtLines, "I seem to have lost my teddy bear. Would you like to be my teddy bear tonight?");
+    end
+    
+    if (targetClass == "Druid" and playerClass == "Druid") then
+        table.insert(flirtLines, "Did I see you in the Emrald Dream last night? Or was it just perhaps my own");
+    end
+
+    if (targetRace == "Dracthyr") then
+        table.insert(flirtLines, "Are you one of those fiery Dragonborn, because it's getting hot in here.");
     end
 
     if (targetClass == "Demon Hunter") then
-        table.insert(flirtLines, "For you, I AM prepared")
-        table.insert(flirtLines, "Aren't you a handsome devil.")
-        table.insert(flirtLines, "No need to be green with envy, because I'm all yours.")
-        table.insert(flirtLines, "Demonic power or not, I was already obsessed by you!")
-    end
+        table.insert(flirtLines, "For you, I AM prepared");
+        table.insert(flirtLines, "Aren't you a handsome devil.");
+        table.insert(flirtLines, "No need to be green with envy, because I'm all yours.");
+        table.insert(flirtLines, "Demonic power or not, I was already obsessed by you!");
+    end;
 
     if (targetRace == "Night Elf" or targetRace == "Void Elf" or targetRace == "Blood Elf" or targetRace == "Nightborne") then
-        table.insert(flirtLines, "Your leafy long ears remind of the trees at my mother's home")
-        table.insert(flirtLines, "I really like your eyebrows")
+        table.insert(flirtLines, "Your leafy long ears remind of the trees at my mother's home");
+        table.insert(flirtLines, "I really like your eyebrows");
     end
 
 
     if (targetRace == "Vulpera") then
-        table.insert(flirtLines, "Foxy ${targetPoppaMomma}, You smell kinda pretty. Wanna smell me? Hoo-hah!")
+        table.insert(flirtLines, "Foxy ${targetPoppaMomma}, You smell kinda pretty. Wanna smell me? Hoo-hah!");
     end
 
     if (targetRace == "Draenei" and targetRace == "Lightforged Draenei") then
-        table.insert(flirtLines, "Was you father an Draenei? Because there’s nothing else like you on Azeroth!")
+        table.insert(flirtLines, "Was you father an Draenei? Because there’s nothing else like you on Azeroth!");
     end
 
     if (targetClass == "Hunter") then
-        table.insert(flirtLines, "Your arrow hit my heart.")
+        table.insert(flirtLines, "Your arrow hit my heart.");
     end
 
     if (targetClass == "Warlock") then
-        table.insert(flirtLines, "Talk Demonic to me!")
+        table.insert(flirtLines, "Talk Demonic to me!");
+    end
+
+    if (targetClass == "Priest") then
+        table.insert(flirtLines, "Your prayers make me feel divine.");
+    end
+
+    if ((targetClass == "Mage" or playerClass == "Mage") and not(playerGender == targetGender)) then
+        table.insert(flirtLines, "Wanna help me conjure a new life form?");
     end
 
     if (targetClass == "Priest" or targetClass == "Paladin" or targetClass == "Monk" or targetClass == "Warlock" or targetClass == "Mage") then
-        table.insert(flirtLines, "They say that you have spells of love, so would you mind starting to cast one on me?")
-        table.insert(flirtLines, "Did you have buffs for breakfast? Because you look magically delicious!")
+        table.insert(flirtLines, "They say that you have spells of love, so would you mind starting to cast one on me?");
+        table.insert(flirtLines, "Did you have buffs for breakfast? Because you look magically delicious!");
     end
 
     if (targetRace == "Scourge" or targetRace == "Undead") then
-        table.insert(flirtLines, "Do you have a shovel? Because I’m digging you.")
-        table.insert(flirtLines, "Take me out tonight. Where there's music and there's people, and they're young and undead.")
-        table.insert(flirtLines, "I can’t think of anyone else I’d rather survive a Zombie Apocalypse with.")
+        table.insert(flirtLines, "Do you have a shovel? Because I’m digging you.");
+        table.insert(flirtLines, "Take me out tonight. Where there's music and there's people, and they're young and undead.");
+        table.insert(flirtLines, "I can’t think of anyone else I’d rather survive a Zombie Apocalypse with.");
     end
         
     if (playerClass == "Paladin" and targetClass == "Paladin") then
-        table.insert(flirtLines, "I can swing my hammer and you read your divine libram.")
+        table.insert(flirtLines, "I can swing my hammer and you read your divine libram.");
     end
-
 
     -- Oh no, too soon!
     if (playerClass == "Priest" and targetLevel < 18) then
-        print('You should wait with flirting until ${targtName} is higher than level 18.')
+        print('You should wait with flirting until ${targtName} is higher than level 18.');
         return nil
     end
 
@@ -217,7 +253,7 @@ function ExpressYourElf.Flirt.GetMessage(
     pickedLine = flirtLines[fastrandom(1, #flirtLines)]
 
     return ExpressYourElf.Helpers.parseText(
-        ExpressYourElf.Flirt.GetRandomPrefix() .. pickedLine,
+        ExpressYourElf.Flirt.GetRandomPrefix(targetRace) .. pickedLine,
         {
             playerName = playerName,
             playerGender = playerGender,
