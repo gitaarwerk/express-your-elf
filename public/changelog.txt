@@ -1,3 +1,6 @@
+2.4.1
+- Fixed minor visibility issue of EYELF buttons
+
 2.4.0
 - Added Evoker spell IDs for bloodlust/heroism
 - Fixed a bug that prevented instant spell casts to go off (bloodlust/hero, instant battle ress, soulstone, ahnk)
@@ -6,8 +9,8 @@
 
 
 2.3.0
-- added paladin support for battleress "Intercession"
-- added heroism notifier
-- revamped configuratiopn screen due to need to WoW interface changes
-- fixed self ress
-- fixed engineerin ress
+- Added paladin support for battleress "Intercession"
+- Added heroism notifier
+- Revamped configuratiopn screen due to need to WoW interface changes
+- Fixed self ress
+- Fixed engineerin ress

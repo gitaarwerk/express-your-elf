@@ -176,13 +176,13 @@ function ExpressYourElf_SetScale(scale)
 end
 
 function ExpressYourElf_ShowButtons()
-    ExpressYourElfVars.IsShown = true
     ExpressYourElf_Frame:Show();
+    ExpressYourElfVars.IsShown = true
 end
 
 function ExpressYourElf_HideButtons()
-    ExpressYourElfVars.IsShown = false
     ExpressYourElf_Frame:Hide();
+    ExpressYourElfVars.IsShown = false
 end
 
 function ExpressYourElf_AnsweringMachineOn()

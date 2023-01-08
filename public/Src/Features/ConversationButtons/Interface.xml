@@ -9,7 +9,7 @@
     <Script file="Src/Features/ConversationButtons/RandomPhrases/RandomPhrases.lua"/>
     <Script file="Src/Features/ConversationButtons/Rude/Rude.lua"/>
     
-    <Frame name="ExpressYourElf_Frame" toplevel="true" frameStrata="DIALOG" movable="false" enableMouse="true" hidden="true" parent="UIParent" clampedToScreen="true">
+    <Frame name="ExpressYourElf_Frame" toplevel="true" frameStrata="HIGH" movable="false" enableMouse="true" hidden="false" parent="UIParent" clampedToScreen="true">
         <Scripts>
             <OnLoad>
                 self:RegisterEvent("ADDON_LOADED");
