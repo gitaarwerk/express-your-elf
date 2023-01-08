@@ -158,6 +158,8 @@ function ExpressYourElf.NurseNancy.speakCombatRess(targetGUID, spellId)
     local playerGuyGirl = ExpressYourElf.Helpers.GetGuyGirl(playerGender)
     local playerManWoman = ExpressYourElf.Helpers.GetManWoman(playerGender)
 
+    local zoneName = GetRealZoneText()
+
     local prefix
     local combatRessLines
 
@@ -167,25 +169,21 @@ function ExpressYourElf.NurseNancy.speakCombatRess(targetGUID, spellId)
         oppositeSex = "guys"
     end
     
-    local zoneName = GetRealZoneText()
+    prefix = ExpressYourElfVars.usePrefix == true and "[Combat ressing ${targetName}]: " or ""
 
-    if (ExpressYourElfVars.debugMode == true or spellId == 20484 or spellId == 61999 or spellId == 159931 or spellId == 348477 or spellId == 345130) then
-        prefix = ExpressYourElfVars.usePrefix == true and "[Combat ressing ${targetName}]: " or ""
+    combatRessLines = {
+        "Being cremated is ${targetName}'s last hope for a smokin’ hot body.",
+        "${targetName}, always deciding to enjoy the floor while fighting. Come on, ${playerManWoman}, accept the ress!",
+        "${targetName}, stand up and walk!",
+        "In Soviet ${zoneName}, life chooses ${targetName}",
+        "${targetName}, please report to the land of the living. Your urgent assistance is required.",
+        "Up up and ....awayyyyyyy!",
+        "Resurrecting is not changing who you are, but discarding who you are not.",
+    }
 
-        combatRessLines = {
-            "Being cremated is ${targetName}'s last hope for a smokin’ hot body.",
-            "${targetName}, always deciding to enjoy the floor while fighting. Come on, ${playerManWoman}, accept the ress!",
-            "${targetName}, stand up and walk!",
-            "In Soviet ${zoneName}, life chooses ${targetName}",
-            "${targetName}, please report to the land of the living. Your urgent assistance is required.",
-            "Up up and ....awayyyyyyy!",
-            "Resurrecting is not changing who you are, but discarding who you are not.",
-        }
-
-        if (playerGender == "female") then 
-            table.insert(combatRessLines, "Arise my Champ... oh, I mean, you. Yes ${targetName}, there.")
-        end 
-    end
+    if (playerGender == "female") then 
+        table.insert(combatRessLines, "Arise my Champ... oh, I mean, you. Yes ${targetName}, there.")
+    end 
         
     if (playerClass == "Death Knight") then
         table.insert(combatRessLines, "Raising hell in ${zoneName},...err, I mean raising ${targetName}")
@@ -263,6 +261,7 @@ function ExpressYourElf.NurseNancy.speakMassRess()
     local pickedLine
   
     local massRessLines = {
+        "Group assignments make me understand why Arthas worked alone.",
         "Luckily, my profession is not dying.",
         "Wee-ooo! Wee-ooo! Wee-ooo! Wee-ooo! Wee-ooo! Wee-ooo... that's the best ambulance impression I can do.", -- Sueyen-Talnivarr, EU
         "Oh hello juicy corpses.... Your bodies are still warm... hmmmm... hmm.",
@@ -322,7 +321,7 @@ function ExpressYourElf.NurseNancy.Run()
         if (not(ExpressYourElfVars.nurseNancyIsOn == true and isInParty == true) and ExpressYourElfVars.debugMode == false) then 
             return
         end
-    
+
         -- do single ress
         if (event == "UNIT_SPELLCAST_SENT") then 
             local castOrigin, target, spellGUID, spellId = ...
@@ -331,7 +330,7 @@ function ExpressYourElf.NurseNancy.Run()
                 return 
             end
             
-            local unitIdentificator = UnitGUID(target)
+            local unitIdentificator = UnitGUID("target")
             
             local isCombatRess = ExpressYourElf.SpellIds.isCombatRess(spellId)
             local isSingleRess = ExpressYourElf.SpellIds.isSingleRess(spellId)
