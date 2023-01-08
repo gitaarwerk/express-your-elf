@@ -43,6 +43,9 @@ targetHisHer
         "gives an [Staff with built in uranial] to ${targetName}. So handy during raiding!",
         "gives an [Arthas' Adult coloring book] to ${targetName}.",
         "gives a [Remote Controlled Crocodile Head] to ${targetName}.",
+        "gifts a plunger to ${targetName}. Look at that handle! WOW, it's a hand carved head that is an exact copy of YOUR HEAD!",
+        "gifts a notebook to ${targetName}. It's called: 'The origional memoires of Sylvanas, love, death and decomposition.'",
+        "passes a present to ${targetName}. Something useful for you: Best storebought meals for one!",
         "gives a [Skeleton Hand Jewelry Organizer] to ${targetName}. It looks almost like Kel'Thuzad's hand!",
         "gives a [Customizable Branding Stick] to ${targetName}. Handy for marking your crafts,... and raid members", 
         "gives a [The Serial Killer Cookbook] to ${targetName}. I realised this is THE PERFECT present for you!",
@@ -56,7 +59,7 @@ targetHisHer
         "unwraps a present from ${targetName}: Oh,..a gas-proof face mask from Ice-crown citadel of Dr Putrice. The note sas: 'Don’t smell it'.",
         "gives a par of Tauren Paw socks to ${targetName}.",
         "hands over a duty tome to ${targetName} with the title: “The first ones Research-kit”.",
-        -- "passes an Ouija board to ${targetName} with the only letters spelling: “${splitName}”, creepy, or just really C-O-O-L?", -- add when loop will be available
+        "passes an Ouija board to ${targetName} with the only letters spelling: “W-I-N-K-W-I-N-K”, creepy, or just really C-O-O-L?",
         "receives a bronze cast of ${targetName}’s sleeping body.",
         "gives a pair of guillotine ear-rings to ${targetName}.",
         "gives a hand-knit brain beanie.",
@@ -73,6 +76,10 @@ targetHisHer
 
     if (playerRace == "Troll") then
         table.insert(listOfGifts, "hands over ${targetName} a cut off hand from a random bystander, good for in the soup. Magical taste guaranteed")
+    end
+
+    if (targetClass == "Hunter") then
+        table.insert(listOfGifts, "hands over a set of neck ties for ${targetName}'s pets.")
     end
 
     if (playerRace == "Death Knight") then
