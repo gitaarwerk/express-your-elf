@@ -353,6 +353,7 @@ function ExpressYourElf.NurseNancy.Run()
                 end                
             end
 
+
             if (ExpressYourElfVars.debugMode == true) then 
                 debugPrint(feature, ExpressYourElf.NurseNancy.speakSingleRess(unitIdentificator, spellId));
                 debugPrint(feature, ExpressYourElf.NurseNancy.speakCombatRess(unitIdentificator, spellId));
