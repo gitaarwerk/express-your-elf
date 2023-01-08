@@ -52,6 +52,10 @@ function ExpressYourElf.IAmRude.GetMessage(
         "Mirrors don’t lie, and lucky for ${targetName}, they also don’t laugh.",
         "${targetName}, believe in yourself. Someone has to.",
         "You may have noticed ${targetName}'s superpower. It’s invisibility.",
+        "Yours is a face that only a mother and a friend like could love. You'd better find some friends soon.",
+        "You still look 75 from a distance!",
+        "Nobody’s remembering ${targetName} now.",
+        "I never attacked ${targetName} on looks, and believe me, there's plenty of subject matter right there."
     }
 
     if (playerName == "Monnah" or playerName == "Darkrider" or playerName == "Suyen" or playerName == "Suekiyaki" or targetName == "Subzie" or targetName == "Lightzie" or targetName == "Monnah") then 
