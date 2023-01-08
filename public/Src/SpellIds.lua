@@ -148,7 +148,8 @@ function ExpressYourElf.SpellIds.isDrums(spellId)
         178207,-- fury
         146555, -- rage
         35475, -- war
-        230935, -- mountain
+        230935, -- mountain,
+        381301, -- feral hide
     }
 
     if ExpressYourElf.Helpers.tableContainsValue(spellIds, spellId) then
