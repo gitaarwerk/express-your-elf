@@ -49,6 +49,7 @@ function ExpressYourElf.Seduce.GetMessage(
         "What are you raiding tonight? Well, besides me, of course.",
         "I heard you like bad ${playerGuyGirl}. Well, I’m bad at everything.",
         "You can be my Dungeon Master any night.",
+        'Just you, and me, and ${targetName}!'
     }
     
     -- from
