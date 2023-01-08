@@ -33,7 +33,7 @@
                         ExpressYourElfVars.usePrefix = true;
                         ExpressYourElfVars.bombsGoBurrIsOn = true;
                         ExpressYourElfVars.interfaceScale = 1;
-                        ExpressYourElfVars.isShown = true;
+                        ExpressYourElfVars.isShown = false;
 
                         -- show config screen when nothing is set
                         self:Show()
