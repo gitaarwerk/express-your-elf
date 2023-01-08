@@ -78,6 +78,9 @@ function ExpressYourElf.Flirt.GetMessage(
         "People call me ${playerName}, but you can call me tonight.",
         "I may not be the best looking ${playerGuyGirl} here. But I’m the only one talking to you.",
         "If I said I want your armor, would you hold it against me?",
+        "Love must truly be blind because you don’t see me at all.",
+        "You’re like asthma. You just take my breath away.",
+        "You look so good. I’ll marry your brother just to be in your family.",
     }
     
     -- from
