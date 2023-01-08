@@ -10,6 +10,7 @@ function ExpressYourElf.SpellIds.isSingleRess(spellId)
             8342, --Goblin Jumper cables
             22999, --Goblin Jumper cables XL
             54732, --Gnomish army knife
+            361227, -- Evoker's return
     }
 
     if ExpressYourElf.Helpers.tableContainsValue(spellIds, spellId) then
@@ -30,7 +31,7 @@ function ExpressYourElf.SpellIds.isCombatRess(spellId)
         348477, -- Engineer's Disposable Spectrophasic Reanimator (older version).
         345130, -- Engineer's Disposable Spectrophasic Reanimator.
         265116, -- Engineer's Unstable Temporal Time Shifter.
-        184308, -- Disposable Spectrophasic Reanimator.
+        184308, -- Engineer's Disposable Spectrophasic Reanimator.
     }
     
     if ExpressYourElf.Helpers.tableContainsValue(spellIds, spellId) then
@@ -62,6 +63,7 @@ function ExpressYourElf.SpellIds.isMassRess(spellId)
         212056, -- Paladin's Absolution
         212051, -- Monk's Reawaken
         212040, -- Druid's Revitalize
+        361178, -- Evoker's Mass Return
     }
 
     if ExpressYourElf.Helpers.tableContainsValue(spellIds, spellId) then
@@ -80,6 +82,7 @@ function ExpressYourElf.SpellIds.isHeroism(spellId)
         290582,
         204362,
         32182,
+        390386, -- evoker 
     }
 
     if ExpressYourElf.Helpers.tableContainsValue(spellIds, spellId) then
@@ -99,6 +102,7 @@ function ExpressYourElf.SpellIds.isBloodlust(spellId)
         16170,
         164298,
         6742,
+        390386, -- evoker
     }
 
     if ExpressYourElf.Helpers.tableContainsValue(spellIds, spellId) then
