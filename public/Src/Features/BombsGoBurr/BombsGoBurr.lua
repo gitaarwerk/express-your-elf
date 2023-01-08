@@ -68,12 +68,16 @@ function ExpressYourElf.BombsGoBurr.Run()
         isInParty = UnitInParty("player")
 
         -- Early return
-        if (ExpressYourElfVars.bombsGoBurrIsOn == false) then 
+        if (not(ExpressYourElfVars.bombsGoBurrIsOn == true and isInParty == true) and ExpressYourElfVars.debugMode == false) then 
             return
         end
         
         if event == "UNIT_SPELLCAST_SENT" then 
-            local unit, target, castGUID, spellId = ...
+            local castOrigin, target, castGUID, spellId = ...
+
+            if (not(castOrigin == "player")) then
+                return 
+            end
             
             typeOfHaste = ExpressYourElf.SpellIds.isBigHasteCast(spellId)
             -- stop executing if not applied big cd haste buff
@@ -81,13 +85,9 @@ function ExpressYourElf.BombsGoBurr.Run()
                 return
             end
 
-            local isInRaid = UnitInRaid(target)
-            local isInParty = UnitInParty(target)
             local line = ExpressYourElf.BombsGoBurr.SpeakHaste(typeOfHaste)
 
-            if (isInRaid or isInParty) then                                                                                   
-                SendChatMessage(line, groupChannel, nil, index)
-            end
+            SendChatMessage(line, groupChannel, nil, index)
 
             debugPrint(feature, line);
         end 
