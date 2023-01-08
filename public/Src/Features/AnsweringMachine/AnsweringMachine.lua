@@ -90,6 +90,7 @@ function ExpressYourElf.AnsweringMachine.GetMessage(
         "Wrong password, You are now locked out of ${playerName}'s system. You will now be connected with a ${helpdesk} helpdesk member that may or may not scam you.",
         "Hello, this is an automated message saying that ${playerName} will be back when ${playerHeShe} is done being tortured in ${randomLocation}",
         "Gone fishing.",
+        "I’m out of my mind... be back in five minutes!",
         "Hello, you are talking to a machine. I am capable of receiving messages. My owner does not need siding, windows or a tub, and ${playerHisHer} carpets are clean. They give to charity at ${randomLocation} and don’t need ${playerHisHer} picture taken. If you’re still with me, leave your name and BattleNetId and ${playerHeShe} will get back to you. ",
         "Now I lay myself down to sleep; Leave a message at the beep. If I die before I wake, Remember to erase the tape.",
         "This is a test. This is a test of the Answering Machine Broadcast System. This is only a test.",
@@ -99,7 +100,7 @@ function ExpressYourElf.AnsweringMachine.GetMessage(
     }
 
     if (playerClass == "Mage") then
-        table.insert(answeringMachineLines, "${playerName} is currently unavailable. in the kitchen cooking mana cakes.") -- Wildhuntz-Boulderfist, EU
+        table.insert(answeringMachineLines, "${playerName} is currently unavailable. in the kitchen cooking mana cakes.") 
     end
 
     if (playerClass == "Druid") then
@@ -107,7 +108,11 @@ function ExpressYourElf.AnsweringMachine.GetMessage(
     end
     
     if (playerClass == "Hunter") then
-        table.insert(answeringMachineLines, "${playerName} is taming some wild kitten. As it's a diligent task, ${playerHeShe} will be back later.") -- Wildhuntz-Boulderfist, EU
+        table.insert(answeringMachineLines, "${playerName} is taming some wild kitten. As it's a diligent task, ${playerHeShe} will be back later.") 
+    end
+
+    if (playerClass == "Warlock") then
+        table.insert(answeringMachineLines, "${playerName} is in some dimensional rift right now, speaking all weird words and all. Or... ${playerHeShe} is on its way to sacrifice you.")
     end
 
     if (playerClass == "Paladin" or playerClass == "Priest") then
@@ -116,7 +121,15 @@ function ExpressYourElf.AnsweringMachine.GetMessage(
 
     if (playerClass == "Priest") then
         table.insert(answeringMachineLines, "${playerName} is away touching other people and is already reported for this. For more allegations, please call 0800-touched-by-a-priest hotline.")
-        table.insert(answeringMachineLines, "${playerName} is out for a seminar, learning how to avoid claims by pretending brain damage.") -- Wildhuntz-Boulderfist, EU 
+        table.insert(answeringMachineLines, "${playerName} is out for a seminar, learning how to avoid claims to the church, pretending brain damage.") 
+    end
+
+    if (playerClass == "Dracthyr") then
+        table.insert(answeringMachineLines, "[screaming noises]..... ${playerName} is currently setting people on fire, ${playerHeShe} will get right back to you.")
+        table.insert(answeringMachineLines, "An adventure isn't worth telling if there aren't any dragons in it. Right now, there's no dragon here. Find your own adventure instead!") 
+        table.insert(answeringMachineLines, "People who do not believe in the existence of dragons are often eaten by dragons. So ${playerName} is not here. On it's way to eat you.") 
+        table.insert(answeringMachineLines, "Always speak politely to an enraged dragon. Actually, rather just leave a message instead.") 
+        table.insert(answeringMachineLines, "Draco dormiens nunquam titillandus.") 
     end
     
     -- randomize result
