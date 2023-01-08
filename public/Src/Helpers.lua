@@ -20,6 +20,14 @@ function ExpressYourElf.Helpers.GetHisHer(gender)
   return "Her"
 end
 
+function ExpressYourElf.Helpers.GetHimHer(gender)
+  if (gender == "male") then
+    return "Him"
+  end
+
+  return "Her"
+end
+
 
 function ExpressYourElf.Helpers.GetHeShe(gender)
   if (gender == "male") then
