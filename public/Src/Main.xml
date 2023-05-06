@@ -5,7 +5,5 @@
     <Script file="Src/Interface.lua"/>
     <Script file="Src/SpellIds.lua"/>
     <Script file="Src/Helpers.lua"/>
-    <Script file="Src/Features/NurseNancy/NurseNancy.lua"/>
-    <Script file="Src/Features/AnsweringMachine/AnsweringMachine.lua"/>
     <Script file="Src/Features/BombsGoBurr/BombsGoBurr.lua"/>
 </Ui>

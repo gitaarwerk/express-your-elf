@@ -12,12 +12,15 @@
 
             local function eventHandler(ExpressYourElf_ConfigScreen, event, arg1, ...)
                 if (event == "ADDON_LOADED" and arg1 == "ExpressYourElf") then
-                    print("\124cffffcee2Express Your Elf is loaded. To check options; type: " .. ExpressYourElfMessageColor ..  "/eyelf \124ror" .. ExpressYourElfMessageColor .. " /expressyourelf\124r.")
+                    print("\124cffffcee2- Express Your Elf is loaded. To check options; type: " .. ExpressYourElfMessageColor ..  "/eyelf \124ror" .. ExpressYourElfMessageColor .. " /expressyourelf\124r.")
                     local date = GetAddOnMetadata("ExpressYourElf", "X-ResetVarsDate") 
 
                     -- reset out of date addons
                     if (ExpressYourElfVars and ExpressYourElfVars.lastResetDate ~= date) then 
-                        print(ExpressYourElfMessageColor .. 'Config had to be reset because of new functionality.')
+                        print(ExpressYourElfMessageColor .. '!! Config had to be reset because of new functionality.')
+                        print(ExpressYourElfMessageColor .. '!! Other than the conversation buttons, all features have been moved to their own addon.')
+                        print(ExpressYourElfMessageColor .. '!! 1 - For ressurrection, soulstone and speed messages, check out: Nurse Nancy on Curse')
+                        print(ExpressYourElfMessageColor .. '!! 2 - For the answering machine, check out: AFK Answering Machine on Curse')
                         ExpressYourElfVars = nil
                     end
 
@@ -28,32 +31,19 @@
                         ExpressYourElfVars.buttonFrame = {};
                         ExpressYourElfVars.buttonFrame.position = {};
                         ExpressYourElfVars.channel = "SAY";
-                        ExpressYourElfVars.nurseNancyIsOn = true;
-                        ExpressYourElfVars.answeringMachineIsOn = true;
-                        ExpressYourElfVars.usePrefix = true;
-                        ExpressYourElfVars.bombsGoBurrIsOn = true;
+                        <!-- ExpressYourElfVars.bombsGoBurrIsOn = true; -->
                         ExpressYourElfVars.interfaceScale = 1;
-                        ExpressYourElfVars.isShown = false;
+                        ExpressYourElfVars.isShown = true;
+                        ExpressYourElfVars.minimized = false;
 
                         -- show config screen when nothing is set
                         self:Show()
                     end
 
+                    ExpressYourElf_ToggleMinimize(ExpressYourElfVars.minimized)
                     ExpressYourElf_ConfigScreen_ShowButtons:SetChecked(ExpressYourElfVars.isShown);
-                    ExpressYourElf_ConfigScreen_AnsweringMachine:SetChecked(ExpressYourElfVars.answeringMachineIsOn);
-                    ExpressYourElf_ConfigScreen_NurseNancy:SetChecked(ExpressYourElfVars.nurseNancyIsOn);
-                    ExpressYourElf_ConfigScreen_BombsGoBurr:SetChecked(ExpressYourElfVars.bombsGoBurrIsOn);
+                    <!-- ExpressYourElf_ConfigScreen_BombsGoBurr:SetChecked(ExpressYourElfVars.bombsGoBurrIsOn); -->
                     ExpressYourElf_ConfigScreen_Scale:SetValue(ExpressYourElfVars.interfaceScale);
-                end
-
-                if (ExpressYourElfVars.answeringMachineIsOn == true and (event == "CHAT_MSG_WHISPER" or (event == "PLAYER_FLAGS_CHANGED" and arg1 == "player"))) then
-                    if (event == "PLAYER_FLAGS_CHANGED") then 
-                        ExpressYourElf.AnsweringMachine.run() -- prevent that first times not doing anithing
-                    end 
-                    
-                    if (event == "CHAT_MSG_WHISPER") then 
-                        ExpressYourElf.AnsweringMachine.run();
-                    end 
                 end
             end
             self:SetScript("OnEvent", eventHandler);
@@ -67,23 +57,16 @@
     </Scripts>
 
     <Size>
-        <AbsDimension x="500" y="330"/>
+        <AbsDimension x="450" y="200"/>
     </Size>
     <Anchors>
         <Anchor point="CENTER"/>
-        <Offset><AbsDimension x="0" y="0"/></Offset>
     </Anchors>
 
     <Layers>
         <Layer level="BACKGROUND">
             <Texture name="$parent_Background" setAllPoints="true">
                 <Color r="0" g="0" b="0" a="0.65" />
-                <Backdrop bgFile="Interface\TutorialFrame\TutorialFrameBackground"
-                    edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
-                    <EdgeSize val="16"/>
-                    <TileSize val="32"/>
-                    <BackgroundInsets left="5" right="5" top="5" bottom="5"/>
-                </Backdrop>
             </Texture> 	   
         </Layer>
         <Layer level="BORDER" textureSubLevel="-5">
@@ -144,24 +127,24 @@
                     </Anchor>
                 </Anchors>
             </FontString>
-            <FontString name="nurseNancyText" inherits="GameFontNormalSmall" text="Auto ressurrection lines (soulstone, battle ress, ress, mass ress)">
-                <Anchors>
-                    <Anchor point="TOPLEFT" relativePoint="ExpressYourElf_ConfigScreen_NurseNancy" x="50" y="-116"/>
-                </Anchors>
-            </FontString>
-            <FontString name="answeringMachineText" inherits="GameFontNormalSmall" text="AFK Answering Machine">
-                <Anchors>
-                    <Anchor point="TOPLEFT" relativePoint="ExpressYourElf_ConfigScreen_AnsweringMachine" x="50" y="-146"/>
-                </Anchors>
-            </FontString>
-            <FontString name="bombsGoBurrText" inherits="GameFontNormalSmall" text="Heroism/Bloodlust announcer">
+            <!-- <FontString name="bombsGoBurrText" inherits="GameFontNormalSmall" text="Heroism/Bloodlust announcer">
                 <Anchors>
                     <Anchor point="TOPLEFT" relativePoint="ExpressYourElf_ConfigScreen_BombsGoBurr" x="50" y="-176"/>
                 </Anchors>
-            </FontString>
+            </FontString> -->
             <FontString name="buttonInterfaceText" inherits="GameFontNormalSmall" text="Show or hide Conversation Buttons">
                 <Anchors>
-                    <Anchor point="TOPLEFT" relativePoint="ExpressYourElf_ConfigScreen_ShowButtons" x="50" y="-206"/>
+                    <Anchor point="TOPLEFT" relativePoint="ExpressYourElf_ConfigScreen_ShowButtons" x="50" y="-50"/>
+                </Anchors>
+            </FontString>
+            <FontString name="buttonInterfaceText" inherits="GameFontNormalSmall" text="You can move the buttons by dragging the header.">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativePoint="ExpressYourElf_ConfigScreen_ShowButtons" x="20" y="-130"/>
+                </Anchors>
+            </FontString>
+            <FontString name="buttonInterfaceText" inherits="GameFontNormalSmall" text="To miminize the frame, just click on the right button inside of the header.">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativePoint="ExpressYourElf_ConfigScreen_ShowButtons" x="20" y="-150"/>
                 </Anchors>
             </FontString>
         </Layer>
@@ -180,14 +163,14 @@
             </Scripts>
         </Button>
 
-        <CheckButton name="ExpressYourElf_ConfigScreen_ShowButtons" inherits="OptionsCheckButtonTemplate" motionScriptsWhileDisabled="true" virtual="false">
+        <CheckButton name="ExpressYourElf_ConfigScreen_ShowButtons" inherits="UIPanelButtonTemplate" motionScriptsWhileDisabled="true" virtual="false">
             <Size> 
                 <AbsDimension x="25" y="25"/> 
             </Size>
             <Anchors>
                 <Anchor point="TOPLEFT">
                     <Offset>
-                        <AbsDimension x="20" y="-200"/>
+                        <AbsDimension x="20" y="-40"/>
                     </Offset>
                 </Anchor>
             </Anchors>
@@ -207,63 +190,7 @@
             <DisabledCheckedTexture file="Interface\Buttons\UI-CheckBox-Check-Disabled"/>
         </CheckButton>
 
-        <CheckButton name="ExpressYourElf_ConfigScreen_NurseNancy" inherits="OptionsCheckButtonTemplate" motionScriptsWhileDisabled="true" virtual="false">
-            <Size> 
-                <AbsDimension x="25" y="25"/> 
-            </Size>
-            <Anchors>
-                <Anchor point="TOPLEFT" relativePoint="TOPLEFT">
-                    <Offset>
-                        <AbsDimension x="20" y="-110"/>
-                    </Offset>
-                </Anchor>
-            </Anchors>
-            <Scripts>
-                <OnClick>
-                    if (ExpressYourElf_ConfigScreen_NurseNancy:GetChecked() == true) then 
-                        ExpressYourElf_NurseNancyOn()
-                    else 
-                        ExpressYourElf_NurseNancyOff()
-                    end
-                </OnClick>
-            </Scripts>
-            <NormalTexture file="Interface\Buttons\UI-CheckBox-Up"/>
-            <PushedTexture file="Interface\Buttons\UI-CheckBox-Down"/>
-            <HighlightTexture file="Interface\Buttons\UI-CheckBox-Highlight" alphaMode="ADD"/>
-            <CheckedTexture file="Interface\Buttons\UI-CheckBox-Check"/>
-            <DisabledCheckedTexture file="Interface\Buttons\UI-CheckBox-Check-Disabled"/>
-        </CheckButton>
-
-
-            
-        <CheckButton name="ExpressYourElf_ConfigScreen_AnsweringMachine" inherits="OptionsCheckButtonTemplate" motionScriptsWhileDisabled="true" virtual="false">
-            <Size> 
-                <AbsDimension x="25" y="25"/> 
-            </Size>
-            <Anchors>
-                <Anchor point="TOPLEFT" relativePoint="TOPLEFT">
-                    <Offset>
-                        <AbsDimension x="20" y="-140"/>
-                    </Offset>
-                </Anchor>
-            </Anchors>
-            <Scripts>
-                <OnClick>
-                    if ( ExpressYourElf_ConfigScreen_AnsweringMachine:GetChecked() == true ) then 
-                        ExpressYourElf_AnsweringMachineOn()
-                    else 
-                        ExpressYourElf_AnsweringMachineOff()
-                    end
-                </OnClick>
-            </Scripts>
-            <NormalTexture file="Interface\Buttons\UI-CheckBox-Up"/>
-            <PushedTexture file="Interface\Buttons\UI-CheckBox-Down"/>
-            <HighlightTexture file="Interface\Buttons\UI-CheckBox-Highlight" alphaMode="ADD"/>
-            <CheckedTexture file="Interface\Buttons\UI-CheckBox-Check"/>
-            <DisabledCheckedTexture file="Interface\Buttons\UI-CheckBox-Check-Disabled"/>
-        </CheckButton>
-
-        <CheckButton name="ExpressYourElf_ConfigScreen_BombsGoBurr" inherits="OptionsCheckButtonTemplate" motionScriptsWhileDisabled="true" virtual="false">
+        <!-- <CheckButton name="ExpressYourElf_ConfigScreen_BombsGoBurr" inherits="UIPanelButtonTemplate" motionScriptsWhileDisabled="true" virtual="false">
             <Size> 
                 <AbsDimension x="25" y="25"/> 
             </Size>
@@ -288,12 +215,12 @@
             <HighlightTexture file="Interface\Buttons\UI-CheckBox-Highlight" alphaMode="ADD"/>
             <CheckedTexture file="Interface\Buttons\UI-CheckBox-Check"/>
             <DisabledCheckedTexture file="Interface\Buttons\UI-CheckBox-Check-Disabled"/>
-        </CheckButton>
+        </CheckButton> -->
 
         <Slider name="ExpressYourElf_ConfigScreen_Scale" inherits="OptionsSliderTemplate" minValue="0.1" maxValue="1" valueStep="0.1">
             <Size x="185" y="16" />
             <Anchors>
-                <Anchor point="TOPLEFT" relativeKey="$parent.OutputDeviceDropdown" relativePoint="TOPLEFT" x="210" y="-225" />
+                <Anchor point="TOPLEFT" relativeKey="$parent.OutputDeviceDropdown" relativePoint="TOPLEFT" x="182" y="-85" />
             </Anchors>
             <Layers>
                 <Layer level="ARTWORK">
@@ -308,30 +235,6 @@
                 <OnValueChanged>ExpressYourElf_SetScale(value)</OnValueChanged>
             </Scripts>
         </Slider>
-
-        <Button name="ExpressYourElf_ConfigScreen_MoveFrame_ON" inherits="UIPanelButtonTemplate" text="Move buttons">
-            <Size x="120" y="35"/>
-            <Anchors>
-                <Anchor point="LEFT" relativeTo="$parent" relativePoint="TOPLEFT" x="15" y="-280" />
-            </Anchors>
-            <Scripts>
-                <OnClick>
-                    ExpressYourElf_StartMoving()
-                </OnClick>
-            </Scripts>
-        </Button>
-
-        <Button name="ExpressYourElf_ConfigScreen_MoveFrame_OFF" inherits="UIPanelButtonTemplate" text="Lock buttons">
-            <Anchors>
-                <Anchor point="LEFT" relativeTo="$parent" relativePoint="TOPLEFT" x="140" y="-280" />
-            </Anchors>
-            <Size x="120" y="35"/>
-            <Scripts>
-                <OnClick>
-                    ExpressYourElf_StopMoving()
-                </OnClick>
-            </Scripts>
-        </Button>
     </Frames> 
 </Frame>
 </Ui>

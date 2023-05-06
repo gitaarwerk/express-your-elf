@@ -9,7 +9,7 @@
     <Script file="Src/Features/ConversationButtons/RandomPhrases/RandomPhrases.lua"/>
     <Script file="Src/Features/ConversationButtons/Rude/Rude.lua"/>
     
-    <Frame name="ExpressYourElf_Frame" toplevel="true" frameStrata="HIGH" movable="false" enableMouse="true" hidden="false" parent="UIParent" clampedToScreen="true">
+    <Frame name="ExpressYourElf_Frame" toplevel="true" frameStrata="HIGH" movable="true" enableMouse="true" hidden="false" parent="UIParent" clampedToScreen="true">
         <Scripts>
             <OnLoad>
                 self:RegisterEvent("ADDON_LOADED");
@@ -20,7 +20,7 @@
                 local buttonHeightWidth = 45;
 
                 local dancingButton = CreateFrame("Button","dancingButton", ExpressYourElf_Frame, "UIPanelButtonTemplate")
-                dancingButton:SetPoint("TOPLEFT", "ExpressYourElf_Frame", "TOPLEFT", 0, 0);
+                dancingButton:SetPoint("TOPLEFT", "ExpressYourElf_Frame", "TOPLEFT", 10, -20);
                 dancingButton:SetPushedTexture("Interface\\Icons\\inv_misc_firedancer_01")
                 dancingButton:SetNormalTexture("Interface\\Icons\\inv_misc_firedancer_01")
                 dancingButton:GetNormalTexture():SetAllPoints(dancingButton)
@@ -33,7 +33,7 @@
 
                 local randomButton = CreateFrame("Button","randomButton",ExpressYourElf_Frame, "UIPanelButtonTemplate")
                 randomButton:SetScale(scale)
-                randomButton:SetPoint("TOPLEFT", "ExpressYourElf_Frame", "TOPLEFT", 50, 0);
+                randomButton:SetPoint("TOPLEFT", "ExpressYourElf_Frame", "TOPLEFT", 65, -20);
                 randomButton:SetPushedTexture("Interface\\Icons\\ability_warrior_commandingshout")
                 randomButton:SetNormalTexture("Interface\\Icons\\ability_warrior_commandingshout")
                 randomButton:GetNormalTexture():SetAllPoints(randomButton)
@@ -43,10 +43,23 @@
                     ExpressYourElf.RandomPhrases.run()
                 end)
 
+                local rudeButton = CreateFrame("Button","rudeButton",ExpressYourElf_Frame, "UIPanelButtonTemplate")
+                rudeButton:SetScale(scale)
+                rudeButton:SetPoint("TOPLEFT", "ExpressYourElf_Frame", "TOPLEFT", 120, -20);
+                rudeButton:SetPushedTexture("Interface\\Icons\\ability_demonhunter_torment")
+                rudeButton:SetNormalTexture("Interface\\Icons\\ability_demonhunter_torment")
+                rudeButton:GetNormalTexture():SetAllPoints(rudeButton)
+                rudeButton:SetAlpha(.3)
+                rudeButton:Disable()
+                rudeButton:SetToplevel(true)
+                rudeButton:SetSize(buttonHeightWidth, buttonHeightWidth)
+                rudeButton:SetScript("OnClick",function()
+                    ExpressYourElf.IAmRude.run()
+                end)
 
                 local giftButton = CreateFrame("Button","giftButton",ExpressYourElf_Frame, "UIPanelButtonTemplate")
                 giftButton:SetScale(scale)
-                giftButton:SetPoint("TOPLEFT", "ExpressYourElf_Frame", "TOPLEFT", 100, -50);
+                giftButton:SetPoint("TOPLEFT", "ExpressYourElf_Frame", "TOPLEFT", 120, -71);
                 giftButton:SetPushedTexture("Interface\\Icons\\item_shop_giftbox01")
                 giftButton:SetNormalTexture("Interface\\Icons\\item_shop_giftbox01")
                 giftButton:GetNormalTexture():SetAllPoints(giftButton)
@@ -60,7 +73,7 @@
 
                 local flirtButton = CreateFrame("Button","flirtButton",ExpressYourElf_Frame, "UIPanelButtonTemplate")
                 flirtButton:SetScale(scale)
-                flirtButton:SetPoint("TOPLEFT", "ExpressYourElf_Frame", "TOPLEFT", 0, -50);
+                flirtButton:SetPoint("TOPLEFT", "ExpressYourElf_Frame", "TOPLEFT", 10, -71);
                 flirtButton:SetPushedTexture("Interface\\Icons\\spell_shadow_seduction")
                 flirtButton:SetNormalTexture("Interface\\Icons\\spell_shadow_seduction")
                 flirtButton:GetNormalTexture():SetAllPoints(flirtButton)
@@ -74,7 +87,7 @@
 
                 local seduceButton = CreateFrame("Button","seduceButton",ExpressYourElf_Frame, "UIPanelButtonTemplate")
                 seduceButton:SetScale(scale)
-                seduceButton:SetPoint("TOPLEFT", "ExpressYourElf_Frame", "TOPLEFT", 50, -50);
+                seduceButton:SetPoint("TOPLEFT", "ExpressYourElf_Frame", "TOPLEFT", 65, -71);
                 seduceButton:SetPushedTexture("Interface\\Icons\\spell_shadow_summonsuccubus")
                 seduceButton:SetNormalTexture("Interface\\Icons\\spell_shadow_summonsuccubus")
                 seduceButton:GetNormalTexture():SetAllPoints(seduceButton)
@@ -84,21 +97,6 @@
                 seduceButton:SetSize(buttonHeightWidth, buttonHeightWidth)
                 seduceButton:SetScript("OnClick",function()
                     ExpressYourElf.Seduce.run()
-                end)
-
-
-                local rudeButton = CreateFrame("Button","rudeButton",ExpressYourElf_Frame, "UIPanelButtonTemplate")
-                rudeButton:SetScale(scale)
-                rudeButton:SetPoint("TOPLEFT", "ExpressYourElf_Frame", "TOPLEFT", 100, 0);
-                rudeButton:SetPushedTexture("Interface\\Icons\\ability_demonhunter_torment")
-                rudeButton:SetNormalTexture("Interface\\Icons\\ability_demonhunter_torment")
-                rudeButton:GetNormalTexture():SetAllPoints(rudeButton)
-                rudeButton:SetAlpha(.3)
-                rudeButton:Disable()
-                rudeButton:SetToplevel(true)
-                rudeButton:SetSize(buttonHeightWidth, buttonHeightWidth)
-                rudeButton:SetScript("OnClick",function()
-                    ExpressYourElf.IAmRude.run()
                 end)
 
                 ExpressYourElf_GiftButton = giftButton
@@ -114,21 +112,14 @@
                 
                 local function eventHandler(self, event, arg1, ...)
                     if event == "ADDON_LOADED" and arg1 == "ExpressYourElf" then
+
                         if (ExpressYourElfVars.isShown == true) then
                             ExpressYourElf_Frame:Show()
                         else
                             ExpressYourElf_Frame:Hide()
                         end
                 
-                        ExpressYourElf_Frame:SetScale(ExpressYourElfVars.interfaceScale)
-                        ExpressYourElf_Frame:ClearAllPoints(); 
-                        ExpressYourElf_Frame:SetPoint(
-                            ExpressYourElfVars.buttonFrame.position[1],
-                            ExpressYourElfVars.buttonFrame.position[2],
-                            ExpressYourElfVars.buttonFrame.position[3],
-                            ExpressYourElfVars.buttonFrame.position[4],
-                            ExpressYourElfVars.buttonFrame.position[5]
-                        ); 
+                        ExpressYourElf_Frame:SetScale(ExpressYourElfVars.interfaceScale);
                     end
                     if event == "PLAYER_TARGET_CHANGED" and UnitName("target") and UnitPlayerControlled("target") then
                         ExpressYourElf_GiftButton:Enable()
@@ -167,43 +158,103 @@
                 end
                 ExpressYourElf_Frame:SetScript("OnEvent", eventHandler);
             </OnLoad>
-            <OnDragStart>self:StartMoving();</OnDragStart>
-            <OnDragStop>
-                self:StopMovingOrSizing()
-                
-                local anchor,anchorTwo,anchorThree,x,y = self:GetPoint();
-        
-                ExpressYourElfVars.buttonFrame.position[1]=anchor;
-                ExpressYourElfVars.buttonFrame.position[2]=anchorTwo;
-                ExpressYourElfVars.buttonFrame.position[3]=anchorThree;
-                ExpressYourElfVars.buttonFrame.position[4]=x;
-                ExpressYourElfVars.buttonFrame.position[5]=y;
-            </OnDragStop>
         </Scripts>
         <Size>
-            <AbsDimension x="150" y="90"/>
+            <AbsDimension x="173" y="125"/>
         </Size>
         <Anchors>
             <Anchor point="CENTER"/>
-            <Offset><AbsDimension x="0" y="0"/></Offset>
         </Anchors>
         <Layers>
+            <Layer level="BORDER" textureSubLevel="-5" >
+                <Texture inherits="UI-Frame-InnerBotLeftCorner" parentKey="InsetBorderBottomLeft">
+                    <Anchors>
+                        <Anchor point="BOTTOMLEFT"  x="0" y="0"/>
+                    </Anchors>
+                </Texture>
+                <Texture inherits="UI-Frame-InnerBotRight" parentKey="InsetBorderBottomRight">
+                    <Anchors>
+                        <Anchor point="BOTTOMRIGHT"  x="0" y="0"/>
+                    </Anchors>
+                </Texture>
+                <Texture inherits="_UI-Frame-InnerBotTile" parentKey="InsetBorderTop">
+                    <Anchors>
+                        <Anchor x="0" y="2" point="TOPLEFT" relativeKey="$parent.InsetBorderTopLeft" relativePoint="TOPRIGHT"/>
+                        <Anchor x="0" y="2" point="TOPRIGHT" relativeKey="$parent.InsetBorderTopRight" relativePoint="TOPLEFT"/>
+                    </Anchors>
+                </Texture>
+                <Texture inherits="_UI-Frame-InnerBotTile" parentKey="InsetBorderBottom">
+                    <Anchors>
+                        <Anchor point="BOTTOMLEFT" relativeKey="$parent.InsetBorderBottomLeft" relativePoint="BOTTOMRIGHT"/>
+                        <Anchor point="BOTTOMRIGHT" relativeKey="$parent.InsetBorderBottomRight" relativePoint="BOTTOMLEFT"/>
+                    </Anchors>
+                </Texture>
+                <Texture inherits="!UI-Frame-InnerLeftTile" parentKey="InsetBorderLeft">
+                    <Anchors>
+                        <Anchor point="TOPLEFT" x="0" y="0"/>
+                        <Anchor point="BOTTOMLEFT" relativeKey="$parent.InsetBorderBottomRight" relativePoint="TOPLEFT"/>
+                    </Anchors>
+                </Texture>
+                <Texture inherits="!UI-Frame-InnerRightTile" parentKey="InsetBorderRight">
+                <Anchors>
+                    <Anchor point="TOPRIGHT"  x="0" y="0"/>
+                    <Anchor point="BOTTOMRIGHT" relativeKey="$parent.InsetBorderBottomRight" relativePoint="TOPRIGHT"/>
+                </Anchors>
+                </Texture>
+            </Layer>
             <Layer level="BACKGROUND">
-              <Texture name="ExpressYourElf_Frame_BG" hidden="true" setAllPoints="true">
-                <Color r="0.5" g="0.5" b="0" a="1" />
-              </Texture> 
+                <Texture name="$parent_Background" setAllPoints="true">
+                    <Color r="0" g="0" b="0" a="0.60" />
+                </Texture> 	   
+            </Layer>
+            <Layer level="ARTWORK">
+                <Texture name="ExpressYourElf_Frame_Header" file="Interface\DialogFrame\UI-DialogBox-Header">
+                    <Size>
+                        <AbsDimension x="350" y="54"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="TOP">
+                            <Offset>
+                                <AbsDimension x="0" y="20"/>
+                            </Offset>
+                        </Anchor>
+                    </Anchors>
+                    <Scripts>
+                        <OnMouseDown>
+                            ExpressYourElf_Frame:StartMoving()
+                        </OnMouseDown>
+                        <OnMouseUp>
+                            ExpressYourElf_Frame:StopMovingOrSizing()
+                        </OnMouseUp>
+                    </Scripts>
+                </Texture>
+                
+                <FontString inherits="GameFontNormal" text="Express your Elf">
+                    <Anchors>
+                        <Anchor point="TOP" relativeTo="ExpressYourElf_Frame_Header">
+                            <Offset>
+                                <AbsDimension x="0" y="-10"/>
+                            </Offset>
+                        </Anchor>
+                    </Anchors>
+                </FontString>
             </Layer>
         </Layers>
-        <Backdrop bgFile="Interface\TutorialFrame\TutorialFrameBackground" edgeFile="Interface\DialogFrame\UI-Tooltip-Border" tile="true">
-            <EdgeSize>
-                <AbsValue val="16"/>
-            </EdgeSize>
-            <TileSize>
-                <AbsValue val="32"/>
-            </TileSize>
-            <BackgroundInsets>
-                <AbsInset left="5" right="5" top="5" bottom="5"/>
-            </BackgroundInsets>
-        </Backdrop>
+        <Frames>
+                <Button name="$parentButtonClose" inherits="ObjectiveTrackerMinimizeButtonTemplate" >
+                    <Anchors>
+                        <Anchor point="TOPRIGHT" relativePoint="TOPRIGHT">
+                            <Offset>
+                                <AbsDimension x="-6" y="10"/>
+                            </Offset>
+                        </Anchor>
+                    </Anchors>
+                    <Scripts>
+                        <OnClick>
+                            ExpressYourElf_ToggleMinimize();
+                        </OnClick>
+                    </Scripts>
+                </Button>
+                </Frames>
     </Frame>
 </Ui>

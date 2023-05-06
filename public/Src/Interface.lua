@@ -20,7 +20,6 @@ function debugPrint(feature, message)
     end
     
     if (ExpressYourElfVars.debugMode == true) then
-        local featName = feature or "feature_not_set";
         local prefix = "[EYELF_DEBUG (" .. feature .. ")] ";
         print(prefix .. message);
     end
@@ -137,37 +136,6 @@ function ExpressYourElf_Reset_Tooltips()
     end
 end
 
-function ExpressYourElf_StartMoving()
-    ExpressYourElf_Frame:Show()
-    ExpressYourElf_Frame:SetFrameStrata("TOOLTIP")
-    ExpressYourElf_Frame:SetMovable(true)
-    ExpressYourElf_Frame_BG:Show()
-
-    -- disable all buttons
-    ExpressYourElf_FlirtButton:Hide()
-    ExpressYourElf_SeduceButton:Hide()
-    ExpressYourElf_GiftButton:Hide()
-    ExpressYourElf_RudeButton:Hide()
-    ExpressYourElf_DancingButton:Hide()
-    ExpressYourElf_RandomButton:Hide()
-end
-
-function ExpressYourElf_StopMoving()
-    if (ExpressYourElfVars.isShown ~= true) then
-        ExpressYourElf_Frame:Hide()
-    end
-    ExpressYourElf_Frame:SetFrameStrata("DIALOG")
-    ExpressYourElf_Frame:SetMovable(false)
-    ExpressYourElf_Frame_BG:Hide()
-
-    -- always on buttons
-    ExpressYourElf_FlirtButton:Show()
-    ExpressYourElf_SeduceButton:Show()
-    ExpressYourElf_GiftButton:Show()
-    ExpressYourElf_RudeButton:Show()
-    ExpressYourElf_DancingButton:Show()
-    ExpressYourElf_RandomButton:Show()
-end
 
 function ExpressYourElf_SetScale(scale)
     local newValue = math.floor(scale*100)/100
@@ -185,29 +153,45 @@ function ExpressYourElf_HideButtons()
     ExpressYourElfVars.IsShown = false
 end
 
-function ExpressYourElf_AnsweringMachineOn()
-    ExpressYourElfVars.answeringMachineIsOn = true
+function ExpressYourElf_ToggleMinimize(option)
+
+    if (option == false ) then
+        ExpressYourElfVars.minimized = true;
+    end
+
+    if (option == true ) then
+        ExpressYourElfVars.minimized = false;
+    end
+
+    if (ExpressYourElfVars.minimized) then
+        ExpressYourElfVars.minimized = false; 
+        ExpressYourElf_Frame:SetHeight(125);
+        ExpressYourElf_DancingButton:Show()
+        ExpressYourElf_RandomButton:Show()
+        ExpressYourElf_FlirtButton:Show()
+        ExpressYourElf_SeduceButton:Show()
+        ExpressYourElf_GiftButton:Show()
+        ExpressYourElf_RudeButton:Show()
+    else
+        ExpressYourElfVars.minimized = true;
+        ExpressYourElf_DancingButton:Hide()
+        ExpressYourElf_RandomButton:Hide()
+        ExpressYourElf_FlirtButton:Hide()
+        ExpressYourElf_SeduceButton:Hide()
+        ExpressYourElf_GiftButton:Hide()
+        ExpressYourElf_RudeButton:Hide()
+        ExpressYourElf_Frame:SetHeight(1);
+    end
+
 end
 
-function ExpressYourElf_AnsweringMachineOff()
-    ExpressYourElfVars.answeringMachineIsOn = false
-end
+-- function ExpressYourElf_BombsGoBurrOn()
+--     ExpressYourElfVars.bombsGoBurrIsOn = true
+-- end
 
-function ExpressYourElf_NurseNancyOn()
-    ExpressYourElfVars.nurseNancyIsOn = true
-end
-
-function ExpressYourElf_NurseNancyOff()
-    ExpressYourElfVars.nurseNancyIsOn = false
-end
-
-function ExpressYourElf_BombsGoBurrOn()
-    ExpressYourElfVars.bombsGoBurrIsOn = true
-end
-
-function ExpressYourElf_BombsGoBurrOff()
-    ExpressYourElfVars.bombsGoBurrIsOn = false
-end
+-- function ExpressYourElf_BombsGoBurrOff()
+--     ExpressYourElfVars.bombsGoBurrIsOn = false
+-- end
 
 function ExpressYourElf_DebugOn()
     print('Express Your Elf: Debug mode is now ON.')
@@ -232,16 +216,6 @@ local function ExpressYourElf_Init(msg)
         if (ExpressYourElfVars == nil) then
             print('Express your Elf has been reset. You should now type /reload.')
         end
-    elseif cmd == "flirt" then
-        ExpressYourElf.Flirt.run();
-    elseif cmd == "seduce" then
-        ExpressYourElf.Seduce.run();
-    elseif cmd == "gift" then
-        ExpressYourElf.GivePresent.run();
-    elseif cmd == "phrase" then
-        ExpressYourElf.RandomPhrases.run();
-    elseif cmd == "rude" then
-        ExpressYourElf.IAmRude.run();
     elseif cmd == "show" then
         ExpressYourElf_ShowButtons();
     elseif cmd == "hide" then
