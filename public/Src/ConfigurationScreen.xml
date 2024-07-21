@@ -13,7 +13,7 @@
             local function eventHandler(ExpressYourElf_ConfigScreen, event, arg1, ...)
                 if (event == "ADDON_LOADED" and arg1 == "ExpressYourElf") then
                     print("\124cffffcee2- Express Your Elf is loaded. To check options; type: " .. ExpressYourElfMessageColor ..  "/eyelf \124ror" .. ExpressYourElfMessageColor .. " /expressyourelf\124r.")
-                    local date = GetAddOnMetadata("ExpressYourElf", "X-ResetVarsDate") 
+                    local date = C_AddOns.GetAddOnMetadata("ExpressYourElf", "X-ResetVarsDate") 
 
                     -- reset out of date addons
                     if (ExpressYourElfVars and ExpressYourElfVars.lastResetDate ~= date) then 
@@ -31,10 +31,12 @@
                         ExpressYourElfVars.buttonFrame = {};
                         ExpressYourElfVars.buttonFrame.position = {};
                         ExpressYourElfVars.channel = "SAY";
-                        <!-- ExpressYourElfVars.bombsGoBurrIsOn = true; -->
                         ExpressYourElfVars.interfaceScale = 1;
                         ExpressYourElfVars.isShown = true;
                         ExpressYourElfVars.minimized = false;
+                        ExpressYourElfVars.flirtConsent = false;
+                        ExpressYourElfVars.allowMatureContent = false;
+                        ExpressYourElfVars.bringBackRemoved = true;
 
                         -- show config screen when nothing is set
                         self:Show()
@@ -42,7 +44,8 @@
 
                     ExpressYourElf_ToggleMinimize(ExpressYourElfVars.minimized)
                     ExpressYourElf_ConfigScreen_ShowButtons:SetChecked(ExpressYourElfVars.isShown);
-                    <!-- ExpressYourElf_ConfigScreen_BombsGoBurr:SetChecked(ExpressYourElfVars.bombsGoBurrIsOn); -->
+                    ExpressYourElf_ConfigScreen_MatureContent:SetChecked(ExpressYourElfVars.allowMatureContent);
+                    ExpressYourElf_ConfigScreen_FlirtConsent:SetChecked(ExpressYourElfVars.flirtConsent);
                     ExpressYourElf_ConfigScreen_Scale:SetValue(ExpressYourElfVars.interfaceScale);
                 end
             end
@@ -57,7 +60,7 @@
     </Scripts>
 
     <Size>
-        <AbsDimension x="450" y="200"/>
+        <AbsDimension x="450" y="400"/>
     </Size>
     <Anchors>
         <Anchor point="CENTER"/>
@@ -127,11 +130,6 @@
                     </Anchor>
                 </Anchors>
             </FontString>
-            <!-- <FontString name="bombsGoBurrText" inherits="GameFontNormalSmall" text="Heroism/Bloodlust announcer">
-                <Anchors>
-                    <Anchor point="TOPLEFT" relativePoint="ExpressYourElf_ConfigScreen_BombsGoBurr" x="50" y="-176"/>
-                </Anchors>
-            </FontString> -->
             <FontString name="buttonInterfaceText" inherits="GameFontNormalSmall" text="Show or hide Conversation Buttons">
                 <Anchors>
                     <Anchor point="TOPLEFT" relativePoint="ExpressYourElf_ConfigScreen_ShowButtons" x="50" y="-50"/>
@@ -145,6 +143,34 @@
             <FontString name="buttonInterfaceText" inherits="GameFontNormalSmall" text="To miminize the frame, just click on the right button inside of the header.">
                 <Anchors>
                     <Anchor point="TOPLEFT" relativePoint="ExpressYourElf_ConfigScreen_ShowButtons" x="20" y="-150"/>
+                </Anchors>
+            </FontString>
+
+            <!-- flirt consent -->
+            <FontString name="buttonInterfaceText" inherits="GameFontNormalSmall" text="If you don't know other's people age or intention, be aware with flirting. ">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativePoint="ExpressYourElf_ConfigScreen_FlirtConsent" x="50" y="-200"/>
+                </Anchors>
+            </FontString>
+            <FontString name="buttonInterfaceText" inherits="GameFontNormalSmall" text="To allow flirting within Express Your Elf, check the box to acknowledge you">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativePoint="ExpressYourElf_ConfigScreen_FlirtConsent" x="50" y="-215"/>
+                </Anchors>
+            </FontString>
+            <FontString name="buttonInterfaceText" inherits="GameFontNormalSmall" text="are aware that some players may be minors. Or as minor, you may engage">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativePoint="ExpressYourElf_ConfigScreen_FlirtConsent" x="50" y="-230"/>
+                </Anchors>
+            </FontString>
+            <FontString name="buttonInterfaceText" inherits="GameFontNormalSmall" text="a conversation with adults, and may be illegal.">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativePoint="ExpressYourElf_ConfigScreen_FlirtConsent" x="50" y="-245"/>
+                </Anchors>
+            </FontString>
+            <!-- mature content -->
+            <FontString name="buttonInterfaceText" inherits="GameFontNormalSmall" text="Allow expressing mature content to others">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativePoint="ExpressYourElf_ConfigScreen_MatureContent" x="50" y="-310"/>
                 </Anchors>
             </FontString>
         </Layer>
@@ -189,6 +215,63 @@
             <CheckedTexture file="Interface\Buttons\UI-CheckBox-Check"/>
             <DisabledCheckedTexture file="Interface\Buttons\UI-CheckBox-Check-Disabled"/>
         </CheckButton>
+
+
+ <CheckButton name="ExpressYourElf_ConfigScreen_FlirtConsent" inherits="UIPanelButtonTemplate" motionScriptsWhileDisabled="true" virtual="false">
+            <Size> 
+                <AbsDimension x="25" y="25"/> 
+            </Size>
+            <Anchors>
+                <Anchor point="TOPLEFT">
+                    <Offset>
+                        <AbsDimension x="20" y="-200"/>
+                    </Offset>
+                </Anchor>
+            </Anchors>
+            <Scripts>
+                <OnClick>
+                    if ( ExpressYourElf_ConfigScreen_FlirtConsent:GetChecked() ) then 
+                        ExpressYourElf_ConsentToFlirt()
+                    else 
+                        ExpressYourElf_DoNotConsentToFlirt()
+                    end
+                </OnClick>
+            </Scripts>
+            <NormalTexture file="Interface\Buttons\UI-CheckBox-Up"/>
+            <PushedTexture file="Interface\Buttons\UI-CheckBox-Down"/>
+            <HighlightTexture file="Interface\Buttons\UI-CheckBox-Highlight" alphaMode="ADD"/>
+            <CheckedTexture file="Interface\Buttons\UI-CheckBox-Check"/>
+            <DisabledCheckedTexture file="Interface\Buttons\UI-CheckBox-Check-Disabled"/>
+        </CheckButton>
+
+        <CheckButton name="ExpressYourElf_ConfigScreen_MatureContent" inherits="UIPanelButtonTemplate" motionScriptsWhileDisabled="true" virtual="false">
+            <Size> 
+                <AbsDimension x="25" y="25"/> 
+            </Size>
+            <Anchors>
+                <Anchor point="TOPLEFT">
+                    <Offset>
+                        <AbsDimension x="20" y="-300"/>
+                    </Offset>
+                </Anchor>
+            </Anchors>
+            <Scripts>
+                <OnClick>
+                    if ( ExpressYourElf_ConfigScreen_MatureContent:GetChecked() ) then 
+                        ExpressYourElf_AllowMatureContent()
+                    else 
+                        ExpressYourElf_DisallowMatureContent()
+                    end
+                </OnClick>
+            </Scripts>
+            <NormalTexture file="Interface\Buttons\UI-CheckBox-Up"/>
+            <PushedTexture file="Interface\Buttons\UI-CheckBox-Down"/>
+            <HighlightTexture file="Interface\Buttons\UI-CheckBox-Highlight" alphaMode="ADD"/>
+            <CheckedTexture file="Interface\Buttons\UI-CheckBox-Check"/>
+            <DisabledCheckedTexture file="Interface\Buttons\UI-CheckBox-Check-Disabled"/>
+        </CheckButton>
+
+       
 
         <!-- <CheckButton name="ExpressYourElf_ConfigScreen_BombsGoBurr" inherits="UIPanelButtonTemplate" motionScriptsWhileDisabled="true" virtual="false">
             <Size> 

@@ -4,9 +4,9 @@ ExpressYourElfMessageColor = "\124cffff4f98";
 function dump(o)
     if type(o) == 'table' then
         local s = '{ ';
-        for k,v in pairs(o) do
-                if type(k) ~= 'number' then k = '"'..k..'"' end
-                s = s .. '['..k..'] = ' .. dump(v) .. ',';
+        for k, v in pairs(o) do
+            if type(k) ~= 'number' then k = '"' .. k .. '"' end
+            s = s .. '[' .. k .. '] = ' .. dump(v) .. ',';
         end
         return s .. '} ';
     else
@@ -15,18 +15,17 @@ function dump(o)
 end
 
 function debugPrint(feature, message)
-    if (not(ExpressYourElfVars)) then
+    if (not (ExpressYourElfVars)) then
         return;
     end
-    
+
     if (ExpressYourElfVars.debugMode == true) then
         local prefix = "[EYELF_DEBUG (" .. feature .. ")] ";
         print(prefix .. message);
     end
-  end
+end
 
 function ExpressYourElf_Reset_Tooltips()
-
     local targetName = UnitName("target")
     local scale = 0.7
 
@@ -46,7 +45,7 @@ function ExpressYourElf_Reset_Tooltips()
     if (ExpressYourElf_DancingButton:IsEnabled()) then
         local danceText = "Dance"
         if (targetName ~= nil) then
-            danceText = "Dance with " ..targetName
+            danceText = "Dance with " .. targetName
         end
 
         ExpressYourElf_DancingButton:SetScript("OnEnter", function(self)
@@ -65,7 +64,7 @@ function ExpressYourElf_Reset_Tooltips()
         ExpressYourElf_GiftButton:SetScript("OnEnter", function(self)
             AltGameTooltip:SetOwner(self, "ANCHOR_BOTTOMLEFT")
             AltGameTooltip:SetScale(scale)
-            AltGameTooltip:SetText("Give a present to " ..targetName, 1.0, 0.82, 0.0, 1, true)
+            AltGameTooltip:SetText("Give a present to " .. targetName, 1.0, 0.82, 0.0, 1, true)
             AltGameTooltip:Show()
         end)
         ExpressYourElf_GiftButton:SetScript("OnLeave", function(self)
@@ -78,7 +77,7 @@ function ExpressYourElf_Reset_Tooltips()
         ExpressYourElf_RudeButton:SetScript("OnEnter", function(self)
             AltGameTooltip:SetOwner(self, "ANCHOR_BOTTOMLEFT")
             AltGameTooltip:SetScale(scale)
-            AltGameTooltip:SetText("Be rude to " ..  targetName ,1.0, 0.82, 0.0, 1, true)
+            AltGameTooltip:SetText("Be rude to " .. targetName, 1.0, 0.82, 0.0, 1, true)
             AltGameTooltip:Show()
         end)
         ExpressYourElf_RudeButton:SetScript("OnLeave", function(self)
@@ -99,14 +98,14 @@ function ExpressYourElf_Reset_Tooltips()
             AltGameTooltip:Hide()
             AltGameTooltip:SetScale(1)
         end)
-      end
+    end
 
 
     if (ExpressYourElf_SeduceButton:IsEnabled()) then
         ExpressYourElf_SeduceButton:SetScript("OnEnter", function(self)
             AltGameTooltip:SetOwner(self, "ANCHOR_BOTTOMLEFT")
             AltGameTooltip:SetScale(scale)
-            AltGameTooltip:SetText("Seduce " .. targetName ,1.0, 0.82, 0.0, 1, true)
+            AltGameTooltip:SetText("Seduce " .. targetName, 1.0, 0.82, 0.0, 1, true)
             AltGameTooltip:Show()
         end)
         ExpressYourElf_SeduceButton:SetScript("OnLeave", function(self)
@@ -118,15 +117,15 @@ function ExpressYourElf_Reset_Tooltips()
 
     if (ExpressYourElf_RandomButton:IsEnabled()) then
         local randomText = "Say something random"
-        
-        if(targetName ~= nil and UnitPlayerControlled("target")) then
+
+        if (targetName ~= nil and UnitPlayerControlled("target")) then
             randomText = "Say something random to " .. targetName
         end
 
         ExpressYourElf_RandomButton:SetScript("OnEnter", function(self)
             AltGameTooltip:SetOwner(self, "ANCHOR_BOTTOMLEFT")
             AltGameTooltip:SetScale(scale)
-            AltGameTooltip:SetText(randomText ,1.0, 0.82, 0.0, 1, true)
+            AltGameTooltip:SetText(randomText, 1.0, 0.82, 0.0, 1, true)
             AltGameTooltip:Show()
         end)
         ExpressYourElf_RandomButton:SetScript("OnLeave", function(self)
@@ -136,9 +135,8 @@ function ExpressYourElf_Reset_Tooltips()
     end
 end
 
-
 function ExpressYourElf_SetScale(scale)
-    local newValue = math.floor(scale*100)/100
+    local newValue = math.floor(scale * 100) / 100
     ExpressYourElf_Frame:SetScale(newValue);
     ExpressYourElfVars.interfaceScale = newValue
 end
@@ -153,18 +151,48 @@ function ExpressYourElf_HideButtons()
     ExpressYourElfVars.IsShown = false
 end
 
-function ExpressYourElf_ToggleMinimize(option)
+function ExpressYourElf_AllowMatureContent()
+    ExpressYourElfVars.allowMatureContent = true
+    ExpressYourElf_SeduceButton:Enable()
+    ExpressYourElf_SeduceButton:SetAlpha(1)
+end
 
-    if (option == false ) then
+function ExpressYourElf_DisallowMatureContent()
+    ExpressYourElfVars.allowMatureContent = false
+    ExpressYourElf_SeduceButton:Disable()
+    ExpressYourElf_SeduceButton:SetAlpha(0.3)
+end
+
+function ExpressYourElf_ConsentToFlirt()
+    ExpressYourElfVars.flirtConsent = true
+    ExpressYourElf_FlirtButton:Enable()
+    ExpressYourElf_FlirtButton:SetAlpha(1)
+
+    if (ExpressYourElfVars.allowMatureContent) then
+        ExpressYourElf_SeduceButton:Enable()
+        ExpressYourElf_SeduceButton:SetAlpha(1)
+    end
+end
+
+function ExpressYourElf_DoNotConsentToFlirt()
+    ExpressYourElfVars.flirtConsent = false
+    ExpressYourElf_SeduceButton:Disable()
+    ExpressYourElf_FlirtButton:Disable()
+    ExpressYourElf_SeduceButton:SetAlpha(0.3)
+    ExpressYourElf_FlirtButton:SetAlpha(0.3)
+end
+
+function ExpressYourElf_ToggleMinimize(option)
+    if (option == false) then
         ExpressYourElfVars.minimized = true;
     end
 
-    if (option == true ) then
+    if (option == true) then
         ExpressYourElfVars.minimized = false;
     end
 
     if (ExpressYourElfVars.minimized) then
-        ExpressYourElfVars.minimized = false; 
+        ExpressYourElfVars.minimized = false;
         ExpressYourElf_Frame:SetHeight(125);
         ExpressYourElf_DancingButton:Show()
         ExpressYourElf_RandomButton:Show()
@@ -182,7 +210,6 @@ function ExpressYourElf_ToggleMinimize(option)
         ExpressYourElf_RudeButton:Hide()
         ExpressYourElf_Frame:SetHeight(1);
     end
-
 end
 
 -- function ExpressYourElf_BombsGoBurrOn()
@@ -203,7 +230,6 @@ function ExpressYourElf_DebugOff()
     ExpressYourElfVars.debugMode = false
 end
 
-
 local function ExpressYourElf_Init(msg)
     -- pattern matching that skips leading whitespace and whitespace between cmd and args
     -- any whitespace at end of args is retained
@@ -221,12 +247,12 @@ local function ExpressYourElf_Init(msg)
     elseif cmd == "hide" then
         ExpressYourElf_HideButtons();
     elseif cmd == "debug" then
-        if (ExpressYourElfVars and ExpressYourElfVars.debugMode) then 
+        if (ExpressYourElfVars and ExpressYourElfVars.debugMode) then
             ExpressYourElf_DebugOff();
             return;
         end
 
-        if (not (ExpressYourElfVars) or ExpressYourElfVars and ExpressYourElfVars.debugMode == false) then 
+        if (not (ExpressYourElfVars) or ExpressYourElfVars and ExpressYourElfVars.debugMode == false) then
             ExpressYourElf_DebugOn();
         end
         local dumpedVars = dump(ExpressYourElfVars);

@@ -3,24 +3,24 @@ ExpressYourElf.RandomPhrases = {}
 
 function ExpressYourElf.RandomPhrases.GetRandomWorld()
     local listOfWolds = {
-        "Azeroth", 
-        "The Shadowlands", 
-        "Outland", 
+        "Azeroth",
+        "The Shadowlands",
+        "Outland",
         "Argus",
         "Draenor"
     }
-    
+
     return listOfWolds[fastrandom(1, #listOfWolds)]
-end 
+end
 
 function ExpressYourElf.RandomPhrases.GetRandomMessage(
-playerName,
-playerGender,
-playerClass,
-playerRace,
-playerLevel,
-playerHisHer,
-playerSirMam
+    playerName,
+    playerGender,
+    playerClass,
+    playerRace,
+    playerLevel,
+    playerHisHer,
+    playerSirMam
 )
     -- opposite
     local oppositeSex = "men"
@@ -127,33 +127,36 @@ playerSirMam
         table.insert(listOfPhrases, "I always wanted to be taller.");
     end
 
-    if (not(playerRace == "Dracthyr")) then 
-        table.insert(listOfPhrases, "What I won't do is take in two hundred thousand dragons who could be Dracthyr... I have been watching this migration. And I see the people. I mean, they're dragons. They're mostly dragons, and they're strong dragons. These are physically young, strong dragons. They look like prime-time soldiers. Now it's probably not true, but where are the women?... So, you ask two things. Number one, why aren't they fighting for their country? And number two, I don't want these dragons coming over here.")
+    if (not (playerRace == "Dracthyr")) then
+        table.insert(listOfPhrases,
+            "What I won't do is take in two hundred thousand dragons who could be Dracthyr... I have been watching this migration. And I see the people. I mean, they're dragons. They're mostly dragons, and they're strong dragons. These are physically young, strong dragons. They look like prime-time soldiers. Now it's probably not true, but where are the women?... So, you ask two things. Number one, why aren't they fighting for their country? And number two, I don't want these dragons coming over here.")
     end
 
-    if (playerGender == "male") then 
+    if (playerGender == "male") then
         table.insert(listOfPhrases, "Hi, I'm the new Milkman");
     else
         table.insert(listOfPhrases, "Hi, I'm the new Milkwoman");
-    end 
+    end
 
     if (playerRace == "Goblin" or playerRace == "Gnome" or playerRace == "Mechagnome") then
-        table.insert(listOfPhrases, "We've got new planes, we've got new rockets, new missiles, we've got new everything, and it's either here or coming in.");
+        table.insert(listOfPhrases,
+            "We've got new planes, we've got new rockets, new missiles, we've got new everything, and it's either here or coming in.");
     end
 
     if (playerRace == "Tauren" or playerRace == "Highmountain Tauren") then
         table.insert(listOfPhrases, "Chocolate milk comes from me, you know?");
     end
 
-    
+
     if (playerRace == "Dracthyr") then
         table.insert(listOfPhrases, "I have scales, does that mean I'm actually a fish?")
         table.insert(listOfPhrases, "Watch out, here be dragons!");
-        table.insert(listOfPhrases, "Yesterday, I was telling a bedtime fantastical story to my little son. The story kept dragon-on and on and on!");
+        table.insert(listOfPhrases,
+            "Yesterday, I was telling a bedtime fantastical story to my little son. The story kept dragon-on and on and on!");
         table.insert(listOfPhrases, "Did you know that I am an extremely good guitarists. I really know all the scales!");
         table.insert(listOfPhrases, "I am exceptional in juggling, I'm often called very talon-ted!");
         table.insert(listOfPhrases, "Shall I just wing it?");
-        
+
         if (playerGender == "female") then
             table.insert(listOfPhrases, "Did you know, that I actualy prefer to wash my scales with Head and Smolders?");
             table.insert(listOfPhrases, "Dragons girls wear bows and bling, because it is a dragons thing.");
@@ -189,19 +192,35 @@ playerSirMam
     end
 
     if (playerRace == "Priest") then
-        table.insert(listOfPhrases, "I have so much to do that I shall spend the first three hours casting Prayer of Mending.");
+        table.insert(listOfPhrases,
+            "I have so much to do that I shall spend the first three hours casting Prayer of Mending.");
     end
 
     if (playerRace == "Gnome" or playerRace == "Mechagnome") then
         table.insert(listOfPhrases, "Crowded elevators smell different to gnomes.");
     end
 
-    if (playerClass == "Paladin" or playerClass == "Priest" or playerRace == "Lightforged Draenei") then 
-        table.insert(listOfPhrases, "Is there a way we can do something like that by injection inside or almost a cleaning? It sounds interesting to me, so we'll see. But the whole concept of the light, the way it kills it in one minute. That's pretty powerful.");
+    if (playerClass == "Paladin" or playerClass == "Priest" or playerRace == "Lightforged Draenei") then
+        table.insert(listOfPhrases,
+            "Is there a way we can do something like that by injection inside or almost a cleaning? It sounds interesting to me, so we'll see. But the whole concept of the light, the way it kills it in one minute. That's pretty powerful.");
     end
 
     if (playerRace == "Void Elf" or playerClass == "Warlock") then
         table.insert(flirtLines, "I said 'No' to the voices, but they wouldn’t listen.");
+    end
+
+    if (targetRace == "Earthen") then
+        table.insert(listOfPhrases, "Where did you dug up {playerName}?");
+    end
+
+    if (playerRace == "Earthen") then
+        table.insert(listOfPhrases, "I am a rock, I am an island.");
+        table.insert(listOfPhrases, "Before I got adopted, I was in beteen a rock and a hard place.");
+    end
+
+    -- Add mature content
+    if (ExpressYourElfVars.allowMatureContent) then
+        -- table.insert(listOfPhrases, "I always wanted to be taller.");
     end
 
 
@@ -224,23 +243,22 @@ playerSirMam
     )
 end
 
-
 function ExpressYourElf.RandomPhrases.GetRandomMessageToTarget(
-playerName,
-playerGender,
-playerClass,
-playerRace,
-playerLevel,
-playerHisHer,
-playerSirMam,
-targetName,
-targetGender,
-targetClass,
-targetRace,
-targetLevel,
-targetHisHer,
-targetHeShe,
-targetHimHer
+    playerName,
+    playerGender,
+    playerClass,
+    playerRace,
+    playerLevel,
+    playerHisHer,
+    playerSirMam,
+    targetName,
+    targetGender,
+    targetClass,
+    targetRace,
+    targetLevel,
+    targetHisHer,
+    targetHeShe,
+    targetHimHer
 )
     local pickedPhrase;
     local listOfPhrases = {
@@ -277,7 +295,8 @@ targetHimHer
     end
 
     if (targetLevel and targetLevel < 50) then
-        table.insert(listOfPhrases, 'I steal yo soul and cast Lightning level 1,000,000. Your body explodes into a fine bloody mist, because you are only a level ${targetLevel} ${targetClass}.');
+        table.insert(listOfPhrases,
+            'I steal yo soul and cast Lightning level 1,000,000. Your body explodes into a fine bloody mist, because you are only a level ${targetLevel} ${targetClass}.');
     end
 
     if (targetClass and targetClass == "Warlock") then
@@ -289,7 +308,8 @@ targetHimHer
     end
 
     if (targetClass and targetClass == "Priest") then
-        table.insert(listOfPhrases, "${targetName}, would you grab my arm, so I can tell my friends I’ve been touched by a Priest.");
+        table.insert(listOfPhrases,
+            "${targetName}, would you grab my arm, so I can tell my friends I’ve been touched by a Priest.");
     end
 
     if (playerRace == "Dracthyr" and targetClass == "Paladin") then
@@ -321,22 +341,26 @@ targetHimHer
     )
 end
 
-
 function ExpressYourElf.RandomPhrases.run()
-    local playerName, playerGender, playerClass, playerRace, playerLevel  = ExpressYourElf.Helpers.GetPlayerInformation()
+    local playerName, playerGender, playerClass, playerRace, playerLevel = ExpressYourElf.Helpers.GetPlayerInformation()
     local targetName, targetGender, targetClass, targetRace, targetLevel, targetHisHer
-    local playerHisHer = string.lower(ExpressYourElf.Helpers.GetHisHer(playerGender))
-    local playerSirMam = string.lower(ExpressYourElf.Helpers.GetSirMam(playerGender))
+    local playerHisHer                                                   = string.lower(ExpressYourElf.Helpers.GetHisHer(
+        playerGender))
+    local playerSirMam                                                   = string.lower(ExpressYourElf.Helpers.GetSirMam(
+        playerGender))
 
-    if(UnitName("target") and UnitPlayerControlled("target")) then
-        targetName, targetGender, targetClass, targetRace, targetLevel  = ExpressYourElf.Helpers.GetTargetInformation()
-        targetHisHer = string.lower(ExpressYourElf.Helpers.GetHisHer(targetGender))
-        targetHeShe = string.lower(ExpressYourElf.Helpers.GetHeShe(targetGender))
-        targetHimHer = string.lower(ExpressYourElf.Helpers.GetHimHer(targetGender))
+    if (UnitName("target") and UnitPlayerControlled("target")) then
+        targetName, targetGender, targetClass, targetRace, targetLevel = ExpressYourElf.Helpers.GetTargetInformation()
+        targetHisHer                                                   = string.lower(ExpressYourElf.Helpers.GetHisHer(
+            targetGender))
+        targetHeShe                                                    = string.lower(ExpressYourElf.Helpers.GetHeShe(
+            targetGender))
+        targetHimHer                                                   = string.lower(ExpressYourElf.Helpers.GetHimHer(
+            targetGender))
     end
 
     -- get random phrases
-    if(UnitName("target") and UnitPlayerControlled("target")) then
+    if (UnitName("target") and UnitPlayerControlled("target")) then
         local RandomPhraseTargeted = ExpressYourElf.RandomPhrases.GetRandomMessageToTarget(
             playerName,
             playerGender,

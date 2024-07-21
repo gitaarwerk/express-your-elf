@@ -2,12 +2,12 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\FrameXML\UI.xsd"
 >
-    <Script file="Src/Features/ConversationButtons/DanceWithMe/DanceWithMe.lua"/>
-    <Script file="Src/Features/ConversationButtons/Flirt/Flirt.lua"/>
-    <Script file="Src/Features/ConversationButtons/Seduce/Seduce.lua"/>
-    <Script file="Src/Features/ConversationButtons/GivePresent/GivePresent.lua"/>
-    <Script file="Src/Features/ConversationButtons/RandomPhrases/RandomPhrases.lua"/>
-    <Script file="Src/Features/ConversationButtons/Rude/Rude.lua"/>
+    <Script file="Src/ConversationButtons/DanceWithMe/DanceWithMe.lua"/>
+    <Script file="Src/ConversationButtons/Flirt/Flirt.lua"/>
+    <Script file="Src/ConversationButtons/Seduce/Seduce.lua"/>
+    <Script file="Src/ConversationButtons/GivePresent/GivePresent.lua"/>
+    <Script file="Src/ConversationButtons/RandomPhrases/RandomPhrases.lua"/>
+    <Script file="Src/ConversationButtons/Rude/Rude.lua"/>
     
     <Frame name="ExpressYourElf_Frame" toplevel="true" frameStrata="HIGH" movable="true" enableMouse="true" hidden="false" parent="UIParent" clampedToScreen="true">
         <Scripts>
@@ -126,12 +126,19 @@
                         ExpressYourElf_GiftButton:SetAlpha(1)
                         ExpressYourElf_RudeButton:Enable()
                         ExpressYourElf_RudeButton:SetAlpha(1)
-                        ExpressYourElf_FlirtButton:Enable()
-                        ExpressYourElf_FlirtButton:SetAlpha(1)
-                        ExpressYourElf_SeduceButton:Enable()
-                        ExpressYourElf_SeduceButton:SetAlpha(1)
 
-                        ExpressYourElf_Reset_Tooltips()
+                        if (ExpressYourElfVars.flirtConsent) then 
+                            ExpressYourElf_FlirtButton:Enable()
+                            ExpressYourElf_FlirtButton:SetAlpha(1)
+                        else
+                            ExpressYourElf_FlirtButton:Disable()
+                            ExpressYourElf_FlirtButton:SetAlpha(.3)
+                        end
+
+                        if (ExpressYourElfVars.flirtConsent and ExpressYourElfVars.allowMatureContent) then 
+                            ExpressYourElf_SeduceButton:Enable()
+                            ExpressYourElf_SeduceButton:SetAlpha(1)
+                        end
                     elseif event == "PLAYER_TARGET_CHANGED" and UnitName("target") and UnitPlayerControlled("target") == false then
                         ExpressYourElf_GiftButton:Enable()
                         ExpressYourElf_GiftButton:SetAlpha(1)
@@ -141,8 +148,6 @@
                         ExpressYourElf_SeduceButton:SetAlpha(.3)
                         ExpressYourElf_RudeButton:Disable()
                         ExpressYourElf_RudeButton:SetAlpha(.3)
-
-                        ExpressYourElf_Reset_Tooltips()
                     else
                         ExpressYourElf_FlirtButton:Disable()
                         ExpressYourElf_FlirtButton:SetAlpha(.3)
@@ -152,9 +157,8 @@
                         ExpressYourElf_GiftButton:SetAlpha(.3)
                         ExpressYourElf_RudeButton:Disable()
                         ExpressYourElf_RudeButton:SetAlpha(.3)
-
-                        ExpressYourElf_Reset_Tooltips()
                     end
+                        ExpressYourElf_Reset_Tooltips()
                 end
                 ExpressYourElf_Frame:SetScript("OnEvent", eventHandler);
             </OnLoad>
@@ -241,20 +245,28 @@
             </Layer>
         </Layers>
         <Frames>
-                <Button name="$parentButtonClose" inherits="ObjectiveTrackerMinimizeButtonTemplate" >
-                    <Anchors>
-                        <Anchor point="TOPRIGHT" relativePoint="TOPRIGHT">
-                            <Offset>
-                                <AbsDimension x="-6" y="10"/>
-                            </Offset>
-                        </Anchor>
-                    </Anchors>
-                    <Scripts>
-                        <OnClick>
-                            ExpressYourElf_ToggleMinimize();
-                        </OnClick>
-                    </Scripts>
-                </Button>
-                </Frames>
+
+    <Frame name="$parentButtonClose" inherits="FloatingBorderedFrame" parentKey="buttonFrame" alpha="0.2">
+				<Size x="29" y="0"/>
+				<Frames>
+					<Button name="$parentMinimizeButton" parentKey="minimizeButton">
+						<Size x="32" y="32"/>
+						<Anchors>
+							<Anchor point="TOP" x="0" y="4"/>
+						</Anchors>
+						<Scripts>
+							<OnClick>
+								local chatFrame = self:GetParent():GetParent();
+								ExpressYourElf_ToggleMinimize();
+
+							</OnClick>
+						</Scripts>
+						<NormalTexture file="Interface\ChatFrame\UI-ChatIcon-Minimize-Up"/>
+						<PushedTexture file="Interface\ChatFrame\UI-ChatIcon-Minimize-Down"/>
+						<HighlightTexture file="Interface\Buttons\UI-Common-MouseHilight" alphaMode="ADD"/>
+					</Button>
+				</Frames>
+			</Frame>
+        </Frames>
     </Frame>
 </Ui>

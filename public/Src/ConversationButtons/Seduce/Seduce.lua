@@ -49,21 +49,25 @@ function ExpressYourElf.Seduce.GetMessage(
         "What are you raiding tonight? Well, besides me, of course.",
         "I heard you like bad ${playerGuyGirl}. Well, I’m bad at everything.",
         "You can be my Dungeon Master any night.",
-        'Just you, and me, and ${targetName}!'
+        'Just you, and me, and ${targetName}!',
+        'I bet you didn’t feel me lick your ear.',
+        'When you look out your window tonight, you might catch a glimpse of me.',
     }
-    
+
     -- from
     if (playerClass == "Warlock" or playerClass == "Demon Hunter") then
         table.insert(flirtLines, "I want you all to myself, You’re my fel juice I would like to drink more of.")
     end
 
     if (playerRace == "Worgen" or playerRace == "Tauren" or playerRace == "Vulpera" or playerRace == "Pandaren" or playerRace == "Highmountain Tauren") then
-        table.insert(flirtLines, "If being a furry in ${randomWorld} is wrong, You can also keep me as your favourite pet!")
+        table.insert(flirtLines,
+            "If being a furry in ${randomWorld} is wrong, You can also keep me as your favourite pet!")
     end
 
     if (playerClass == "Warlock") then
         table.insert(flirtLines, "I would flirt with you, but I’d rather seduce you with my succubus.");
-        table.insert(flirtLines, "If you click my portal, it will get you sucked through the Celestial Plane right into my room.");
+        table.insert(flirtLines,
+            "If you click my portal, it will get you sucked through the Celestial Plane right into my room.");
     end
 
     if (playerClass == "Shaman") then
@@ -93,7 +97,7 @@ function ExpressYourElf.Seduce.GetMessage(
     end
 
     if (playerClass == "Druid") then
-        table.insert(flirtLines, "Did you know I'm a beast?") 
+        table.insert(flirtLines, "Did you know I'm a beast?")
     end
 
     if (playerClass == "Druid" and playerGender == "male") then
@@ -122,7 +126,8 @@ function ExpressYourElf.Seduce.GetMessage(
     end
 
     if (playerRace == "Goblin" or playerRace == "Gnome" or playerRace == "Mechagnome") then
-        table.insert(flirtLines, "Ride with me away. We doesn't have much time. My legging are tight. So onto my love rocket, climb.");
+        table.insert(flirtLines,
+            "Ride with me away. We doesn't have much time. My legging are tight. So onto my love rocket, climb.");
         table.insert(flirtLines, "If we mixed together, would we go bang, bang!");
     end
 
@@ -131,14 +136,15 @@ function ExpressYourElf.Seduce.GetMessage(
         table.insert(flirtLines, "Don't jinx it and do some crazy voodoo with me.");
     end
 
-    if (playerGender == "female") then 
-        table.insert(flirtLines, "You can eat my skittles. It's the sweetest in the middle. Pink is the flavor. Solve the riddle.")
-    end 
+    if (playerGender == "female") then
+        table.insert(flirtLines,
+            "You can eat my skittles. It's the sweetest in the middle. Pink is the flavor. Solve the riddle.")
+    end
 
     if (playerClass == "Mage") then
         table.insert(flirtLines, "Want to see my magic wand?");
     end
-    
+
     -- to
     if (targetClass == "Druid") then
         table.insert(flirtLines, "I've heard that you are an Epic mount.");
@@ -162,7 +168,7 @@ function ExpressYourElf.Seduce.GetMessage(
         table.insert(flirtLines, "Have you ever thought of the idea I would be your succubus?");
     end
 
-    if (targetRace == "Demon Hunter" and playerGender == "male") and targetGender =="female" then
+    if (targetRace == "Demon Hunter" and playerGender == "male") and targetGender == "female" then
         table.insert(flirtLines, "Have you ever thought of the idea I would be fine you being my succubus?");
     end
 
@@ -174,7 +180,7 @@ function ExpressYourElf.Seduce.GetMessage(
         table.insert(flirtLines, "Foxy ${targetPoppaMomma}, You smell kinda pretty. Wanna smell me? Hoo-hah!");
     end
 
- 
+
 
     if (targetClass == "Rogue") then
         table.insert(flirtLines, "You don’t need [Confusion] to drive me crazy.");
@@ -212,6 +218,34 @@ function ExpressYourElf.Seduce.GetMessage(
         table.insert(flirtLines, "Let us have only leather stand between our love.");
     end
 
+    if (playerRace == "Night Elf" and targetGender == "female") then
+        table.insert(flirtLines, "I'm not a night elf, but I'd like to dance on your moonwell.")
+    end
+
+    if (playerRace == "Earthen") then
+        table.insert(flirtLines,
+            "Sticks and bones may won't break my stones, But whips and chains excite me. So tie me down and hurt me, To show me that you like me.")
+        if (playerGender == "male") then
+            table.insert(flirtLines, "I don't have any bones, but whatever you touch, it'll be rock hard.")
+        end
+    end
+
+
+    if (playerRace == "Blood Elf") then
+        table.insert(flirtLines, "You and me will corrupt the Sunwell for sure.")
+    end
+
+    if (not playerRace == "Blood Elf") then
+        table.insert(flirtLines, "I'm not a blood elf, but I can make you bleed.")
+    end
+
+    if (targetRace == "Earthen") then
+        table.insert(flirtLines, "I will make you scream in both minor and major scales.");
+    end
+
+    if (playerRace == "Dracthyr" and targetRace == "Earthen") then
+        table.insert(flirtLines, "I will make you rock in both minor and major scales.");
+    end
 
     -- Oh no, too soon!
     if (playerClass == "Priest" and targetLevel < 18) then
@@ -246,19 +280,25 @@ function ExpressYourElf.Seduce.GetMessage(
     )
 end
 
-
 function ExpressYourElf.Seduce.run()
-    if(UnitName("target") and UnitPlayerControlled("target")) then
-        local playerName, playerGender, playerClass, playerRace, playerLevel  = ExpressYourElf.Helpers.GetPlayerInformation()
-        local targetName, targetGender, targetClass, targetRace, targetLevel  = ExpressYourElf.Helpers.GetTargetInformation()
+    if (UnitName("target") and UnitPlayerControlled("target")) then
+        local playerName, playerGender, playerClass, playerRace, playerLevel = ExpressYourElf.Helpers
+            .GetPlayerInformation()
+        local targetName, targetGender, targetClass, targetRace, targetLevel = ExpressYourElf.Helpers
+            .GetTargetInformation()
 
-        local playerGuyGirl = ExpressYourElf.Helpers.GetGuyGirl(playerGender)
-        local playerManWoman = ExpressYourElf.Helpers.GetManWoman(playerGender)
-        local targetGuyGirl = ExpressYourElf.Helpers.GetGuyGirl(targetGender)
-        local targetManWoman = ExpressYourElf.Helpers.GetManWoman(targetGender)
-        local targetPoppaMomma = ExpressYourElf.Helpers.GetPoppaMomma(targetGender)
+        local playerGuyGirl                                                  = ExpressYourElf.Helpers.GetGuyGirl(
+            playerGender)
+        local playerManWoman                                                 = ExpressYourElf.Helpers.GetManWoman(
+            playerGender)
+        local targetGuyGirl                                                  = ExpressYourElf.Helpers.GetGuyGirl(
+            targetGender)
+        local targetManWoman                                                 = ExpressYourElf.Helpers.GetManWoman(
+            targetGender)
+        local targetPoppaMomma                                               = ExpressYourElf.Helpers.GetPoppaMomma(
+            targetGender)
 
-        local flirtLine = ExpressYourElf.Seduce.GetMessage(
+        local flirtLine                                                      = ExpressYourElf.Seduce.GetMessage(
             playerName,
             playerGender,
             playerClass,
@@ -276,7 +316,7 @@ function ExpressYourElf.Seduce.run()
             targetPoppaMomma
         )
 
-        local emotes = {
+        local emotes                                                         = {
             'FLIRT',
             'KISS',
             'LAYDOWN',
@@ -293,7 +333,7 @@ function ExpressYourElf.Seduce.run()
         if (flirtLine ~= nil) then
             local randomEmote = emotes[fastrandom(1, #emotes)];
 
-            DoEmote(randomEmote, "");            
+            DoEmote(randomEmote, "");
             SendChatMessage(flirtLine, "SAY", nil, index);
         end
     end
