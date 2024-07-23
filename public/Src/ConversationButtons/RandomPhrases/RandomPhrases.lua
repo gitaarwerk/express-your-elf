@@ -144,6 +144,7 @@ function ExpressYourElf.RandomPhrases.GetRandomMessage(
     end
 
     if (playerRace == "Tauren" or playerRace == "Highmountain Tauren") then
+        table.insert(listOfPhrases, "COWABUNGA!");
         table.insert(listOfPhrases, "Chocolate milk comes from me, you know?");
     end
 
@@ -210,7 +211,7 @@ function ExpressYourElf.RandomPhrases.GetRandomMessage(
     end
 
     if (targetRace == "Earthen") then
-        table.insert(listOfPhrases, "Where did you dug up {playerName}?");
+        table.insert(listOfPhrases, "Where did you dug up ${playerName}?");
     end
 
     if (playerRace == "Earthen") then

@@ -267,9 +267,16 @@ function ExpressYourElf.Flirt.GetMessage(
 
     -- Mature content
     if (ExpressYourElfVars.allowMatureContent) then
-        if (playerClass == "Orc") then
+        if (playerRace == "Orc") then
             table.insert(flirtLines,
                 "I'm a lot like Thrall, I'm a warchief in the streets and a world shaman in the sheets.");
+        end
+
+        if (playerClass == "Warlock") then
+            table.insert(flirtLines,
+                "I'm not wearing any armor. I hope you don't crit.");
+            table.insert(flirtLines,
+                "I could say I have my Munchausen syndrome on you, but so does any other Warlock.");
         end
     end
 
@@ -307,7 +314,7 @@ function ExpressYourElf.Flirt.GetMessage(
 
         if (playerRace == "Goblin" and playerGender == "male" and targetGender == "female") then
             table.insert(flirtLines,
-                "I like my {targetRace} the way I like my fuses: Short, fast and ready to blow.");
+                "I like my ${targetRace} the way I like my fuses: Short, fast and ready to blow.");
         end
 
         if (playerRace == "Orc" and playerGender == "male") then

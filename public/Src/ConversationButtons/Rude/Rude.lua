@@ -18,10 +18,19 @@ function ExpressYourElf.IAmRude.GetMessage(
     targetGuyGirl,
     targetPoppaMomma
 )
-    local playerSex = "girls"
+    local oppositeSex = "girls"
+    local targetHisHer = "her"
+    local targetHeShe = "she"
+    local targetCowGirlBoy = "cowgirl"
 
     if (playerGender == "male") then
         oppositeSex = "guys"
+        targetHisHer = "his"
+    end
+
+    if (targetGender == "male") then
+        targetHeShe = "he"
+        targetCowGirlBoy = "cowboy"
     end
     -- common
     local pickedLine
@@ -55,13 +64,41 @@ function ExpressYourElf.IAmRude.GetMessage(
         "Yours is a face that only a mother and a friend like could love. You'd better find some friends soon.",
         "You still look 75 from a distance!",
         "Nobody’s remembering ${targetName} now.",
+        "May ${targetName}'s sword rust and your spells fizzle!",
+        "I’d rather dine with a murloc than share a battlefield with {targetName}.",
+        "${targetName}'s brain must be enchanted with ignorance!",
+        "${targetName} has the grace of a gnome in a dragon's lair.",
+        "${targetName} couldn’t negotiate ${targetHisHer} way out of a draenei’s market stall.",
+        "${targetName}'s presence is a blight upon this world, more vile than any plague.",
+        "Even a trogg has more intelligence than ${targetName}.",
+        "I’d rather face a hundred kobolds than hear another word from ${targetName}.",
+        "${targetName} couldn’t lead a raid of worgen into a meat locker.",
+        "I’d sooner trust a forsaken with my soul than rely on ${targetName}'s tactics.",
         "I never attacked ${targetName} on looks, and believe me, there's plenty of subject matter right there."
     }
 
-    if (playerName == "Monnah" or playerName == "Darkrider" or playerName == "Suyen" or playerName == "Suekiyaki" or targetName == "Subzie" or targetName == "Lightzie" or targetName == "Monnah") then 
+    if (not targetRace == "Troll" or not targetRace == "Zandalari Troll") then
+        table.insert(rudeLines, "${targetName}'s wit is as sharp as a Troll’s dullest spear.")
+    end
+
+    if (targetRace == "Dracthyr") then
+        table.insert(rudeLines, "Calling ${targetName} a dragon is not only an insult, it's also a fact!")
+        table.insert(rudeLines, "${targetName}'s scales only hide the fact ${targetHeShe} is a coward.")
+        table.insert(rudeLines, "I bet ${targetName}'s parents never watched 'How to train your dragon'.")
+    end
+
+    if (targetRace == "Earthen") then
+        table.insert(rudeLines, "Even a rock has more charm than ${targetName}.");
+    end
+
+    if (playerClass == "Shaman" or playerClass == "Warrior" or playerClass == "Paladin") then
+        table.insert(rudeLines, "${targetName}'s combat skills are as effective as a wet paper shield.");
+    end
+
+    if (targetName == "Monnah" or targetName == "Sueyen" or targetName == "Subzie" or playerName == "Monnah" or playerName == "Darkrider" or playerName == "Suyen" or playerName == "Suekiyaki" or targetName == "Subzie" or targetName == "Lightzie" or targetName == "Monnah") then
         table.insert(rudeLines, "${targetName}, Pannekoek!");
     end
-    
+
     if (targetRace == "Lightforged Draenei" or targetRace == "Draenei") then
         table.insert(rudeLines, "Let me guess, ${targetName}... you're the first person in your family without a tail?");
     end
@@ -70,19 +107,29 @@ function ExpressYourElf.IAmRude.GetMessage(
         table.insert(rudeLines, "Calling ${targetName} a dragon is not only an insult, it's also a fact!");
     end
 
+    if (targetClass == "Mage") then
+        table.insert(rudeLines, "${targetName} is as useful as a broken wand in a magic duel.");
+        table.insert(rudeLines,
+            "You call that magic, ${targetName}? I’ve seen more impressive spells in a goblin’s firework show.");
+    end
+
     if (targetClass == "Mage" or targetClass == "Priest" or targetClass == "Shaman" or targetClass == "Warlock") then
-        
-        table.insert(rudeLines, "All that intellect what is on ${targetName}'s gear doesn’t boost any intellect in the skull, unfortunately.");
+        table.insert(rudeLines,
+            "All that intellect what is on ${targetName}'s gear doesn’t boost any intellect in the skull, unfortunately.");
     end
 
     if (targetClass == "Druid") then
         table.insert(rudeLines, "${targetName}, do you still love nature, despite what it did to you?");
         table.insert(rudeLines, "I’d slap ${targetName}, but that would be animal abuse.");
-        table.insert(rudeLines, "You'll make a fine rug, ${name}!");
+    end
+
+    if (targetRace == "Tauren" or targetRace == "Highmountain Tauren") then
+        table.insert(rudeLines, "I've never seen a ${targetCowGirlBoy} like ${targetName}, line dancing so badly.");
     end
 
     if (targetClass == "Druid" or targetRace == "Tauren" or targetRace == "Highmountain Tauren" or targetRace == "Worgen" or targetRace == "Vulpera") then
         table.insert(rudeLines, "Is That... Fur? Coming Out Of Your Ears?");
+        table.insert(rudeLines, "You'll make a fine rug, ${targetName}!");
     end
 
     -- randomize result
@@ -106,16 +153,20 @@ function ExpressYourElf.IAmRude.GetMessage(
             targetManWoman = targetManWoman,
             targetGuyGirl = targetGuyGirl,
             targetPoppaMomma = targetPoppaMomma,
-            oppositeSex = oppositeSex
+            targetHeShe = targetHeShe,
+            targetHisHer = targetHisHer,
+            oppositeSex = oppositeSex,
+            targetCowGirlBoy = targetCowGirlBoy
         }
     )
 end
 
-
 function ExpressYourElf.IAmRude.run()
-    if(UnitName("target") and UnitPlayerControlled("target")) then
-        local playerName, playerGender, playerClass, playerRace, playerLevel = ExpressYourElf.Helpers.GetPlayerInformation()
-        local targetName, targetGender, targetClass, targetRace, targetLevel = ExpressYourElf.Helpers.GetTargetInformation()
+    if (UnitName("target") and UnitPlayerControlled("target")) then
+        local playerName, playerGender, playerClass, playerRace, playerLevel = ExpressYourElf.Helpers
+            .GetPlayerInformation()
+        local targetName, targetGender, targetClass, targetRace, targetLevel = ExpressYourElf.Helpers
+            .GetTargetInformation()
 
         local playerGuyGirl = ExpressYourElf.Helpers.GetGuyGirl(playerGender)
         local playerManWoman = ExpressYourElf.Helpers.GetManWoman(playerGender)
@@ -165,7 +216,7 @@ function ExpressYourElf.IAmRude.run()
         if (rudeLine ~= nil) then
             local randomEmote = emotes[fastrandom(1, #emotes)];
 
-            DoEmote(randomEmote, "");            
+            DoEmote(randomEmote, "");
             SendChatMessage(rudeLine, "SAY", nil, index);
         end
     end
