@@ -20,4 +20,4 @@
 Src/AltGameTooltip.xml
 Src/ConfigurationScreen.xml
 Src/Main.xml
-Src/Features/ConversationButtons/Interface.xml
+Src/ConversationButtons/Interface.xml
