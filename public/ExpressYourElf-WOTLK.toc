@@ -1,0 +1,23 @@
+## Title: Express Your Elf
+## Interface: 30403
+## X-Min-Interface: 30403
+## X-Future-Interface: TBA
+## Version: @project-version@
+## Author: Darkrider, Dunemaul (EU)
+## Notes: Express oneself in a more casual and fun way.
+## X-Credits: JJnl, Sueyen, Blizard (removed flirts and jokes), Some pick-up lines from https://www.pickuplinesgalore.com/warcraft.html
+## IconTexture: Interface\AddOns\NurseNancy\addonIcon.jpg
+## X-Curse-Project-ID: 385234
+## X-Category: Fun, Communication, Miscellaneous
+## X-Website: https://www.curseforge.com/wow/addons/express-your-elf
+## X-Date: @project-date-iso@
+## X-License: All Rights Reserved
+## X-ResetVarsDate: 2024-07-21T5:10:00Z
+## SavedVariablesPerCharacter: ExpressYourElfVars
+## LoadOnDemand: 0
+## DefaultState: enabled
+
+Src/AltGameTooltip.xml
+Src/ConfigurationScreen.xml
+Src/Main.xml
+Src/ConversationButtons/Interface.xml
