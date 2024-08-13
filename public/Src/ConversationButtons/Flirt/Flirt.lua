@@ -54,6 +54,7 @@ function ExpressYourElf.Flirt.GetMessage(
         'Hi ${playerName}, the voices in my head told me to come over and talk to you.',
         'My name is ${playerName} - a ${playerManWoman} of the Universe. A popular ${targetGuyGirl} like you is going to need some wooing.',
         'Enough about you, let’s talk about me, ${playerName}.',
+        "Are you a bank loan? Because you've got my interest, and I'm not sure if I can afford you.",
         'I seem to have lost my Heartstone. Can I have yours?',
         'They say the Darkmoon Faire is the happiest place on earth. Well apparently, no one has ever been standing next to you.',
         'I’m not a blacksmith, but I can melt me and you together.',
@@ -63,6 +64,7 @@ function ExpressYourElf.Flirt.GetMessage(
         'You’re so hot, you make the Northrend look like Tanaris.',
         'I must be in Medivh`s tower, because you are truly magical!',
         'Your voice melt chocolates.',
+        "You know what you would look really beautiful in? My arms.",
         'You’re so hot, my armor melts',
         'You look just like my sister… who died under mysterious circumstances.',
         'I would give myself an A+',
@@ -79,7 +81,12 @@ function ExpressYourElf.Flirt.GetMessage(
         "Love must truly be blind because you don’t see me at all.",
         "You’re like asthma. You just take my breath away.",
         "You look so good. I’ll marry your brother just to be in your family.",
+        "Despite hundreds of tries I've had very little success with screaming woo-hoo out my window.",
     }
+
+    if (playerGender == "male" and targetGender == "female") then
+        table.insert(flirtLines, "Want to play Barbies? I'll be Ken and you can be the box I come in!")
+    end
 
     -- from
     if (playerRace == "Worgen" or playerRace == "Tauren" or playerRace == "Vulpera" or playerRace == "Pandaren" or playerRace == "Highmountain Tauren") then

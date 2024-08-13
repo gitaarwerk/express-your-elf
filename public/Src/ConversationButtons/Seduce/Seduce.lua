@@ -52,6 +52,7 @@ function ExpressYourElf.Seduce.GetMessage(
         'Just you, and me, and ${targetName}!',
         'I bet you didn’t feel me lick your ear.',
         'When you look out your window tonight, you might catch a glimpse of me.',
+        'The War Within is a great game, but I prefer the war within your pants.',
     }
 
     -- from

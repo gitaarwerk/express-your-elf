@@ -16,13 +16,20 @@ ExpressYourElf.DanceWithMe.list = {
     "Poopy-di scoop. Scoop-diddy-whoop. Whoop-di-scoop-di-poop!",
     "Ob-La-Di, Ob-La-Da",
     "Prance Forward",
+    "I can't stop damaging you. Time passes quickly and your flesh is few. I won't stop till I'm through hurting you",
     "Oh, baby, when you talk like that, you make a ${race} go mad.",
     "Shashay Left",
     "Boogie Down",
     "Shimmy Right",
     "I bless the rains down in Silithus",
     "SWEEET CAROLINEEEEE.... OHHH OH OHHHHH",
+    "I AM THE GOD OF HELL FIRE! and I bring you FIRE! I beg you to BURN!",
 }
+
+-- tauren: "I treat you like milk I’ll do nothing but spoil you",
+-- target priest: "The paramedic thinks I'm clever 'cause I play guitar, I think she's clever 'cause she stops people dying"
+-- mature:  "Told her beauty is why God invented eyeballs, And her booty is why God invented my balls."
+-- I don't like <insert current area>, oh no,... I love it.
 
 ExpressYourElf.DanceWithMe.matureList = {
     "${race} ${guyGirl}s, we're so unforgettable. Tiny bracers and tabards on top! Fel-kissed skin, so hot we'll melt your armor! Ooh oh ooh, Ooh oh ooh!",
@@ -41,6 +48,7 @@ ExpressYourElf.DanceWithMe.listWithTarget = {
     "${guyGirl}, I can thrill you more than any ghost would dare to try",
     "See that ${guyGirl}, watch ${hisHer} scream, kicking the Dancing Queen",
     "${name}, you must be this tall, to ride THIS ride at the carnival.",
+    "Hot summer nights, mid-July, when ${name} and I were forever wild.",
 }
 
 ExpressYourElf.DanceWithMe.matureListWithTarget = {
