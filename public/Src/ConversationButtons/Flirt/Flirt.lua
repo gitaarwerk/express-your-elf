@@ -37,7 +37,7 @@ function ExpressYourElf.Flirt.GetMessage(
     targetGuyGirl,
     targetPoppaMomma
 )
-    local randomWorld = ExpressYourElf.RandomPhrases.GetRandomWorld()
+    local randomWorld = ExpressYourElf.Helpers.GetRandomWorld()
 
     local playerSex = "girls"
 
@@ -552,6 +552,11 @@ function ExpressYourElf.Flirt.run()
             'SHY',
             'SMIRK',
             'STARE',
+            'CURTSEY',
+            'EYE',
+            'GAZE',
+            'WHISTLE'
+
         }
 
         if (flirtLine ~= nil) then

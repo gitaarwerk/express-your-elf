@@ -1,18 +1,6 @@
 -- init
 ExpressYourElf.RandomPhrases = {}
 
-function ExpressYourElf.RandomPhrases.GetRandomWorld()
-    local listOfWolds = {
-        "Azeroth",
-        "The Shadowlands",
-        "Outland",
-        "Argus",
-        "Draenor"
-    }
-
-    return listOfWolds[fastrandom(1, #listOfWolds)]
-end
-
 function ExpressYourElf.RandomPhrases.GetRandomMessage(
     playerName,
     playerGender,
@@ -34,8 +22,7 @@ function ExpressYourElf.RandomPhrases.GetRandomMessage(
         oppositHeShe = "she"
     end
 
-    local randomWorld = ExpressYourElf.RandomPhrases.GetRandomWorld()
-
+    local randomWorld = ExpressYourElf.Helpers.GetRandomWorld()
 
     local pickedPhrase
     local listOfPhrases = {

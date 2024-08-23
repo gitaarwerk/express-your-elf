@@ -33,7 +33,7 @@ function ExpressYourElf.Seduce.GetMessage(
     targetGuyGirl,
     targetPoppaMomma
 )
-    local randomWorld = ExpressYourElf.RandomPhrases.GetRandomWorld()
+    local randomWorld = ExpressYourElf.Helpers.GetRandomWorld()
 
     -- common
     local pickedLine
@@ -329,6 +329,8 @@ function ExpressYourElf.Seduce.run()
             'SNIFF',
             'CUDDLE',
             'TEASE',
+            'SCRATCH',
+            'POUNCE'
         }
 
         if (flirtLine ~= nil) then
