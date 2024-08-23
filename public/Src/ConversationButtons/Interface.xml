@@ -8,6 +8,7 @@
     <Script file="Src/ConversationButtons/GivePresent/GivePresent.lua"/>
     <Script file="Src/ConversationButtons/RandomPhrases/RandomPhrases.lua"/>
     <Script file="Src/ConversationButtons/Rude/Rude.lua"/>
+    <Script file="Src/ConversationButtons/Compliment/Compliment.lua"/>
     
     <Frame name="ExpressYourElf_Frame" toplevel="true" frameStrata="HIGH" movable="true" enableMouse="true" hidden="false" parent="UIParent" clampedToScreen="true">
         <Scripts>

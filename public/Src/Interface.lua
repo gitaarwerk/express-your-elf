@@ -237,6 +237,8 @@ local function ExpressYourElf_Init(msg)
 
     if cmd == "dance" then
         ExpressYourElf.DanceWithMe.run()
+    elseif cmd == "compliment" then
+        ExpressYourElf.Compliment.run()
     elseif cmd == "reset" then
         ExpressYourElfVars = nil;
         if (ExpressYourElfVars == nil) then
