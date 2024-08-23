@@ -216,7 +216,10 @@ function ExpressYourElf.IAmRude.run()
             'SLAP',
             'SIGH',
             'TAUNT',
-            'YAWN'
+            'YAWN',
+            'DOH',
+            'DISSAPOINTMENT',
+            'GROAN'
         }
 
         if (rudeLine ~= nil) then
