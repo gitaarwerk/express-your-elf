@@ -41,15 +41,18 @@ function ExpressYourElf.Compliment.GetMessage(
     local pickedLine
 
     local ComplimentLines = {
-
+        "Your right cheek looks very well today!",
     }
 
     if (playerName == targetName) then
         table.insert(ComplimentLines, "You're looking good today!, why thank me!");
         table.insert(ComplimentLines, "You're doing great, keep it up me!");
         table.insert(ComplimentLines, "You're the best, me!");
+        table.insert(ComplimentLines,
+            "You look like you're taking enough vitamins. You certainly have a healthy glow, me!");
         table.insert(ComplimentLines, "Never get's boring to Compliment myself, YHEA ${playerName}!");
     end
+
 
     if (playerGender == "male" and targetGender == "female") then
     end
