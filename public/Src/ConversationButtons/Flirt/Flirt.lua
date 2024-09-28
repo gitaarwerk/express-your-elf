@@ -94,6 +94,14 @@ function ExpressYourElf.Flirt.GetMessage(
         table.insert(flirtLines, "My name isn’t Elmo, but you can tickle me any time you want to.")
     end
 
+    if (targetRace == "Worgen" or targetRace == "Tauren" or targetRace == "Vulpera" or targetRace == "Pandaren" or targetRace == "Highmountain Tauren") then
+        table.insert(flirtLines, "I like your fur, it's so soft and fluffy.");
+    end
+
+    if (targetRace == "Vulpera") then
+        table.insert(flirtLines, "hey there foxy ${targetManWoman}");
+    end
+
     if (playerRace == "Scourge" or playerRace == "Undead" or playerClass == "Death Knight") then
         table.insert(flirtLines, "You have lovely skin. I can’t wait to wear it.")
         table.insert(flirtLines, "The last time I saw a body like yours, I was burying it in my basement.")
@@ -198,11 +206,13 @@ function ExpressYourElf.Flirt.GetMessage(
     end
 
     if (targetClass == "Druid" and playerClass == "Druid") then
-        table.insert(flirtLines, "Did I see you in the Emrald Dream last night? Or was it just perhaps my own");
+        table.insert(flirtLines, "Did I see you in the Emrald Dream last night? Or was it just perhaps my own.");
     end
 
     if (targetRace == "Dracthyr") then
         table.insert(flirtLines, "Are you one of those fiery Dragonborn, because it's getting hot in here.");
+        table.insert(flirtLines, "On a scale of 0 to you, it’ll be you.");
+        table.insert(flirtLines, "let’s hatch an egg together.");
     end
 
     if (targetClass == "Demon Hunter") then
