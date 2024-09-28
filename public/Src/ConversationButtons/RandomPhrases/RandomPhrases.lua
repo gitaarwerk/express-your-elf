@@ -258,7 +258,6 @@ function ExpressYourElf.RandomPhrases.GetRandomMessageToTarget(
     local listOfPhrases = {
         "Despite the outcome in the guild, we cannot lose hope and we must all work very hard for a friend and a great person named ${targetName}.",
         "Saw ${targetName}, wanted it, bought it, used it once, kept it in my house for ten years, gave it away.",
-        "Hey ${targetName}, your right cheek looks very well today!",
         "I had lunch with ${targetName} last night.",
         "OH NO!, ${targetName}'s at it again!",
         "${targetName}, I regret to inform you that you are no longer welcome at The Knights of The Twisted Knee.",
@@ -280,6 +279,7 @@ function ExpressYourElf.RandomPhrases.GetRandomMessageToTarget(
         "${targetName}, You must go forth into the world, with passion, courage in your conviction, and most importantly be true to yourself. I did it!",
         "${targetName} is somebody that I've always liked, but a lot of people like ${targetName}. Some people probably don't like ${targetName}, but ${targetName}'s somebody I've always liked.",
         "I have tremendous respect for ${targetRace}s.",
+        "Everytime I see someone with a fanny-pack, I high-five them. That’s the last time people have seen them.",
         "I name all of my children to important people in my life. My last one is called ${targetName}.",
         "People like the Pandaren, abusing their dual factionship and smuggling in illegal ${targetRace} among other disgusting deplorables, how sad their lives must be."
     }
@@ -288,13 +288,17 @@ function ExpressYourElf.RandomPhrases.GetRandomMessageToTarget(
         table.insert(listOfPhrases, "ally ally ally! OI OI OI!");
     end
 
+    if (targetRace == "Worgen") then
+        table.insert("Yes, ${targetName},... you howled?");
+    end
+
     if (targetLevel and targetLevel < 50) then
         table.insert(listOfPhrases,
             'I steal yo soul and cast Lightning level 1,000,000. Your body explodes into a fine bloody mist, because you are only a level ${targetLevel} ${targetClass}.');
     end
 
     if (targetClass and targetClass == "Warlock") then
-        table.insert(listOfPhrases, 'Uh, bing, bing, bong, bong, get out, demon!');
+        table.insert(listOfPhrases, 'Uh, bing, bing, bong, bong, be gone, demon!');
     end
 
     if (targetClass and targetClass == "Mage") then
