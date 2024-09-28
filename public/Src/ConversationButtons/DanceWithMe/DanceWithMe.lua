@@ -74,6 +74,17 @@ local function getPlayerMessage(
         table.insert(danceLines, "I'm a cow{playerGuyGirl}, dead or alive!")
     end
 
+    if (playerRace == "Troll" or playerRace == "Zandalari Troll") then
+        table.insert(danceLines, "I'm a voodoo ${playerGuyGirl}, I'm a voodoo ${playerGuyGirl}")
+        table.insert(danceLines, "TroLolololo trolol,trolololol, trolololol.")
+    end
+
+    if targetHeShe == "he" then
+        table.insert(danceLines, "Señor más fina,... Who's that guy?)")
+    else
+        table.insert(danceLines, "Señorita más fina,... Who's that girl)")
+    end
+
     -- from
     if (playerRace == "Worgen" or playerRace == "Tauren" or playerRace == "Vulpera" or playerRace == "Pandaren" or playerRace == "Highmountain Tauren") then
     end
