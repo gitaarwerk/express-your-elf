@@ -80,7 +80,8 @@ function ExpressYourElf.IAmRude.GetMessage(
         "I’d rather face a hundred kobolds than hear another word from ${targetName}.",
         "${targetName} couldn’t lead a raid of worgen into a meat locker.",
         "I’d sooner trust a forsaken with my soul than rely on ${targetName}'s tactics.",
-        "I never attacked ${targetName} on looks, and believe me, there's plenty of subject matter right there."
+        "I never attacked ${targetName} on looks, and believe me, there's plenty of subject matter right there.",
+        "I can’t say I’ve seen ${targetName} actively, but I sure notice when ${targetHeShe} is not around.",
     }
 
     if (not targetRace == "Troll" or not targetRace == "Zandalari Troll") then
@@ -95,10 +96,28 @@ function ExpressYourElf.IAmRude.GetMessage(
 
     if (targetRace == "Earthen") then
         table.insert(rudeLines, "Even a rock has more charm than ${targetName}.");
+        table.insert(rudeLines, "${targetName}, You look like a great stepping stone (earthen).");
     end
+
 
     if (playerClass == "Shaman" or playerClass == "Warrior" or playerClass == "Paladin") then
         table.insert(rudeLines, "${targetName}'s combat skills are as effective as a wet paper shield.");
+    end
+
+    if (targetRace == "Worgen" or targetRace == "Tauren" or targetRace == "Vulpera" or targetRace == "Pandaren" or targetRace == "Highmountain Tauren") then
+        table.insert(rudeLines,
+            "You’re intelligence only comes from the symbiotic relationship with the flees you carry.");
+    end
+
+    if (targetRace == "Pandaren") then
+        table.insert(rudeLines, "I bet ${targetName} is the only one who can get drunk on tea.");
+        table.insert(rudeLines, "Look at ${targetName}, no wonder Pandaren are close to extinct.");
+        table.insert(rudeLines,
+            "The only reason why we let ${targetName} in our faction is because Pandaren are cute when they randomly roll over, trying to play.");
+    end
+
+    if (targetRace == "Nightborne" or targetRace == "Blood Elf" or targetRace == "Void Elf" or targetRace == "Night Elf") then
+        table.insert(rudeLines, "Ew. ${targetName}'s ears are so big, it is full of earwax.");
     end
 
     if (targetName == "Monnah" or targetName == "Sueyen" or targetName == "Subzie" or playerName == "Monnah" or playerName == "Darkrider" or playerName == "Suyen" or playerName == "Suekiyaki" or targetName == "Subzie" or targetName == "Lightzie" or targetName == "Monnah") then
@@ -111,6 +130,7 @@ function ExpressYourElf.IAmRude.GetMessage(
 
     if (targetRace == "Dracthyr") then
         table.insert(rudeLines, "Calling ${targetName} a dragon is not only an insult, it's also a fact!");
+        table.insert(rudeLines, "I bet ${targetName} hatches chickens instead of dragons.");
     end
 
     if (targetClass == "Mage") then
