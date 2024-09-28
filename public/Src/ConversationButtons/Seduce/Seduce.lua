@@ -24,6 +24,7 @@ function ExpressYourElf.Seduce.GetMessage(
     playerLevel,
     playerManWoman,
     playerGuyGirl,
+    playerHimHer,
     targetName,
     targetGender,
     targetClass,
@@ -31,7 +32,8 @@ function ExpressYourElf.Seduce.GetMessage(
     targetLevel,
     targetManWoman,
     targetGuyGirl,
-    targetPoppaMomma
+    targetPoppaMomma,
+    targetHimHer,
 )
     local randomWorld = ExpressYourElf.Helpers.GetRandomWorld()
 
@@ -53,16 +55,31 @@ function ExpressYourElf.Seduce.GetMessage(
         'I bet you didn’t feel me lick your ear.',
         'When you look out your window tonight, you might catch a glimpse of me.',
         'The War Within is a great game, but I prefer the war within your pants.',
+        'BITTY!!',
+        'You look comfortable to sit on',
+        'Nice neck you’ve got there',
     }
 
+    if (targetGender == "female") then
+        table.insert(flirtLines, "My what a smashing blouse you've got there!");
+    end
     -- from
     if (playerClass == "Warlock" or playerClass == "Demon Hunter") then
         table.insert(flirtLines, "I want you all to myself, You’re my fel juice I would like to drink more of.")
     end
 
+    if (playerRace == "Worgen") then
+        table.insert(flirtLines, "I'm a werewolf, but I'm not the only one who's going to be howling tonight.");
+        table.insert(flirtLines, "Did you know, a worgen always brings ${playerHisHer} pack with ${playerHimHer}?");
+    end
+
     if (playerRace == "Worgen" or playerRace == "Tauren" or playerRace == "Vulpera" or playerRace == "Pandaren" or playerRace == "Highmountain Tauren") then
         table.insert(flirtLines,
             "If being a furry in ${randomWorld} is wrong, You can also keep me as your favourite pet!")
+    end
+
+    if (playerRace == "Vulpera") then
+        table.insert(flirtLines, "My face is long and shallow, one of my great assets")
     end
 
     if (playerClass == "Warlock") then
@@ -144,6 +161,7 @@ function ExpressYourElf.Seduce.GetMessage(
 
     if (playerClass == "Mage") then
         table.insert(flirtLines, "Want to see my magic wand?");
+        table.insert(flirtLines, "I blast off your clothes with my pyroblast, and freeze you so i can handle you.");
     end
 
     -- to
@@ -244,6 +262,10 @@ function ExpressYourElf.Seduce.GetMessage(
         table.insert(flirtLines, "I will make you scream in both minor and major scales.");
     end
 
+    if (targetRace == "Dracthyr") then
+        table.insert(flirtLines, "You have just the right tongue and teeth.");
+    end
+
     if (playerRace == "Dracthyr" and targetRace == "Earthen") then
         table.insert(flirtLines, "I will make you rock in both minor and major scales.");
     end
@@ -267,6 +289,7 @@ function ExpressYourElf.Seduce.GetMessage(
             playerLevel = playerLevel,
             playerManWoman = playerManWoman,
             playerGuyGirl = playerGuyGirl,
+            playerHimHer = playerHimHer,
             targetName = targetName,
             targetGender = targetGender,
             targetClass = targetClass,
@@ -275,8 +298,10 @@ function ExpressYourElf.Seduce.GetMessage(
             targetManWoman = targetManWoman,
             targetGuyGirl = targetGuyGirl,
             targetPoppaMomma = targetPoppaMomma,
+            targetHimHer = targetHimHer,
             oppositeSex = oppositeSex,
             randomWorld = randomWorld
+
         }
     )
 end
@@ -298,6 +323,10 @@ function ExpressYourElf.Seduce.run()
             targetGender)
         local targetPoppaMomma                                               = ExpressYourElf.Helpers.GetPoppaMomma(
             targetGender)
+        local playerHimHer                                                   = ExpressYourElf.Helpers.GetHimHer(
+            playerGender)
+        local targetHimHer                                                   = ExpressYourElf.Helpers.GetHimHer(
+            targetGender)
 
         local flirtLine                                                      = ExpressYourElf.Seduce.GetMessage(
             playerName,
@@ -307,6 +336,7 @@ function ExpressYourElf.Seduce.run()
             playerLevel,
             playerManWoman,
             playerGuyGirl,
+            playerHimHer,
             targetName,
             targetGender,
             targetClass,
@@ -314,7 +344,8 @@ function ExpressYourElf.Seduce.run()
             targetLevel,
             targetManWoman,
             targetGuyGirl,
-            targetPoppaMomma
+            targetPoppaMomma,
+            targetHimHer,
         )
 
         local emotes                                                         = {
