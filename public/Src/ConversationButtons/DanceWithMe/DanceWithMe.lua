@@ -5,7 +5,7 @@ ExpressYourElf.DanceWithMe = {}
 local function getRandomPrefix()
     local prefix = {
         '*${playerName} sings*: ',
-        '*{$playerName} dances to*: ',
+        '*${playerName} dances to*: ',
         '*${playerName} chants*: ',
         '*${playerName} hums*: ',
         '*${playerName} moves to the lyrics of*: ',
