@@ -1,6 +1,6 @@
 ## Title: Express Your Elf
-## Interface: 11503
-## X-Min-Interface: 11503
+## Interface: 11504
+## X-Min-Interface: 11504
 ## X-Future-Interface: TBA
 ## Version: @project-version@
 ## Author: Darkrider, Dunemaul (EU)

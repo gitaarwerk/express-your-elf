@@ -47,8 +47,8 @@
                 local rudeButton = CreateFrame("Button","rudeButton",ExpressYourElf_Frame, "UIPanelButtonTemplate")
                 rudeButton:SetScale(scale)
                 rudeButton:SetPoint("TOPLEFT", "ExpressYourElf_Frame", "TOPLEFT", 120, -20);
-                rudeButton:SetPushedTexture("Interface\\Icons\\ability_demonhunter_torment")
-                rudeButton:SetNormalTexture("Interface\\Icons\\ability_demonhunter_torment")
+                rudeButton:SetPushedTexture("Interface\\Icons\\achievement_boss_trollgore")
+                rudeButton:SetNormalTexture("Interface\\Icons\\achievement_boss_trollgore")
                 rudeButton:GetNormalTexture():SetAllPoints(rudeButton)
                 rudeButton:SetAlpha(.3)
                 rudeButton:Disable()
@@ -61,8 +61,8 @@
                 local giftButton = CreateFrame("Button","giftButton",ExpressYourElf_Frame, "UIPanelButtonTemplate")
                 giftButton:SetScale(scale)
                 giftButton:SetPoint("TOPLEFT", "ExpressYourElf_Frame", "TOPLEFT", 120, -71);
-                giftButton:SetPushedTexture("Interface\\Icons\\item_shop_giftbox01")
-                giftButton:SetNormalTexture("Interface\\Icons\\item_shop_giftbox01")
+                giftButton:SetPushedTexture("Interface\\Icons\\inv_misc_gift_02")
+                giftButton:SetNormalTexture("Interface\\Icons\\inv_misc_gift_02")
                 giftButton:GetNormalTexture():SetAllPoints(giftButton)
                 giftButton:SetAlpha(.3)
                 giftButton:Disable()
@@ -75,8 +75,8 @@
                 local flirtButton = CreateFrame("Button","flirtButton",ExpressYourElf_Frame, "UIPanelButtonTemplate")
                 flirtButton:SetScale(scale)
                 flirtButton:SetPoint("TOPLEFT", "ExpressYourElf_Frame", "TOPLEFT", 10, -71);
-                flirtButton:SetPushedTexture("Interface\\Icons\\spell_shadow_seduction")
-                flirtButton:SetNormalTexture("Interface\\Icons\\spell_shadow_seduction")
+                flirtButton:SetPushedTexture("Interface\\Icons\\inv_valentinescandy")
+                flirtButton:SetNormalTexture("Interface\\Icons\\inv_valentinescandy")
                 flirtButton:GetNormalTexture():SetAllPoints(flirtButton)
                 flirtButton:Disable()
                 flirtButton:SetAlpha(.3)
@@ -139,8 +139,12 @@
                         if (ExpressYourElfVars.flirtConsent and ExpressYourElfVars.allowMatureContent) then 
                             ExpressYourElf_SeduceButton:Enable()
                             ExpressYourElf_SeduceButton:SetAlpha(1)
+                        else
+                             ExpressYourElf_SeduceButton:Disable()
+                            ExpressYourElf_SeduceButton:SetAlpha(0.3)
                         end
                     elseif event == "PLAYER_TARGET_CHANGED" and UnitName("target") and UnitPlayerControlled("target") == false then
+                    print("PLAYER_TARGET_CHANGED__notarget")
                         ExpressYourElf_GiftButton:Enable()
                         ExpressYourElf_GiftButton:SetAlpha(1)
                         ExpressYourElf_FlirtButton:Disable()
@@ -159,7 +163,8 @@
                         ExpressYourElf_RudeButton:Disable()
                         ExpressYourElf_RudeButton:SetAlpha(.3)
                     end
-                        ExpressYourElf_Reset_Tooltips()
+
+                    ExpressYourElf_Reset_Tooltips()
                 end
                 ExpressYourElf_Frame:SetScript("OnEvent", eventHandler);
             </OnLoad>

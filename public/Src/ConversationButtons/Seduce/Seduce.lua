@@ -33,7 +33,7 @@ function ExpressYourElf.Seduce.GetMessage(
     targetManWoman,
     targetGuyGirl,
     targetPoppaMomma,
-    targetHimHer,
+    targetHimHer
 )
     local randomWorld = ExpressYourElf.Helpers.GetRandomWorld()
 
@@ -345,10 +345,10 @@ function ExpressYourElf.Seduce.run()
             targetManWoman,
             targetGuyGirl,
             targetPoppaMomma,
-            targetHimHer,
+            targetHimHer
         )
 
-        local emotes                                                         = {
+        local emotes = {
             'FLIRT',
             'KISS',
             'LAYDOWN',
