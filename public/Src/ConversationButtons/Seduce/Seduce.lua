@@ -348,7 +348,7 @@ function ExpressYourElf.Seduce.run()
             targetHimHer
         )
 
-        local emotes = {
+        local emotes                                                         = {
             'FLIRT',
             'KISS',
             'LAYDOWN',

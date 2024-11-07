@@ -128,6 +128,7 @@
                         ExpressYourElf_RudeButton:Enable()
                         ExpressYourElf_RudeButton:SetAlpha(1)
 
+
                         if (ExpressYourElfVars.flirtConsent) then 
                             ExpressYourElf_FlirtButton:Enable()
                             ExpressYourElf_FlirtButton:SetAlpha(1)
@@ -144,7 +145,6 @@
                             ExpressYourElf_SeduceButton:SetAlpha(0.3)
                         end
                     elseif event == "PLAYER_TARGET_CHANGED" and UnitName("target") and UnitPlayerControlled("target") == false then
-                    print("PLAYER_TARGET_CHANGED__notarget")
                         ExpressYourElf_GiftButton:Enable()
                         ExpressYourElf_GiftButton:SetAlpha(1)
                         ExpressYourElf_FlirtButton:Disable()
