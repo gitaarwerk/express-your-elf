@@ -147,6 +147,15 @@ function ExpressYourElf.IAmRude.GetMessage(
             "All that intellect what is on ${targetName}'s gear doesn’t boost any intellect in the skull, unfortunately.");
     end
 
+    if (targetClass == "Warlock" or targetClass == "Demon Hunter") then
+        table.insert(rudeLines,
+            "The Fel really did a number on you, ${targetName}. Luckily for you, you don't even know what numbers are.");
+    end
+
+    if (targetClass == "Warlock" or targetClass == "Void Elf") then
+        table.insert(rudeLines, "The void never drained the sanity on ${targetName}, because there was none to begin with.");
+    end
+
     if (targetClass == "Druid") then
         table.insert(rudeLines, "${targetName}, do you still love nature, despite what it did to you?");
         table.insert(rudeLines, "I’d slap ${targetName}, but that would be animal abuse.");
