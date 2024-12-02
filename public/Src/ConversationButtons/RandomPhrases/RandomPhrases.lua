@@ -42,6 +42,9 @@ function ExpressYourElf.RandomPhrases.GetRandomMessage(
         "It’s happening again!",
         "My nipple is broken.",
         "My hair hurts.",
+        "Buy buying 'The War Within' you are supporting the war within.",
+        "Playing 'The War Within' is like going to a psychologist. I've learned so much about myself.",
+        "I'm not a doctor, but I play one on TV.",
         "The fact that I have a large brain is scary.",
         "I have a great relationship with the ${oppositeSex}.",
         "I have a great relationship with the ${playerRace}s.",
@@ -190,10 +193,6 @@ function ExpressYourElf.RandomPhrases.GetRandomMessage(
             "I have so much to do that I shall spend the first three hours casting Prayer of Mending.");
     end
 
-    if (playerRace == "Gnome" or playerRace == "Mechagnome") then
-        table.insert(listOfPhrases, "Crowded elevators smell different to gnomes.");
-    end
-
     if (playerClass == "Paladin" or playerClass == "Priest" or playerRace == "Lightforged Draenei") then
         table.insert(listOfPhrases,
             "Is there a way we can do something like that by injection inside or almost a cleaning? It sounds interesting to me, so we'll see. But the whole concept of the light, the way it kills it in one minute. That's pretty powerful.");
@@ -214,7 +213,13 @@ function ExpressYourElf.RandomPhrases.GetRandomMessage(
 
     -- Add mature content
     if (ExpressYourElfVars.allowMatureContent) then
-        -- table.insert(listOfPhrases, "I always wanted to be taller.");
+        if (playerClass == "Rogue" or playerClass == "Demon Hunter" or playerClass == "Druid" or playerClass == "Monk") then
+            table.insert(listOfPhrases, "Do you want to wear my armor? it's still warm and just slightly damp.");
+        end
+
+        if (playerRace == "Gnome" or playerRace == "Mechagnome") then
+            table.insert(listOfPhrases, "Crowded elevators smell different to gnomes.");
+        end
     end
 
 
