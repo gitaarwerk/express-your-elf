@@ -58,6 +58,20 @@
                     ExpressYourElf.IAmRude.run()
                 end)
 
+                local complimentButton = CreateFrame("Button","rudeButton",ExpressYourElf_Frame, "UIPanelButtonTemplate")
+                complimentButton:SetScale(scale)
+                complimentButton:SetPoint("TOPLEFT", "ExpressYourElf_Frame", "TOPLEFT", 175, -20);
+                complimentButton:SetPushedTexture("Interface\\Icons\\inv_misc_trophy_argent")
+                complimentButton:SetNormalTexture("Interface\\Icons\\inv_misc_trophy_argent")
+                complimentButton:GetNormalTexture():SetAllPoints(complimentButton)
+                complimentButton:SetAlpha(.3)
+                complimentButton:Disable()
+                complimentButton:SetToplevel(true)
+                complimentButton:SetSize(buttonHeightWidth, buttonHeightWidth)
+                complimentButton:SetScript("OnClick",function()
+                    ExpressYourElf.Compliment.run()
+                end)
+
                 local giftButton = CreateFrame("Button","giftButton",ExpressYourElf_Frame, "UIPanelButtonTemplate")
                 giftButton:SetScale(scale)
                 giftButton:SetPoint("TOPLEFT", "ExpressYourElf_Frame", "TOPLEFT", 120, -71);
@@ -104,6 +118,7 @@
                 ExpressYourElf_RudeButton = rudeButton
                 ExpressYourElf_FlirtButton = flirtButton
                 ExpressYourElf_SeduceButton = seduceButton
+                ExpressYourElf_ComplimentButton = complimentButton
 
                 -- always on buttons
                 ExpressYourElf_DancingButton = dancingButton
@@ -127,7 +142,8 @@
                         ExpressYourElf_GiftButton:SetAlpha(1)
                         ExpressYourElf_RudeButton:Enable()
                         ExpressYourElf_RudeButton:SetAlpha(1)
-
+                        ExpressYourElf_ComplimentButton:Enable()
+                        ExpressYourElf_ComplimentButton:SetAlpha(1)
 
                         if (ExpressYourElfVars.flirtConsent) then 
                             ExpressYourElf_FlirtButton:Enable()
@@ -153,6 +169,8 @@
                         ExpressYourElf_SeduceButton:SetAlpha(.3)
                         ExpressYourElf_RudeButton:Disable()
                         ExpressYourElf_RudeButton:SetAlpha(.3)
+                        ExpressYourElf_ComplimentButton:Disable()
+                        ExpressYourElf_ComplimentButton:SetAlpha(.3)
                     else
                         ExpressYourElf_FlirtButton:Disable()
                         ExpressYourElf_FlirtButton:SetAlpha(.3)
@@ -162,6 +180,8 @@
                         ExpressYourElf_GiftButton:SetAlpha(.3)
                         ExpressYourElf_RudeButton:Disable()
                         ExpressYourElf_RudeButton:SetAlpha(.3)
+                        ExpressYourElf_ComplimentButton:Disable()
+                        ExpressYourElf_ComplimentButton:SetAlpha(.3)
                     end
 
                     ExpressYourElf_Reset_Tooltips()
@@ -170,7 +190,7 @@
             </OnLoad>
         </Scripts>
         <Size>
-            <AbsDimension x="173" y="125"/>
+            <AbsDimension x="228" y="125"/>
         </Size>
         <Anchors>
             <Anchor point="CENTER"/>
