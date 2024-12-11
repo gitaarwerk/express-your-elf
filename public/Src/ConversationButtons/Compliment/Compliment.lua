@@ -132,7 +132,7 @@ function ExpressYourElf.Compliment.GetMessage(
     if (targetRace == "Earthen") then
     end
 
-    if (targetClass == "Warrior" then)
+    if (targetClass == "Warrior") then
         table.insert("Your battle stance is as graceful as a dancing murloc.");
     end
 

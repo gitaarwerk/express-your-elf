@@ -286,7 +286,7 @@
             </Anchors>
             <Scripts>
                 <OnClick>
-                    if ( ExpressYourElf_ConfigScreen_YoMamaContent:GetChecked() ) then 
+                    if ( ExpressYourElf_ConfigScreen_YoMammaContent:GetChecked() ) then 
                         ExpressYourElf_AllowYoMamaContent()
                     else 
                         ExpressYourElf_DisallowYoMamaContent()

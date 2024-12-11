@@ -9,7 +9,7 @@ function ExpressYourElf.Joke.GetMessage(
     playerRace,
     playerLevel,
     playerManWoman,
-    playerGuyGirl,
+    playerGuyGirl
 )
     local randomWorld = ExpressYourElf.Helpers.GetRandomWorld()
 
@@ -37,40 +37,48 @@ function ExpressYourElf.Joke.GetMessage(
     end
 
     if (playerClass == "Paladin") then
-        table.insert(jokeLines, "How many paladins does it take to change a lightbulb? Two, one to hold the ladder, the other one to hold the light.")
+        table.insert(jokeLines,
+            "How many paladins does it take to change a lightbulb? Two, one to hold the ladder, the other one to hold the light.")
     end
 
-    if (playerClass == "Shaman" or playerClass == "Druid")  then
-        table.insert(jokeLines, "I'm a ${playerClass}. I can shape shift. I can heal. I can do a lot of things. But I can't dance.")
+    if (playerClass == "Shaman" or playerClass == "Druid") then
+        table.insert(jokeLines,
+            "I'm a ${playerClass}. I can shape shift. I can heal. I can do a lot of things. But I can't dance.")
         table.insert(jokeLines, "Why did the Shaman cross the road? -To get to the other side.")
     end
 
     if (playerClass == "Warlock") then
-        table.insert(jokeLines, "I'm a Warlock. I can summon demons. I can cast curses. I can do a lot of things. But I can't dance.")
+        table.insert(jokeLines,
+            "I'm a Warlock. I can summon demons. I can cast curses. I can do a lot of things. But I can't dance.")
     end
 
     if (playerClass == "Mage") then
-        table.insert(jokeLines, "I'm a Mage. I can cast spells. I can teleport. I can do a lot of things. But I can't dance.")
+        table.insert(jokeLines,
+            "I'm a Mage. I can cast spells. I can teleport. I can do a lot of things. But I can't dance.")
         table.insert(jokeLines, "What do you call a mage who sucks at fishing? A bad caster!")
     end
 
     if (playerClass == "Monk" or playerClass == "Priest" or playerClass == "Paladin") then
-        table.insert(jokeLines, "I'm a ${playerClass}. I can heal. I can cast spells. I can do a lot of things. But I can't dance.")
+        table.insert(jokeLines,
+            "I'm a ${playerClass}. I can heal. I can cast spells. I can do a lot of things. But I can't dance.")
     end
 
     if (playerClass == "Hunter") then
-        table.insert(jokeLines, "I'm a Hunter. I can tame beasts. I can track enemies. I can do a lot of things. But I can't dance.")
+        table.insert(jokeLines,
+            "I'm a Hunter. I can tame beasts. I can track enemies. I can do a lot of things. But I can't dance.")
     end
 
     if (playerClass == "Rogue") then
-        table.insert(jokeLines, "I'm a Rogue. I can pick locks. I can sneak around. I can do a lot of things. But I can't dance.")
-        table.insert(jokeLines, "How many rogues does it take to kill a paladin? Two, one to attack him on the spot and the other to wait for him back at the inn.") 
+        table.insert(jokeLines,
+            "I'm a Rogue. I can pick locks. I can sneak around. I can do a lot of things. But I can't dance.")
+        table.insert(jokeLines,
+            "How many rogues does it take to kill a paladin? Two, one to attack him on the spot and the other to wait for him back at the inn.")
         table.insert(jokeLines, "What do noobs and I have in common? We both pick locks.")
-")
     end
 
     if (playerClass == "Warrior") then
-        table.insert(jokeLines, "I'm a Warrior. I can wield a sword. I can wear heavy armor. I can do a lot of things. But I can't dance.")
+        table.insert(jokeLines,
+            "I'm a Warrior. I can wield a sword. I can wear heavy armor. I can do a lot of things. But I can't dance.")
         table.insert(jokeLines, "I'm a Warrior. I can shout. I can scream. I can do a lot of things. But I can't dance.")
         table.insert(jokeLines, "Why are warriors the worst salesman? They charge too much!")
         table.insert(jokeLines, "Why did the warrior go to the bank? To get his charge back!")
@@ -78,15 +86,18 @@ function ExpressYourElf.Joke.GetMessage(
     end
 
     if (playerClass == "Death Knight") then
-        table.insert(jokeLines, "I'm a Death Knight. I can raise the dead. I can cast spells. I can do a lot of things. But I can't dance.")
+        table.insert(jokeLines,
+            "I'm a Death Knight. I can raise the dead. I can cast spells. I can do a lot of things. But I can't dance.")
     end
 
     if (playerClass == "Demon Hunter") then
-        table.insert(jokeLines, "I'm a Demon Hunter. I can see in the dark. I can wield glaives. I can do a lot of things. But I can't dance.")
+        table.insert(jokeLines,
+            "I'm a Demon Hunter. I can see in the dark. I can wield glaives. I can do a lot of things. But I can't dance.")
     end
 
     if (playerClass == "Dracthyr") then
-        table.insert(jokeLines, "I'm a Dracthyr. I can breathe fire. I can fly. I can do a lot of things. But I can't dance.")
+        table.insert(jokeLines,
+            "I'm a Dracthyr. I can breathe fire. I can fly. I can do a lot of things. But I can't dance.")
     end
 
     if (playerRace == "Undead") then
@@ -109,11 +120,13 @@ function ExpressYourElf.Joke.GetMessage(
 
     -- Mature content
     if (ExpressYourElfVars.allowMatureContent) then
-        table.insert(jokeLines, 'A Gnome and Tauren put their peepees in the water. The Gnome says "The water is 40 deegres". The Tauren says "Yea, and 5 ft deep"')
+        table.insert(jokeLines,
+            'A Gnome and Tauren put their peepees in the water. The Gnome says "The water is 40 deegres". The Tauren says "Yea, and 5 ft deep"')
         table.insert(jokeLines, "How do you know you play too much WoW? When your partner's pants have a low drop rate.")
-        
+
         if (playerClass == "Death Knight") then
-            table.insert(jokeLines, "Whats the difference between Death Knights and Prostitutes? -None! They're both cheap, easy and spread diseases")
+            table.insert(jokeLines,
+                "Whats the difference between Death Knights and Prostitutes? -None! They're both cheap, easy and spread diseases")
         end
 
         if (playerClass == "Shaman") then
@@ -124,7 +137,8 @@ function ExpressYourElf.Joke.GetMessage(
     -- Add removed flirt lines, that Blizard removed
     if (ExpressYourElfVars.allowMatureContent and ExpressYourElfVars.bringBackRemoved) then
         if (playerRace == "Blood Elf" and playerGender == "female") then
-            table.insert(jokeLines, "So I went to this troll spa the other day and I wound up with dreadlocks and a frigging bone in my nose! I mean come on! Who PAYS for that?")
+            table.insert(jokeLines,
+                "So I went to this troll spa the other day and I wound up with dreadlocks and a frigging bone in my nose! I mean come on! Who PAYS for that?")
             table.insert(jokeLines, "So you mean I'm stuck with this hair color?!")
         end
 
@@ -137,14 +151,16 @@ function ExpressYourElf.Joke.GetMessage(
         end
 
         if (playerRace == "Goblin" and playerGender == "female") then
-            table.insert(jokeLines, "I'm a modern goblin woman. Independent? I still let men do nice things to me. But I stopped giving them any credit.")
-            table.insert(jokeLines, "I'm a free spirit. I don't like to be tied down. What? You mean literally? Oh no... totally into that.")
+            table.insert(jokeLines,
+                "I'm a modern goblin woman. Independent? I still let men do nice things to me. But I stopped giving them any credit.")
+            table.insert(jokeLines,
+                "I'm a free spirit. I don't like to be tied down. What? You mean literally? Oh no... totally into that.")
             table.insert(jokeLines, "Out of the way, you nobgoblin!")
-
         end
 
         if (playerRace == "Goblin" and playerGender == "male") then
-            table.insert(jokeLines,"Yeah. He told me to tie her up and do whatever I wanted to her... so I took her stereo!")
+            table.insert(jokeLines,
+                "Yeah. He told me to tie her up and do whatever I wanted to her... so I took her stereo!")
         end
 
         if (playerRace == "Orc" and playerGender == "female") then
@@ -158,12 +174,12 @@ function ExpressYourElf.Joke.GetMessage(
         if (playerRace == "Tauren" and playerGender == "male") then
             table.insert(jokeLines, "Homogenized? No way, I like the ladies.")
             table.insert(jokeLines, "I know it seems strange, but I'm practically a cow. So why am I wearing leather?")
-
         end
 
         if (playerRace == "Troll" and playerGender == "male") then
             table.insert(jokeLines, "I've got a shrunken head: I just came out of the pool.")
-            table.insert(jokeLines, "I heard if you cut off an extremity it'll regenerate a little bigger. Don't believe it.")
+            table.insert(jokeLines,
+                "I heard if you cut off an extremity it'll regenerate a little bigger. Don't believe it.")
             table.insert(jokeLines, "I like my women dumpy and droopy with halitosis.")
         end
 
@@ -177,15 +193,16 @@ function ExpressYourElf.Joke.GetMessage(
         end
 
         if (playerRace == "Draenei" and playerGender == "male") then
-            table.insert(jokeLines, "When we arrived here I lost many jewels that had been in my family for generations. If you could get your hands on my family jewels I would be deeply appreciative.")
-
+            table.insert(jokeLines,
+                "When we arrived here I lost many jewels that had been in my family for generations. If you could get your hands on my family jewels I would be deeply appreciative.")
         end
 
         if (playerRace == "Dwarf" and playerGender == "female") then
             table.insert(jokeLines, "No they're not real, but thanks for noticing.")
             table.insert(jokeLines, "It's like my father always used to say: 'Shut up, and get out.'")
             table.insert(jokeLines, "My Uncle has brass balls, no really!")
-            table.insert(jokeLines, "I give myself a Dutch oven pedicure every night. I've got no foot fungus at all. My toes are pristine.")
+            table.insert(jokeLines,
+                "I give myself a Dutch oven pedicure every night. I've got no foot fungus at all. My toes are pristine.")
         end
 
         if (playerRace == "Dwarf" and playerGender == "male") then
@@ -193,7 +210,8 @@ function ExpressYourElf.Joke.GetMessage(
         end
 
         if (playerRace == "Gnome" and playerGender == "male") then
-            table.insert(jokeLines, "I'd like to give a shout out to my boys in Gnomeregan. Keeping it real Big-T, Snoop-Pup and Little Dees. Y'all are short, but you're real, baby!")
+            table.insert(jokeLines,
+                "I'd like to give a shout out to my boys in Gnomeregan. Keeping it real Big-T, Snoop-Pup and Little Dees. Y'all are short, but you're real, baby!")
         end
 
         if (playerRace == "Human" and playerGender == "female") then
@@ -202,7 +220,8 @@ function ExpressYourElf.Joke.GetMessage(
         end
 
         if (playerRace == "Human" and playerGender == "male") then
-            table.insert(jokeLines, "A guy walked up to me and said 'I'm a teepee, I'm a wigwam, I'm a teepee, I'm a wigwam!' and I said 'Relax man, you're too tense!'")
+            table.insert(jokeLines,
+                "A guy walked up to me and said 'I'm a teepee, I'm a wigwam, I'm a teepee, I'm a wigwam!' and I said 'Relax man, you're too tense!'")
         end
 
         if (playerRace == "Night Elf" and playerGender == "female") then
@@ -213,11 +232,13 @@ function ExpressYourElf.Joke.GetMessage(
         end
 
         if (playerRace == "Worgen" and playerGender == "female") then
-            table.insert(jokeLines, "For the holiday, he tried to give me a bone. No...a bone. An ordinary bone. What did you think I...oh...")
+            table.insert(jokeLines,
+                "For the holiday, he tried to give me a bone. No...a bone. An ordinary bone. What did you think I...oh...")
         end
 
         if (playerRace == "Worgen" and playerGender == "male") then
-            table.insert(jokeLines, "It's nothing personal, I just don't feel that I really know a person until I've sniffed their crotch.")
+            table.insert(jokeLines,
+                "It's nothing personal, I just don't feel that I really know a person until I've sniffed their crotch.")
             table.insert(jokeLines, "Alright: I've got hairy palms. So what?")
         end
 
@@ -233,8 +254,10 @@ function ExpressYourElf.Joke.GetMessage(
         end
 
         if (playerRace == "Pandaren" and playerGender == "female") then
-            table.insert(jokeLines, "As your leader, I encourage you from time to time, and always in a respectful manner, to question my logic. I promise you, here and now, no subject will ever be taboo. Except of course, the subject that was JUST under discussion.")
-            table.insert(jokeLines, "The price you pay for bringing up my Pandaren heritage as a negative is...I collect your head! Now, if ANY ONE OF YOU HAS ANYTHING ELSE TO SAY, NOW IS THE TIME!")
+            table.insert(jokeLines,
+                "As your leader, I encourage you from time to time, and always in a respectful manner, to question my logic. I promise you, here and now, no subject will ever be taboo. Except of course, the subject that was JUST under discussion.")
+            table.insert(jokeLines,
+                "The price you pay for bringing up my Pandaren heritage as a negative is...I collect your head! Now, if ANY ONE OF YOU HAS ANYTHING ELSE TO SAY, NOW IS THE TIME!")
         end
 
         if (playerRace == "Pandaren" and playerGender == "male") then
@@ -261,33 +284,39 @@ function ExpressYourElf.Joke.GetMessage(
 end
 
 function ExpressYourElf.Joke.run()
-        local playerName, playerGender, playerClass, playerRace, playerLevel = ExpressYourElf.Helpers
-            .GetPlayerInformation()
+    local playerName, playerGender, playerClass, playerRace, playerLevel = ExpressYourElf.Helpers
+        .GetPlayerInformation()
 
-        local playerGuyGirl                                                  = ExpressYourElf.Helpers.GetGuyGirl(
-            playerGender)
-        local playerManWoman                                                 = ExpressYourElf.Helpers.GetManWoman(
-            playerGender)
+    local playerGuyGirl                                                  = ExpressYourElf.Helpers.GetGuyGirl(
+        playerGender)
+    local playerManWoman                                                 = ExpressYourElf.Helpers.GetManWoman(
+        playerGender)
 
-        local JokeLine                                                 = ExpressYourElf.Joke.GetMessage(
-            playerName,
-            playerGender,
-            playerClass,
-            playerRace,
-            playerLevel,
-            playerManWoman,
-            playerGuyGirl,
-        )
+    local JokeLine                                                       = ExpressYourElf.Joke.GetMessage(
+        playerName,
+        playerGender,
+        playerClass,
+        playerRace,
+        playerLevel,
+        playerManWoman,
+        playerGuyGirl
+    )
 
-        local emotes                                                         = {
-            'SILLY',
-        }
+    local emotes                                                         = {
+        'CACKLE',
+        'CHUCKLE',
+        'GIGGLE',
+        'LAUGH',
+        'COUGH',
+        'GRIN',
+        'ROFL',
+        'WICKED'
+    }
 
-        if (JokeLine ~= nil) then
-            local randomEmote = emotes[fastrandom(1, #emotes)]
+    if (JokeLine ~= nil) then
+        local randomEmote = emotes[fastrandom(1, #emotes)]
 
-            DoEmote(randomEmote, "")
-            SendChatMessage(JokeLine, "SAY", nil, index)
-        end
+        DoEmote(randomEmote, "")
+        SendChatMessage(JokeLine, "SAY", nil, index)
     end
 end

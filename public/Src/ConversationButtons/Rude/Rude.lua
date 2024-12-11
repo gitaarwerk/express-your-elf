@@ -153,7 +153,8 @@ function ExpressYourElf.IAmRude.GetMessage(
     end
 
     if (targetClass == "Warlock" or targetClass == "Void Elf") then
-        table.insert(rudeLines, "The void never drained the sanity on ${targetName}, because there was none to begin with.");
+        table.insert(rudeLines,
+            "The void never drained the sanity on ${targetName}, because there was none to begin with.");
     end
 
     if (targetClass == "Druid") then
@@ -170,12 +171,12 @@ function ExpressYourElf.IAmRude.GetMessage(
         table.insert(rudeLines, "You'll make a fine rug, ${targetName}!");
     end
 
-     -- Mature content
-     if (ExpressYourElfVars.allowYoMamaContent) then
+    -- Mature content
+    if (ExpressYourElfVars.allowYoMamaContent) then
         table.insert(rudeLines, "Yo mama's so fat, when she fell off the Lich King's throne, she got a 10");
         table.insert(rudeLines, "Yo mama's so fat, I got my leatherworking from 0 to 600 making her belt.");
 
-        if (targetClass == "Mage") then 
+        if (targetClass == "Mage") then
             table.insert(rudeLines, "Yo mama's so fat, when she blinks, she teleports to the next continent.")
             table.insert(rudeLines, "Yo mama is so fat when she casts Frost Nova, it causes an ice age.")
         end
@@ -189,11 +190,11 @@ function ExpressYourElf.IAmRude.GetMessage(
             table.insert(rudeLines, "Yo mama is so fat when I shadowstepped her, I got a loading screen.")
         end
 
-        if (playerClass == "Druid")
+        if (playerClass == "Druid") then
             table.insert(rudeLines, "Yo mama's so fat, I got stuck in the Emerald Dream.");
         end
 
-        if (playerClass == "Shaman")  then
+        if (playerClass == "Shaman") then
             table.insert(rudeLines, "Yo mama's so fat, my chain lightning hit her twice.")
             table.insert(rudeLines, "Yo mama so fat, my Earth Shield ran out before it made a single orbit")
         end
@@ -201,7 +202,8 @@ function ExpressYourElf.IAmRude.GetMessage(
 
         if (playerClass == "Warlock") then
             table.insert(rudeLines, "Yo mama so fat, it takes 5 warlocks to summon her.")
-            table.insert(rudeLines, "Yo mama so fat, I had to grease the portal and conjure some mana cakes on the other side just to get her through.")
+            table.insert(rudeLines,
+                "Yo mama so fat, I had to grease the portal and conjure some mana cakes on the other side just to get her through.")
         end
     end
 

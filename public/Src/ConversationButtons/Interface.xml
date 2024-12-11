@@ -9,6 +9,7 @@
     <Script file="Src/ConversationButtons/RandomPhrases/RandomPhrases.lua"/>
     <Script file="Src/ConversationButtons/Rude/Rude.lua"/>
     <Script file="Src/ConversationButtons/Compliment/Compliment.lua"/>
+    <Script file="Src/ConversationButtons/Joke/Joke.lua"/>
     
     <Frame name="ExpressYourElf_Frame" toplevel="true" frameStrata="HIGH" movable="true" enableMouse="true" hidden="false" parent="UIParent" clampedToScreen="true">
         <Scripts>
@@ -58,7 +59,7 @@
                     ExpressYourElf.IAmRude.run()
                 end)
 
-                local complimentButton = CreateFrame("Button","rudeButton",ExpressYourElf_Frame, "UIPanelButtonTemplate")
+                local complimentButton = CreateFrame("Button","complimentButton",ExpressYourElf_Frame, "UIPanelButtonTemplate")
                 complimentButton:SetScale(scale)
                 complimentButton:SetPoint("TOPLEFT", "ExpressYourElf_Frame", "TOPLEFT", 175, -20);
                 complimentButton:SetPushedTexture("Interface\\Icons\\inv_misc_trophy_argent")
@@ -116,16 +117,14 @@
 
                 local jokeButton = CreateFrame("Button","jokeButton",ExpressYourElf_Frame, "UIPanelButtonTemplate")
                 jokeButton:SetScale(scale)
-                jokeButton:SetPoint("TOPLEFT", "ExpressYourElf_Frame", "TOPLEFT", 65, -71);
+                jokeButton:SetPoint("TOPLEFT", "ExpressYourElf_Frame", "TOPLEFT", 175, -71);
                 jokeButton:SetPushedTexture("Interface\\Icons\\achievement_halloween_smiley_01")
                 jokeButton:SetNormalTexture("Interface\\Icons\\achievement_halloween_smiley_01")
                 jokeButton:GetNormalTexture():SetAllPoints(jokeButton)
-                jokeButton:Disable()
-                jokeButton:SetAlpha(.3)
                 jokeButton:SetToplevel(true)
                 jokeButton:SetSize(buttonHeightWidth, buttonHeightWidth)
                 jokeButton:SetScript("OnClick",function()
-                    ExpressYourElf.Seduce.run()
+                    ExpressYourElf.Joke.run()
                 end)
 
                 ExpressYourElf_GiftButton = giftButton
