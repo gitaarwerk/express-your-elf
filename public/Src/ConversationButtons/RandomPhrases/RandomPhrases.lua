@@ -211,6 +211,10 @@ function ExpressYourElf.RandomPhrases.GetRandomMessage(
         table.insert(listOfPhrases, "Before I got adopted, I was in beteen a rock and a hard place.");
     end
 
+    if (playerClass == "Rogue") then
+        table.insert(listOfPhrases, "I sometimes butter your my bread with my posioned knives.")
+    end
+
     -- Add mature content
     if (ExpressYourElfVars.allowMatureContent) then
         if (playerClass == "Rogue" or playerClass == "Demon Hunter" or playerClass == "Druid" or playerClass == "Monk") then
