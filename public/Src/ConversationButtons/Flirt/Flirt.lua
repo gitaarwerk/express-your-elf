@@ -80,9 +80,14 @@ function ExpressYourElf.Flirt.GetMessage(
         "If I said I want your armor, would you hold it against me?",
         "Love must truly be blind because you don’t see me at all.",
         "You’re like asthma. You just take my breath away.",
+        "Are those pants purple? 'Cause that ass is epic.",
         "You look so good. I’ll marry your brother just to be in your family.",
         "Despite hundreds of tries I've had very little success with screaming woo-hoo out my window.",
     }
+
+    if (playerGender == "female") then
+        table.insert(flirtLines, "My what a smashing blouse you've got there!");
+    end
 
     if (playerGender == "male" and targetGender == "female") then
         table.insert(flirtLines, "Want to play Barbies? I'll be Ken and you can be the box I come in!")
@@ -294,6 +299,10 @@ function ExpressYourElf.Flirt.GetMessage(
                 "I'm not wearing any armor. I hope you don't crit.");
             table.insert(flirtLines,
                 "I could say I have my Munchausen syndrome on you, but so does any other Warlock.");
+        end
+
+        if (playerRace == "Draenei" and playerRace == "Lightforged Draenei") then
+            table.insert(flirtLines, "I'm not tentacled, but I'm sure you'd love to get your hands on me.")
         end
     end
 

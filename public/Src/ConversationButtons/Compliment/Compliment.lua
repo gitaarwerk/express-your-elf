@@ -42,26 +42,33 @@ function ExpressYourElf.Compliment.GetMessage(
 
     local ComplimentLines = {
         "Your right cheek looks very well today!",
+        "Your tiny little hands that are good for violin. Perhaps just bad for strangling someone to death.",
+        "I like the way how your legs move when you walk.",
+        "You have a very nice nose. It's very... nose-like.",
+        "You smell like a freshly baked mana biscuit.",
+        "Your voice is as soothing as a Pandaren lullaby.",
+        "Your laugh is more infectious than the Plague of Undercity.",
+        "You have the wisdom of a thousand ancient scrolls.",
+        "You are my example of what a possible hero could be, if I'm not mistaken",
     }
 
+    -- Self compliment
     if (playerName == targetName) then
         table.insert(ComplimentLines, "You're looking good today!, why thank me!");
         table.insert(ComplimentLines, "You're doing great, keep it up me!");
         table.insert(ComplimentLines, "You're the best, me!");
+        table.insert(ComplimentLines, "You're a strong individual. You can do this!");
         table.insert(ComplimentLines,
             "You look like you're taking enough vitamins. You certainly have a healthy glow, me!");
         table.insert(ComplimentLines, "Never get's boring to Compliment myself, YHEA ${playerName}!");
     end
 
+    if (targetRace ~= "Mechagnome" or targetRace ~= "Gnome") then
+        table.insert(ComplimentLines, "You have the courage of a gnome facing a giant.");
+    end
+
 
     if (playerGender == "male" and targetGender == "female") then
-    end
-
-    -- from
-    if (playerRace == "Worgen" or playerRace == "Tauren" or playerRace == "Vulpera" or playerRace == "Pandaren" or playerRace == "Highmountain Tauren") then
-    end
-
-    if (playerRace == "Scourge" or playerRace == "Undead" or playerClass == "Death Knight") then
     end
 
     if (playerClass == "Hunter") then
@@ -125,11 +132,33 @@ function ExpressYourElf.Compliment.GetMessage(
     if (targetRace == "Earthen") then
     end
 
+    if (targetClass == "Warrior") then
+        table.insert("Your battle stance is as graceful as a dancing murloc.");
+    end
+
     -- to
+    if (targetRace == "Worgen" or targetRace == "Tauren" or targetRace == "Vulpera" or targetRace == "Pandaren" or targetRace == "Highmountain Tauren") then
+        table.insert(ComplimentLines, "Your hair is looking combed today!");
+    end
+
+    if (targetRace == "Worgen") then
+        table.insert("You have really pretty eyes, like a husky.");
+    end
+
+    if (targetRace == "Scourge" or targetRace == "Undead" or targetRace == "Death Knight") then
+        table.insert(ComplimentLines, "You're looking very alive today!");
+    end
+
     if (targetClass == "Druid" or targetRace == "Dracthyr" or targetRace == "Tauren" or targetRace == "Highmountain Tauren") then
     end
 
+    if (targetClass == "Warrior" or targetClass == "Paladin" or targetClass == "Death Knight") then
+        table.insert(ComplimentLines, "Your armor shines brighter than a thousand suns!");
+    end
+
     if (targetClass == "Druid") then
+        table.insert(ComplimentLines, "I really like the cat fur on your sweater.");
+        table.insert(ComplimentLines, "Is it weird to say that you';'re so cool, I would like to keep you as a pet?");
     end
 
     if (targetClass == "Druid" and playerClass == "Druid") then
@@ -142,8 +171,8 @@ function ExpressYourElf.Compliment.GetMessage(
     end;
 
     if (targetRace == "Night Elf" or targetRace == "Void Elf" or targetRace == "Blood Elf" or targetRace == "Nightborne") then
+        table.insert(ComplimentLines, "The way the moon touches your right ear brings out your true personality!");
     end
-
 
     if (targetRace == "Vulpera") then
     end
@@ -167,6 +196,7 @@ function ExpressYourElf.Compliment.GetMessage(
     end
 
     if (targetRace == "Scourge" or targetRace == "Undead") then
+        table.insert(ComplimentLines, "The way that your left ear decays is very attractive!");
     end
 
     if (playerClass == "Paladin" and targetClass == "Paladin") then

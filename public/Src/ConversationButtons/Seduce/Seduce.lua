@@ -61,7 +61,8 @@ function ExpressYourElf.Seduce.GetMessage(
     }
 
     if (targetGender == "female") then
-        table.insert(flirtLines, "My what a smashing blouse you've got there!");
+        table.insert(flirtLines, "I'd love to explore your wetlands.");
+        table.insert(flirtLines, "I'd love to raid your Ruby Sanctum.");
     end
     -- from
     if (playerClass == "Warlock" or playerClass == "Demon Hunter") then

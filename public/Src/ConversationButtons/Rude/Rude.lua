@@ -147,6 +147,16 @@ function ExpressYourElf.IAmRude.GetMessage(
             "All that intellect what is on ${targetName}'s gear doesn’t boost any intellect in the skull, unfortunately.");
     end
 
+    if (targetClass == "Warlock" or targetClass == "Demon Hunter") then
+        table.insert(rudeLines,
+            "The Fel really did a number on you, ${targetName}. Luckily for you, you don't even know what numbers are.");
+    end
+
+    if (targetClass == "Warlock" or targetClass == "Void Elf") then
+        table.insert(rudeLines,
+            "The void never drained the sanity on ${targetName}, because there was none to begin with.");
+    end
+
     if (targetClass == "Druid") then
         table.insert(rudeLines, "${targetName}, do you still love nature, despite what it did to you?");
         table.insert(rudeLines, "I’d slap ${targetName}, but that would be animal abuse.");
@@ -159,6 +169,42 @@ function ExpressYourElf.IAmRude.GetMessage(
     if (targetClass == "Druid" or targetRace == "Tauren" or targetRace == "Highmountain Tauren" or targetRace == "Worgen" or targetRace == "Vulpera") then
         table.insert(rudeLines, "Is That... Fur? Coming Out Of Your Ears?");
         table.insert(rudeLines, "You'll make a fine rug, ${targetName}!");
+    end
+
+    -- Mature content
+    if (ExpressYourElfVars.allowYoMamaContent) then
+        table.insert(rudeLines, "Yo mama's so fat, when she fell off the Lich King's throne, she got a 10");
+        table.insert(rudeLines, "Yo mama's so fat, I got my leatherworking from 0 to 600 making her belt.");
+
+        if (targetClass == "Mage") then
+            table.insert(rudeLines, "Yo mama's so fat, when she blinks, she teleports to the next continent.")
+            table.insert(rudeLines, "Yo mama is so fat when she casts Frost Nova, it causes an ice age.")
+        end
+
+        if (playerClass == "Demon Hunter") then
+            table.insert(rudeLines, "Yo mama is so fat even Illidan wasn't prepared!")
+        end
+
+        if (playerClass == "Rogue") then
+            table.insert(rudeLines, "Yo mama is so fat, when I try to shadowstep her, I get a server transfer.")
+            table.insert(rudeLines, "Yo mama is so fat when I shadowstepped her, I got a loading screen.")
+        end
+
+        if (playerClass == "Druid") then
+            table.insert(rudeLines, "Yo mama's so fat, I got stuck in the Emerald Dream.");
+        end
+
+        if (playerClass == "Shaman") then
+            table.insert(rudeLines, "Yo mama's so fat, my chain lightning hit her twice.")
+            table.insert(rudeLines, "Yo mama so fat, my Earth Shield ran out before it made a single orbit")
+        end
+
+
+        if (playerClass == "Warlock") then
+            table.insert(rudeLines, "Yo mama so fat, it takes 5 warlocks to summon her.")
+            table.insert(rudeLines,
+                "Yo mama so fat, I had to grease the portal and conjure some mana cakes on the other side just to get her through.")
+        end
     end
 
     -- randomize result

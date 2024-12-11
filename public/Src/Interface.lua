@@ -42,6 +42,12 @@ function ExpressYourElf_Reset_Tooltips()
     ExpressYourElf_RandomButton:SetScript("OnEnter", nil)
     ExpressYourElf_RandomButton:SetScript("OnLeave", nil)
 
+    ExpressYourElf_ComplimentButton:SetScript("OnEnter", nil)
+    ExpressYourElf_ComplimentButton:SetScript("OnLeave", nil)
+    ExpressYourElf_JokeButton:SetScript("OnEnter", nil)
+    ExpressYourElf_JokeButton:SetScript("OnLeave", nil)
+
+
     if (ExpressYourElf_DancingButton:IsEnabled()) then
         local danceText = "Dance"
         if (targetName ~= nil) then
@@ -133,6 +139,32 @@ function ExpressYourElf_Reset_Tooltips()
             AltGameTooltip:SetScale(1)
         end)
     end
+
+    if (ExpressYourElf_ComplimentButton:IsEnabled()) then
+        ExpressYourElf_ComplimentButton:SetScript("OnEnter", function(self)
+            AltGameTooltip:SetOwner(self, "ANCHOR_BOTTOMLEFT")
+            AltGameTooltip:SetScale(scale)
+            AltGameTooltip:SetText("Give a compliment to " .. targetName, 1.0, 0.82, 0.0, 1, true)
+            AltGameTooltip:Show()
+        end)
+        ExpressYourElf_ComplimentButton:SetScript("OnLeave", function(self)
+            AltGameTooltip:Hide()
+            AltGameTooltip:SetScale(1)
+        end)
+    end
+
+    if (ExpressYourElf_JokeButton:IsEnabled()) then
+        ExpressYourElf_JokeButton:SetScript("OnEnter", function(self)
+            AltGameTooltip:SetOwner(self, "ANCHOR_BOTTOMLEFT")
+            AltGameTooltip:SetScale(scale)
+            AltGameTooltip:SetText("Tell a joke", 1.0, 0.82, 0.0, 1, true)
+            AltGameTooltip:Show()
+        end)
+        ExpressYourElf_JokeButton:SetScript("OnLeave", function(self)
+            AltGameTooltip:Hide()
+            AltGameTooltip:SetScale(1)
+        end)
+    end
 end
 
 function ExpressYourElf_SetScale(scale)
@@ -161,6 +193,14 @@ function ExpressYourElf_DisallowMatureContent()
     ExpressYourElfVars.allowMatureContent = false
     ExpressYourElf_SeduceButton:Disable()
     ExpressYourElf_SeduceButton:SetAlpha(0.3)
+end
+
+function ExpressYourElf_AllowYoMamaContent()
+    ExpressYourElfVars.allowYoMamaContent = true
+end
+
+function ExpressYourElf_DisallowYoMamaContent()
+    ExpressYourElfVars.allowYoMamaContent = false
 end
 
 function ExpressYourElf_ConsentToFlirt()
