@@ -37,6 +37,7 @@
                         ExpressYourElfVars.flirtConsent = false;
                         ExpressYourElfVars.allowMatureContent = false;
                         ExpressYourElfVars.bringBackRemoved = true;
+                        ExpressYourElfVars.allowYoMamaContent = false;
 
                         -- show config screen when nothing is set
                         self:Show()
@@ -45,6 +46,7 @@
                     ExpressYourElf_ToggleMinimize(ExpressYourElfVars.minimized)
                     ExpressYourElf_ConfigScreen_ShowButtons:SetChecked(ExpressYourElfVars.isShown);
                     ExpressYourElf_ConfigScreen_MatureContent:SetChecked(ExpressYourElfVars.allowMatureContent);
+                    ExpressYourElf_ConfigScreen_YoMammaContent:SetChecked(ExpressYourElfVars.allowYoMamaContent);
                     ExpressYourElf_ConfigScreen_FlirtConsent:SetChecked(ExpressYourElfVars.flirtConsent);
                     ExpressYourElf_ConfigScreen_Scale:SetValue(ExpressYourElfVars.interfaceScale);
                 end
@@ -261,6 +263,33 @@
                         ExpressYourElf_AllowMatureContent()
                     else 
                         ExpressYourElf_DisallowMatureContent()
+                    end
+                </OnClick>
+            </Scripts>
+            <NormalTexture file="Interface\Buttons\UI-CheckBox-Up"/>
+            <PushedTexture file="Interface\Buttons\UI-CheckBox-Down"/>
+            <HighlightTexture file="Interface\Buttons\UI-CheckBox-Highlight" alphaMode="ADD"/>
+            <CheckedTexture file="Interface\Buttons\UI-CheckBox-Check"/>
+            <DisabledCheckedTexture file="Interface\Buttons\UI-CheckBox-Check-Disabled"/>
+        </CheckButton>
+        
+        <CheckButton name="ExpressYourElf_ConfigScreen_YoMammaContent" inherits="UIPanelButtonTemplate" motionScriptsWhileDisabled="true" virtual="false">
+            <Size> 
+                <AbsDimension x="25" y="25"/> 
+            </Size>
+            <Anchors>
+                <Anchor point="TOPLEFT">
+                    <Offset>
+                        <AbsDimension x="20" y="-400"/>
+                    </Offset>
+                </Anchor>
+            </Anchors>
+            <Scripts>
+                <OnClick>
+                    if ( ExpressYourElf_ConfigScreen_YoMamaContent:GetChecked() ) then 
+                        ExpressYourElf_AllowYoMamaContent()
+                    else 
+                        ExpressYourElf_DisallowYoMamaContent()
                     end
                 </OnClick>
             </Scripts>

@@ -163,6 +163,14 @@ function ExpressYourElf_DisallowMatureContent()
     ExpressYourElf_SeduceButton:SetAlpha(0.3)
 end
 
+function ExpressYourElf_AllowYoMamaContent()
+    ExpressYourElfVars.allowYoMamaContent = true
+end
+
+function ExpressYourElf_DisallowYoMamaContent()
+    ExpressYourElfVars.allowYoMamaContent = false
+end
+
 function ExpressYourElf_ConsentToFlirt()
     ExpressYourElfVars.flirtConsent = true
     ExpressYourElf_FlirtButton:Enable()

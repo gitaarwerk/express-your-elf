@@ -114,15 +114,31 @@
                     ExpressYourElf.Seduce.run()
                 end)
 
+                local jokeButton = CreateFrame("Button","jokeButton",ExpressYourElf_Frame, "UIPanelButtonTemplate")
+                jokeButton:SetScale(scale)
+                jokeButton:SetPoint("TOPLEFT", "ExpressYourElf_Frame", "TOPLEFT", 65, -71);
+                jokeButton:SetPushedTexture("Interface\\Icons\\achievement_halloween_smiley_01")
+                jokeButton:SetNormalTexture("Interface\\Icons\\achievement_halloween_smiley_01")
+                jokeButton:GetNormalTexture():SetAllPoints(jokeButton)
+                jokeButton:Disable()
+                jokeButton:SetAlpha(.3)
+                jokeButton:SetToplevel(true)
+                jokeButton:SetSize(buttonHeightWidth, buttonHeightWidth)
+                jokeButton:SetScript("OnClick",function()
+                    ExpressYourElf.Seduce.run()
+                end)
+
                 ExpressYourElf_GiftButton = giftButton
                 ExpressYourElf_RudeButton = rudeButton
                 ExpressYourElf_FlirtButton = flirtButton
                 ExpressYourElf_SeduceButton = seduceButton
                 ExpressYourElf_ComplimentButton = complimentButton
+                ExpressYourElf_JokeButton = jokeButton
 
                 -- always on buttons
                 ExpressYourElf_DancingButton = dancingButton
                 ExpressYourElf_RandomButton = randomButton
+                ExpressYourElf_JokeButton = jokeButton
 
                 ExpressYourElf_Reset_Tooltips()
                 
