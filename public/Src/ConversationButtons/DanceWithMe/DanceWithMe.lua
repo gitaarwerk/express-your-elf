@@ -62,6 +62,8 @@ local function getPlayerMessage(
         "Shashay Left",
         "Boogie Down",
         "Shimmy Right",
+        "Slow dancing in a Burning Crusade",
+        "Is it strange to dance so soon? I danced myself into the tomb",
         "I'm the scat ${playerGuyGirl}, Ski-bi-dibby-dib yo-da-dub-dub, yo-da-dub-dub",
         "I bless the rains down in Silithus",
         "SWEEET CARO .... LINEEEEE.... OHHH OH OHHHHH",
