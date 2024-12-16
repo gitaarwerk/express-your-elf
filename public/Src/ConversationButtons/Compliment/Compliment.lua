@@ -66,7 +66,7 @@ function ExpressYourElf.Compliment.GetMessage(
         table.insert(ComplimentLines, "You have a very nice jawline. It's very... jawline-y.");
         table.insert(ComplimentLines, "You have a very nice nose. I wish I had one.");
     end
-    
+
     if (targetRace == "Undead" or targetRace == "Scourge" and targetGender == "male") then
         table.insert(ComplimentLines, "You look like Edward from Twilight.");
     end
@@ -106,7 +106,7 @@ function ExpressYourElf.Compliment.GetMessage(
         table.insert(ComplimentLines, "You have the courage of a gnome facing a giant.");
     end
 
-    if (targetRace == "Tauren" or targetRace == "Highmountain Tauren" targetRace == "Pandaren") then
+    if (targetRace == "Tauren" or targetRace == "Highmountain Tauren" or targetRace == "Pandaren") then
         table.insert(ComplimentLines, "You are surprisingly nimble.");
     end
 
