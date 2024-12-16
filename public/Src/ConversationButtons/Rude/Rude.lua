@@ -44,6 +44,7 @@ function ExpressYourElf.IAmRude.GetMessage(
         "${targetName}, Letting you respawn was just a bug.",
         "${targetName} is a walking advertisement why a gnome and a tauren should never get it on.",
         "I bet ${targetName}'s parents are siblings.",
+        "You look like you read books for fun.",
         "Watching ${targetName} try to pvp is like watching a cat trying to dance.",
         "${targetName}, I would challenge you to a battle of wits, but I see you are unarmed.",
         "${targetName}, I would call you a tool, but even they serve a purpose.",
