@@ -27,8 +27,8 @@ function ExpressYourElf.Joke.GetMessage(
         "How many WoW devs does it take to change a lightbulb? None, it's working as intended.",
         "A Draeni, a Human and a Night Elf all walk in to a bar. The Gnome walks under it.",
         "Why didn't Kel'Thuzad go to the ball? He had no body to go with.",
-        "Why do hardcore raiders smell? -Because they never wipe!",
-        "Why did the enchanter have to clean out his bank? -Because it was full of dust!",
+        "Why do hardcore raiders smell? Because they never wipe!",
+        "Why did the enchanter have to clean out his bank? Because it was full of dust!",
         "How do you know someone has been playing since Vanilla? Don't worry. They'll tell you.",
     }
 
