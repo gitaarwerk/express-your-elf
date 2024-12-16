@@ -52,6 +52,7 @@ function ExpressYourElf.RandomPhrases.GetRandomMessage(
         "I’ve never seen the inside of my own mouth because it scares me to death.",
         "If it were for the kobolds, we’d all be watching TV by candlelight.",
         "My eye socket is warm.",
+        "I was told I have a beautiful brain while doing a paid MRI study.",
         "Have you ever tried sleeping in water?",
         "I'm going to get my toe nail pierced this weekend, you?",
         "There are only three things in life that truly matter: loot, kill and respawn.",
