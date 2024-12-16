@@ -50,7 +50,37 @@ function ExpressYourElf.Compliment.GetMessage(
         "Your laugh is more infectious than the Plague of Undercity.",
         "You have the wisdom of a thousand ancient scrolls.",
         "You are my example of what a possible hero could be, if I'm not mistaken",
+        "Your oral cavity is wonderful to work with.",
+        "You have a cool left ear.",
+        "You have a striking face.",
+        "Your handwriting suits your personality.",
+        "I like the way you smile when I give you 1 gold.",
+        "You smell like a rainbow just out of the dryer!",
+        "I like that shirt because it makes you look stronger than I know you really are.",
+        "You're like a giant, albino gorilla!",
+        "Your tonsils look quite lovely! If only you had tonsillitis so I could keep them as a medical specimen for my office!",
+        "I love how you move your elbows. It's like you're a professional elbow mover!",
     }
+
+    if (targetRace == "Undead" or targetRace == "Scourge") then
+        table.insert(ComplimentLines, "You have a very nice jawline. It's very... jawline-y.");
+        table.insert(ComplimentLines, "You have a very nice nose. I wish I had one.");
+    end
+    
+    if (targetRace == "Undead" or targetRace == "Scourge" and targetGender == "male") then
+        table.insert(ComplimentLines, "You look like Edward from Twilight.");
+    end
+
+    if (targetRace == "Night Elf" or targetRace == "Void Elf" or targetRace == "Blood Elf" or targetRace == "Nightborne") then
+        table.insert(ComplimentLines, "I love your eyebrows, they're so...eyebrowy.");
+    end
+
+    if (playerGender == "female" and targetGender == "male") then
+        table.insert(ComplimentLines, "You are more handsome than my dead husband.");
+    end
+
+    if (playerGender == "male" and targetGender == "female") then
+    end
 
     -- Self compliment
     if (playerName == targetName) then
@@ -63,12 +93,21 @@ function ExpressYourElf.Compliment.GetMessage(
         table.insert(ComplimentLines, "Never get's boring to Compliment myself, YHEA ${playerName}!");
     end
 
+    if (targetGender == "male") then
+        table.insert(ComplimentLines, "You look kinda like Spock.");
+        table.insert(ComplimentLines, "You have really beautiful eyelashes. They're so long!");
+    end
+
+    if (targetGender == "female") then
+        table.insert(ComplimentLines, "You look just like that girl from Natural Born Killers!");
+    end
+
     if (targetRace ~= "Mechagnome" or targetRace ~= "Gnome") then
         table.insert(ComplimentLines, "You have the courage of a gnome facing a giant.");
     end
 
-
-    if (playerGender == "male" and targetGender == "female") then
+    if (targetRace == "Tauren" or targetRace == "Highmountain Tauren" targetRace == "Pandaren") then
+        table.insert(ComplimentLines, "You are surprisingly nimble.");
     end
 
     if (playerClass == "Hunter") then
