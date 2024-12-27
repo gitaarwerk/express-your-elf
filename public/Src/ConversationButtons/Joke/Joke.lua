@@ -24,7 +24,7 @@ function ExpressYourElf.Joke.GetMessage(
     local jokeLines = {
         "What musician do you find in Ice Crown Citadel? The Arthas formally known as Prince.",
         "Why did the gnome become an alchemist? He was good at mixing drinks.",
-        "How many WoW devs does it take to change a lightbulb? None, it's working as intended.",
+        "How many WoW developers does it take to change a lightbulb? None, it's working as intended.",
         "A Draeni, a Human and a Night Elf all walk in to a bar. The Gnome walks under it.",
         "Why didn't Kel'Thuzad go to the ball? He had no body to go with.",
         "Why do hardcore raiders smell? Because they never wipe!",

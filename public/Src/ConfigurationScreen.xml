@@ -1,10 +1,8 @@
-<Ui xmlns="http://www.blizzard.com/wow/ui/" 
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-    xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\FrameXML\UI.xsd"
->
-<Frame name="ExpressYourElf_ConfigScreen" toplevel="true" frameStrata="DIALOG" movable="true" enableMouse="true" hidden="true" parent="UIParent" clampedToScreen="true">
-    <Scripts>
-        <OnLoad>
+<Ui xmlns="http://www.blizzard.com/wow/ui/"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\FrameXML\UI.xsd">
+    <Frame name="ExpressYourElf_ConfigScreen" toplevel="true" frameStrata="DIALOG" movable="true" enableMouse="true" hidden="true" parent="UIParent" clampedToScreen="true">
+        <Scripts>
+            <OnLoad>
             self:RegisterForDrag("LeftButton")
             self:RegisterEvent("ADDON_LOADED")
             self:RegisterEvent("CHAT_MSG_WHISPER");
@@ -52,307 +50,277 @@
                 end
             end
             self:SetScript("OnEvent", eventHandler);
-        </OnLoad>
-        <OnDragStart>
+            </OnLoad>
+            <OnDragStart>
             self:StartMoving()
-        </OnDragStart>
-        <OnDragStop>
+            </OnDragStart>
+            <OnDragStop>
             self:StopMovingOrSizing()
-          </OnDragStop>
-    </Scripts>
+            </OnDragStop>
+        </Scripts>
 
-    <Size>
-        <AbsDimension x="450" y="400"/>
-    </Size>
-    <Anchors>
-        <Anchor point="CENTER"/>
-    </Anchors>
+        <Size>
+            <AbsDimension x="450" y="400"/>
+        </Size>
+        <Anchors>
+            <Anchor point="CENTER"/>
+        </Anchors>
 
-    <Layers>
-        <Layer level="BACKGROUND">
-            <Texture name="$parent_Background" setAllPoints="true">
-                <Color r="0" g="0" b="0" a="0.65" />
-            </Texture> 	   
-        </Layer>
-        <Layer level="BORDER" textureSubLevel="-5">
-            <Texture inherits="UI-Frame-InnerBotLeftCorner" parentKey="InsetBorderBottomLeft">
+        <Layers>
+            <Layer level="BACKGROUND">
+                <Texture name="$parent_Background" setAllPoints="true">
+                    <Color r="0" g="0" b="0" a="0.65" />
+                </Texture>
+            </Layer>
+            <Layer level="BORDER" textureSubLevel="-5">
+                <Texture inherits="UI-Frame-InnerBotLeftCorner" parentKey="InsetBorderBottomLeft">
+                    <Anchors>
+                        <Anchor point="BOTTOMLEFT" x="0" y="0"/>
+                    </Anchors>
+                </Texture>
+                <Texture inherits="UI-Frame-InnerBotRight" parentKey="InsetBorderBottomRight">
+                    <Anchors>
+                        <Anchor point="BOTTOMRIGHT" x="0" y="0"/>
+                    </Anchors>
+                </Texture>
+                <Texture inherits="_UI-Frame-InnerBotTile" parentKey="InsetBorderTop">
+                    <Anchors>
+                        <Anchor x="0" y="2" point="TOPLEFT" relativeKey="$parent.InsetBorderTopLeft" relativePoint="TOPRIGHT"/>
+                        <Anchor x="0" y="2" point="TOPRIGHT" relativeKey="$parent.InsetBorderTopRight" relativePoint="TOPLEFT"/>
+                    </Anchors>
+                </Texture>
+                <Texture inherits="_UI-Frame-InnerBotTile" parentKey="InsetBorderBottom">
+                    <Anchors>
+                        <Anchor point="BOTTOMLEFT" relativeKey="$parent.InsetBorderBottomLeft" relativePoint="BOTTOMRIGHT"/>
+                        <Anchor point="BOTTOMRIGHT" relativeKey="$parent.InsetBorderBottomRight" relativePoint="BOTTOMLEFT"/>
+                    </Anchors>
+                </Texture>
+                <Texture inherits="!UI-Frame-InnerLeftTile" parentKey="InsetBorderLeft">
+                    <Anchors>
+                        <Anchor point="TOPLEFT" x="0" y="0"/>
+                        <Anchor point="BOTTOMLEFT" relativeKey="$parent.InsetBorderBottomRight" relativePoint="TOPLEFT"/>
+                    </Anchors>
+                </Texture>
+                <Texture inherits="!UI-Frame-InnerRightTile" parentKey="InsetBorderRight">
+                    <Anchors>
+                        <Anchor point="TOPRIGHT" x="0" y="0"/>
+                        <Anchor point="BOTTOMRIGHT" relativeKey="$parent.InsetBorderBottomRight" relativePoint="TOPRIGHT"/>
+                    </Anchors>
+                </Texture>
+            </Layer>
+            <Layer level="ARTWORK">
+                <Texture name="ExpressYourElf_ConfigScreen_Header" file="Interface\DialogFrame\UI-DialogBox-Header">
+                    <Size>
+                        <AbsDimension x="356" y="64"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="TOP">
+                            <Offset>
+                                <AbsDimension x="0" y="18"/>
+                            </Offset>
+                        </Anchor>
+                    </Anchors>
+                </Texture>
+                <FontString inherits="GameFontNormal" text="Express your Elf">
+                    <Anchors>
+                        <Anchor point="TOP" relativeTo="ExpressYourElf_ConfigScreen_Header">
+                            <Offset>
+                                <AbsDimension x="0" y="-14"/>
+                            </Offset>
+                        </Anchor>
+                    </Anchors>
+                </FontString>
+                <FontString name="buttonInterfaceText" inherits="GameFontNormalSmall" text="Show or hide Conversation Buttons">
+                    <Anchors>
+                        <Anchor point="TOPLEFT" relativePoint="ExpressYourElf_ConfigScreen_ShowButtons" x="50" y="-50"/>
+                    </Anchors>
+                </FontString>
+                <FontString name="buttonInterfaceText" inherits="GameFontNormalSmall" text="You can move the buttons by dragging the header.">
+                    <Anchors>
+                        <Anchor point="TOPLEFT" relativePoint="ExpressYourElf_ConfigScreen_ShowButtons" x="20" y="-130"/>
+                    </Anchors>
+                </FontString>
+                <FontString name="buttonInterfaceText" inherits="GameFontNormalSmall" text="To miminize the frame, just click on the right button inside of the header.">
+                    <Anchors>
+                        <Anchor point="TOPLEFT" relativePoint="ExpressYourElf_ConfigScreen_ShowButtons" x="20" y="-150"/>
+                    </Anchors>
+                </FontString>
+
+                <!-- flirt consent -->
+                <FontString name="buttonInterfaceText" inherits="GameFontNormalSmall" text="If you don't know other's people age or intention, be aware with flirting. ">
+                    <Anchors>
+                        <Anchor point="TOPLEFT" relativePoint="ExpressYourElf_ConfigScreen_FlirtConsent" x="50" y="-200"/>
+                    </Anchors>
+                </FontString>
+                <FontString name="buttonInterfaceText" inherits="GameFontNormalSmall" text="To allow flirting within Express Your Elf, check the box to acknowledge you">
+                    <Anchors>
+                        <Anchor point="TOPLEFT" relativePoint="ExpressYourElf_ConfigScreen_FlirtConsent" x="50" y="-215"/>
+                    </Anchors>
+                </FontString>
+                <FontString name="buttonInterfaceText" inherits="GameFontNormalSmall" text="are aware that some players may be minors. Or as minor, you may engage">
+                    <Anchors>
+                        <Anchor point="TOPLEFT" relativePoint="ExpressYourElf_ConfigScreen_FlirtConsent" x="50" y="-230"/>
+                    </Anchors>
+                </FontString>
+                <FontString name="buttonInterfaceText" inherits="GameFontNormalSmall" text="a conversation with adults, and may be illegal.">
+                    <Anchors>
+                        <Anchor point="TOPLEFT" relativePoint="ExpressYourElf_ConfigScreen_FlirtConsent" x="50" y="-245"/>
+                    </Anchors>
+                </FontString>
+                <!-- mature content -->
+                <FontString name="buttonInterfaceText" inherits="GameFontNormalSmall" text="Allow expressing mature content to others">
+                    <Anchors>
+                        <Anchor point="TOPLEFT" relativePoint="ExpressYourElf_ConfigScreen_MatureContent" x="50" y="-310"/>
+                    </Anchors>
+                </FontString>
+                <!-- yo mama content -->
+                <FontString name="buttonInterfaceText" inherits="GameFontNormalSmall" text="Allow 'Yo Mama' content to be included">
+                    <Anchors>
+                        <Anchor point="TOPLEFT" relativePoint="ExpressYourElf_ConfigScreen_YoMamaContent" x="50" y="-365"/>
+                    </Anchors>
+                </FontString>
+            </Layer>
+        </Layers>
+        <Frames>
+            <Button name="$parentButtonClose" inherits="UIPanelCloseButton">
                 <Anchors>
-                    <Anchor point="BOTTOMLEFT"  x="0" y="0"/>
+                    <Anchor point="TOPRIGHT" relativePoint="TOPRIGHT">
+                        <Offset>
+                            <AbsDimension x="8" y="8"/>
+                        </Offset>
+                    </Anchor>
                 </Anchors>
-            </Texture>
-            <Texture inherits="UI-Frame-InnerBotRight" parentKey="InsetBorderBottomRight">
-                <Anchors>
-                    <Anchor point="BOTTOMRIGHT"  x="0" y="0"/>
-                </Anchors>
-            </Texture>
-            <Texture inherits="_UI-Frame-InnerBotTile" parentKey="InsetBorderTop">
-                <Anchors>
-                    <Anchor x="0" y="2" point="TOPLEFT" relativeKey="$parent.InsetBorderTopLeft" relativePoint="TOPRIGHT"/>
-                    <Anchor x="0" y="2" point="TOPRIGHT" relativeKey="$parent.InsetBorderTopRight" relativePoint="TOPLEFT"/>
-                </Anchors>
-            </Texture>
-            <Texture inherits="_UI-Frame-InnerBotTile" parentKey="InsetBorderBottom">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeKey="$parent.InsetBorderBottomLeft" relativePoint="BOTTOMRIGHT"/>
-                    <Anchor point="BOTTOMRIGHT" relativeKey="$parent.InsetBorderBottomRight" relativePoint="BOTTOMLEFT"/>
-                </Anchors>
-            </Texture>
-            <Texture inherits="!UI-Frame-InnerLeftTile" parentKey="InsetBorderLeft">
-                <Anchors>
-                    <Anchor point="TOPLEFT" x="0" y="0"/>
-                    <Anchor point="BOTTOMLEFT" relativeKey="$parent.InsetBorderBottomRight" relativePoint="TOPLEFT"/>
-                </Anchors>
-            </Texture>
-            <Texture inherits="!UI-Frame-InnerRightTile" parentKey="InsetBorderRight">
-                <Anchors>
-                    <Anchor point="TOPRIGHT"  x="0" y="0"/>
-                    <Anchor point="BOTTOMRIGHT" relativeKey="$parent.InsetBorderBottomRight" relativePoint="TOPRIGHT"/>
-                </Anchors>
-            </Texture>
-        </Layer>
-        <Layer level="ARTWORK">
-            <Texture name="ExpressYourElf_ConfigScreen_Header" file="Interface\DialogFrame\UI-DialogBox-Header">
+                <Scripts>
+                    <OnClick>ExpressYourElf_ConfigScreen:Hide()</OnClick>
+                </Scripts>
+            </Button>
+
+            <CheckButton name="ExpressYourElf_ConfigScreen_ShowButtons" inherits="UIPanelButtonTemplate" motionScriptsWhileDisabled="true" virtual="false">
                 <Size>
-                    <AbsDimension x="356" y="64"/>
+                    <AbsDimension x="25" y="25"/>
                 </Size>
                 <Anchors>
-                    <Anchor point="TOP">
+                    <Anchor point="TOPLEFT">
                         <Offset>
-                            <AbsDimension x="0" y="18"/>
+                            <AbsDimension x="20" y="-40"/>
                         </Offset>
                     </Anchor>
                 </Anchors>
-            </Texture>
-            <FontString inherits="GameFontNormal" text="Express your Elf">
-                <Anchors>
-                    <Anchor point="TOP" relativeTo="ExpressYourElf_ConfigScreen_Header">
-                        <Offset>
-                            <AbsDimension x="0" y="-14"/>
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </FontString>
-            <FontString name="buttonInterfaceText" inherits="GameFontNormalSmall" text="Show or hide Conversation Buttons">
-                <Anchors>
-                    <Anchor point="TOPLEFT" relativePoint="ExpressYourElf_ConfigScreen_ShowButtons" x="50" y="-50"/>
-                </Anchors>
-            </FontString>
-            <FontString name="buttonInterfaceText" inherits="GameFontNormalSmall" text="You can move the buttons by dragging the header.">
-                <Anchors>
-                    <Anchor point="TOPLEFT" relativePoint="ExpressYourElf_ConfigScreen_ShowButtons" x="20" y="-130"/>
-                </Anchors>
-            </FontString>
-            <FontString name="buttonInterfaceText" inherits="GameFontNormalSmall" text="To miminize the frame, just click on the right button inside of the header.">
-                <Anchors>
-                    <Anchor point="TOPLEFT" relativePoint="ExpressYourElf_ConfigScreen_ShowButtons" x="20" y="-150"/>
-                </Anchors>
-            </FontString>
-
-            <!-- flirt consent -->
-            <FontString name="buttonInterfaceText" inherits="GameFontNormalSmall" text="If you don't know other's people age or intention, be aware with flirting. ">
-                <Anchors>
-                    <Anchor point="TOPLEFT" relativePoint="ExpressYourElf_ConfigScreen_FlirtConsent" x="50" y="-200"/>
-                </Anchors>
-            </FontString>
-            <FontString name="buttonInterfaceText" inherits="GameFontNormalSmall" text="To allow flirting within Express Your Elf, check the box to acknowledge you">
-                <Anchors>
-                    <Anchor point="TOPLEFT" relativePoint="ExpressYourElf_ConfigScreen_FlirtConsent" x="50" y="-215"/>
-                </Anchors>
-            </FontString>
-            <FontString name="buttonInterfaceText" inherits="GameFontNormalSmall" text="are aware that some players may be minors. Or as minor, you may engage">
-                <Anchors>
-                    <Anchor point="TOPLEFT" relativePoint="ExpressYourElf_ConfigScreen_FlirtConsent" x="50" y="-230"/>
-                </Anchors>
-            </FontString>
-            <FontString name="buttonInterfaceText" inherits="GameFontNormalSmall" text="a conversation with adults, and may be illegal.">
-                <Anchors>
-                    <Anchor point="TOPLEFT" relativePoint="ExpressYourElf_ConfigScreen_FlirtConsent" x="50" y="-245"/>
-                </Anchors>
-            </FontString>
-            <!-- mature content -->
-            <FontString name="buttonInterfaceText" inherits="GameFontNormalSmall" text="Allow expressing mature content to others">
-                <Anchors>
-                    <Anchor point="TOPLEFT" relativePoint="ExpressYourElf_ConfigScreen_MatureContent" x="50" y="-310"/>
-                </Anchors>
-            </FontString>
-            <!-- yo mama content -->
-            <FontString name="buttonInterfaceText" inherits="GameFontNormalSmall" text="Allow 'Yo Mama' content to be included">
-                <Anchors>
-                    <Anchor point="TOPLEFT" relativePoint="ExpressYourElf_ConfigScreen_YoMamaContent" x="50" y="-365"/>
-                </Anchors>
-            </FontString>
-        </Layer>
-    </Layers>
-    <Frames>
-        <Button name="$parentButtonClose" inherits="UIPanelCloseButton" >
-            <Anchors>
-                <Anchor point="TOPRIGHT" relativePoint="TOPRIGHT">
-                    <Offset>
-                        <AbsDimension x="8" y="8"/>
-                    </Offset>
-                </Anchor>
-            </Anchors>
-            <Scripts>
-                <OnClick>ExpressYourElf_ConfigScreen:Hide()</OnClick>
-            </Scripts>
-        </Button>
-
-        <CheckButton name="ExpressYourElf_ConfigScreen_ShowButtons" inherits="UIPanelButtonTemplate" motionScriptsWhileDisabled="true" virtual="false">
-            <Size> 
-                <AbsDimension x="25" y="25"/> 
-            </Size>
-            <Anchors>
-                <Anchor point="TOPLEFT">
-                    <Offset>
-                        <AbsDimension x="20" y="-40"/>
-                    </Offset>
-                </Anchor>
-            </Anchors>
-            <Scripts>
-                <OnClick>
+                <Scripts>
+                    <OnClick>
                     if ( ExpressYourElf_ConfigScreen_ShowButtons:GetChecked() ) then 
                         ExpressYourElf_ShowButtons()
                     else 
                         ExpressYourElf_HideButtons()
                     end
-                </OnClick>
-            </Scripts>
-            <NormalTexture file="Interface\Buttons\UI-CheckBox-Up"/>
-            <PushedTexture file="Interface\Buttons\UI-CheckBox-Down"/>
-            <HighlightTexture file="Interface\Buttons\UI-CheckBox-Highlight" alphaMode="ADD"/>
-            <CheckedTexture file="Interface\Buttons\UI-CheckBox-Check"/>
-            <DisabledCheckedTexture file="Interface\Buttons\UI-CheckBox-Check-Disabled"/>
-        </CheckButton>
+                    </OnClick>
+                </Scripts>
+                <NormalTexture file="Interface\Buttons\UI-CheckBox-Up"/>
+                <PushedTexture file="Interface\Buttons\UI-CheckBox-Down"/>
+                <HighlightTexture file="Interface\Buttons\UI-CheckBox-Highlight" alphaMode="ADD"/>
+                <CheckedTexture file="Interface\Buttons\UI-CheckBox-Check"/>
+                <DisabledCheckedTexture file="Interface\Buttons\UI-CheckBox-Check-Disabled"/>
+            </CheckButton>
 
 
- <CheckButton name="ExpressYourElf_ConfigScreen_FlirtConsent" inherits="UIPanelButtonTemplate" motionScriptsWhileDisabled="true" virtual="false">
-            <Size> 
-                <AbsDimension x="25" y="25"/> 
-            </Size>
-            <Anchors>
-                <Anchor point="TOPLEFT">
-                    <Offset>
-                        <AbsDimension x="20" y="-200"/>
-                    </Offset>
-                </Anchor>
-            </Anchors>
-            <Scripts>
-                <OnClick>
+            <CheckButton name="ExpressYourElf_ConfigScreen_FlirtConsent" inherits="UIPanelButtonTemplate" motionScriptsWhileDisabled="true" virtual="false">
+                <Size>
+                    <AbsDimension x="25" y="25"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="TOPLEFT">
+                        <Offset>
+                            <AbsDimension x="20" y="-200"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
                     if ( ExpressYourElf_ConfigScreen_FlirtConsent:GetChecked() ) then 
                         ExpressYourElf_ConsentToFlirt()
                     else 
                         ExpressYourElf_DoNotConsentToFlirt()
                     end
-                </OnClick>
-            </Scripts>
-            <NormalTexture file="Interface\Buttons\UI-CheckBox-Up"/>
-            <PushedTexture file="Interface\Buttons\UI-CheckBox-Down"/>
-            <HighlightTexture file="Interface\Buttons\UI-CheckBox-Highlight" alphaMode="ADD"/>
-            <CheckedTexture file="Interface\Buttons\UI-CheckBox-Check"/>
-            <DisabledCheckedTexture file="Interface\Buttons\UI-CheckBox-Check-Disabled"/>
-        </CheckButton>
+                    </OnClick>
+                </Scripts>
+                <NormalTexture file="Interface\Buttons\UI-CheckBox-Up"/>
+                <PushedTexture file="Interface\Buttons\UI-CheckBox-Down"/>
+                <HighlightTexture file="Interface\Buttons\UI-CheckBox-Highlight" alphaMode="ADD"/>
+                <CheckedTexture file="Interface\Buttons\UI-CheckBox-Check"/>
+                <DisabledCheckedTexture file="Interface\Buttons\UI-CheckBox-Check-Disabled"/>
+            </CheckButton>
 
-        <CheckButton name="ExpressYourElf_ConfigScreen_MatureContent" inherits="UIPanelButtonTemplate" motionScriptsWhileDisabled="true" virtual="false">
-            <Size> 
-                <AbsDimension x="25" y="25"/> 
-            </Size>
-            <Anchors>
-                <Anchor point="TOPLEFT">
-                    <Offset>
-                        <AbsDimension x="20" y="-300"/>
-                    </Offset>
-                </Anchor>
-            </Anchors>
-            <Scripts>
-                <OnClick>
+            <CheckButton name="ExpressYourElf_ConfigScreen_MatureContent" inherits="UIPanelButtonTemplate" motionScriptsWhileDisabled="true" virtual="false">
+                <Size>
+                    <AbsDimension x="25" y="25"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="TOPLEFT">
+                        <Offset>
+                            <AbsDimension x="20" y="-300"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
                     if ( ExpressYourElf_ConfigScreen_MatureContent:GetChecked() ) then 
                         ExpressYourElf_AllowMatureContent()
                     else 
                         ExpressYourElf_DisallowMatureContent()
                     end
-                </OnClick>
-            </Scripts>
-            <NormalTexture file="Interface\Buttons\UI-CheckBox-Up"/>
-            <PushedTexture file="Interface\Buttons\UI-CheckBox-Down"/>
-            <HighlightTexture file="Interface\Buttons\UI-CheckBox-Highlight" alphaMode="ADD"/>
-            <CheckedTexture file="Interface\Buttons\UI-CheckBox-Check"/>
-            <DisabledCheckedTexture file="Interface\Buttons\UI-CheckBox-Check-Disabled"/>
-        </CheckButton>
-        
-        <CheckButton name="ExpressYourElf_ConfigScreen_YoMammaContent" inherits="UIPanelButtonTemplate" motionScriptsWhileDisabled="true" virtual="false">
-            <Size> 
-                <AbsDimension x="25" y="25"/> 
-            </Size>
-            <Anchors>
-                <Anchor point="TOPLEFT">
-                    <Offset>
-                        <AbsDimension x="20" y="-355"/>
-                    </Offset>
-                </Anchor>
-            </Anchors>
-            <Scripts>
-                <OnClick>
+                    </OnClick>
+                </Scripts>
+                <NormalTexture file="Interface\Buttons\UI-CheckBox-Up"/>
+                <PushedTexture file="Interface\Buttons\UI-CheckBox-Down"/>
+                <HighlightTexture file="Interface\Buttons\UI-CheckBox-Highlight" alphaMode="ADD"/>
+                <CheckedTexture file="Interface\Buttons\UI-CheckBox-Check"/>
+                <DisabledCheckedTexture file="Interface\Buttons\UI-CheckBox-Check-Disabled"/>
+            </CheckButton>
+
+            <CheckButton name="ExpressYourElf_ConfigScreen_YoMammaContent" inherits="UIPanelButtonTemplate" motionScriptsWhileDisabled="true" virtual="false">
+                <Size>
+                    <AbsDimension x="25" y="25"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="TOPLEFT">
+                        <Offset>
+                            <AbsDimension x="20" y="-355"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
                     if ( ExpressYourElf_ConfigScreen_YoMammaContent:GetChecked() ) then 
                         ExpressYourElf_AllowYoMamaContent()
                     else 
                         ExpressYourElf_DisallowYoMamaContent()
                     end
-                </OnClick>
-            </Scripts>
-            <NormalTexture file="Interface\Buttons\UI-CheckBox-Up"/>
-            <PushedTexture file="Interface\Buttons\UI-CheckBox-Down"/>
-            <HighlightTexture file="Interface\Buttons\UI-CheckBox-Highlight" alphaMode="ADD"/>
-            <CheckedTexture file="Interface\Buttons\UI-CheckBox-Check"/>
-            <DisabledCheckedTexture file="Interface\Buttons\UI-CheckBox-Check-Disabled"/>
-        </CheckButton>
-
-       
-
-        <!-- <CheckButton name="ExpressYourElf_ConfigScreen_BombsGoBurr" inherits="UIPanelButtonTemplate" motionScriptsWhileDisabled="true" virtual="false">
-            <Size> 
-                <AbsDimension x="25" y="25"/> 
-            </Size>
-            <Anchors>
-                <Anchor point="TOPLEFT" relativePoint="TOPLEFT">
-                    <Offset>
-                        <AbsDimension x="20" y="-170"/>
-                    </Offset>
-                </Anchor>
-            </Anchors>
-            <Scripts>
-                <OnClick>
-                    if (ExpressYourElf_ConfigScreen_BombsGoBurr:GetChecked() == true) then 
-                        ExpressYourElf_BombsGoBurrOn()
-                    else 
-                        ExpressYourElf_BombsGoBurrOff()
-                    end
-                </OnClick>
-            </Scripts>
-            <NormalTexture file="Interface\Buttons\UI-CheckBox-Up"/>
-            <PushedTexture file="Interface\Buttons\UI-CheckBox-Down"/>
-            <HighlightTexture file="Interface\Buttons\UI-CheckBox-Highlight" alphaMode="ADD"/>
-            <CheckedTexture file="Interface\Buttons\UI-CheckBox-Check"/>
-            <DisabledCheckedTexture file="Interface\Buttons\UI-CheckBox-Check-Disabled"/>
-        </CheckButton> -->
-
-        <Slider name="ExpressYourElf_ConfigScreen_Scale" inherits="OptionsSliderTemplate" minValue="0.1" maxValue="1" valueStep="0.1">
-            <Size x="185" y="16" />
-            <Anchors>
-                <Anchor point="TOPLEFT" relativeKey="$parent.OutputDeviceDropdown" relativePoint="TOPLEFT" x="182" y="-85" />
-            </Anchors>
-            <Layers>
-                <Layer level="ARTWORK">
-                    <FontString name="$parentLabel" parentKey="Label" inherits="GameFontNormalSmall" text="Conversation Buttons scale">
-                        <Anchors>
-                            <Anchor point="LEFT" relativePoint="LEFT" x="-160" y="0"/>
-                        </Anchors>
-                    </FontString>
-                </Layer>
-            </Layers>
-            <Scripts>
-                <OnValueChanged>ExpressYourElf_SetScale(value)</OnValueChanged>
-            </Scripts>
-        </Slider>
-    </Frames> 
-</Frame>
+                    </OnClick>
+                </Scripts>
+                <NormalTexture file="Interface\Buttons\UI-CheckBox-Up"/>
+                <PushedTexture file="Interface\Buttons\UI-CheckBox-Down"/>
+                <HighlightTexture file="Interface\Buttons\UI-CheckBox-Highlight" alphaMode="ADD"/>
+                <CheckedTexture file="Interface\Buttons\UI-CheckBox-Check"/>
+                <DisabledCheckedTexture file="Interface\Buttons\UI-CheckBox-Check-Disabled"/>
+            </CheckButton>
+            <Slider name="ExpressYourElf_ConfigScreen_Scale" inherits="OptionsSliderTemplate" minValue="0.1" maxValue="1" valueStep="0.1">
+                <Size x="185" y="16" />
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeKey="$parent.OutputDeviceDropdown" relativePoint="TOPLEFT" x="182" y="-85" />
+                </Anchors>
+                <Layers>
+                    <Layer level="ARTWORK">
+                        <FontString name="$parentLabel" parentKey="Label" inherits="GameFontNormalSmall" text="Conversation Buttons scale">
+                            <Anchors>
+                                <Anchor point="LEFT" relativePoint="LEFT" x="-160" y="0"/>
+                            </Anchors>
+                        </FontString>
+                    </Layer>
+                </Layers>
+                <Scripts>
+                    <OnValueChanged>ExpressYourElf_SetScale(value)</OnValueChanged>
+                </Scripts>
+            </Slider>
+        </Frames>
+    </Frame>
 </Ui>
