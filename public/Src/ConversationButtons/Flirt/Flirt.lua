@@ -38,7 +38,7 @@ function ExpressYourElf.Flirt.GetMessage(
     targetPoppaMomma
 )
     local randomWorld = ExpressYourElf.Helpers.GetRandomWorld()
-
+    local d = C_DateAndTime.GetCalendarTimeFromEpoch(1e6 * 60 * 60 * 24)
     local playerSex = "girls"
 
     if (playerGender == "male") then
@@ -287,8 +287,21 @@ function ExpressYourElf.Flirt.GetMessage(
         table.insert(flirtLines, "I'm ready to get rubbled.")
     end
 
+    -- christmas
+    if ((d.month == 12 and d.day == 24) or (d.month == 12 and d.day == 25)) then
+        table.insert(flirtLines, "I'm not Santa, but you can sit on my lap.");
+    end
+
+    --eastern
+    if (d.month == 4 and d.day == 12) then
+        table.insert(flirtLines, "I'm not the Easter Bunny, but I can still make you hop.");
+    end
+
     -- Mature content
     if (ExpressYourElfVars.allowMatureContent) then
+        if (d.month == 4 and d.day == 12) then
+            table.insert(flirtLines, "I'm not the Easter Bunny, but I can still make you hop.");
+        end
         if (playerRace == "Orc") then
             table.insert(flirtLines,
                 "I'm a lot like Thrall, I'm a warchief in the streets and a world shaman in the sheets.");

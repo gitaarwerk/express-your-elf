@@ -29,6 +29,7 @@ local function getPlayerMessage(
 )
     local randomWorld = ExpressYourElf.Helpers.GetRandomWorld()
     local zoneName = GetZoneText();
+    local d = C_DateAndTime.GetCalendarTimeFromEpoch(1e6 * 60 * 60 * 24)
 
     local playerSex = "girl"
     local oppositeSex = "guys"

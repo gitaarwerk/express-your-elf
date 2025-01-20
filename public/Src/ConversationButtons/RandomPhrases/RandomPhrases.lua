@@ -12,6 +12,7 @@ function ExpressYourElf.RandomPhrases.GetRandomMessage(
 )
     -- opposite
     local oppositeSex = "men"
+    local d = C_DateAndTime.GetCalendarTimeFromEpoch(1e6 * 60 * 60 * 24)
 
     if (playerGender == "male") then
         oppositeSex = "women"
@@ -203,9 +204,6 @@ function ExpressYourElf.RandomPhrases.GetRandomMessage(
         table.insert(flirtLines, "I said 'No' to the voices, but they wouldn’t listen.");
     end
 
-    if (targetRace == "Earthen") then
-        table.insert(listOfPhrases, "Where did you dug up ${playerName}?");
-    end
 
     if (playerRace == "Earthen") then
         table.insert(listOfPhrases, "I am a rock, I am an island.");
@@ -300,6 +298,10 @@ function ExpressYourElf.RandomPhrases.GetRandomMessageToTarget(
 
     if (targetRace == "Worgen") then
         table.insert("Yes, ${targetName},... you howled?");
+    end
+
+    if (targetRace == "Earthen") then
+        table.insert(listOfPhrases, "Where did you dug up ${playerName}?");
     end
 
     if (targetLevel and targetLevel < 50) then

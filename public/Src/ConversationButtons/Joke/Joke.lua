@@ -12,6 +12,7 @@ function ExpressYourElf.Joke.GetMessage(
     playerGuyGirl
 )
     local randomWorld = ExpressYourElf.Helpers.GetRandomWorld()
+    local d = C_DateAndTime.GetCalendarTimeFromEpoch(1e6 * 60 * 60 * 24)
 
     local playerSex = "girls"
 

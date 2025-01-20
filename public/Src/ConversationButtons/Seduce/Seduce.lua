@@ -36,6 +36,7 @@ function ExpressYourElf.Seduce.GetMessage(
     targetHimHer
 )
     local randomWorld = ExpressYourElf.Helpers.GetRandomWorld()
+    local d = C_DateAndTime.GetCalendarTimeFromEpoch(1e6 * 60 * 60 * 24)
 
     -- common
     local pickedLine
@@ -275,6 +276,17 @@ function ExpressYourElf.Seduce.GetMessage(
     if (playerClass == "Priest" and targetLevel < 18) then
         print('You should wait with flirting until ${targtName} is higher than level 18! ;-)');
         return nil
+    end
+
+    -- eastern
+    if (d.month == 4 and d.day == 12) then
+        table.insert(flirtLines, "I'm not the Easter Bunny, but I can still make you hop.");
+        table.insert(flirtLines, "You're like a delicious Easter egg. I want to find out what's inside.");
+    end
+
+    --christmas
+    if ((d.month == 12 and d.day == 24) or (d.month == 12 and d.day == 25)) then
+        table.insert(flirtLines, "I'm not Santa, but I can still make you ho-ho-ho.");
     end
 
     -- randomize result

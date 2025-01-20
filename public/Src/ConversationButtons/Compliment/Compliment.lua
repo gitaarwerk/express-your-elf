@@ -2,7 +2,7 @@
 
 ExpressYourElf.Compliment = {}
 
-function ExpressYourElf.Compliment.GetRandomPrefix(targetRace)
+function ExpressYourElf.Compliment.GetRandomPrefix()
     local prefix = {
         '${targetName}, ',
         'Hey ${targetName}. ',
@@ -31,6 +31,7 @@ function ExpressYourElf.Compliment.GetMessage(
     targetPoppaMomma
 )
     local randomWorld = ExpressYourElf.Helpers.GetRandomWorld()
+    local d = C_DateAndTime.GetCalendarTimeFromEpoch(1e6 * 60 * 60 * 24)
 
     local playerSex = "girls"
 
@@ -248,6 +249,22 @@ function ExpressYourElf.Compliment.GetMessage(
     end
 
     if (playerRace == "Earthen") then
+    end
+
+    -- christmas
+    if ((d.month == 12 and d.day == 24) or (d.month == 12 and d.day == 25)) then
+        table.insert(ComplimentLines, "You're the best present I could have asked for!");
+        table.insert(ComplimentLines, "You're the best gift I could have gotten!");
+        table.insert(ComplimentLines, "You're the best present I could have gotten!");
+        table.insert(ComplimentLines, "You're the best gift I could have asked for!");
+        table.insert(ComplimentLines, "You're the best present I could have asked for!");
+    end
+
+    --eastern
+    if (d.month == 4 and d.day == 12) then
+        table.insert(ComplimentLines, "You're the best egg I could have found!");
+        table.insert(ComplimentLines, "You're the best egg I could have asked for!");
+        table.insert(ComplimentLines, "You're the best egg I could have gotten!");
     end
 
     -- Mature content

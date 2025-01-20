@@ -22,6 +22,7 @@ function ExpressYourElf.IAmRude.GetMessage(
     local targetHisHer = "her"
     local targetHeShe = "she"
     local targetCowGirlBoy = "cowgirl"
+    local d = C_DateAndTime.GetCalendarTimeFromEpoch(1e6 * 60 * 60 * 24)
 
     if (playerGender == "male") then
         oppositeSex = "guys"
@@ -171,6 +172,13 @@ function ExpressYourElf.IAmRude.GetMessage(
         table.insert(rudeLines, "Is That... Fur? Coming Out Of Your Ears?");
         table.insert(rudeLines, "You'll make a fine rug, ${targetName}!");
     end
+
+    --christmas
+    if ((d.month == 12 and d.day == 24) or (d.month == 12 and d.day == 25)) then
+        table.insert(rudeLines, "Merry Christmas, ${targetName}. I hope you get coal in your stocking.");
+        table.insert(rudeLines, "Even my old stocking is looking more alive than ${targetName}.");
+    end
+
 
     -- Mature content
     if (ExpressYourElfVars.allowYoMamaContent) then

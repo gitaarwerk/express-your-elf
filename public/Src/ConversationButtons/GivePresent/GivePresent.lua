@@ -2,20 +2,20 @@
 ExpressYourElf.GivePresent = {}
 
 function ExpressYourElf.GivePresent.GetRandomGift(
-playerName,
-playerGender,
-playerClass,
-playerRace,
-playerLevel,
-playerHisHer,
-targetName,
-targetGender,
-targetClass,
-targetRace,
-targetLevel,
-targetHisHer
+    playerName,
+    playerGender,
+    playerClass,
+    playerRace,
+    playerLevel,
+    playerHisHer,
+    targetName,
+    targetGender,
+    targetClass,
+    targetRace,
+    targetLevel,
+    targetHisHer
 )
-
+    local d = C_DateAndTime.GetCalendarTimeFromEpoch(1e6 * 60 * 60 * 24)
     local splitName = targetName
     local pickedGift
     local listOfGifts = {
@@ -47,11 +47,11 @@ targetHisHer
         "gifts a notebook to ${targetName}. It's called: 'The origional memoires of Sylvanas, love, death and decomposition.'",
         "passes a present to ${targetName}. Something useful for you: Best storebought meals for one!",
         "gives a [Skeleton Hand Jewelry Organizer] to ${targetName}. It looks almost like Kel'Thuzad's hand!",
-        "gives a [Customizable Branding Stick] to ${targetName}. Handy for marking your crafts,... and raid members", 
+        "gives a [Customizable Branding Stick] to ${targetName}. Handy for marking your crafts,... and raid members",
         "gives a [The Serial Killer Cookbook] to ${targetName}. I realised this is THE PERFECT present for you!",
         "gives a book called: [Cursed Objects: Strange but True Stories of the World's Most Infamous Items] to ${targetName}. WOW! What a gem!",
-        "gives a [Vintage Print of a Smoking kid Archimonde & a Giant Chicken] to ${targetName}. Now here's a great memory! Right!?", 
-        "gives a set of [Handmade Experimented on Human Anatomy Coasters] to ${targetName}. They said, it belonged to Professor Putricide.", 
+        "gives a [Vintage Print of a Smoking kid Archimonde & a Giant Chicken] to ${targetName}. Now here's a great memory! Right!?",
+        "gives a set of [Handmade Experimented on Human Anatomy Coasters] to ${targetName}. They said, it belonged to Professor Putricide.",
         "gives a Titanic umbilical cord to ${targetName}. Would animals have been created using this thing?",
         "hands over a collection of Polaroids of Anduin being tortured by the Jailer to ${targetName}",
         "gives a pillow of cut off hand trophy to ${targetName}.",
@@ -66,7 +66,8 @@ targetHisHer
     }
 
     if (playerClass == "Druid" or playerRace == "Worgen" or playerRace == "Tauren" or playerRace == "Vulpera" or playerRace == "Pandaren" or playerRace == "Highmountain Tauren") then
-        table.insert(listOfGifts, "gives ${playerName}'s paw to ${targetName}. Don’t worry, it was cut off a while ago. It no longer bleeds.")
+        table.insert(listOfGifts,
+            "gives ${playerName}'s paw to ${targetName}. Don’t worry, it was cut off a while ago. It no longer bleeds.")
         table.insert(listOfGifts, "gives ${targetName} A small bag of fur.My first shedding")
     end
 
@@ -75,7 +76,8 @@ targetHisHer
     end
 
     if (playerRace == "Troll") then
-        table.insert(listOfGifts, "hands over ${targetName} a cut off hand from a random bystander, good for in the soup. Magical taste guaranteed")
+        table.insert(listOfGifts,
+            "hands over ${targetName} a cut off hand from a random bystander, good for in the soup. Magical taste guaranteed")
     end
 
     if (targetClass == "Hunter") then
@@ -109,16 +111,19 @@ targetHisHer
     )
 end
 
-
 function ExpressYourElf.GivePresent.run()
-    if(UnitName("target")) then
-        local playerName, playerGender, playerClass, playerRace, playerLevel  = ExpressYourElf.Helpers.GetPlayerInformation()
-        local targetName, targetGender, targetClass, targetRace, targetLevel  = ExpressYourElf.Helpers.GetTargetInformation()
+    if (UnitName("target")) then
+        local playerName, playerGender, playerClass, playerRace, playerLevel = ExpressYourElf.Helpers
+            .GetPlayerInformation()
+        local targetName, targetGender, targetClass, targetRace, targetLevel = ExpressYourElf.Helpers
+            .GetTargetInformation()
 
-        local playerHisHer = string.lower(ExpressYourElf.Helpers.GetHisHer(playerGender))
-        local targetHisHer = string.lower(ExpressYourElf.Helpers.GetHisHer(targetGender))
+        local playerHisHer                                                   = string.lower(ExpressYourElf.Helpers
+            .GetHisHer(playerGender))
+        local targetHisHer                                                   = string.lower(ExpressYourElf.Helpers
+            .GetHisHer(targetGender))
 
-        local RandomGift = ExpressYourElf.GivePresent.GetRandomGift(
+        local RandomGift                                                     = ExpressYourElf.GivePresent.GetRandomGift(
             playerName,
             playerGender,
             playerClass,
