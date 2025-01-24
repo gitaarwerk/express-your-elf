@@ -88,6 +88,30 @@ function ExpressYourElf.GivePresent.GetRandomGift(
         table.insert(listOfGifts, "hands over ${targetName} a carved steak of decaying flesh, ew!")
     end
 
+    --christmas
+    if ((d.month == 12 and d.day == 24) or (d.month == 12 and d.day == 25)) then
+        table.insert(listOfGifts,
+            "hands over a [Christmas sweater] to ${targetName}. It's a little itchy, but it's the thought that counts!");
+    end
+
+    -- eastern
+    if ((d.month == 4 and d.day == 4) or (d.month == 4 and d.day == 5)) then
+        table.insert(listOfGifts,
+            "gives a [Chocolate Easter Bunny] to ${targetName}. It's a little melted, but it's the thought that counts!");
+    end
+
+    -- halloween
+    if ((d.month == 10 and d.day == 30) or (d.month == 10 and d.day == 31)) then
+        table.insert(listOfGifts,
+            "gives a [Pumpkin] to ${targetName}. It's a little rotten, but it's the thought that counts!");
+    end
+
+    -- valentine
+    if ((d.month == 2 and d.day == 13) or (d.month == 2 and d.day == 14)) then
+        table.insert(listOfGifts,
+            "gives a [Heart-shaped box of chocolates] to ${targetName}. It's a little melted, but it's the thought that counts!");
+    end
+
 
     pickedGift = listOfGifts[fastrandom(1, #listOfGifts)]
 

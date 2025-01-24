@@ -179,6 +179,20 @@ function ExpressYourElf.IAmRude.GetMessage(
         table.insert(rudeLines, "Even my old stocking is looking more alive than ${targetName}.");
     end
 
+    -- valentine
+    if ((d.month == 2 and d.day == 13) or (d.month == 2 and d.day == 14)) then
+        table.insert(rudeLines,
+            "Happy Valentine's Day, ${targetName}. I hope you get a box of chocolates with a toothpick in it.");
+        table.insert(rudeLines, "I hope you get a box of chocolates with a toothpick in it, ${targetName}.");
+    end
+
+    -- eastern
+    if ((d.month == 4 and d.day == 4) or (d.month == 4 and d.day == 5)) then
+        table.insert(rudeLines,
+            "Happy Easter, ${targetName}. I hope you get a chocolate bunny with a bite taken out of it.");
+        table.insert(rudeLines, "I hope you get a chocolate bunny with a bite taken out of it, ${targetName}.");
+    end
+
 
     -- Mature content
     if (ExpressYourElfVars.allowYoMamaContent) then

@@ -73,6 +73,27 @@ local function getPlayerMessage(
         "I don't like ${zoneName}, oh no,... I love it."
     }
 
+    -- christmas
+    if ((d.month == 12 and d.day == 24) or (d.month == 12 and d.day == 25)) then
+        table.insert(danceLines, "All I want for Christmas, is you!");
+    end
+
+    -- eastern
+    if ((d.month == 4 and d.day == 4) or (d.month == 4 and d.day == 5)) then
+        table.insert(danceLines, "I'm all ears for you!");
+    end
+
+    -- halloween
+    if ((d.month == 10 and d.day == 30) or (d.month == 10 and d.day == 31)) then
+        table.insert(danceLines, "I'm a ghost, I'm a ghost, I'm a ghost!");
+        table.insert(danceLines, "There's a ghost down in the hall,  There's a ghoul upon the bed....");
+    end
+
+    -- valentine
+    if ((d.month == 2 and d.day == 13) or (d.month == 2 and d.day == 14)) then
+        table.insert(danceLines, "Love me, love me, pretend that you love me.");
+    end
+
     if (playerRace == "Tauren" or playerRace == "Highmountain Tauren") then
         table.insert(danceLines, "I'm a cow{playerGuyGirl}, dead or alive!")
     end
@@ -232,6 +253,7 @@ local function getTargetMessage(
     end
 
     local pickedLine
+    local d = C_DateAndTime.GetCalendarTimeFromEpoch(1e6 * 60 * 60 * 24)
 
     local danceLines = {
         "Beats so big I'm stepping on ${targetRace}.",
@@ -243,6 +265,16 @@ local function getTargetMessage(
         "${targetName}, you must be this tall, to ride THIS ride at the carnival.",
         "Hot summer nights, mid-July, when ${targetName} and I were forever wild.",
     }
+
+    -- christmas
+    if ((d.month == 12 and d.day == 24) or (d.month == 12 and d.day == 25)) then
+        table.insert(danceLines, "All I want for Christmas, is ${targetName}!");
+    end
+
+    -- eastern
+    if ((d.month == 4 and d.day == 4) or (d.month == 4 and d.day == 5)) then
+        table.insert(danceLines, "I'm all ears for ${targetName}!");
+    end
 
     if (targetClass == "Priest" or targetClass == "Paladin" or targetClass == "Druid" or targetClass == "Evoker" or targetClass == "Shaman") then
         table.insert(danceLines,
