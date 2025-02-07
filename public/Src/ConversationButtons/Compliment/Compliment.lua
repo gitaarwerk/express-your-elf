@@ -61,11 +61,24 @@ function ExpressYourElf.Compliment.GetMessage(
         "You're like a giant, albino gorilla!",
         "Your tonsils look quite lovely! If only you had tonsillitis so I could keep them as a medical specimen for my office!",
         "I love how you move your elbows. It's like you're a professional elbow mover!",
+        "Your oral cavity is wonderful to work with.",
     }
+
+    if (targetGender == "female") then
+        table.insert(ComplimentLines, "You look just like that girl from Natural Born Killers!");
+        table.insert(ComplimentLines, "My, what a smashing blouse youv've got there!");
+        table.insert(ComplimentLines, "You're the prettiest thing I've seen since I left the circus!");
+    end
+
+    if (targetClass == "Mage") then
+        table.insert(ComplimentLines, "You smell like a freshly baked mana biscuit.");
+    end
+
 
     if (targetRace == "Undead" or targetRace == "Scourge") then
         table.insert(ComplimentLines, "You have a very nice jawline. It's very... jawline-y.");
         table.insert(ComplimentLines, "You have a very nice nose. I wish I had one.");
+        table.insert(ComplimentLines, "Your laugh is more infectious than the Plague of Undercity.");
     end
 
     if (targetRace == "Undead" or targetRace == "Scourge" and targetGender == "male") then
@@ -99,9 +112,7 @@ function ExpressYourElf.Compliment.GetMessage(
         table.insert(ComplimentLines, "You have really beautiful eyelashes. They're so long!");
     end
 
-    if (targetGender == "female") then
-        table.insert(ComplimentLines, "You look just like that girl from Natural Born Killers!");
-    end
+
 
     if (targetRace ~= "Mechagnome" or targetRace ~= "Gnome") then
         table.insert(ComplimentLines, "You have the courage of a gnome facing a giant.");
@@ -177,11 +188,11 @@ function ExpressYourElf.Compliment.GetMessage(
     end
 
     -- to
-    if (targetRace == "Worgen" or targetRace == "Tauren" or targetRace == "Vulpera" or targetRace == "Pandaren" or targetRace == "Highmountain Tauren") then
+    if (targetRace == "Worgen" or targetRace == "Gilnean" or targetRace == "Tauren" or targetRace == "Vulpera" or targetRace == "Pandaren" or targetRace == "Highmountain Tauren") then
         table.insert(ComplimentLines, "Your hair is looking combed today!");
     end
 
-    if (targetRace == "Worgen") then
+    if (targetRace == "Worgen" or targetRace == "Gilnean") then
         table.insert("You have really pretty eyes, like a husky.");
     end
 
@@ -345,10 +356,10 @@ function ExpressYourElf.Compliment.GetMessage(
         if (playerRace == "Night Elf" and playerGender == "male") then
         end
 
-        if (playerRace == "Worgen" and playerGender == "female") then
+        if ((playerRace == "Worgen" or targetRace == "Gilnean") and playerGender == "female") then
         end
 
-        if (playerRace == "Worgen" and playerGender == "male") then
+        if ((playerRace == "Worgen" or targetRace == "Gilnean") and playerGender == "male") then
         end
 
         if (playerRace == "Dark Iron Dwarf" and playerGender == "male") then
