@@ -110,7 +110,7 @@ local function getPlayerMessage(
     end
 
     -- from
-    if (playerRace == "Worgen" or playerRace == "Tauren" or playerRace == "Vulpera" or playerRace == "Pandaren" or playerRace == "Highmountain Tauren") then
+    if (playerRace == "Worgen" or playerRace == "Gilnean" or playerRace == "Tauren" or playerRace == "Vulpera" or playerRace == "Pandaren" or playerRace == "Highmountain Tauren") then
     end
 
     if (playerRace == "Scourge" or playerRace == "Undead" or playerClass == "Death Knight") then
@@ -265,6 +265,159 @@ local function getTargetMessage(
         "${targetName}, you must be this tall, to ride THIS ride at the carnival.",
         "Hot summer nights, mid-July, when ${targetName} and I were forever wild.",
     }
+
+    if (playerGender == "male") then
+        table.insert(danceLines,
+            "I'm a ${playerRace}, I'm a lover, I'm a child, I'm a father, I'm a sinner, I'm a saint, I do not feel ashamed.");
+
+        -- all horde rces
+        if (playerRace == "Tauren" or playerRace == "Highmountain Tauren" or playerRace == "Scourge"
+                or playerRace == "Undead" or playerRace == "Troll" or playerRace == "Zandalari Troll" or playerRace == "Orc"
+                or playerRace == "Mag'har" or playerRace == "Goblin" or playerRace == "Blood Elf" or playerRace == "Nightborne"
+                or playerRace == "Vulpera") then
+            -- all horde female leaders
+            table.insert(danceLines, "A little bit of Sylvanas in my life");
+            table.insert(danceLines, "A little bit of Geya'rah by my side");
+            table.insert(danceLines, "A little bit of Lilian's all I need");
+            table.insert(danceLines, "A little bit of Thalyssra's what I see");
+            table.insert(danceLines, "A little bit of Liadrin in the sun");
+            table.insert(danceLines, "A little bit of Talanji all night long");
+            table.insert(danceLines, "A little bit of Mayla here I am");
+
+            table.insert(danceLines, "A little bit of Garona in my life");
+            table.insert(danceLines, "A little bit of Lilian's all I need");
+            table.insert(danceLines, "A little bit of Thalyssra's what I see");
+            table.insert(danceLines, "A little bit of Liadrin in the sun");
+            table.insert(danceLines, "A little bit of Talanji all night long");
+            table.insert(danceLines, "A little bit of Mayla here I am");
+        end
+
+        -- all alliance factions
+        if (
+                playerRace == "Pandaren" or playerRace == "Mechagnome" or playerRace == "Gnome" or playerRace == "Dwarf" or playerRace == "Night Elf" or playerRace == "Worgen"
+                or playerRace == "Gilnean"
+                or playerRace == "Draenei" or playerRace == "Void Elf" or playerRace == "Lightforged Draenei" or playerRace == "Kul Tiran" or playerRace == "Human" or playerRace == "Dark Iron Dwarf"
+            ) then
+            -- all alliance female leaders
+            table.insert(danceLines, "A little bit of Jaina in my life");
+            table.insert(danceLines, "A little bit of Fareeya by my side");
+            table.insert(danceLines, "A little bit of Alleria's all I need");
+            table.insert(danceLines, "A little bit of Draka's what I see");
+            table.insert(danceLines, "A little bit of Moira's what I see");
+            table.insert(danceLines, "A little bit of Tyrande in the sun");
+            table.insert(danceLines, "A little bit of Valeera in the sun");
+            table.insert(danceLines, "A little bit of Taelia all night long");
+            table.insert(danceLines, "A little bit of Tess here I am");
+
+            table.insert(danceLines, "A little bit of Vereesa by my side");
+            table.insert(danceLines, "A little bit of Yrel by my side");
+        end
+
+        -- all neutral classes
+        if (playerRace == "Pandaren" or playerRace == "Dracthyr" or playerRace == "Earthen") then
+            table.insert(danceLines, "A little bit of Chi Chi in my life");
+            table.insert(danceLines, "A little bit of Brinthe by my side");
+            table.insert(danceLines, "A little bit of Adelgonn's all I need");
+            table.insert(danceLines, "A little bit of Lufsela's what I see");
+            table.insert(danceLines, "A little bit of Cindrethresh's what I see");
+        end
+
+        -- other female characters
+        table.insert(danceLines, "A little bit of Vanessa in my life");
+        table.insert(danceLines, "A little bit of Vashj by my side");
+        table.insert(danceLines, "A little bit of Alexstrasza's all I need");
+        table.insert(danceLines, "A little bit of Maiev's what I see");
+        table.insert(danceLines, "A little bit of Azshara's what I see");
+        table.insert(danceLines, "A little bit of Elisandre in the sun");
+        table.insert(danceLines, "A little bit of Ysera in the sun");
+        table.insert(danceLines, "A little bit of Onyxia all night long");
+        table.insert(danceLines, "A little bit of Ashvane here I am");
+
+        table.insert(danceLines, "A little bit of Xal'atath in my life");
+        table.insert(danceLines, "A little bit of Chromie's all I need");
+        table.insert(danceLines, "A little bit of Talanji's what I see");
+    end
+
+    if (playerGender == "female") then
+        table.insert(danceLines,
+            "I'm a ${playerRace}, I'm a lover, I'm a child, I'm a mother, I'm a sinner, I'm a saint, I do not feel ashamed.");
+
+        -- all horde rces
+        if (playerRace == "Tauren" or playerRace == "Highmountain Tauren" or playerRace == "Scourge"
+                or playerRace == "Undead" or playerRace == "Troll" or playerRace == "Zandalari Troll" or playerRace == "Orc"
+                or playerRace == "Mag'har" or playerRace == "Goblin" or playerRace == "Blood Elf" or playerRace == "Nightborne"
+                or playerRace == "Vulpera") then
+            -- all horde male leaders
+            table.insert(danceLines, "A little bit of Theron in my life");
+            table.insert(danceLines, "A little bit of Vol'Jin by my side");
+            table.insert(danceLines, "A little bit of Thrall's all I need");
+            table.insert(danceLines, "A little bit of Bain's what I see");
+            table.insert(danceLines, "A little bit of Jorin in the sun");
+            table.insert(danceLines, "A little bit of Garrosh all night long");
+            table.insert(danceLines, "A little bit of Rommath here I am");
+
+            table.insert(danceLines, "A little bit of Drek'Thar in my life");
+            table.insert(danceLines, "A little bit of Aedelea by my side");
+            table.insert(danceLines, "A little bit of Cairn's all I need");
+            table.insert(danceLines, "A little bit of Gazlowe's what I see");
+            table.insert(danceLines, "A little bit of Rexxar in the sun");
+            table.insert(danceLines, "A little bit of Lor'themar all night long");
+            table.insert(danceLines, "A little bit of Malfurion all night long");
+            table.insert(danceLines, "A little bit of Gallywix here I am");
+            table.insert(danceLines, "A little bit of Noggenfogger by my side");
+            table.insert(danceLines, "A little bit of Kiro's what I see");
+        end
+
+        -- all alliance factions
+        if (
+                playerRace == "Pandaren" or playerRace == "Mechagnome" or playerRace == "Gnome" or playerRace == "Dwarf" or playerRace == "Night Elf" or playerRace == "Worgen"
+                or playerRace == "Gilnean"
+                or playerRace == "Draenei" or playerRace == "Void Elf" or playerRace == "Lightforged Draenei" or playerRace == "Kul Tiran" or playerRace == "Human" or playerRace == "Dark Iron Dwarf"
+            ) then
+            -- all alliance male leaders
+            table.insert(danceLines, "A little bit of Anduin in my life");
+            table.insert(danceLines, "A little bit of Genn by my side");
+            table.insert(danceLines, "A little bit of Velen's all I need");
+            table.insert(danceLines, "A little bit of Brann's what I see");
+            table.insert(danceLines, "A little bit of Muradin's what I see");
+            table.insert(danceLines, "A little bit of Magni in the sun");
+            table.insert(danceLines, "A little bit of Malfurion in the sun");
+            table.insert(danceLines, "A little bit of Malfurion all night long");
+            table.insert(danceLines, "A little bit of Millhouse here I am");
+
+            table.insert(danceLines, "A little bit of Bolvar in my life");
+            table.insert(danceLines, "A little bit of Tirion by my side");
+            table.insert(danceLines, "A little bit of Varian's all I need");
+
+            table.insert(danceLines, "A little bit of Brann's what I see");
+            table.insert(danceLines, "A little bit of Muradin's what I see");
+            table.insert(danceLines, "A little bit of Magni in the sun");
+            table.insert(danceLines, "A little bit of Malfurion in the sun");
+            table.insert(danceLines, "A little bit of Malfurion all night long");
+            table.insert(danceLines, "A little bit of Millhouse here I am");
+        end
+
+        -- all neutral classes
+        if (playerRace == "Pandaren" or playerRace == "Dracthyr" or playerRace == "Earthen") then
+            table.insert(danceLines, "A little bit of Shaohao in my life");
+            table.insert(danceLines, "A little bit of Azurathel by my side");
+            table.insert(danceLines, "A little bit of Flint's all I need");
+            table.insert(danceLines, "A little bit of Emberthal's what I see");
+            table.insert(danceLines, "A little bit of Cindrethresh's what I see");
+        end
+
+        -- other male characters
+        table.insert(danceLines, "A little bit of Medivh in my life");
+        table.insert(danceLines, "A little bit of Khadgar by my side");
+        table.insert(danceLines, "A little bit of Cenarius's all I need");
+        table.insert(danceLines, "A little bit of Odyn's what I see");
+        table.insert(danceLines, "A little bit of N'Zoth's what I see");
+        table.insert(danceLines, "A little bit of Denathrius in the sun");
+        table.insert(danceLines, "A little bit of Umbric in the sun");
+        table.insert(danceLines, "A little bit of Arthas all night long");
+        table.insert(danceLines, "A little bit of Illidan here I am");
+        table.insert(danceLines, "A little bit of Kael'Thas in my life");
+    end
 
     -- christmas
     if ((d.month == 12 and d.day == 24) or (d.month == 12 and d.day == 25)) then
