@@ -109,7 +109,7 @@ function ExpressYourElf.IAmRude.GetMessage(
         table.insert(rudeLines, "${targetName}'s combat skills are as effective as a wet paper shield.");
     end
 
-    if (targetRace == "Worgen" or targetRace == "Tauren" or targetRace == "Vulpera" or targetRace == "Pandaren" or targetRace == "Highmountain Tauren") then
+    if (targetRace == "Worgen" or targetRace == "Gilnean" or targetRace == "Tauren" or targetRace == "Vulpera" or targetRace == "Pandaren" or targetRace == "Highmountain Tauren") then
         table.insert(rudeLines,
             "You’re intelligence only comes from the symbiotic relationship with the flees you carry.");
     end
@@ -168,7 +168,7 @@ function ExpressYourElf.IAmRude.GetMessage(
         table.insert(rudeLines, "I've never seen a ${targetCowGirlBoy} like ${targetName}, line dancing so badly.");
     end
 
-    if (targetClass == "Druid" or targetRace == "Tauren" or targetRace == "Highmountain Tauren" or targetRace == "Worgen" or targetRace == "Vulpera") then
+    if (targetClass == "Druid" or targetRace == "Tauren" or targetRace == "Highmountain Tauren" or targetRace == "Worgen" or targetRace == "Gilnean" or targetRace == "Vulpera") then
         table.insert(rudeLines, "Is That... Fur? Coming Out Of Your Ears?");
         table.insert(rudeLines, "You'll make a fine rug, ${targetName}!");
     end

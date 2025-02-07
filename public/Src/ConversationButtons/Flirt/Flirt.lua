@@ -94,12 +94,12 @@ function ExpressYourElf.Flirt.GetMessage(
     end
 
     -- from
-    if (playerRace == "Worgen" or playerRace == "Tauren" or playerRace == "Vulpera" or playerRace == "Pandaren" or playerRace == "Highmountain Tauren") then
+    if (playerRace == "Worgen" or playerRace == "Gilnean" or playerRace == "Tauren" or playerRace == "Vulpera" or playerRace == "Pandaren" or playerRace == "Highmountain Tauren") then
         table.insert(flirtLines, "Wanna see me comb my hair, really fast?")
         table.insert(flirtLines, "My name isn’t Elmo, but you can tickle me any time you want to.")
     end
 
-    if (targetRace == "Worgen" or targetRace == "Tauren" or targetRace == "Vulpera" or targetRace == "Pandaren" or targetRace == "Highmountain Tauren") then
+    if (targetRace == "Worgen" or targetRace == "Gilnean" or targetRace == "Tauren" or targetRace == "Vulpera" or targetRace == "Pandaren" or targetRace == "Highmountain Tauren") then
         table.insert(flirtLines, "I like your fur, it's so soft and fluffy.");
     end
 
@@ -443,7 +443,7 @@ function ExpressYourElf.Flirt.GetMessage(
             table.insert(flirtLines, "I hope you're not afraid of snakes.")
         end
 
-        if (playerRace == "Worgen" and playerGender == "female") then
+        if ((playerRace == "Worgen" or playerRace == "Gilnean") and playerGender == "female") then
             table.insert(flirtLines, "Being bitchy is in my blood. Don't pretend you don't like it.")
             table.insert(flirtLines, "Don't worry,... the fur is just something to hold onto.")
             table.insert(flirtLines, "(sniffs), Well, hello... ")
@@ -452,7 +452,7 @@ function ExpressYourElf.Flirt.GetMessage(
             table.insert(flirtLines, "It all matches. Trust me.")
         end
 
-        if (playerRace == "Worgen" and playerGender == "male") then
+        if ((playerRace == "Worgen" or playerRace == "Gilnean") and playerGender == "male") then
             table.insert(flirtLines, "I hope you like it 'ruff'.")
             table.insert(flirtLines, "Being with me is like having two guys in one.")
             table.insert(flirtLines, "I'd like to mark your territory.")

@@ -70,9 +70,13 @@ function ExpressYourElf.Seduce.GetMessage(
         table.insert(flirtLines, "I want you all to myself, You’re my fel juice I would like to drink more of.")
     end
 
-    if (playerRace == "Worgen") then
+    if (playerRace == "Worgen" or playerRace == "Gilnean") then
         table.insert(flirtLines, "I'm a werewolf, but I'm not the only one who's going to be howling tonight.");
         table.insert(flirtLines, "Did you know, a worgen always brings ${playerHisHer} pack with ${playerHimHer}?");
+    end
+
+    if (playerRace == "Gilnean") then
+        table.insert(flirtLines, "What may surprise you, I'm a beast when I'm onto you.");
     end
 
     if (playerRace == "Worgen" or playerRace == "Tauren" or playerRace == "Vulpera" or playerRace == "Pandaren" or playerRace == "Highmountain Tauren") then

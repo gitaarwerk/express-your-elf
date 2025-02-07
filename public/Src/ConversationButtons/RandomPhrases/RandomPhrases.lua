@@ -296,7 +296,7 @@ function ExpressYourElf.RandomPhrases.GetRandomMessageToTarget(
         table.insert(listOfPhrases, "ally ally ally! OI OI OI!");
     end
 
-    if (targetRace == "Worgen") then
+    if (targetRace == "Worgen" or targetRace == "Gilnean") then
         table.insert("Yes, ${targetName},... you howled?");
     end
 

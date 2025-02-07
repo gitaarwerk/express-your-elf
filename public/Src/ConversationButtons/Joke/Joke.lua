@@ -232,12 +232,12 @@ function ExpressYourElf.Joke.GetMessage(
         if (playerRace == "Night Elf" and playerGender == "male") then
         end
 
-        if (playerRace == "Worgen" and playerGender == "female") then
+        if ((playerRace == "Worgen" or playerRace == "Gilnean") and playerGender == "female") then
             table.insert(jokeLines,
                 "For the holiday, he tried to give me a bone. No...a bone. An ordinary bone. What did you think I...oh...")
         end
 
-        if (playerRace == "Worgen" and playerGender == "male") then
+        if ((playerRace == "Worgen" or playerRace == "Gilnean") and playerGender == "male") then
             table.insert(jokeLines,
                 "It's nothing personal, I just don't feel that I really know a person until I've sniffed their crotch.")
             table.insert(jokeLines, "Alright: I've got hairy palms. So what?")
