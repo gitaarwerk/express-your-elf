@@ -28,7 +28,6 @@ local function getPlayerMessage(
     playerManWoman
 )
     local randomWorld = ExpressYourElf.Helpers.GetRandomWorld()
-    local zoneName = GetZoneText();
     local d = C_DateAndTime.GetCalendarTimeFromEpoch(1e6 * 60 * 60 * 24)
 
     local playerSex = "girl"
@@ -40,6 +39,9 @@ local function getPlayerMessage(
         oppositeSex = "girls"
         oppositeBfGf = "girlfriend"
     end
+
+    local zoneName = GetZoneText();
+
     -- common
     local pickedLine
 
@@ -52,6 +54,7 @@ local function getPlayerMessage(
         "Is this the real life? Is this just fantasy?",
         "It's murder on the raid floor. But you'd better not steal the moves. Yhea Yhea! Boss' gonna burn this dungeon down right now!",
         "Like a ${playerRace}, raiding for the very first time!",
+        "Like a ${playerClass}, raiding for the very first time!",
         "They're out to get you, there's demons closing in on every side. That this is raiding, raid raid night!",
         "Lack toes, intolerant. It sucks when you can't stand! Lack toes, intolerant. Anything, when you can't stand!",
         "Silithus gel, I think it's swell. It tastes just like chicken. And when you get sickened. It makes you feel well.",
@@ -70,7 +73,9 @@ local function getPlayerMessage(
         "SWEEET CARO .... LINEEEEE.... OHHH OH OHHHHH",
         "I AM THE GOD OF HELL FIRE! and I bring you FIRE! I beg you to BURN!",
         "I'm waiting.... waiting..... waiting for the ${randomWorld} to burn.",
-        "I don't like ${zoneName}, oh no,... I love it."
+        "I don't like ${zoneName}, oh no,... I love it.",
+        "Love me love me, say that you love me. Fool me fool me, go on and fool me.",
+        "Burning down ${zoneName}, my ${zoneName}!"
     }
 
     -- christmas
