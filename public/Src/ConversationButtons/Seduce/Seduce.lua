@@ -61,6 +61,10 @@ function ExpressYourElf.Seduce.GetMessage(
         'Nice neck you’ve got there',
     }
 
+    if (playerGender == "male" and targetGender == "male") then
+        table.insert(flirtLines, "I want to see you parry mine, and then I'll parry yours.");
+    end
+
     if (targetGender == "female") then
         table.insert(flirtLines, "I'd love to explore your wetlands.");
         table.insert(flirtLines, "I'd love to raid your Ruby Sanctum.");
@@ -318,7 +322,6 @@ function ExpressYourElf.Seduce.GetMessage(
             targetHimHer = targetHimHer,
             oppositeSex = oppositeSex,
             randomWorld = randomWorld
-
         }
     )
 end
