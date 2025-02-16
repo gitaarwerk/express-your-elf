@@ -65,6 +65,12 @@ function ExpressYourElf.GivePresent.GetRandomGift(
         "gives a hand-knit brain beanie.",
     }
 
+    if (playerClass == "Goblin") then
+        table.insert(listOfGifts, "gives a set of [Goblin Rocket Boots] to ${targetName}.")
+        table.insert(listOfGifts, "gives a [Goblin Rocket Helmet] to ${targetName}.")
+        table.insert(listOfGifts, "gives a [Goblin Rocket Launcher] to ${targetName}.")
+    end
+
     if (playerClass == "Druid" or playerRace == "Worgen" or playerRace == "Gilnean" or playerRace == "Tauren" or playerRace == "Vulpera" or playerRace == "Pandaren" or playerRace == "Highmountain Tauren") then
         table.insert(listOfGifts,
             "gives ${playerName}'s paw to ${targetName}. Don’t worry, it was cut off a while ago. It no longer bleeds.")
