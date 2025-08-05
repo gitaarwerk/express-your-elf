@@ -1,6 +1,6 @@
 ## Title: Express Your Elf
-## Interface: 40401, 40402
-## X-Min-Interface: 40400
+## Interface: 40402
+## X-Min-Interface: 40402
 ## X-Future-Interface: TBA
 ## Version: @project-version@
 ## Author: Darkrider, Dunemaul (EU)
