@@ -47,6 +47,7 @@ function ExpressYourElf.Compliment.GetMessage(
         "I like the way how your legs move when you walk.",
         "You have a very nice nose. It's very... nose-like.",
         "You smell like a freshly baked mana biscuit.",
+        "You've gotta have the most creamy cheeks in all of Azeroth!",
         "Your voice is as soothing as a Pandaren lullaby.",
         "Your laugh is more infectious than the Plague of Undercity.",
         "You have the wisdom of a thousand ancient scrolls.",
