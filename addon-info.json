@@ -1,0 +1,43 @@
+{
+  "addon_name": "Express Your Elf",
+  "author": "Darkrider - Dunemaul (EU)",
+  "notes": "Express oneself in a more casual and fun way.",
+  "curseforge_project_id": "385234",
+  "release_type": "release",
+  "target_dir": "./public",
+  "x_reset_vars_date": "2024-07-21T5:10:00Z",
+  "license": "All Rights Reserved",
+  "loadondemand": 0,
+  "saved_variables_per_character": "ExpressYourElfVars",
+  "x_category": "Fun, Communication, Miscellaneous",
+  "x_credits": "JJnl, Sueyen, Blizard (removed flirts and jokes), Some pick-up lines from https://www.pickuplinesgalore.com/warcraft.html",
+  "x_website": "https://www.curseforge.com/wow/addons/express-your-elf",
+  "icon_texture": "Interface\\AddOns\\ExpressYourElf\\addonIcon.jpg",
+  "default_state": "enabled",
+  "supportedGameVersions": {
+    "retail": true,
+    "cata": true,
+    "classic": true,
+    "mop": true,
+    "tbc": true,
+    "wotlk": true
+  },
+  "exclude": [
+    ".git",
+    ".github",
+    "tests",
+    "*.psd",
+    "addon-info.json",
+    "LICENSE",
+    "*.txt",
+    "README.md",
+    "pkgmeta.yaml",
+    ".gitignore",
+    "node_modules",
+    "src",
+    "Src",
+    ".idea",
+    ".vscode",
+    ".DS_Store"
+  ]
+}

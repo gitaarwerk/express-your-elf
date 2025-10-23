@@ -1,0 +1,112 @@
+name: Build and Upload Addon
+
+on:
+  push:
+    tags:
+      - '*'
+    branches:
+      - '**'
+
+jobs:
+  build-and-upload:
+    runs-on: ubuntu-latest
+    steps:
+      # 1️⃣ Checkout repository
+      - uses: actions/checkout@v4
+
+      # 2️⃣ Determine addon version (tag or short git hash)
+      - name: Determine addon version
+        run: |
+          if [[ "${GITHUB_REF}" == refs/tags/* ]]; then
+            VERSION="${GITHUB_REF_NAME}"
+          else
+            VERSION=$(git rev-parse --short HEAD)
+          fi
+          echo "Using version: $VERSION"
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
+
+      # 3️⃣ Read JSON variables and replace placeholders
+      - name: Read variables and replace placeholders
+        run: |
+          VARS=$(cat addon-info.json)
+          TARGET_DIR=$(echo "$VARS" | jq -r '.target_dir')
+          ADDON_NAME=$(echo "$VARS" | jq -r '.addon_name')
+          CURSEFORGE_PROJECT_ID=$(echo "$VARS" | jq -r '.curseforge_project_id')
+
+          TARGET_DIR=$(realpath "$TARGET_DIR")
+          echo "TARGET_DIR=$TARGET_DIR"
+          echo "ADDON_NAME=$ADDON_NAME"
+          echo "CURSEFORGE_PROJECT_ID=$CURSEFORGE_PROJECT_ID"
+
+          # Set environment variables for later steps
+          echo "TARGET_DIR=$TARGET_DIR" >> $GITHUB_ENV
+          echo "ADDON_NAME=$ADDON_NAME" >> $GITHUB_ENV
+          echo "CURSEFORGE_PROJECT_ID=$CURSEFORGE_PROJECT_ID" >> $GITHUB_ENV
+
+          # Replace @datetime@
+          ISO_DATETIME=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+          grep -rl "@datetime@" "$TARGET_DIR" 2>/dev/null | xargs -r sed -i "s|@datetime@|$ISO_DATETIME|g"
+
+          # Replace @version@
+          grep -rl "@version@" "$TARGET_DIR" 2>/dev/null | xargs -r sed -i "s|@version@|$VERSION|g"
+
+          # Replace other @key@ placeholders from JSON
+          for key in $(echo "$VARS" | jq -r 'keys[]'); do
+            if [[ "$key" == "exclude" ]] || [[ "$key" == "supportedGameVersions" ]]; then
+              continue
+            fi
+            value=$(echo "$VARS" | jq -r --arg k "$key" '.[$k]')
+            grep -rl "@${key}@" "$TARGET_DIR" 2>/dev/null | xargs -r sed -i "s|@${key}@|$value|g"
+          done
+
+      # 4️⃣ NPM install
+      - name: Install NPM dependencies
+        working-directory: ${{ env.TARGET_DIR }}
+        run: npm install
+
+      # 5️⃣ NPM compile
+      - name: Compile addon
+        working-directory: ${{ env.TARGET_DIR }}
+        run: npm run compile
+
+      # 6️⃣ Zip addon excluding files from JSON
+      - name: Package addon into ZIP
+        run: |
+            BUILD_DIR="$(pwd)/build"
+            mkdir -p "$BUILD_DIR"
+
+            TMP_DIR=$(mktemp -d)
+            cp -r "${TARGET_DIR}" "${TMP_DIR}/${ADDON_NAME}"
+
+            cd "${TMP_DIR}/${ADDON_NAME}"
+
+            # Remove excluded files/directories first
+            jq -r '.exclude[]' "${GITHUB_WORKSPACE}/addon-info.json" | while read pattern; do
+            # delete matching files/folders recursively
+            find . -iname "$pattern" -exec rm -rf {} +
+            done
+
+            cd ..
+
+            # Zip the addon folder
+            zip -r "${BUILD_DIR}/${ADDON_NAME}-${VERSION}.zip" "${ADDON_NAME}"
+
+
+      # 7️⃣ Upload ZIP as artifact (v4)
+      - name: Upload addon ZIP as artifact
+        uses: actions/upload-artifact@v4
+        with:
+            name: ${{ env.ADDON_NAME }}-${{ env.VERSION }}
+            path: build/${{ env.ADDON_NAME }}-${{ env.VERSION }}.zip
+            if-no-files-found: warn
+            compression-level: 6
+            overwrite: false
+            include-hidden-files: false
+
+      # 8️⃣ Upload to CurseForge (optional)
+      # - name: Upload to CurseForge
+      #   run: |
+      #     curl -X POST "https://wow.curseforge.com/api/projects/${{ env.CURSEFORGE_PROJECT_ID }}/upload-file" \
+      #       -H "x-api-token: ${{ secrets.CF_API_TOKEN }}" \
+      #       -F "file=@build/${ADDON_NAME}-${VERSION}.zip" \
+      #       -F "metadata={\"changelog\":\"Auto build for $VERSION\",\"releaseType\":\"release\",\"gameVersions\":[${{ secrets.CF_GAME_VERSION_IDS }}]}"
