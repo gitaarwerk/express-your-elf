@@ -105,7 +105,7 @@ jobs:
       # 8️⃣ Upload to CurseForge (optional)
       - name: Upload to CurseForge
         run: |
-          curl -X POST "https://wow.curseforge.com/api/projects/$CURSEFORGE_PROJECT_ID/upload-file" \
+          curl -X POST "https://wow.curseforge.com/api/projects/${CURSEFORGE_PROJECT_ID}/upload-file" \
           -H "X-Api-Token: $CF_API_TOKEN" \
           -F "file=@build/${ADDON_DIR}-${VERSION}.zip" \
           -F "metadata={\"changelog\":\"Auto build for $VERSION\",\"releaseType\":\"release\",\"gameVersions\":[$GAME_VERSIONS]}"
