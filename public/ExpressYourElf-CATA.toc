@@ -2,20 +2,20 @@
 ## Interface: 40402
 ## X-Min-Interface: 40402
 ## X-Future-Interface: TBA
-## Version: @project-version@
-## Author: Darkrider, Dunemaul (EU)
-## Notes: Express oneself in a more casual and fun way.
-## X-Credits: JJnl, Sueyen, Blizard (removed flirts and jokes), Some pick-up lines from https://www.pickuplinesgalore.com/warcraft.html
-## IconTexture: Interface\AddOns\NurseNancy\addonIcon.jpg
-## X-Curse-Project-ID: 385234
-## X-Category: Fun, Communication, Miscellaneous
-## X-Website: https://www.curseforge.com/wow/addons/express-your-elf
-## X-Date: @project-date-iso@
-## X-License: All Rights Reserved
-## X-ResetVarsDate: 2024-07-21T5:10:00Z
-## SavedVariablesPerCharacter: ExpressYourElfVars
-## LoadOnDemand: 0
-## DefaultState: enabled
+## Version: @version@
+## Author: @author@
+## Notes: @notes@
+## X-Credits: @x_credits
+## IconTexture: @icon_texture@
+## X-Curse-Project-ID: @curseforge_project_id@
+## X-Category: @x_category@
+## X-Website: @x_website@
+## X-Date: @datetime@
+## X-License: @license@
+## X-ResetVarsDate: @x_reset_vars_date@
+## SavedVariablesPerCharacter: @saved_variables_per_character@
+## LoadOnDemand: @loadondemand@
+## DefaultState: @default_state@
 
 Src/AltGameTooltip.xml
 Src/ConfigurationScreen.xml
