@@ -12,10 +12,11 @@
   "license": "ISC",
   "author": "",
   "type": "commonjs",
-  "main": "minify-lua.js",
   "scripts": {
+    "build": "npm run compile && npm run update-paths",
     "compile": "node minify-lua.js ./public/Src ./public/Dist --copy-extra",
     "minify": "node minify-lua.js ./public/Src ./public/Dist",
+    "update-paths": "node update-file-paths.js ./public/Dist ./public/Dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {

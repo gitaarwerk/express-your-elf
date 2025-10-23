@@ -94,21 +94,58 @@ function encodeStrings(code) {
     });
 }
 
-// Minify and obfuscate Lua
+function normalizeWhitespace(code) {
+    // Keep spacing between tokens, but clean up blank lines
+    return code
+        .replace(/\r\n/g, "\n")
+        .replace(/[ \t]+$/gm, "")  // trim trailing spaces
+        .replace(/\n{3,}/g, "\n\n") // collapse multiple blank lines
+        .trimStart();
+}
+
+function safeMinify(code) {
+    try {
+        return luamin.minify(code);
+    } catch (e) {
+        console.warn(`⚠️ luamin failed (${e.message}), using safe fallback`);
+        // Gentle whitespace collapse — keeps spaces after keywords
+        return code
+            .replace(/--.*$/gm, "")           // remove comments
+            .replace(/\t+/g, " ")
+            .replace(/[ ]{2,}/g, " ")         // multiple spaces → one
+            .replace(/[ ]*\n[ ]*/g, "\n")     // trim spaces around newlines
+            .trim();
+    }
+}
+
+// Optional: escape Lua strings instead of converting to string.char
+function escapeLuaString(str) {
+    return str
+        .replace(/\\/g, "\\\\")   // escape backslashes
+        .replace(/"/g, '\\"')     // escape double quotes
+        .replace(/\n/g, "\\n");   // optional: escape newlines
+}
+
+// Minify and optionally obfuscate Lua
 function minifyAndObfuscate(src, dest) {
     try {
         let code = fs.readFileSync(src, "utf8");
 
+        code = normalizeWhitespace(code);
+
         const ast = luaparse.parse(code, { locations: false });
 
-        obfuscateAST(ast);
+        obfuscateAST(ast); // optional: comment this out if you don’t want name obfuscation
 
-        code = luamin.minify(code);
+        code = safeMinify(code);
 
-        code = encodeStrings(code);
+        // Escape strings instead of converting to string.char
+        code = code.replace(/(["'])(.*?)(\1)/g, (match, quote, content) => {
+            return `"${escapeLuaString(content)}"`;
+        });
 
         writeFileAtomic(dest, code);
-        console.log(`✔ Minified & obfuscated: ${src} -> ${dest}`);
+        console.log(`✔ Minified: ${src} -> ${dest}`);
         return dest;
     } catch (err) {
         console.error(`❌ Failed to process ${src}: ${err.message}`);

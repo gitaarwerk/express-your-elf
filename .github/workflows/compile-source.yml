@@ -4,8 +4,6 @@ on:
   push:
     tags:
       - '*'
-    branches:
-      - '**'
 
 jobs:
   build-and-upload:
@@ -30,17 +28,17 @@ jobs:
         run: |
           VARS=$(cat addon-info.json)
           TARGET_DIR=$(echo "$VARS" | jq -r '.target_dir')
-          ADDON_NAME=$(echo "$VARS" | jq -r '.addon_name')
+          ADDON_DIR=$(echo "$VARS" | jq -r '.addon_dir')
           CURSEFORGE_PROJECT_ID=$(echo "$VARS" | jq -r '.curseforge_project_id')
 
           TARGET_DIR=$(realpath "$TARGET_DIR")
           echo "TARGET_DIR=$TARGET_DIR"
-          echo "ADDON_NAME=$ADDON_NAME"
+          echo "ADDON_DIR=$ADDON_DIR"
           echo "CURSEFORGE_PROJECT_ID=$CURSEFORGE_PROJECT_ID"
 
           # Set environment variables for later steps
           echo "TARGET_DIR=$TARGET_DIR" >> $GITHUB_ENV
-          echo "ADDON_NAME=$ADDON_NAME" >> $GITHUB_ENV
+          echo "ADDON_DIR=$ADDON_DIR" >> $GITHUB_ENV
           echo "CURSEFORGE_PROJECT_ID=$CURSEFORGE_PROJECT_ID" >> $GITHUB_ENV
 
           # Replace @datetime@
@@ -56,7 +54,8 @@ jobs:
               continue
             fi
             value=$(echo "$VARS" | jq -r --arg k "$key" '.[$k]')
-            grep -rl "@${key}@" "$TARGET_DIR" 2>/dev/null | xargs -r sed -i "s|@${key}@|$value|g"
+            escaped_value=$(printf '%s\n' "$value" | sed -e 's/[\/&]/\\&/g' -e 's/\\/\\\\/g')
+            grep -rl "@${key}@" "$TARGET_DIR" 2>/dev/null | xargs -r sed -i "s|@${key}@|${escaped_value}|g"
           done
 
       # 4️⃣ NPM install
@@ -67,7 +66,7 @@ jobs:
       # 5️⃣ NPM compile
       - name: Compile addon
         working-directory: ${{ env.TARGET_DIR }}
-        run: npm run compile
+        run: npm run build
 
       # 6️⃣ Zip addon excluding files from JSON
       - name: Package addon into ZIP
@@ -76,9 +75,9 @@ jobs:
             mkdir -p "$BUILD_DIR"
 
             TMP_DIR=$(mktemp -d)
-            cp -r "${TARGET_DIR}" "${TMP_DIR}/${ADDON_NAME}"
+            cp -r "${TARGET_DIR}" "${TMP_DIR}/${ADDON_DIR}"
 
-            cd "${TMP_DIR}/${ADDON_NAME}"
+            cd "${TMP_DIR}/${ADDON_DIR}"
 
             # Remove excluded files/directories first
             jq -r '.exclude[]' "${GITHUB_WORKSPACE}/addon-info.json" | while read pattern; do
@@ -89,24 +88,24 @@ jobs:
             cd ..
 
             # Zip the addon folder
-            zip -r "${BUILD_DIR}/${ADDON_NAME}-${VERSION}.zip" "${ADDON_NAME}"
+            zip -r "${BUILD_DIR}/${ADDON_DIR}-${VERSION}.zip" "${ADDON_DIR}"
 
 
       # 7️⃣ Upload ZIP as artifact (v4)
       - name: Upload addon ZIP as artifact
         uses: actions/upload-artifact@v4
         with:
-            name: ${{ env.ADDON_NAME }}-${{ env.VERSION }}
-            path: build/${{ env.ADDON_NAME }}-${{ env.VERSION }}.zip
+            name: ${{ env.ADDON_DIR }}-${{ env.VERSION }}
+            path: build/${{ env.ADDON_DIR }}-${{ env.VERSION }}.zip
             if-no-files-found: warn
             compression-level: 6
             overwrite: false
             include-hidden-files: false
 
       # 8️⃣ Upload to CurseForge (optional)
-      # - name: Upload to CurseForge
-      #   run: |
-      #     curl -X POST "https://wow.curseforge.com/api/projects/${{ env.CURSEFORGE_PROJECT_ID }}/upload-file" \
-      #       -H "x-api-token: ${{ secrets.CF_API_TOKEN }}" \
-      #       -F "file=@build/${ADDON_NAME}-${VERSION}.zip" \
-      #       -F "metadata={\"changelog\":\"Auto build for $VERSION\",\"releaseType\":\"release\",\"gameVersions\":[${{ secrets.CF_GAME_VERSION_IDS }}]}"
+      - name: Upload to CurseForge
+        run: |
+          curl -X POST "https://wow.curseforge.com/api/projects/$CURSEFORGE_PROJECT_ID/upload-file" \
+          -H "X-Api-Token: $CF_API_TOKEN" \
+          -F "file=@build/${ADDON_DIR}-${VERSION}.zip" \
+          -F "metadata={\"changelog\":\"Auto build for $VERSION\",\"releaseType\":\"release\",\"gameVersions\":[$GAME_VERSIONS]}"
