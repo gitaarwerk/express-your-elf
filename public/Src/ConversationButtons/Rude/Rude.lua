@@ -318,7 +318,7 @@ function ExpressYourElf.IAmRude.run()
             local randomEmote = emotes[fastrandom(1, #emotes)];
 
             DoEmote(randomEmote, "");
-            SendChatMessage(rudeLine, "SAY", nil, index);
+            C_ChatInfo.SendChatMessage(rudeLine, "SAY", nil, index);
         end
     end
 end

@@ -15,9 +15,11 @@ function ExpressYourElf.Joke.GetMessage(
     local d = C_DateAndTime.GetCalendarTimeFromEpoch(1e6 * 60 * 60 * 24)
 
     local playerSex = "girls"
+    local oppositeSex = "boys"
 
     if (playerGender == "male") then
-        oppositeSex = "guys"
+        oppositeSex = "girls"
+        playerSex = "boys"
     end
     -- common
     local pickedLine
@@ -131,7 +133,7 @@ function ExpressYourElf.Joke.GetMessage(
         end
 
         if (playerClass == "Shaman") then
-            table.insert(rudeLines, "Which class gets the most chicks? A male enhancement shaman.")
+            table.insert(jokeLines, "Which class gets the most chicks? A male enhancement shaman.")
         end
     end
 
@@ -251,7 +253,7 @@ function ExpressYourElf.Joke.GetMessage(
         end
 
         if (playerRace == "Mechagnome" and playerGender == "male") then
-            table.insert("Why yes, I do have a vibrate setting! Why does everyone keep asking?")
+            table.insert(jokeLines, "Why yes, I do have a vibrate setting! Why does everyone keep asking?")
         end
 
         if (playerRace == "Pandaren" and playerGender == "female") then
@@ -318,6 +320,6 @@ function ExpressYourElf.Joke.run()
         local randomEmote = emotes[fastrandom(1, #emotes)]
 
         DoEmote(randomEmote, "")
-        SendChatMessage(JokeLine, "SAY", nil, index)
+        C_ChatInfo.SendChatMessage(JokeLine, "SAY", nil, index)
     end
 end

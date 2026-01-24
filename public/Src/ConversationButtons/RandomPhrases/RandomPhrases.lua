@@ -120,6 +120,12 @@ function ExpressYourElf.RandomPhrases.GetRandomMessage(
         'How was the weekend, someone asked? Well, on my first date, ${oppositHeShe} said, “I want to take you to the cemetery to meet my parents, you might be the one.”'
     }
 
+    -- Tank classes
+    if (playerClass == "Warrior" or playerClass == "Paladin" or playerClass == "Death Knight" or playerClass == "Monk") then
+        table.insert(listOfPhrases, "I like big shields and I cannot lie.");
+        table.insert(listOfPhrases, "I usually tank… but tonight I'm feeling emotionally vulnerable.");
+    end
+
     -- self
     if (playerRace == "Draenei" or playerRace == "Night Elf" or playerRace == "Tauren" or playerRace == "Highmountain Tauren" or playerRace == "Lightforged Draenei" or playerRace == "Blood Elf") then
         table.insert(listOfPhrases, "I always wanted to be taller.");
@@ -172,7 +178,7 @@ function ExpressYourElf.RandomPhrases.GetRandomMessage(
         table.insert(listOfPhrases, "Drink fel, stay fit, die anyway.");
     end
 
-    if (playerClass == "Death Knight" or targetRace == "Scourge" or targetRace == "Undead") then
+    if (playerClass == "Death Knight" or playerClass == "Scourge" or playerClass == "Undead") then
         table.insert(listOfPhrases, "It's true, a windmill killed me.");
         table.insert(listOfPhrases, "My parents moved a lot when I died as a kid. But I always found them.");
     end
@@ -201,7 +207,7 @@ function ExpressYourElf.RandomPhrases.GetRandomMessage(
     end
 
     if (playerRace == "Void Elf" or playerClass == "Warlock") then
-        table.insert(flirtLines, "I said 'No' to the voices, but they wouldn’t listen.");
+        table.insert(listOfPhrases, "I said 'No' to the voices, but they wouldn’t listen.");
     end
 
 
@@ -353,7 +359,7 @@ end
 
 function ExpressYourElf.RandomPhrases.run()
     local playerName, playerGender, playerClass, playerRace, playerLevel = ExpressYourElf.Helpers.GetPlayerInformation()
-    local targetName, targetGender, targetClass, targetRace, targetLevel, targetHisHer
+    local targetName, targetGender, targetClass, targetRace, targetLevel, targetHisHer, targetHeShe, targetHimHer
     local playerHisHer                                                   = string.lower(ExpressYourElf.Helpers.GetHisHer(
         playerGender))
     local playerSirMam                                                   = string.lower(ExpressYourElf.Helpers.GetSirMam(
@@ -388,7 +394,7 @@ function ExpressYourElf.RandomPhrases.run()
             targetHeShe,
             targetHimHer
         )
-        SendChatMessage(RandomPhraseTargeted);
+        C_ChatInfo.SendChatMessage(RandomPhraseTargeted);
     else
         local RandomPhraseSelf = ExpressYourElf.RandomPhrases.GetRandomMessage(
             playerName,
@@ -399,6 +405,6 @@ function ExpressYourElf.RandomPhrases.run()
             playerHisHer,
             playerSirMam
         )
-        SendChatMessage(RandomPhraseSelf);
+        C_ChatInfo.SendChatMessage(RandomPhraseSelf);
     end
 end

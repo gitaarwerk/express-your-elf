@@ -218,6 +218,7 @@ function ExpressYourElf.Seduce.GetMessage(
 
     if (targetClass == "Warrior") then
         table.insert(flirtLines, "Are you a barbarian? 'Cuz I like your rage.");
+        table.insert(flirtLines, "Uh… greetings, traveler. Is it warm in here, or did you just pop Bloodlust?");
     end
 
     if (targetClass == "Priest") then
@@ -388,7 +389,7 @@ function ExpressYourElf.Seduce.run()
             local randomEmote = emotes[fastrandom(1, #emotes)];
 
             DoEmote(randomEmote, "");
-            SendChatMessage(flirtLine, "SAY", nil, index);
+            C_ChatInfo.SendChatMessage(flirtLine, "SAY", nil, index);
         end
     end
 end
