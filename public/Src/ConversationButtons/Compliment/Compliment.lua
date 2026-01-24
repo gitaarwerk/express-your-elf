@@ -34,9 +34,11 @@ function ExpressYourElf.Compliment.GetMessage(
     local d = C_DateAndTime.GetCalendarTimeFromEpoch(1e6 * 60 * 60 * 24)
 
     local playerSex = "girls"
+    local oppositeSex = "boys"
 
     if (playerGender == "male") then
-        oppositeSex = "guys"
+        oppositeSex = "girls"
+        playerSex = "boys"
     end
     -- common
     local pickedLine
@@ -185,7 +187,7 @@ function ExpressYourElf.Compliment.GetMessage(
     end
 
     if (targetClass == "Warrior") then
-        table.insert("Your battle stance is as graceful as a dancing murloc.");
+        table.insert(ComplimentLines "Your battle stance is as graceful as a dancing murloc.");
     end
 
     -- to
@@ -194,7 +196,7 @@ function ExpressYourElf.Compliment.GetMessage(
     end
 
     if (targetRace == "Worgen" or targetRace == "Gilnean") then
-        table.insert("You have really pretty eyes, like a husky.");
+        table.insert(ComplimentLines, "You have really pretty eyes, like a husky.");
     end
 
     if (targetRace == "Scourge" or targetRace == "Undead" or targetRace == "Death Knight") then
@@ -386,7 +388,7 @@ function ExpressYourElf.Compliment.GetMessage(
     pickedLine = ComplimentLines[fastrandom(1, #ComplimentLines)]
 
     return ExpressYourElf.Helpers.parseText(
-        ExpressYourElf.Compliment.GetRandomPrefix(targetRace) .. pickedLine,
+        ExpressYourElf.Compliment.GetRandomPrefix() .. pickedLine,
         {
             playerName = playerName,
             playerGender = playerGender,
@@ -462,7 +464,7 @@ function ExpressYourElf.Compliment.run()
             local randomEmote = emotes[fastrandom(1, #emotes)]
 
             DoEmote(randomEmote, "")
-            SendChatMessage(ComplimentLine, "SAY", nil, index)
+            C_ChatInfo.SendChatMessage(ComplimentLine, "SAY", nil, index)
         end
     end
 end

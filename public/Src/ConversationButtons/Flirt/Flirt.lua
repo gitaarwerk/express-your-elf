@@ -595,7 +595,7 @@ function ExpressYourElf.Flirt.run()
             local randomEmote = emotes[fastrandom(1, #emotes)]
 
             DoEmote(randomEmote, "")
-            SendChatMessage(flirtLine, "SAY", nil, index)
+            C_ChatInfo.SendChatMessage(flirtLine, "SAY", nil, index)
         end
     end
 end

@@ -60,7 +60,7 @@ function ExpressYourElf.GivePresent.GetRandomGift(
         "gives a par of Tauren Paw socks to ${targetName}.",
         "hands over a duty tome to ${targetName} with the title: “The first ones Research-kit”.",
         "passes an Ouija board to ${targetName} with the only letters spelling: “W-I-N-K-W-I-N-K”, creepy, or just really C-O-O-L?",
-        "receives a bronze cast of ${targetName}’s sleeping body.",
+        "receives a bronze cast of ${targetName}'s sleeping body.",
         "gives a pair of guillotine ear-rings to ${targetName}.",
         "gives a hand-knit brain beanie.",
     }
@@ -168,6 +168,6 @@ function ExpressYourElf.GivePresent.run()
             targetHisHer
         )
 
-        SendChatMessage(RandomGift, "EMOTE", nil, index);
+        C_ChatInfo.SendChatMessage(RandomGift, "EMOTE", nil, index);
     end
 end

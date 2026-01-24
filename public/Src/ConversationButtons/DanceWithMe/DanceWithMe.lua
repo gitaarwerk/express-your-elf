@@ -78,6 +78,11 @@ local function getPlayerMessage(
         "Burning down ${zoneName}, my ${zoneName}!"
     }
 
+    -- Tank classes
+    if (playerClass == "Warrior" or playerClass == "Paladin" or playerClass == "Death Knight" or playerClass == "Monk") then
+        table.insert(danceLines, "I like big shields and I cannot lie.");
+    end
+
     -- christmas
     if ((d.month == 12 and d.day == 24) or (d.month == 12 and d.day == 25)) then
         table.insert(danceLines, "All I want for Christmas, is you!");
@@ -106,12 +111,6 @@ local function getPlayerMessage(
     if (playerRace == "Troll" or playerRace == "Zandalari Troll") then
         table.insert(danceLines, "I'm a voodoo ${playerGuyGirl}, I'm a voodoo ${playerGuyGirl}")
         table.insert(danceLines, "TroLolololo trolol,trolololol, trolololol.")
-    end
-
-    if targetHeShe == "he" then
-        table.insert(danceLines, "Señor más fina,... Who's that guy?)")
-    else
-        table.insert(danceLines, "Señorita más fina,... Who's that girl)")
     end
 
     -- from
@@ -270,6 +269,12 @@ local function getTargetMessage(
         "${targetName}, you must be this tall, to ride THIS ride at the carnival.",
         "Hot summer nights, mid-July, when ${targetName} and I were forever wild.",
     }
+
+    if (targetHeShe == "he") then
+        table.insert(danceLines, "Señor más fina,... Who's that guy?)")
+    else
+        table.insert(danceLines, "Señorita más fina,... Who's that girl)")
+    end
 
     if (playerGender == "male") then
         table.insert(danceLines,
@@ -570,7 +575,7 @@ function ExpressYourElf.DanceWithMe.run()
             targetSirMam,
             targetManWoman
         )
-        SendChatMessage(lyrics);
+        C_ChatInfo.SendChatMessage(lyrics);
     else
         local lyrics = getPlayerMessage(
             playerName,
@@ -594,7 +599,7 @@ function ExpressYourElf.DanceWithMe.run()
             local randomEmote = emotes[fastrandom(1, #emotes)]
 
             DoEmote(randomEmote, "")
-            SendChatMessage(lyrics, "SAY", nil, index)
+            C_ChatInfo.SendChatMessage(lyrics, "SAY", nil, index)
         end
     end
 end
