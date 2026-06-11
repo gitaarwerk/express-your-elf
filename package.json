@@ -3,9 +3,15 @@
   "version": "1.0.0",
   "description": "WoW addon - Express Your Elf",
   "scripts": {
-    "test": "node tests/compile-check.js"
+    "test": "node tests/compile-check.js",
+    "format": "prettier --write \"public/**/*.{lua,xml}\"",
+    "format:check": "prettier --check \"public/**/*.{lua,xml}\"",
+    "stats": "node scripts/count-lines.js"
   },
   "devDependencies": {
-    "luaparse": "^0.3.0"
+    "luaparse": "^0.3.0",
+    "prettier": "^3.0.0",
+    "prettier-plugin-lua": "^1.1.9",
+    "prettier-plugin-xml": "^2.2.8"
   }
 }

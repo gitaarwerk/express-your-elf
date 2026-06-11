@@ -12,22 +12,6 @@ Download at: https://www.curseforge.com/wow/addons/express-your-elf
 * Dance away into the night and sing lyrics from famous Azerothian singers
 * Express yourself with catchy phrases
 
-### Nurse Nancy: Ressurrection messsages
-* A redeemer alternative
-* Random messages when casting Mass Ressurrection, Single Ressurrection, Battle ress, soulstones, ankh, etc.
-
-#### Supported spells
-* Warlock: Soulstone
-* Paladin: Redemption, Absolution
-* Priest: Resurrection, Mass Resurrection
-* Shaman: Ancestral spirit, Reincarnation, Ancestral Vision
-* Druid: Revive, Rebirth, Revitalize
-* Monk: Resuscitate, Reawaken
-* Death Knight: Raise Ally
-* Hunter: Gift of Chi-ji
-* Engineering: Goblin Jumper cables, Goblin Jumper cables XL, Gnomish army knife
-* Other: Darkmoon Card: Twisting Nether
-
 #### Side note: 
 Nurse Nancy cannot tell in public chat channels as this is hooked to events. This is disabled by Blizzard, so will only be done in instance, raid and party chat.
 SUUEEGAH!
@@ -45,6 +29,9 @@ Just do /AFK and it will auto-set a message.
 ### General notice
 * All expressions are randomised and contextual (based on race, gender and class), to make them more..., you know,... YOU!
 * Sometimes, when updating this addon, new features have been added. Which means you may experience a reset of of settings once a while.
+
+### Use of AI
+AI is not used for generation of phrases, only for unit tests and minor code refactoring across multiple plugins to make it more manageable.
 
 ## Commands
 * `/eyelf`: See all commands, and opens the configuration screen
