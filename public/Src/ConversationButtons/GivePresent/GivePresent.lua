@@ -121,7 +121,7 @@ function ExpressYourElf.GivePresent.GetRandomGift(
 
     pickedGift = ExpressYourElf.RandomizeUtil.GetRandomized("givePresent", listOfGifts, targetName)
 
-    return ExpressYourElf.Helpers.parseText(
+    local parsedGift = ExpressYourElf.Helpers.parseText(
         pickedGift,
         {
             playerName = playerName,
@@ -139,6 +139,13 @@ function ExpressYourElf.GivePresent.GetRandomGift(
             splitName = splitName,
         }
     )
+
+    if #parsedGift > 254 then
+        ExpressYourElf.RandomizeUtil.ResetContext("givePresent")
+        return ExpressYourElf.GivePresent.GetRandomGift(playerName, playerGender, playerClass, playerRace, playerLevel, playerHisHer, targetName, targetGender, targetClass, targetRace, targetLevel, targetHisHer)
+    end
+
+    return parsedGift
 end
 
 function ExpressYourElf.GivePresent.run()

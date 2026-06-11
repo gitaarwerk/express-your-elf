@@ -238,7 +238,7 @@ function ExpressYourElf.RandomPhrases.GetRandomMessage(
 
     pickedPhrase = ExpressYourElf.RandomizeUtil.GetRandomized("randomPhrases", listOfPhrases, playerName)
 
-    return ExpressYourElf.Helpers.parseText(
+    local parsedPhrase = ExpressYourElf.Helpers.parseText(
         pickedPhrase,
         {
             playerName = playerName,
@@ -253,6 +253,13 @@ function ExpressYourElf.RandomPhrases.GetRandomMessage(
             oppositHeShe = oppositHeShe
         }
     )
+
+    if #parsedPhrase > 254 then
+        ExpressYourElf.RandomizeUtil.ResetContext("randomPhrases")
+        return ExpressYourElf.RandomPhrases.GetRandomMessage(playerName, playerGender, playerClass, playerRace, playerLevel, playerHisHer, playerSirMam)
+    end
+
+    return parsedPhrase
 end
 
 function ExpressYourElf.RandomPhrases.GetRandomMessageToTarget(
@@ -339,7 +346,7 @@ function ExpressYourElf.RandomPhrases.GetRandomMessageToTarget(
 
     pickedPhrase = ExpressYourElf.RandomizeUtil.GetRandomized("randomPhrasesTarget", listOfPhrases, targetName)
 
-    return ExpressYourElf.Helpers.parseText(
+    local parsedPhrase = ExpressYourElf.Helpers.parseText(
         pickedPhrase,
         {
             playerName = playerName,
@@ -359,6 +366,13 @@ function ExpressYourElf.RandomPhrases.GetRandomMessageToTarget(
             targetHimHer = targetHimHer,
         }
     )
+
+    if #parsedPhrase > 254 then
+        ExpressYourElf.RandomizeUtil.ResetContext("randomPhrasesTarget")
+        return ExpressYourElf.RandomPhrases.GetRandomMessageToTarget(playerName, playerGender, playerClass, playerRace, playerLevel, playerHisHer, playerSirMam, targetName, targetGender, targetClass, targetRace, targetLevel, targetHisHer, targetHeShe, targetHimHer)
+    end
+
+    return parsedPhrase
 end
 
 function ExpressYourElf.RandomPhrases.run()

@@ -233,7 +233,7 @@ function ExpressYourElf.IAmRude.GetMessage(
     -- randomize result
     pickedLine = ExpressYourElf.RandomizeUtil.GetRandomized("rude", rudeLines, targetName)
 
-    return ExpressYourElf.Helpers.parseText(
+    local parsedLine = ExpressYourElf.Helpers.parseText(
         pickedLine,
         {
             playerName = playerName,
@@ -257,6 +257,13 @@ function ExpressYourElf.IAmRude.GetMessage(
             targetCowGirlBoy = targetCowGirlBoy
         }
     )
+
+    if #parsedLine > 254 then
+        ExpressYourElf.RandomizeUtil.ResetContext("rude")
+        return ExpressYourElf.IAmRude.GetMessage(playerName, playerGender, playerClass, playerRace, playerLevel, playerManWoman, playerGuyGirl, targetName, targetGender, targetClass, targetRace, targetLevel, targetManWoman, targetGuyGirl, targetPoppaMomma)
+    end
+
+    return parsedLine
 end
 
 function ExpressYourElf.IAmRude.run()

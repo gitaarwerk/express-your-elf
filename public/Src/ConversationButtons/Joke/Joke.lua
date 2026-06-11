@@ -270,7 +270,7 @@ function ExpressYourElf.Joke.GetMessage(
     -- randomize result
     pickedLine = ExpressYourElf.RandomizeUtil.GetRandomized("joke", jokeLines, playerName)
 
-    return ExpressYourElf.Helpers.parseText(
+    local parsedLine = ExpressYourElf.Helpers.parseText(
         pickedLine,
         {
             playerName = playerName,
@@ -284,6 +284,13 @@ function ExpressYourElf.Joke.GetMessage(
             randomWorld = randomWorld,
         }
     )
+
+    if #parsedLine > 254 then
+        ExpressYourElf.RandomizeUtil.ResetContext("joke")
+        return ExpressYourElf.Joke.GetMessage(playerName, playerGender, playerClass, playerRace, playerLevel, playerManWoman, playerGuyGirl)
+    end
+
+    return parsedLine
 end
 
 function ExpressYourElf.Joke.run()

@@ -301,7 +301,7 @@ function ExpressYourElf.Seduce.GetMessage(
     -- randomize result
     pickedLine = ExpressYourElf.RandomizeUtil.GetRandomized("seduce", flirtLines, targetName)
 
-    return ExpressYourElf.Helpers.parseText(
+    local parsedLine = ExpressYourElf.Helpers.parseText(
         ExpressYourElf.Seduce.GetRandomPrefix() .. pickedLine,
         {
             playerName = playerName,
@@ -325,6 +325,13 @@ function ExpressYourElf.Seduce.GetMessage(
             randomWorld = randomWorld
         }
     )
+
+    if #parsedLine > 254 then
+        ExpressYourElf.RandomizeUtil.ResetContext("seduce")
+        return ExpressYourElf.Seduce.GetMessage(playerName, playerGender, playerClass, playerRace, playerLevel, playerManWoman, playerGuyGirl, playerHimHer, targetName, targetGender, targetClass, targetRace, targetLevel, targetManWoman, targetGuyGirl, targetPoppaMomma, targetHimHer)
+    end
+
+    return parsedLine
 end
 
 function ExpressYourElf.Seduce.run()
