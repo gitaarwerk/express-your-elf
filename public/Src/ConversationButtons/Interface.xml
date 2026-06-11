@@ -295,8 +295,8 @@
                         </Anchors>
                         <Scripts>
                             <OnClick>
-								local chatFrame = self:GetParent():GetParent();
-								ExpressYourElf_ToggleMinimize();
+                                local chatFrame = self:GetParent():GetParent();
+                                ExpressYourElf_ToggleMinimize();
 
                             </OnClick>
                         </Scripts>
