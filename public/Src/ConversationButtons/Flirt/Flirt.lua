@@ -2,7 +2,7 @@
 
 ExpressYourElf.Flirt = {}
 
-function ExpressYourElf.Flirt.GetRandomPrefix(targetRace)
+function ExpressYourElf.Flirt.GetRandomPrefix(targetRace, targetName)
     local prefix = {
         '${targetName}, ',
         'Hey ${targetName}. ',
@@ -17,7 +17,7 @@ function ExpressYourElf.Flirt.GetRandomPrefix(targetRace)
         table.insert(prefix, "Hey there ${targetName}, you hot wings, ");
     end
 
-    return prefix[fastrandom(1, #prefix)];
+    return ExpressYourElf.RandomizeUtil.GetRandomized("flirt_prefix", prefix, targetName .. targetRace);
 end
 
 function ExpressYourElf.Flirt.GetMessage(
@@ -503,10 +503,11 @@ function ExpressYourElf.Flirt.GetMessage(
     end
 
     -- randomize result
-    pickedLine = flirtLines[fastrandom(1, #flirtLines)]
+    local contextSalt = targetName .. targetGender .. targetClass .. targetRace
+    pickedLine = ExpressYourElf.RandomizeUtil.GetRandomized("flirt_message", flirtLines, contextSalt)
 
     return ExpressYourElf.Helpers.parseText(
-        ExpressYourElf.Flirt.GetRandomPrefix(targetRace) .. pickedLine,
+        ExpressYourElf.Flirt.GetRandomPrefix(targetRace, targetName) .. pickedLine,
         {
             playerName = playerName,
             playerGender = playerGender,

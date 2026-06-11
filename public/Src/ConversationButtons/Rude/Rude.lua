@@ -231,7 +231,7 @@ function ExpressYourElf.IAmRude.GetMessage(
     end
 
     -- randomize result
-    pickedLine = rudeLines[fastrandom(1, #rudeLines)]
+    pickedLine = ExpressYourElf.RandomizeUtil.GetRandomized("rude", rudeLines, targetName)
 
     return ExpressYourElf.Helpers.parseText(
         pickedLine,

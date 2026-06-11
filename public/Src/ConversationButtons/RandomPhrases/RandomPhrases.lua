@@ -236,7 +236,7 @@ function ExpressYourElf.RandomPhrases.GetRandomMessage(
     end
 
 
-    pickedPhrase = listOfPhrases[fastrandom(1, #listOfPhrases)]
+    pickedPhrase = ExpressYourElf.RandomizeUtil.GetRandomized("randomPhrases", listOfPhrases, playerName)
 
     return ExpressYourElf.Helpers.parseText(
         pickedPhrase,
@@ -337,7 +337,7 @@ function ExpressYourElf.RandomPhrases.GetRandomMessageToTarget(
     end
 
 
-    pickedPhrase = listOfPhrases[fastrandom(1, #listOfPhrases)]
+    pickedPhrase = ExpressYourElf.RandomizeUtil.GetRandomized("randomPhrasesTarget", listOfPhrases, targetName)
 
     return ExpressYourElf.Helpers.parseText(
         pickedPhrase,
