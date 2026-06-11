@@ -1,0 +1,11 @@
+{
+  "name": "express-your-elf",
+  "version": "1.0.0",
+  "description": "WoW addon - Express Your Elf",
+  "scripts": {
+    "test": "node tests/compile-check.js"
+  },
+  "devDependencies": {
+    "luaparse": "^0.3.0"
+  }
+}
