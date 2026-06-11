@@ -94,6 +94,69 @@ function ExpressYourElf.GivePresent.GetRandomGift(
         table.insert(listOfGifts, "hands over ${targetName} a carved steak of decaying flesh, ew!")
     end
 
+    if (targetRace =="Haranir" or targetRace == "Night Elf" or targetRace == "Void Elf" or targetRace == "Blood Elf" or targetRace == "Nightborne") then
+        table.insert(listOfGifts, "gives a [Bottle of Elune's Tears] to ${targetName}. It's a little salty, but it's the thought that counts!");
+    end
+
+    if (targetRace == "Draenei") then
+        table.insert(listOfGifts, "gives a [Chunk of Fel Crystal] to ${targetName}. It's a little toxic, but it's the thought that counts!");
+    end
+
+    if (targetRace == "Pandaren") then
+        table.insert(listOfGifts, "gives a [Bottle of Sha-Touched Water] to ${targetName}. It's a little bitter, but it's the thought that counts!");
+    end
+
+    if (targetRace == "Vulpera") then
+        table.insert(listOfGifts, "gives a [Vial of Sand Scarab Swarm] to ${targetName}. It's a little sandy, but it's the thought that counts!");
+    end
+
+    if (targetRace == "Highmountain Tauren") then
+        table.insert(listOfGifts, "gives a [Chunk of Stone] to ${targetName}. It's a little rocky, but it's the thought that counts!");
+    end
+
+    if (targetRace == "Worgen" or targetRace == "Gilnean") then
+        table.insert(listOfGifts, "gives a [Bottle of Gilnean Ale] to ${targetName}. It's a little bitter, but it's the thought that counts!");
+    end
+
+    if (targetRace == "Tauren") then
+        table.insert(listOfGifts, "gives a [Chunk of Meat] to ${targetName}. It's a little raw, but it's the thought that counts!");
+    end
+
+    if (targetRace == "Troll") then
+        table.insert(listOfGifts, "gives a [Vial of Voodoo Juice] to ${targetName}. It's a little...voodooey, but it's the thought that counts!");
+    end
+
+    if (targetRace == "Goblin") then
+        table.insert(listOfGifts, "gives a [Goblin Rocket Fuel] to ${targetName}. It's a little explosive, but it's the thought that counts!");
+    end
+
+    if (targetRace == "Dwarf") then
+        table.insert(listOfGifts, "gives a [Bottle of Dwarven Ale] to ${targetName}. It's a little strong, but it's the thought that counts!");
+    end
+
+    if (targetRace == "Orc") then
+        table.insert(listOfGifts, "gives a [Chunk of Ore] to ${targetName}. It's a little heavy, but it's the thought that counts!");
+    end
+
+    if (targetRace == "Blood Elf") then
+        table.insert(listOfGifts, "gives a [Vial of Blood] to ${targetName}. It's a little sticky, but it's the thought that counts!");
+    end
+
+    if (targetRace == "Nightborne") then
+        table.insert(listOfGifts, "gives a [Bottle of Nightborne Nectar] to ${targetName}. It's a little sweet, but it's the thought that counts!");
+    end
+
+    if (targetRace == "Night Elf") then
+        table.insert(listOfGifts, "gives a [Bundle of Leaves] to ${targetName}. It's a little crunchy, but it's the thought that counts!");
+    end
+
+    if (targetRace == "Haranir") then
+        table.insert(listOfGifts, "gives a [Vial of Harani Sap] to ${targetName}. It's a little sticky, but it's the thought that counts!");
+        table.insert(listOfGifts, "gives a [Haranir Blossom] to ${targetName}. It's a little wilted, but it's the thought that counts!");
+        table.insert(listOfGifts, "gives a [Night Elf] to ${targetName}. It's a young, but it's the thought that counts!");
+    end
+
+
     --christmas
     if ((d.month == 12 and d.day == 24) or (d.month == 12 and d.day == 25)) then
         table.insert(listOfGifts,

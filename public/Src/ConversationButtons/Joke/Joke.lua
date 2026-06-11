@@ -33,6 +33,7 @@ function ExpressYourElf.Joke.GetMessage(
         "Why do hardcore raiders smell? Because they never wipe!",
         "Why did the enchanter have to clean out his bank? Because it was full of dust!",
         "How do you know someone has been playing since Vanilla? Don't worry. They'll tell you.",
+        "How does a Night Elf look when they age? Like a Haranir when they put up some make-up.",
     }
 
     if (playerClass == "Druid") then

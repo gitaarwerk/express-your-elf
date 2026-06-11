@@ -121,7 +121,7 @@ function ExpressYourElf.IAmRude.GetMessage(
             "The only reason why we let ${targetName} in our faction is because Pandaren are cute when they randomly roll over, trying to play.");
     end
 
-    if (targetRace == "Nightborne" or targetRace == "Blood Elf" or targetRace == "Void Elf" or targetRace == "Night Elf") then
+    if (targetRace == "Nightborne" or targetRace == "Blood Elf" or targetRace == "Void Elf" or targetRace == "Night Elf" or targetRace == "Haranir") then
         table.insert(rudeLines, "Ew. ${targetName}'s ears are so big, it is full of earwax.");
     end
 

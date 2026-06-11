@@ -201,7 +201,7 @@ function ExpressYourElf.Seduce.GetMessage(
         table.insert(flirtLines, "Have you ever thought of the idea I would be fine you being my succubus?");
     end
 
-    if (targetRace == "Night Elf" or targetRace == "Void Elf" or targetRace == "Blood Elf" or targetRace == "Nightborne") then
+    if (targetRace == "Night Elf" or targetRace == "Void Elf" or targetRace == "Blood Elf" or targetRace == "Nightborne" or targetRace == "Haranir") then
         table.insert(flirtLines, "No bush is too big for me.");
     end
 
@@ -249,7 +249,12 @@ function ExpressYourElf.Seduce.GetMessage(
     end
 
     if (playerRace == "Night Elf" and targetGender == "female") then
-        table.insert(flirtLines, "I'm not a night elf, but I'd like to dance on your moonwell.")
+        table.insert(flirtLines, "I'm not a Night Elf, but I'd like to dance on your moonwell.")
+    end
+
+    if (playerRace == "Haranir" and targetRace =="Night Elf") then
+        table.insert(flirtLines, "I'm much more experienced than your brethren.");
+        table.insert(flirtLines, "I have a lot of experience with Night Elves, so I can show you how to use your ears in a more... versatile way.");
     end
 
     if (playerRace == "Earthen") then

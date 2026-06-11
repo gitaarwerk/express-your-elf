@@ -131,7 +131,7 @@ function ExpressYourElf.RandomPhrases.GetRandomMessage(
 
 
     -- self
-    if (playerRace == "Draenei" or playerRace == "Night Elf" or playerRace == "Tauren" or playerRace == "Highmountain Tauren" or playerRace == "Lightforged Draenei" or playerRace == "Blood Elf") then
+    if (playerRace == "Draenei" or playerRace == "Night Elf" or playerRace== "Haranir" or playerRace == "Tauren" or playerRace == "Highmountain Tauren" or playerRace == "Lightforged Draenei" or playerRace == "Blood Elf") then
         table.insert(listOfPhrases, "I always wanted to be taller.");
     end
 

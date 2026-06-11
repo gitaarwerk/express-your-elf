@@ -88,7 +88,7 @@ function ExpressYourElf.Compliment.GetMessage(
         table.insert(ComplimentLines, "You look like Edward from Twilight.");
     end
 
-    if (targetRace == "Night Elf" or targetRace == "Void Elf" or targetRace == "Blood Elf" or targetRace == "Nightborne") then
+    if (targetRace =="Haranir" or Haranir targetRace == "Night Elf" or targetRace == "Void Elf" or targetRace == "Blood Elf" or targetRace == "Nightborne") then
         table.insert(ComplimentLines, "I love your eyebrows, they're so...eyebrowy.");
     end
 
@@ -224,7 +224,7 @@ function ExpressYourElf.Compliment.GetMessage(
     if (targetClass == "Demon Hunter") then
     end;
 
-    if (targetRace == "Night Elf" or targetRace == "Void Elf" or targetRace == "Blood Elf" or targetRace == "Nightborne") then
+    if (targetRace == "Night Elf" or targetRace == "Haranir" or targetRace == "Void Elf" or targetRace == "Blood Elf" or targetRace == "Nightborne") then
         table.insert(ComplimentLines, "The way the moon touches your right ear brings out your true personality!");
     end
 

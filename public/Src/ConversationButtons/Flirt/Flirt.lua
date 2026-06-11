@@ -443,6 +443,14 @@ function ExpressYourElf.Flirt.GetMessage(
             table.insert(flirtLines, "I hope you're not afraid of snakes.")
         end
 
+        if (playerRace == "Haranir" and playerGender == "female") then
+            table.insert(flirtLines, "Sure, I've got exotic piercings. They're just a little older than the ones you see on the Night Elves.")
+        end
+
+        if (playerRace == "Haranir" and playerGender == "male") then
+            table.insert(flirtLines, "I hope you're not afraid of some mature snakes.")
+        end
+
         if ((playerRace == "Worgen" or playerRace == "Gilnean") and playerGender == "female") then
             table.insert(flirtLines, "Being bitchy is in my blood. Don't pretend you don't like it.")
             table.insert(flirtLines, "Don't worry,... the fur is just something to hold onto.")
