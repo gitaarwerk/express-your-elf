@@ -119,7 +119,7 @@ function ExpressYourElf.GivePresent.GetRandomGift(
     end
 
 
-    pickedGift = listOfGifts[fastrandom(1, #listOfGifts)]
+    pickedGift = ExpressYourElf.RandomizeUtil.GetRandomized("givePresent", listOfGifts, targetName)
 
     return ExpressYourElf.Helpers.parseText(
         pickedGift,

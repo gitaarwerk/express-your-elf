@@ -110,13 +110,15 @@ function ExpressYourElf.RandomPhrases.GetRandomMessage(
         "I respect the opinion of everyone who agrees with me.",
         "Here I am! What are your other two wishes?",
         "I'm not as confused as I seem to act.",
+        "After the war — which we won... we gave Outland back to the Sporeggar. How stupid were we to do that?",
         "Sometimes I just wish dragons would abduct me and crown me their leader.",
         "My parents moved around a lot when I was growing up, but I always found them.",
         "I just bought this amazing chicken broth at the stock market.",
+        "'m very careful, you know, when I walk downstairs in dungeons, like I'm on stairs, like these stairs, I walk very slowly.",
         "And yet I’ve gone decades, decades without a war. The first ${playerRace} to do it for that long a period.",
         "When you see the other side chopping off heads, waterboarding doesn't sound very severe.",
         "When you arise in the morning think of what a privilege it is to be alive, to think, to enjoy, to love, to loot epics and respawn.",
-        "We’re rounding ’em up in a very ${playerRace} way, in a very nice way. And they’re going to be happy because they want to be legalized. And, by the way, I know it doesn’t sound nice. But not everything is nice.",
+        "We’re rounding ’em up in a very ${playerRace} way, in a very nice way. And they're going to be happy because they want to be legalized. And, by the way, I know it doesn't sound nice. But not everything is nice.",
         'How was the weekend, someone asked? Well, on my first date, ${oppositHeShe} said, “I want to take you to the cemetery to meet my parents, you might be the one.”'
     }
 
@@ -125,6 +127,8 @@ function ExpressYourElf.RandomPhrases.GetRandomMessage(
         table.insert(listOfPhrases, "I like big shields and I cannot lie.");
         table.insert(listOfPhrases, "I usually tank… but tonight I'm feeling emotionally vulnerable.");
     end
+
+
 
     -- self
     if (playerRace == "Draenei" or playerRace == "Night Elf" or playerRace == "Tauren" or playerRace == "Highmountain Tauren" or playerRace == "Lightforged Draenei" or playerRace == "Blood Elf") then
@@ -232,7 +236,7 @@ function ExpressYourElf.RandomPhrases.GetRandomMessage(
     end
 
 
-    pickedPhrase = listOfPhrases[fastrandom(1, #listOfPhrases)]
+    pickedPhrase = ExpressYourElf.RandomizeUtil.GetRandomized("randomPhrases", listOfPhrases, playerName)
 
     return ExpressYourElf.Helpers.parseText(
         pickedPhrase,
@@ -333,7 +337,7 @@ function ExpressYourElf.RandomPhrases.GetRandomMessageToTarget(
     end
 
 
-    pickedPhrase = listOfPhrases[fastrandom(1, #listOfPhrases)]
+    pickedPhrase = ExpressYourElf.RandomizeUtil.GetRandomized("randomPhrasesTarget", listOfPhrases, targetName)
 
     return ExpressYourElf.Helpers.parseText(
         pickedPhrase,

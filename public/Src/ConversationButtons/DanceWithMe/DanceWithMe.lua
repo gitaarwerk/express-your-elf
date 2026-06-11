@@ -2,7 +2,7 @@
 
 ExpressYourElf.DanceWithMe = {}
 
-local function getRandomPrefix()
+local function getRandomPrefix(playerName)
     local prefix = {
         '*${playerName} sings*: ',
         '*${playerName} dances to*: ',
@@ -11,7 +11,7 @@ local function getRandomPrefix()
         '*${playerName} moves to the lyrics of*: ',
     };
 
-    return prefix[fastrandom(1, #prefix)];
+    return ExpressYourElf.RandomizeUtil.GetRandomized("dance_prefix", prefix, playerName);
 end
 
 local function getPlayerMessage(
@@ -193,10 +193,11 @@ local function getPlayerMessage(
     end
 
     -- randomize result
-    pickedLine = danceLines[fastrandom(1, #danceLines)]
+    local contextSalt = playerName .. playerGender .. playerClass .. playerRace
+    pickedLine = ExpressYourElf.RandomizeUtil.GetRandomized("dance_player_message", danceLines, contextSalt)
 
     return ExpressYourElf.Helpers.parseText(
-        getRandomPrefix() .. pickedLine,
+        getRandomPrefix(playerName) .. pickedLine,
         {
             playerName = playerName,
             playerGender = playerGender,
@@ -476,10 +477,11 @@ local function getTargetMessage(
     end
 
     -- randomize result
-    pickedLine = danceLines[fastrandom(1, #danceLines)]
+    local contextSalt = targetName .. targetGender .. targetClass .. targetRace
+    pickedLine = ExpressYourElf.RandomizeUtil.GetRandomized("dance_target_message", danceLines, contextSalt)
 
     return ExpressYourElf.Helpers.parseText(
-        getRandomPrefix() .. pickedLine,
+        getRandomPrefix(playerName) .. pickedLine,
         {
             playerName = playerName,
             playerGender = playerGender,

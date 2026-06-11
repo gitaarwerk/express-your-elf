@@ -299,7 +299,7 @@ function ExpressYourElf.Seduce.GetMessage(
     end
 
     -- randomize result
-    pickedLine = flirtLines[fastrandom(1, #flirtLines)]
+    pickedLine = ExpressYourElf.RandomizeUtil.GetRandomized("seduce", flirtLines, targetName)
 
     return ExpressYourElf.Helpers.parseText(
         ExpressYourElf.Seduce.GetRandomPrefix() .. pickedLine,

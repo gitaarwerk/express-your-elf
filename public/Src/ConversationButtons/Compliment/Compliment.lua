@@ -2,7 +2,7 @@
 
 ExpressYourElf.Compliment = {}
 
-function ExpressYourElf.Compliment.GetRandomPrefix()
+function ExpressYourElf.Compliment.GetRandomPrefix(targetName)
     local prefix = {
         '${targetName}, ',
         'Hey ${targetName}. ',
@@ -10,7 +10,7 @@ function ExpressYourElf.Compliment.GetRandomPrefix()
         'Hi ${targetName}, ',
     };
 
-    return prefix[fastrandom(1, #prefix)];
+    return ExpressYourElf.RandomizeUtil.GetRandomized("compliment_prefix", prefix, targetName);
 end
 
 function ExpressYourElf.Compliment.GetMessage(
@@ -385,10 +385,11 @@ function ExpressYourElf.Compliment.GetMessage(
     end
 
     -- randomize result
-    pickedLine = ComplimentLines[fastrandom(1, #ComplimentLines)]
+    local contextSalt = targetName .. targetGender .. targetClass .. targetRace
+    pickedLine = ExpressYourElf.RandomizeUtil.GetRandomized("compliment_message", ComplimentLines, contextSalt)
 
     return ExpressYourElf.Helpers.parseText(
-        ExpressYourElf.Compliment.GetRandomPrefix() .. pickedLine,
+        ExpressYourElf.Compliment.GetRandomPrefix(targetName) .. pickedLine,
         {
             playerName = playerName,
             playerGender = playerGender,

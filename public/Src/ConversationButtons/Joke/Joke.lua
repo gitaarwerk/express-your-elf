@@ -268,7 +268,7 @@ function ExpressYourElf.Joke.GetMessage(
     end
 
     -- randomize result
-    pickedLine = jokeLines[fastrandom(1, #jokeLines)]
+    pickedLine = ExpressYourElf.RandomizeUtil.GetRandomized("joke", jokeLines, playerName)
 
     return ExpressYourElf.Helpers.parseText(
         pickedLine,
