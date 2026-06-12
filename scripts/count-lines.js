@@ -4,24 +4,55 @@ const fs = require('fs');
 const path = require('path');
 
 const projectRoot = path.join(__dirname, '..');
+
+// tableName is the actual Lua local variable name used in each feature file
 const features = [
-  'Compliment',
-  'Flirt',
-  'DanceWithMe',
-  'GivePresent',
-  'Joke',
-  'RandomPhrases',
-  'Rude',
-  'Seduce',
+  { name: 'Compliment', tableName: 'ComplimentLines' },
+  { name: 'Flirt', tableName: 'flirtLines' },
+  { name: 'DanceWithMe', tableName: 'danceLines' },
+  { name: 'GivePresent', tableName: 'listOfGifts' },
+  { name: 'Joke', tableName: 'jokeLines' },
+  { name: 'RandomPhrases', tableName: 'listOfPhrases' },
+  { name: 'Rude', tableName: 'rudeLines' },
+  { name: 'Seduce', tableName: 'flirtLines' },
 ];
+
+// Extract the body of a Lua table starting at `pos`, handling nested braces
+// and string literals so `}` inside strings doesn't terminate the match early.
+function extractTableBody(content, pos) {
+  const braceStart = content.indexOf('{', pos);
+  if (braceStart === -1) return null;
+
+  let depth = 0;
+  let inString = false;
+  let stringChar = '';
+  let i = braceStart;
+
+  while (i < content.length) {
+    const ch = content[i];
+    if (inString) {
+      if (ch === '\\') { i += 2; continue; }
+      if (ch === stringChar) inString = false;
+    } else {
+      if (ch === '"' || ch === "'") { inString = true; stringChar = ch; }
+      else if (ch === '{') depth++;
+      else if (ch === '}') {
+        depth--;
+        if (depth === 0) return content.slice(braceStart + 1, i);
+      }
+    }
+    i++;
+  }
+  return null;
+}
 
 /**
  * Count the number of message entries in a feature file.
  * This counts:
- * 1. String entries in the main *Lines table
+ * 1. String entries in all declarations of the main table
  * 2. table.insert() calls that add to that table
  */
-function countFeatureLines(featureName) {
+function countFeatureLines({ name: featureName, tableName }) {
   const filePath = path.join(
     projectRoot,
     'public',
@@ -37,31 +68,25 @@ function countFeatureLines(featureName) {
   }
 
   const content = fs.readFileSync(filePath, 'utf8');
-
-  // Find the main table (e.g., ComplimentLines, FlirtLines, etc.)
-  const tablePattern = new RegExp(
-    `local ${featureName}Lines\\s*=\\s*\\{([^}]+)\\}`,
-    's'
-  );
-  const tableMatch = content.match(tablePattern);
-
   let count = 0;
 
-  // Count entries in the main table
-  if (tableMatch) {
-    const tableContent = tableMatch[1];
-    // Count quoted strings (lines with actual messages)
-    const stringMatches = tableContent.match(/["'`][^"'`]*["'`]/g) || [];
-    count += stringMatches.length;
+  // Count string entries in every declaration of the table (some files declare it twice)
+  const declPattern = new RegExp(`local ${tableName}\\s*=`, 'g');
+  let match;
+  while ((match = declPattern.exec(content)) !== null) {
+    const body = extractTableBody(content, match.index);
+    if (body) {
+      const strings = body.match(/["'][^"'\n]*["']/g) || [];
+      count += strings.length;
+    }
   }
 
-  // Count table.insert calls for this feature
+  // Count table.insert() calls — handles both inline and multi-line call syntax
   const insertPattern = new RegExp(
-    `table\\.insert\\(${featureName}Lines,\\s*["'`]`,
+    `table\\.insert\\(\\s*${tableName}\\s*,`,
     'g'
   );
-  const insertMatches = content.match(insertPattern) || [];
-  count += insertMatches.length;
+  count += (content.match(insertPattern) || []).length;
 
   return count;
 }
@@ -77,11 +102,11 @@ function generateReleaseNotes() {
 
   for (const feature of features) {
     const count = countFeatureLines(feature);
-    stats[feature] = count;
+    stats[feature.name] = count;
     totalLines += count;
 
     const bar = '█'.repeat(Math.ceil(count / 10));
-    console.log(`${feature.padEnd(16)} ${count.toString().padStart(3)} lines  ${bar}`);
+    console.log(`${feature.name.padEnd(16)} ${count.toString().padStart(3)} lines  ${bar}`);
   }
 
   console.log('\n' + '─'.repeat(50));
@@ -93,7 +118,7 @@ function generateReleaseNotes() {
 
 | Feature | Line Count |
 |---------|-----------|
-${features.map((f) => `| ${f} | ${stats[f]} |`).join('\n')}
+${features.map((f) => `| ${f.name} | ${stats[f.name]} |`).join('\n')}
 | **TOTAL** | **${totalLines}** |
 
 ---
