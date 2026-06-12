@@ -1,17 +1,13 @@
 ExpressYourElf.Helpers = {}
 
 function ExpressYourElf.Helpers.parseText(s, tab)
-  return (s:gsub('($%b{})', function(w) return tab[w:sub(3, -2)] or w end))
+  return (s:gsub("($%b{})", function(w)
+    return tab[w:sub(3, -2)] or w
+  end))
 end
 
 function ExpressYourElf.Helpers.GetRandomWorld()
-  local listOfWolds = {
-    "Azeroth",
-    "The Shadowlands",
-    "Outland",
-    "Argus",
-    "Draenor"
-  }
+  local listOfWolds = { "Azeroth", "The Shadowlands", "Outland", "Argus", "Draenor" }
 
   return listOfWolds[fastrandom(1, #listOfWolds)]
 end
@@ -88,18 +84,18 @@ function ExpressYourElf.Helpers.GetPoppaMomma(gender)
 end
 
 function getCharacterinfo(target)
-  local genderTable = { "neuter or unknown", "male", "female" };
-  local playerClass, englishClass, classIndex = UnitClass(target);
+  local genderTable = { "neuter or unknown", "male", "female" }
+  local playerClass, englishClass, classIndex = UnitClass(target)
   local name, upName, level = UnitName(target)
   local unitLevel = UnitLevel(target)
   local gender = genderTable[UnitSex(target)]
-  local race, raceEn = UnitRace(target);
+  local race, raceEn = UnitRace(target)
 
   return name, gender, playerClass, race, unitLevel
 end
 
 function ExpressYourElf.Helpers.GetTargetInformation()
-  if (UnitName("target")) then
+  if UnitName("target") then
     return getCharacterinfo("target")
   end
 
@@ -107,8 +103,9 @@ function ExpressYourElf.Helpers.GetTargetInformation()
 end
 
 function ExpressYourElf.Helpers.GetTargetInformationByUID(uid)
-  local genderTable = { "neutral or unknown", "male", "female" };
-  local targetClass, engClass, targetRace, engRace, gender, targetName, server = GetPlayerInfoByGUID(uid)
+  local genderTable = { "neutral or unknown", "male", "female" }
+  local targetClass, engClass, targetRace, engRace, gender, targetName, server =
+    GetPlayerInfoByGUID(uid)
   local targetGender = genderTable[UnitSex(uid)]
 
   return targetName, targetGender, targetClass, targetRace

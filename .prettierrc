@@ -7,11 +7,12 @@
   "trailingComma": "es5",
   "bracketSpacing": true,
   "arrowParens": "always",
+  "plugins": ["@prettier/plugin-lua", "@prettier/plugin-xml"],
   "overrides": [
     {
       "files": "*.lua",
       "options": {
-        "parser": "luaparser",
+        "parser": "lua",
         "useTabs": false,
         "tabWidth": 2
       }

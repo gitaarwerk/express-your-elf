@@ -1,15 +1,27 @@
-<Ui xmlns="http://www.blizzard.com/wow/ui/"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\FrameXML\UI.xsd">
-    <Script file="Src/ConversationButtons/DanceWithMe/DanceWithMe.lua"/>
-    <Script file="Src/ConversationButtons/Flirt/Flirt.lua"/>
-    <Script file="Src/ConversationButtons/Seduce/Seduce.lua"/>
-    <Script file="Src/ConversationButtons/GivePresent/GivePresent.lua"/>
-    <Script file="Src/ConversationButtons/RandomPhrases/RandomPhrases.lua"/>
-    <Script file="Src/ConversationButtons/Rude/Rude.lua"/>
-    <Script file="Src/ConversationButtons/Compliment/Compliment.lua"/>
-    <Script file="Src/ConversationButtons/Joke/Joke.lua"/>
+<Ui
+  xmlns="http://www.blizzard.com/wow/ui/"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\FrameXML\UI.xsd"
+>
+    <Script file="Src/ConversationButtons/DanceWithMe/DanceWithMe.lua" />
+    <Script file="Src/ConversationButtons/Flirt/Flirt.lua" />
+    <Script file="Src/ConversationButtons/Seduce/Seduce.lua" />
+    <Script file="Src/ConversationButtons/GivePresent/GivePresent.lua" />
+    <Script file="Src/ConversationButtons/RandomPhrases/RandomPhrases.lua" />
+    <Script file="Src/ConversationButtons/Rude/Rude.lua" />
+    <Script file="Src/ConversationButtons/Compliment/Compliment.lua" />
+    <Script file="Src/ConversationButtons/Joke/Joke.lua" />
 
-    <Frame name="ExpressYourElf_Frame" toplevel="true" frameStrata="HIGH" movable="true" enableMouse="true" hidden="false" parent="UIParent" clampedToScreen="true">
+    <Frame
+    name="ExpressYourElf_Frame"
+    toplevel="true"
+    frameStrata="HIGH"
+    movable="true"
+    enableMouse="true"
+    hidden="false"
+    parent="UIParent"
+    clampedToScreen="true"
+  >
         <Scripts>
             <OnLoad>
                 self:RegisterEvent("ADDON_LOADED");
@@ -203,45 +215,73 @@
             </OnLoad>
         </Scripts>
         <Size>
-            <AbsDimension x="228" y="125"/>
+            <AbsDimension x="228" y="125" />
         </Size>
         <Anchors>
-            <Anchor point="CENTER"/>
+            <Anchor point="CENTER" />
         </Anchors>
         <Layers>
             <Layer level="BORDER" textureSubLevel="-5">
                 <Texture inherits="UI-Frame-InnerBotLeftCorner" parentKey="InsetBorderBottomLeft">
                     <Anchors>
-                        <Anchor point="BOTTOMLEFT" x="0" y="0"/>
+                        <Anchor point="BOTTOMLEFT" x="0" y="0" />
                     </Anchors>
                 </Texture>
                 <Texture inherits="UI-Frame-InnerBotRight" parentKey="InsetBorderBottomRight">
                     <Anchors>
-                        <Anchor point="BOTTOMRIGHT" x="0" y="0"/>
+                        <Anchor point="BOTTOMRIGHT" x="0" y="0" />
                     </Anchors>
                 </Texture>
                 <Texture inherits="_UI-Frame-InnerBotTile" parentKey="InsetBorderTop">
                     <Anchors>
-                        <Anchor x="0" y="2" point="TOPLEFT" relativeKey="$parent.InsetBorderTopLeft" relativePoint="TOPRIGHT"/>
-                        <Anchor x="0" y="2" point="TOPRIGHT" relativeKey="$parent.InsetBorderTopRight" relativePoint="TOPLEFT"/>
+                        <Anchor
+              x="0"
+              y="2"
+              point="TOPLEFT"
+              relativeKey="$parent.InsetBorderTopLeft"
+              relativePoint="TOPRIGHT"
+            />
+                        <Anchor
+              x="0"
+              y="2"
+              point="TOPRIGHT"
+              relativeKey="$parent.InsetBorderTopRight"
+              relativePoint="TOPLEFT"
+            />
                     </Anchors>
                 </Texture>
                 <Texture inherits="_UI-Frame-InnerBotTile" parentKey="InsetBorderBottom">
                     <Anchors>
-                        <Anchor point="BOTTOMLEFT" relativeKey="$parent.InsetBorderBottomLeft" relativePoint="BOTTOMRIGHT"/>
-                        <Anchor point="BOTTOMRIGHT" relativeKey="$parent.InsetBorderBottomRight" relativePoint="BOTTOMLEFT"/>
+                        <Anchor
+              point="BOTTOMLEFT"
+              relativeKey="$parent.InsetBorderBottomLeft"
+              relativePoint="BOTTOMRIGHT"
+            />
+                        <Anchor
+              point="BOTTOMRIGHT"
+              relativeKey="$parent.InsetBorderBottomRight"
+              relativePoint="BOTTOMLEFT"
+            />
                     </Anchors>
                 </Texture>
                 <Texture inherits="!UI-Frame-InnerLeftTile" parentKey="InsetBorderLeft">
                     <Anchors>
-                        <Anchor point="TOPLEFT" x="0" y="0"/>
-                        <Anchor point="BOTTOMLEFT" relativeKey="$parent.InsetBorderBottomRight" relativePoint="TOPLEFT"/>
+                        <Anchor point="TOPLEFT" x="0" y="0" />
+                        <Anchor
+              point="BOTTOMLEFT"
+              relativeKey="$parent.InsetBorderBottomRight"
+              relativePoint="TOPLEFT"
+            />
                     </Anchors>
                 </Texture>
                 <Texture inherits="!UI-Frame-InnerRightTile" parentKey="InsetBorderRight">
                     <Anchors>
-                        <Anchor point="TOPRIGHT" x="0" y="0"/>
-                        <Anchor point="BOTTOMRIGHT" relativeKey="$parent.InsetBorderBottomRight" relativePoint="TOPRIGHT"/>
+                        <Anchor point="TOPRIGHT" x="0" y="0" />
+                        <Anchor
+              point="BOTTOMRIGHT"
+              relativeKey="$parent.InsetBorderBottomRight"
+              relativePoint="TOPRIGHT"
+            />
                     </Anchors>
                 </Texture>
             </Layer>
@@ -251,14 +291,17 @@
                 </Texture>
             </Layer>
             <Layer level="ARTWORK">
-                <Texture name="ExpressYourElf_Frame_Header" file="Interface\DialogFrame\UI-DialogBox-Header">
+                <Texture
+          name="ExpressYourElf_Frame_Header"
+          file="Interface\DialogFrame\UI-DialogBox-Header"
+        >
                     <Size>
-                        <AbsDimension x="350" y="54"/>
+                        <AbsDimension x="350" y="54" />
                     </Size>
                     <Anchors>
                         <Anchor point="TOP">
                             <Offset>
-                                <AbsDimension x="0" y="20"/>
+                                <AbsDimension x="0" y="20" />
                             </Offset>
                         </Anchor>
                     </Anchors>
@@ -276,7 +319,7 @@
                     <Anchors>
                         <Anchor point="TOP" relativeTo="ExpressYourElf_Frame_Header">
                             <Offset>
-                                <AbsDimension x="0" y="-10"/>
+                                <AbsDimension x="0" y="-10" />
                             </Offset>
                         </Anchor>
                     </Anchors>
@@ -285,13 +328,18 @@
         </Layers>
         <Frames>
 
-            <Frame name="$parentButtonClose" inherits="FloatingBorderedFrame" parentKey="buttonFrame" alpha="0.2">
-                <Size x="29" y="0"/>
+            <Frame
+        name="$parentButtonClose"
+        inherits="FloatingBorderedFrame"
+        parentKey="buttonFrame"
+        alpha="0.2"
+      >
+                <Size x="29" y="0" />
                 <Frames>
                     <Button name="$parentMinimizeButton" parentKey="minimizeButton">
-                        <Size x="32" y="32"/>
+                        <Size x="32" y="32" />
                         <Anchors>
-                            <Anchor point="TOP" x="0" y="4"/>
+                            <Anchor point="TOP" x="0" y="4" />
                         </Anchors>
                         <Scripts>
                             <OnClick>
@@ -300,9 +348,12 @@
 
                             </OnClick>
                         </Scripts>
-                        <NormalTexture file="Interface\ChatFrame\UI-ChatIcon-Minimize-Up"/>
-                        <PushedTexture file="Interface\ChatFrame\UI-ChatIcon-Minimize-Down"/>
-                        <HighlightTexture file="Interface\Buttons\UI-Common-MouseHilight" alphaMode="ADD"/>
+                        <NormalTexture file="Interface\ChatFrame\UI-ChatIcon-Minimize-Up" />
+                        <PushedTexture file="Interface\ChatFrame\UI-ChatIcon-Minimize-Down" />
+                        <HighlightTexture
+              file="Interface\Buttons\UI-Common-MouseHilight"
+              alphaMode="ADD"
+            />
                     </Button>
                 </Frames>
             </Frame>
