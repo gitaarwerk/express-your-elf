@@ -1,7 +1,7 @@
 ExpressYourElf = {}
 ExpressYourElfMessageColor = "\124cffff4f98"
 
-function dump(o)
+local function dump(o)
   if type(o) == "table" then
     local s = "{ "
     for k, v in pairs(o) do
@@ -16,7 +16,7 @@ function dump(o)
   end
 end
 
-function debugPrint(feature, message)
+local function debugPrint(feature, message)
   if not ExpressYourElfVars then return end
 
   if (ExpressYourElfVars.debugMode == true) then
