@@ -1,5 +1,7 @@
 -- init
 ExpressYourElf.IAmRude = {}
+local Class = ExpressYourElf.Constants.Class
+local Race = ExpressYourElf.Constants.Race
 
 function ExpressYourElf.IAmRude.GetMessage(
 playerName,
@@ -22,7 +24,14 @@ playerName,
   local targetHisHer = "her"
   local targetHeShe = "she"
   local targetCowGirlBoy = "cowgirl"
-  local d = C_DateAndTime.GetCalendarTimeFromEpoch(1e6 * 60 * 60 * 24)
+  
+  -- dateFormat
+  local rawTime = date("*t")
+  local d = {
+    day = rawTime.day,
+    month = rawTime.month,
+    year = rawTime.year,
+  }
 
   if (playerGender == "male") then
     oppositeSex = "guys"
@@ -90,116 +99,6 @@ playerName,
       "I can’t say I’ve seen ${targetName} actively, but I sure notice when ${targetHeShe} is not around.",
     }
 
-  if (not targetRace == "Troll" or not targetRace == "Zandalari Troll") then
-    table.insert(rudeLines, "${targetName}'s wit is as sharp as a Troll’s dullest spear.")
-  end
-
-  if (targetRace == "Dracthyr") then
-    table.insert(
-      rudeLines,
-      "Calling ${targetName} a dragon is not only an insult, it's also a fact!"
-    )
-    table.insert(rudeLines, "${targetName}'s scales only hide the fact ${targetHeShe} is a coward.")
-    table.insert(
-      rudeLines,
-      "I bet ${targetName}'s parents never watched 'How to train your dragon'."
-    )
-  end
-
-  if (targetRace == "Earthen") then
-    table.insert(rudeLines, "Even a rock has more charm than ${targetName}.")
-    table.insert(rudeLines, "${targetName}, You look like a great stepping stone (earthen).")
-  end
-
-  if (playerClass == "Shaman" or playerClass == "Warrior" or playerClass == "Paladin") then
-    table.insert(rudeLines, "${targetName}'s combat skills are as effective as a wet paper shield.")
-  end
-
-  if (targetRace == "Worgen" or targetRace == "Gilnean" or targetRace == "Tauren" or targetRace == "Vulpera" or targetRace == "Pandaren" or targetRace == "Highmountain Tauren") then
-    table.insert(
-      rudeLines,
-      "You’re intelligence only comes from the symbiotic relationship with the flees you carry."
-    )
-  end
-
-  if (targetRace == "Pandaren") then
-    table.insert(rudeLines, "I bet ${targetName} is the only one who can get drunk on tea.")
-    table.insert(rudeLines, "Look at ${targetName}, no wonder Pandaren are close to extinct.")
-    table.insert(
-      rudeLines,
-      "The only reason why we let ${targetName} in our faction is because Pandaren are cute when they randomly roll over, trying to play."
-    )
-  end
-
-  if (targetRace == "Nightborne" or targetRace == "Blood Elf" or targetRace == "Void Elf" or targetRace == "Night Elf" or targetRace == "Haranir") then
-    table.insert(rudeLines, "Ew. ${targetName}'s ears are so big, it is full of earwax.")
-  end
-
-  if (targetName == "Monnah" or targetName == "Sueyen" or targetName == "Subzie" or playerName == "Monnah" or playerName == "Darkrider" or playerName == "Suyen" or playerName == "Suekiyaki" or targetName == "Subzie" or targetName == "Lightzie" or targetName == "Monnah") then
-    table.insert(rudeLines, "${targetName}, Pannekoek!")
-  end
-
-  if (targetRace == "Lightforged Draenei" or targetRace == "Draenei") then
-    table.insert(
-      rudeLines,
-      "Let me guess, ${targetName}... you're the first person in your family without a tail?"
-    )
-  end
-
-  if (targetRace == "Dracthyr") then
-    table.insert(
-      rudeLines,
-      "Calling ${targetName} a dragon is not only an insult, it's also a fact!"
-    )
-    table.insert(rudeLines, "I bet ${targetName} hatches chickens instead of dragons.")
-  end
-
-  if (targetClass == "Mage") then
-    table.insert(rudeLines, "${targetName} is as useful as a broken wand in a magic duel.")
-    table.insert(
-      rudeLines,
-      "You call that magic, ${targetName}? I’ve seen more impressive spells in a goblin’s firework show."
-    )
-  end
-
-  if (targetClass == "Mage" or targetClass == "Priest" or targetClass == "Shaman" or targetClass == "Warlock") then
-    table.insert(
-      rudeLines,
-      "All that intellect what is on ${targetName}'s gear doesn’t boost any intellect in the skull, unfortunately."
-    )
-  end
-
-  if (targetClass == "Warlock" or targetClass == "Demon Hunter") then
-    table.insert(
-      rudeLines,
-      "The Fel really did a number on you, ${targetName}. Luckily for you, you don't even know what numbers are."
-    )
-  end
-
-  if (targetClass == "Warlock" or targetClass == "Void Elf") then
-    table.insert(
-      rudeLines,
-      "The void never drained the sanity on ${targetName}, because there was none to begin with."
-    )
-  end
-
-  if (targetClass == "Druid") then
-    table.insert(rudeLines, "${targetName}, do you still love nature, despite what it did to you?")
-    table.insert(rudeLines, "I’d slap ${targetName}, but that would be animal abuse.")
-  end
-
-  if (targetRace == "Tauren" or targetRace == "Highmountain Tauren") then
-    table.insert(
-      rudeLines,
-      "I've never seen a ${targetCowGirlBoy} like ${targetName}, line dancing so badly."
-    )
-  end
-
-  if (targetClass == "Druid" or targetRace == "Tauren" or targetRace == "Highmountain Tauren" or targetRace == "Worgen" or targetRace == "Gilnean" or targetRace == "Vulpera") then
-    table.insert(rudeLines, "Is That... Fur? Coming Out Of Your Ears?")
-    table.insert(rudeLines, "You'll make a fine rug, ${targetName}!")
-  end
-
   --christmas
   if ((d.month == 12 and d.day == 24) or (d.month == 12 and d.day == 25)) then
     table.insert(rudeLines, "Merry Christmas, ${targetName}. I hope you get coal in your stocking.")
@@ -230,6 +129,173 @@ playerName,
     )
   end
 
+  -- halloween
+  if ((d.month == 10 and d.day == 30) or (d.month == 10 and d.day == 31)) then  end
+
+  -- New Year's Day
+  if (d.month == 1 and d.day == 1) then  end
+
+  -- Epiphany / Three Kings' Day
+  if (d.month == 1 and d.day == 6) then  end
+
+  -- Valentine's Day
+  if (d.month == 2 and d.day == 14) then  end
+
+  -- International Women's Day
+  if (d.month == 3 and d.day == 8) then  end
+
+  -- St. Patrick's Day
+  if (d.month == 3 and d.day == 17) then  end
+
+  -- April Fools' Day
+  if (d.month == 4 and d.day == 1) then  end
+
+  -- Earth Day
+  if (d.month == 4 and d.day == 22) then  end
+
+  -- International Workers' Day / May Day
+  if (d.month == 5 and d.day == 1) then  end
+
+  -- Star Wars Day
+  if (d.month == 5 and d.day == 4) then  end
+
+  -- Pride Day
+  if (d.month == 6 and d.day == 28) then  end
+
+  -- Independence Day (US)
+  if (d.month == 7 and d.day == 4) then  end
+
+  -- Bastille Day (France)
+  if (d.month == 7 and d.day == 14) then  end
+
+  -- International Cat Day
+  if (d.month == 8 and d.day == 8) then  end
+
+  -- Halloween
+  if (d.month == 10 and d.day == 31) then  end
+
+  -- Guy Fawkes Night (UK)
+  if (d.month == 11 and d.day == 5) then  end
+
+  -- Remembrance Day / Veterans Day
+  if (d.month == 11 and d.day == 11) then  end
+
+  -- Thanksgiving (US, ~4th Thursday of November)
+  if (d.month == 11 and d.day >= 22 and d.day <= 28) then  end
+
+  -- New Year's Eve
+  if (d.month == 12 and d.day == 31) then  end
+
+  if (not targetRace == Race.Troll or not targetRace == Race.ZandalariTroll) then
+    table.insert(rudeLines, "${targetName}'s wit is as sharp as a Troll’s dullest spear.")
+  end
+
+  if (targetRace == Race.Dracthyr) then
+    table.insert(
+      rudeLines,
+      "Calling ${targetName} a dragon is not only an insult, it's also a fact!"
+    )
+    table.insert(rudeLines, "${targetName}'s scales only hide the fact ${targetHeShe} is a coward.")
+    table.insert(
+      rudeLines,
+      "I bet ${targetName}'s parents never watched 'How to train your dragon'."
+    )
+  end
+
+  if (targetRace == Race.Earthen) then
+    table.insert(rudeLines, "Even a rock has more charm than ${targetName}.")
+    table.insert(rudeLines, "${targetName}, You look like a great stepping stone (earthen).")
+  end
+
+  if (playerClass == Class.Shaman or playerClass == Class.Warrior or playerClass == Class.Paladin) then
+    table.insert(rudeLines, "${targetName}'s combat skills are as effective as a wet paper shield.")
+  end
+
+  if (targetRace == Race.Worgen or targetRace == Race.Gilnean or targetRace == Race.Tauren or targetRace == Race.Vulpera or targetRace == Race.Pandaren or targetRace == Race.HighmountainTauren) then
+    table.insert(
+      rudeLines,
+      "You’re intelligence only comes from the symbiotic relationship with the flees you carry."
+    )
+  end
+
+  if (targetRace == Race.Pandaren) then
+    table.insert(rudeLines, "I bet ${targetName} is the only one who can get drunk on tea.")
+    table.insert(rudeLines, "Look at ${targetName}, no wonder Pandaren are close to extinct.")
+    table.insert(
+      rudeLines,
+      "The only reason why we let ${targetName} in our faction is because Pandaren are cute when they randomly roll over, trying to play."
+    )
+  end
+
+  if (targetRace == Race.Nightborne or targetRace == Race.BloodElf or targetRace == Race.VoidElf or targetRace == Race.NightElf or targetRace == Race.Haranir) then
+    table.insert(rudeLines, "Ew. ${targetName}'s ears are so big, it is full of earwax.")
+  end
+
+  if (targetName == "Monnah" or targetName == "Sueyen" or targetName == "Subzie" or playerName == "Monnah" or playerName == "Darkrider" or playerName == "Suyen" or playerName == "Suekiyaki" or targetName == "Subzie" or targetName == "Lightzie" or targetName == "Monnah") then
+    table.insert(rudeLines, "${targetName}, Pannekoek!")
+  end
+
+  if (targetRace == Race.LightforgedDraenei or targetRace == Race.Draenei) then
+    table.insert(
+      rudeLines,
+      "Let me guess, ${targetName}... you're the first person in your family without a tail?"
+    )
+  end
+
+  if (targetRace == Race.Dracthyr) then
+    table.insert(
+      rudeLines,
+      "Calling ${targetName} a dragon is not only an insult, it's also a fact!"
+    )
+    table.insert(rudeLines, "I bet ${targetName} hatches chickens instead of dragons.")
+  end
+
+  if (targetClass == Class.Mage) then
+    table.insert(rudeLines, "${targetName} is as useful as a broken wand in a magic duel.")
+    table.insert(
+      rudeLines,
+      "You call that magic, ${targetName}? I’ve seen more impressive spells in a goblin’s firework show."
+    )
+  end
+
+  if (targetClass == Class.Mage or targetClass == Class.Priest or targetClass == Class.Shaman or targetClass == Class.Warlock) then
+    table.insert(
+      rudeLines,
+      "All that intellect what is on ${targetName}'s gear doesn’t boost any intellect in the skull, unfortunately."
+    )
+  end
+
+  if (targetClass == Class.Warlock or targetClass == Class.DemonHunter) then
+    table.insert(
+      rudeLines,
+      "The Fel really did a number on you, ${targetName}. Luckily for you, you don't even know what numbers are."
+    )
+  end
+
+  if (targetClass == Class.Warlock or targetClass == Race.VoidElf) then
+    table.insert(
+      rudeLines,
+      "The void never drained the sanity on ${targetName}, because there was none to begin with."
+    )
+  end
+
+  if (targetClass == Class.Druid) then
+    table.insert(rudeLines, "${targetName}, do you still love nature, despite what it did to you?")
+    table.insert(rudeLines, "I’d slap ${targetName}, but that would be animal abuse.")
+  end
+
+  if (targetRace == Race.Tauren or targetRace == Race.HighmountainTauren) then
+    table.insert(
+      rudeLines,
+      "I've never seen a ${targetCowGirlBoy} like ${targetName}, line dancing so badly."
+    )
+  end
+
+  if (targetClass == Class.Druid or targetRace == Race.Tauren or targetRace == Race.HighmountainTauren or targetRace == Race.Worgen or targetRace == Race.Gilnean or targetRace == Race.Vulpera) then
+    table.insert(rudeLines, "Is That... Fur? Coming Out Of Your Ears?")
+    table.insert(rudeLines, "You'll make a fine rug, ${targetName}!")
+  end
+
   -- Mature content
   if ExpressYourElfVars.allowYoMamaContent then
     table.insert(
@@ -241,7 +307,7 @@ playerName,
       "Yo mama's so fat, I got my leatherworking from 0 to 600 making her belt."
     )
 
-    if (targetClass == "Mage") then
+    if (targetClass == Class.Mage) then
       table.insert(
         rudeLines,
         "Yo mama's so fat, when she blinks, she teleports to the next continent."
@@ -249,11 +315,11 @@ playerName,
       table.insert(rudeLines, "Yo mama is so fat when she casts Frost Nova, it causes an ice age.")
     end
 
-    if (playerClass == "Demon Hunter") then
+    if (playerClass == Class.DemonHunter) then
       table.insert(rudeLines, "Yo mama is so fat even Illidan wasn't prepared!")
     end
 
-    if (playerClass == "Rogue") then
+    if (playerClass == Class.Rogue) then
       table.insert(
         rudeLines,
         "Yo mama is so fat, when I try to shadowstep her, I get a server transfer."
@@ -261,11 +327,11 @@ playerName,
       table.insert(rudeLines, "Yo mama is so fat when I shadowstepped her, I got a loading screen.")
     end
 
-    if (playerClass == "Druid") then
+    if (playerClass == Class.Druid) then
       table.insert(rudeLines, "Yo mama's so fat, I got stuck in the Emerald Dream.")
     end
 
-    if (playerClass == "Shaman") then
+    if (playerClass == Class.Shaman) then
       table.insert(rudeLines, "Yo mama's so fat, my chain lightning hit her twice.")
       table.insert(
         rudeLines,
@@ -273,7 +339,7 @@ playerName,
       )
     end
 
-    if (playerClass == "Warlock") then
+    if (playerClass == Class.Warlock) then
       table.insert(rudeLines, "Yo mama so fat, it takes 5 warlocks to summon her.")
       table.insert(
         rudeLines,

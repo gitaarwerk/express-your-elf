@@ -1,5 +1,7 @@
 -- init
 ExpressYourElf.RandomPhrases = {}
+local Class = ExpressYourElf.Constants.Class
+local Race = ExpressYourElf.Constants.Race
 
 function ExpressYourElf.RandomPhrases.GetRandomMessage(
 playerName,
@@ -12,7 +14,16 @@ playerName,
 )
   -- opposite
   local oppositeSex = "men"
-  local d = C_DateAndTime.GetCalendarTimeFromEpoch(1e6 * 60 * 60 * 24)
+
+  -- dateFormat
+  local rawTime = date("*t")
+  local d = {
+    day = rawTime.day,
+    month = rawTime.month,
+    year = rawTime.year,
+  }
+  local zoneName = GetZoneText()
+  local nameScoreInScrabble = ExpressYourElf.Helpers.GetScrabbleScore(playerName)
 
   if (playerGender == "male") then
     oppositeSex = "women"
@@ -122,18 +133,109 @@ playerName,
     "How was the weekend, someone asked? Well, on my first date, ${oppositHeShe} said, “I want to take you to the cemetery to meet my parents, you might be the one.”",
   }
 
+  -- The greeters guild
+  table.insert(listOfPhrases, "Jan Mølby sent me here.")
+  table.insert(listOfPhrases, "I am part of an organisation called the Greeters Guild.")
+  table.insert(
+    listOfPhrases,
+    "Essentially, I the head of non-consensual customer service in the ${zoneName}."
+  )
+  table.insert(
+    listOfPhrases,
+    "You know, my name ${playerName} is ${nameScoreInScrabble} in scrabble."
+  )
+
+  -- other randomness
+  table.insert(listOfPhrases, "I am part of an organisation called the Awkward Agents Anonymous.")
+
+  --christmas
+  if ((d.month == 12 and d.day == 24) or (d.month == 12 and d.day == 25)) then  end
+
+  -- eastern
+  if ((d.month == 4 and d.day == 4) or (d.month == 4 and d.day == 5)) then  end
+
+  -- halloween
+  if ((d.month == 10 and d.day == 30) or (d.month == 10 and d.day == 31)) then
+    table.insert(
+      listOfPhrases,
+      "CANDY!!?? WHERE IS THE CANDY!? They promised me, there would be candy out here!"
+    )
+  end
+
+  -- valentine
+  if (d.month == 2 and d.day == 14) then
+    table.insert(
+      listOfPhrases,
+      "CHOCOLATE!!?? WHERE IS THE CHOCOLATE!? They promised me, there would be chocolate out here!"
+    )
+  end
+
+  -- New Year's Day
+  if (d.month == 1 and d.day == 1) then  end
+
+  -- Epiphany / Three Kings' Day
+  if (d.month == 1 and d.day == 6) then  end
+
+  -- Valentine's Day
+  if (d.month == 2 and d.day == 14) then  end
+
+  -- International Women's Day
+  if (d.month == 3 and d.day == 8) then  end
+
+  -- St. Patrick's Day
+  if (d.month == 3 and d.day == 17) then  end
+
+  -- April Fools' Day
+  if (d.month == 4 and d.day == 1) then  end
+
+  -- Earth Day
+  if (d.month == 4 and d.day == 22) then  end
+
+  -- International Workers' Day / May Day
+  if (d.month == 5 and d.day == 1) then  end
+
+  -- Star Wars Day
+  if (d.month == 5 and d.day == 4) then  end
+
+  -- Pride Day
+  if (d.month == 6 and d.day == 28) then  end
+
+  -- Independence Day (US)
+  if (d.month == 7 and d.day == 4) then  end
+
+  -- Bastille Day (France)
+  if (d.month == 7 and d.day == 14) then  end
+
+  -- International Cat Day
+  if (d.month == 8 and d.day == 8) then  end
+
+  -- Halloween
+  if (d.month == 10 and d.day == 31) then  end
+
+  -- Guy Fawkes Night (UK)
+  if (d.month == 11 and d.day == 5) then  end
+
+  -- Remembrance Day / Veterans Day
+  if (d.month == 11 and d.day == 11) then  end
+
+  -- Thanksgiving (US, ~4th Thursday of November)
+  if (d.month == 11 and d.day >= 22 and d.day <= 28) then  end
+
+  -- New Year's Eve
+  if (d.month == 12 and d.day == 31) then  end
+
   -- Tank classes
-  if (playerClass == "Warrior" or playerClass == "Paladin" or playerClass == "Death Knight" or playerClass == "Monk") then
+  if (playerClass == Class.Warrior or playerClass == Class.Paladin or playerClass == Class.DeathKnight or playerClass == Class.Monk) then
     table.insert(listOfPhrases, "I like big shields and I cannot lie.")
     table.insert(listOfPhrases, "I usually tank… but tonight I'm feeling emotionally vulnerable.")
   end
 
   -- self
-  if (playerRace == "Draenei" or playerRace == "Night Elf" or playerRace == "Haranir" or playerRace == "Tauren" or playerRace == "Highmountain Tauren" or playerRace == "Lightforged Draenei" or playerRace == "Blood Elf") then
+  if (playerRace == Race.Draenei or playerRace == Race.NightElf or playerRace == Race.Haranir or playerRace == Race.Tauren or playerRace == Race.HighmountainTauren or playerRace == Race.LightforgedDraenei or playerRace == Race.BloodElf) then
     table.insert(listOfPhrases, "I always wanted to be taller.")
   end
 
-  if not (playerRace == "Dracthyr") then
+  if not (playerRace == Race.Dracthyr) then
     table.insert(
       listOfPhrases,
       "What I won't do is take in two hundred thousand dragons who could be Dracthyr... I have been watching this migration. And I see the people. I mean, they're dragons. They're mostly dragons, and they're strong dragons. These are physically young, strong dragons. They look like prime-time soldiers. Now it's probably not true, but where are the women?... So, you ask two things. Number one, why aren't they fighting for their country? And number two, I don't want these dragons coming over here."
@@ -146,19 +248,19 @@ playerName,
     table.insert(listOfPhrases, "Hi, I'm the new Milkwoman")
   end
 
-  if (playerRace == "Goblin" or playerRace == "Gnome" or playerRace == "Mechagnome") then
+  if (playerRace == Race.Goblin or playerRace == Race.Gnome or playerRace == Race.Mechagnome) then
     table.insert(
       listOfPhrases,
       "We've got new planes, we've got new rockets, new missiles, we've got new everything, and it's either here or coming in."
     )
   end
 
-  if (playerRace == "Tauren" or playerRace == "Highmountain Tauren") then
+  if (playerRace == Race.Tauren or playerRace == Race.HighmountainTauren) then
     table.insert(listOfPhrases, "COWABUNGA!")
     table.insert(listOfPhrases, "Chocolate milk comes from me, you know?")
   end
 
-  if (playerRace == "Dracthyr") then
+  if (playerRace == Race.Dracthyr) then
     table.insert(listOfPhrases, "I have scales, does that mean I'm actually a fish?")
     table.insert(listOfPhrases, "Watch out, here be dragons!")
     table.insert(
@@ -184,17 +286,17 @@ playerName,
     end
   end
 
-  if (playerRace == "Draenei" or playerRace == "Lightforged Draenei") then
+  if (playerRace == Race.Draenei or playerRace == Race.LightforgedDraenei) then
     table.insert(listOfPhrases, "T'paartos greets puny one.")
     table.insert(listOfPhrases, "T'paartos!")
   end
 
-  if (playerClass == "Warlock" or playerClass == "Demon Hunter") then
+  if (playerClass == Class.Warlock or playerClass == Class.DemonHunter) then
     table.insert(listOfPhrases, "I never understood Fel.")
     table.insert(listOfPhrases, "Drink fel, stay fit, die anyway.")
   end
 
-  if (playerClass == "Death Knight" or playerClass == "Scourge" or playerClass == "Undead") then
+  if (playerClass == Class.DeathKnight or playerClass == Race.Scourge or playerClass == Race.Undead) then
     table.insert(listOfPhrases, "It's true, a windmill killed me.")
     table.insert(
       listOfPhrases,
@@ -202,7 +304,7 @@ playerName,
     )
   end
 
-  if (playerClass == "Mage") then
+  if (playerClass == Class.Mage) then
     table.insert(listOfPhrases, "Iron sword suh? What are you killing? Butterflies?")
     table.insert(
       listOfPhrases,
@@ -210,54 +312,54 @@ playerName,
     )
   end
 
-  if (playerClass == "Druid") then
+  if (playerClass == Class.Druid) then
     table.insert(
       listOfPhrases,
       "It is in our wild nature that we best recover from our un-nature, our spirituality."
     )
   end
 
-  if (playerClass == "Hunter" or playerClass == "Demon Hunter") then
+  if (playerClass == Class.Hunter or playerClass == Class.DemonHunter) then
     table.insert(listOfPhrases, "But Hunter, where's Hunter? Where is Hunter, by the way?")
   end
 
-  if (playerRace == "Priest") then
+  if (playerRace == Class.Priest) then
     table.insert(
       listOfPhrases,
       "I have so much to do that I shall spend the first three hours casting Prayer of Mending."
     )
   end
 
-  if (playerClass == "Paladin" or playerClass == "Priest" or playerRace == "Lightforged Draenei") then
+  if (playerClass == Class.Paladin or playerClass == Class.Priest or playerRace == Race.LightforgedDraenei) then
     table.insert(
       listOfPhrases,
       "Is there a way we can do something like that by injection inside or almost a cleaning? It sounds interesting to me, so we'll see. But the whole concept of the light, the way it kills it in one minute. That's pretty powerful."
     )
   end
 
-  if (playerRace == "Void Elf" or playerClass == "Warlock") then
+  if (playerRace == Race.VoidElf or playerClass == Class.Warlock) then
     table.insert(listOfPhrases, "I said 'No' to the voices, but they wouldn’t listen.")
   end
 
-  if (playerRace == "Earthen") then
+  if (playerRace == Race.Earthen) then
     table.insert(listOfPhrases, "I am a rock, I am an island.")
     table.insert(listOfPhrases, "Before I got adopted, I was in beteen a rock and a hard place.")
   end
 
-  if (playerClass == "Rogue") then
+  if (playerClass == Class.Rogue) then
     table.insert(listOfPhrases, "I sometimes butter your my bread with my posioned knives.")
   end
 
   -- Add mature content
   if ExpressYourElfVars.allowMatureContent then
-    if (playerClass == "Rogue" or playerClass == "Demon Hunter" or playerClass == "Druid" or playerClass == "Monk") then
+    if (playerClass == Class.Rogue or playerClass == Class.DemonHunter or playerClass == Class.Druid or playerClass == Class.Monk) then
       table.insert(
         listOfPhrases,
         "Do you want to wear my armor? it's still warm and just slightly damp."
       )
     end
 
-    if (playerRace == "Gnome" or playerRace == "Mechagnome") then
+    if (playerRace == Race.Gnome or playerRace == Race.Mechagnome) then
       table.insert(listOfPhrases, "Crowded elevators smell different to gnomes.")
     end
   end
@@ -276,6 +378,8 @@ playerName,
     oppositeSex = oppositeSex,
     randomWorld = randomWorld,
     oppositHeShe = oppositHeShe,
+    zoneName = zoneName,
+    nameScoreInScrabble = nameScoreInScrabble,
   })
 
   if #parsedPhrase > 254 then
@@ -311,7 +415,17 @@ playerName,
   targetHeShe,
   targetHimHer
 )
+  -- dateFormat
+  local rawTime = date("*t")
+  local d = {
+    day = rawTime.day,
+    month = rawTime.month,
+    year = rawTime.year,
+  }
+  
   local pickedPhrase
+  local zoneName = GetZoneText()
+  local nameScoreInScrabble = ExpressYourElf.Helpers.GetScrabbleScore(targetName)
   local listOfPhrases =
     {
       "Despite the outcome in the guild, we cannot lose hope and we must all work very hard for a friend and a great person named ${targetName}.",
@@ -342,15 +456,85 @@ playerName,
       "People like the Pandaren, abusing their dual factionship and smuggling in illegal ${targetRace} among other disgusting deplorables, how sad their lives must be.",
     }
 
+  -- The greeters guild
+  table.insert(listOfPhrases, "This is ${targetName}, ${targetHeShe} deploys me.")
+  table.insert(listOfPhrases, "Your name is ${nameScoreInScrabble} in scrabble.")
+
+  --christmas
+  if ((d.month == 12 and d.day == 24) or (d.month == 12 and d.day == 25)) then  end
+
+  -- eastern
+  if ((d.month == 4 and d.day == 4) or (d.month == 4 and d.day == 5)) then  end
+
+  -- halloween
+  if ((d.month == 10 and d.day == 30) or (d.month == 10 and d.day == 31)) then  end
+
+  -- valentine
+  if (d.month == 2 and d.day == 14) then  end
+
+  -- New Year's Day
+  if (d.month == 1 and d.day == 1) then  end
+
+  -- Epiphany / Three Kings' Day
+  if (d.month == 1 and d.day == 6) then  end
+
+  -- Valentine's Day
+  if (d.month == 2 and d.day == 14) then  end
+
+  -- International Women's Day
+  if (d.month == 3 and d.day == 8) then  end
+
+  -- St. Patrick's Day
+  if (d.month == 3 and d.day == 17) then  end
+
+  -- April Fools' Day
+  if (d.month == 4 and d.day == 1) then  end
+
+  -- Earth Day
+  if (d.month == 4 and d.day == 22) then  end
+
+  -- International Workers' Day / May Day
+  if (d.month == 5 and d.day == 1) then  end
+
+  -- Star Wars Day
+  if (d.month == 5 and d.day == 4) then  end
+
+  -- Pride Day
+  if (d.month == 6 and d.day == 28) then  end
+
+  -- Independence Day (US)
+  if (d.month == 7 and d.day == 4) then  end
+
+  -- Bastille Day (France)
+  if (d.month == 7 and d.day == 14) then  end
+
+  -- International Cat Day
+  if (d.month == 8 and d.day == 8) then  end
+
+  -- Halloween
+  if (d.month == 10 and d.day == 31) then  end
+
+  -- Guy Fawkes Night (UK)
+  if (d.month == 11 and d.day == 5) then  end
+
+  -- Remembrance Day / Veterans Day
+  if (d.month == 11 and d.day == 11) then  end
+
+  -- Thanksgiving (US, ~4th Thursday of November)
+  if (d.month == 11 and d.day >= 22 and d.day <= 28) then  end
+
+  -- New Year's Eve
+  if (d.month == 12 and d.day == 31) then  end
+
   if (targetName == "Yamisuzu" or targetName == "Alhena") then
     table.insert(listOfPhrases, "ally ally ally! OI OI OI!")
   end
 
-  if (targetRace == "Worgen" or targetRace == "Gilnean") then
+  if (targetRace == Race.Worgen or targetRace == Race.Gilnean) then
     table.insert("Yes, ${targetName},... you howled?")
   end
 
-  if (targetRace == "Earthen") then
+  if (targetRace == Race.Earthen) then
     table.insert(listOfPhrases, "Where did you dug up ${playerName}?")
   end
 
@@ -361,22 +545,22 @@ playerName,
     )
   end
 
-  if (targetClass and targetClass == "Warlock") then
+  if (targetClass and targetClass == Class.Warlock) then
     table.insert(listOfPhrases, "Uh, bing, bing, bong, bong, be gone, demon!")
   end
 
-  if (targetClass and targetClass == "Mage") then
+  if (targetClass and targetClass == Class.Mage) then
     table.insert(listOfPhrases, "You're a wizard, ${targetName}!")
   end
 
-  if (targetClass and targetClass == "Priest") then
+  if (targetClass and targetClass == Class.Priest) then
     table.insert(
       listOfPhrases,
       "${targetName}, would you grab my arm, so I can tell my friends I’ve been touched by a Priest."
     )
   end
 
-  if (playerRace == "Dracthyr" and targetClass == "Paladin") then
+  if (playerRace == Race.Dracthyr and targetClass == Class.Paladin) then
     table.insert(listOfPhrases, "I don't eat paladins because they always taste lawful!")
   end
 
@@ -399,6 +583,8 @@ playerName,
     targetHisHer = targetHisHer,
     targetHeShe = targetHeShe,
     targetHimHer = targetHimHer,
+    zoneName = zoneName,
+    nameScoreInScrabble = nameScoreInScrabble,
   })
 
   if #parsedPhrase > 254 then
@@ -436,6 +622,7 @@ function ExpressYourElf.RandomPhrases.run()
     targetHisHer,
     targetHeShe,
     targetHimHer
+
 
   local playerHisHer = string.lower(ExpressYourElf.Helpers.GetHisHer(playerGender))
   local playerSirMam = string.lower(ExpressYourElf.Helpers.GetSirMam(playerGender))

@@ -1,5 +1,7 @@
 -- init
 ExpressYourElf.GivePresent = {}
+local Class = ExpressYourElf.Constants.Class
+local Race = ExpressYourElf.Constants.Race
 
 function ExpressYourElf.GivePresent.GetRandomGift(
 playerName,
@@ -15,7 +17,14 @@ playerName,
   targetLevel,
   targetHisHer
 )
-  local d = C_DateAndTime.GetCalendarTimeFromEpoch(1e6 * 60 * 60 * 24)
+  -- dateFormat
+  local rawTime = date("*t")
+  local d = {
+    day = rawTime.day,
+    month = rawTime.month,
+    year = rawTime.year,
+  }
+  
   local splitName = targetName
   local pickedGift
   local listOfGifts =
@@ -66,13 +75,13 @@ playerName,
       "gives a hand-knit brain beanie.",
     }
 
-  if (playerClass == "Goblin") then
+  if (playerClass == Race.Goblin) then
     table.insert(listOfGifts, "gives a set of [Goblin Rocket Boots] to ${targetName}.")
     table.insert(listOfGifts, "gives a [Goblin Rocket Helmet] to ${targetName}.")
     table.insert(listOfGifts, "gives a [Goblin Rocket Launcher] to ${targetName}.")
   end
 
-  if (playerClass == "Druid" or playerRace == "Worgen" or playerRace == "Gilnean" or playerRace == "Tauren" or playerRace == "Vulpera" or playerRace == "Pandaren" or playerRace == "Highmountain Tauren") then
+  if (playerClass == Class.Druid or playerRace == Race.Worgen or playerRace == Race.Gilnean or playerRace == Race.Tauren or playerRace == Race.Vulpera or playerRace == Race.Pandaren or playerRace == Race.HighmountainTauren) then
     table.insert(
       listOfGifts,
       "gives ${playerName}'s paw to ${targetName}. Don’t worry, it was cut off a while ago. It no longer bleeds."
@@ -80,127 +89,127 @@ playerName,
     table.insert(listOfGifts, "gives ${targetName} A small bag of fur.My first shedding")
   end
 
-  if (playerClass == "Druid") then
+  if (playerClass == Class.Druid) then
     table.insert(
       listOfGifts,
       "gives ${targetName} a set of bacon flavoured-bandages. It’s made from.... Bear-me."
     )
   end
 
-  if (playerRace == "Troll") then
+  if (playerRace == Race.Troll) then
     table.insert(
       listOfGifts,
       "hands over ${targetName} a cut off hand from a random bystander, good for in the soup. Magical taste guaranteed"
     )
   end
 
-  if (targetClass == "Hunter") then
+  if (targetClass == Class.Hunter) then
     table.insert(listOfGifts, "hands over a set of neck ties for ${targetName}'s pets.")
   end
 
-  if (playerRace == "Death Knight") then
+  if (playerRace == Class.DeathKnight) then
     table.insert(listOfGifts, "hands over ${targetName} a carved steak of decaying flesh, ew!")
   end
 
-  if (targetRace == "Haranir" or targetRace == "Night Elf" or targetRace == "Void Elf" or targetRace == "Blood Elf" or targetRace == "Nightborne") then
+  if (targetRace == Race.Haranir or targetRace == Race.NightElf or targetRace == Race.VoidElf or targetRace == Race.BloodElf or targetRace == Race.Nightborne) then
     table.insert(
       listOfGifts,
       "gives a [Bottle of Elune's Tears] to ${targetName}. It's a little salty, but it's the thought that counts!"
     )
   end
 
-  if (targetRace == "Draenei") then
+  if (targetRace == Race.Draenei) then
     table.insert(
       listOfGifts,
       "gives a [Chunk of Fel Crystal] to ${targetName}. It's a little toxic, but it's the thought that counts!"
     )
   end
 
-  if (targetRace == "Pandaren") then
+  if (targetRace == Race.Pandaren) then
     table.insert(
       listOfGifts,
       "gives a [Bottle of Sha-Touched Water] to ${targetName}. It's a little bitter, but it's the thought that counts!"
     )
   end
 
-  if (targetRace == "Vulpera") then
+  if (targetRace == Race.Vulpera) then
     table.insert(
       listOfGifts,
       "gives a [Vial of Sand Scarab Swarm] to ${targetName}. It's a little sandy, but it's the thought that counts!"
     )
   end
 
-  if (targetRace == "Highmountain Tauren") then
+  if (targetRace == Race.HighmountainTauren) then
     table.insert(
       listOfGifts,
       "gives a [Chunk of Stone] to ${targetName}. It's a little rocky, but it's the thought that counts!"
     )
   end
 
-  if (targetRace == "Worgen" or targetRace == "Gilnean") then
+  if (targetRace == Race.Worgen or targetRace == Race.Gilnean) then
     table.insert(
       listOfGifts,
       "gives a [Bottle of Gilnean Ale] to ${targetName}. It's a little bitter, but it's the thought that counts!"
     )
   end
 
-  if (targetRace == "Tauren") then
+  if (targetRace == Race.Tauren) then
     table.insert(
       listOfGifts,
       "gives a [Chunk of Meat] to ${targetName}. It's a little raw, but it's the thought that counts!"
     )
   end
 
-  if (targetRace == "Troll") then
+  if (targetRace == Race.Troll) then
     table.insert(
       listOfGifts,
       "gives a [Vial of Voodoo Juice] to ${targetName}. It's a little...voodooey, but it's the thought that counts!"
     )
   end
 
-  if (targetRace == "Goblin") then
+  if (targetRace == Race.Goblin) then
     table.insert(
       listOfGifts,
       "gives a [Goblin Rocket Fuel] to ${targetName}. It's a little explosive, but it's the thought that counts!"
     )
   end
 
-  if (targetRace == "Dwarf") then
+  if (targetRace == Race.Dwarf) then
     table.insert(
       listOfGifts,
       "gives a [Bottle of Dwarven Ale] to ${targetName}. It's a little strong, but it's the thought that counts!"
     )
   end
 
-  if (targetRace == "Orc") then
+  if (targetRace == Race.Orc) then
     table.insert(
       listOfGifts,
       "gives a [Chunk of Ore] to ${targetName}. It's a little heavy, but it's the thought that counts!"
     )
   end
 
-  if (targetRace == "Blood Elf") then
+  if (targetRace == Race.BloodElf) then
     table.insert(
       listOfGifts,
       "gives a [Vial of Blood] to ${targetName}. It's a little sticky, but it's the thought that counts!"
     )
   end
 
-  if (targetRace == "Nightborne") then
+  if (targetRace == Race.Nightborne) then
     table.insert(
       listOfGifts,
       "gives a [Bottle of Nightborne Nectar] to ${targetName}. It's a little sweet, but it's the thought that counts!"
     )
   end
 
-  if (targetRace == "Night Elf") then
+  if (targetRace == Race.NightElf) then
     table.insert(
       listOfGifts,
       "gives a [Bundle of Leaves] to ${targetName}. It's a little crunchy, but it's the thought that counts!"
     )
   end
 
-  if (targetRace == "Haranir") then
+  if (targetRace == Race.Haranir) then
     table.insert(
       listOfGifts,
       "gives a [Vial of Harani Sap] to ${targetName}. It's a little sticky, but it's the thought that counts!"
@@ -240,12 +249,63 @@ playerName,
   end
 
   -- valentine
-  if ((d.month == 2 and d.day == 13) or (d.month == 2 and d.day == 14)) then
+  if (d.month == 2 and d.day == 14) then
     table.insert(
       listOfGifts,
       "gives a [Heart-shaped box of chocolates] to ${targetName}. It's a little melted, but it's the thought that counts!"
     )
   end
+
+  -- New Year's Day
+  if (d.month == 1 and d.day == 1) then  end
+
+  -- Epiphany / Three Kings' Day
+  if (d.month == 1 and d.day == 6) then  end
+
+  -- International Women's Day
+  if (d.month == 3 and d.day == 8) then  end
+
+  -- St. Patrick's Day
+  if (d.month == 3 and d.day == 17) then  end
+
+  -- April Fools' Day
+  if (d.month == 4 and d.day == 1) then  end
+
+  -- Earth Day
+  if (d.month == 4 and d.day == 22) then  end
+
+  -- International Workers' Day / May Day
+  if (d.month == 5 and d.day == 1) then  end
+
+  -- Star Wars Day
+  if (d.month == 5 and d.day == 4) then  end
+
+  -- Pride Day
+  if (d.month == 6 and d.day == 28) then  end
+
+  -- Independence Day (US)
+  if (d.month == 7 and d.day == 4) then  end
+
+  -- Bastille Day (France)
+  if (d.month == 7 and d.day == 14) then  end
+
+  -- International Cat Day
+  if (d.month == 8 and d.day == 8) then  end
+
+  -- Halloween
+  if (d.month == 10 and d.day == 31) then  end
+
+  -- Guy Fawkes Night (UK)
+  if (d.month == 11 and d.day == 5) then  end
+
+  -- Remembrance Day / Veterans Day
+  if (d.month == 11 and d.day == 11) then  end
+
+  -- Thanksgiving (US, ~4th Thursday of November)
+  if (d.month == 11 and d.day >= 22 and d.day <= 28) then  end
+
+  -- New Year's Eve
+  if (d.month == 12 and d.day == 31) then  end
 
   pickedGift = ExpressYourElf.RandomizeUtil.GetRandomized("givePresent", listOfGifts, targetName)
 
