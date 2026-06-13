@@ -1,6 +1,8 @@
 -- init
 
 ExpressYourElf.DanceWithMe = {}
+local Class = ExpressYourElf.Constants.Class
+local Race  = ExpressYourElf.Constants.Race
 
 local function getRandomPrefix(playerName)
   local prefix =
@@ -81,7 +83,7 @@ playerName,
     }
 
   -- Tank classes
-  if (playerClass == "Warrior" or playerClass == "Paladin" or playerClass == "Death Knight" or playerClass == "Monk") then
+  if (playerClass == Class.Warrior or playerClass == Class.Paladin or playerClass == Class.DeathKnight or playerClass == Class.Monk) then
     table.insert(danceLines, "I like big shields and I cannot lie.")
   end
 
@@ -102,63 +104,114 @@ playerName,
   end
 
   -- valentine
-  if ((d.month == 2 and d.day == 13) or (d.month == 2 and d.day == 14)) then
+  if ((d.month == 2 and d.day == 14) or (d.month == 2 and d.day == 14)) then
     table.insert(danceLines, "Love me, love me, pretend that you love me.")
   end
 
-  if (playerRace == "Tauren" or playerRace == "Highmountain Tauren") then
+  -- New Year's Day
+  if (d.month == 1 and d.day == 1) then  end
+
+  -- Epiphany / Three Kings' Day
+  if (d.month == 1 and d.day == 6) then  end
+
+  -- International Women's Day
+  if (d.month == 3 and d.day == 8) then  end
+
+  -- St. Patrick's Day
+  if (d.month == 3 and d.day == 17) then  end
+
+  -- April Fools' Day
+  if (d.month == 4 and d.day == 1) then  end
+
+  -- Earth Day
+  if (d.month == 4 and d.day == 22) then  end
+
+  -- International Workers' Day / May Day
+  if (d.month == 5 and d.day == 1) then  end
+
+  -- Star Wars Day
+  if (d.month == 5 and d.day == 4) then  end
+
+  -- Pride Day
+  if (d.month == 6 and d.day == 28) then  end
+
+  -- Independence Day (US)
+  if (d.month == 7 and d.day == 4) then  end
+
+  -- Bastille Day (France)
+  if (d.month == 7 and d.day == 14) then  end
+
+  -- International Cat Day
+  if (d.month == 8 and d.day == 8) then  end
+
+  -- Halloween
+  if (d.month == 10 and d.day == 31) then  end
+
+  -- Guy Fawkes Night (UK)
+  if (d.month == 11 and d.day == 5) then  end
+
+  -- Remembrance Day / Veterans Day
+  if (d.month == 11 and d.day == 11) then  end
+
+  -- Thanksgiving (US, ~4th Thursday of November)
+  if (d.month == 11 and d.day >= 22 and d.day <= 28) then  end
+
+  -- New Year's Eve
+  if (d.month == 12 and d.day == 31) then  end
+
+  if (playerRace == Race.Tauren or playerRace == Race.HighmountainTauren) then
     table.insert(danceLines, "I'm a cow{playerGuyGirl}, dead or alive!")
   end
 
-  if (playerRace == "Troll" or playerRace == "Zandalari Troll") then
+  if (playerRace == Race.Troll or playerRace == Race.ZandalariTroll) then
     table.insert(danceLines, "I'm a voodoo ${playerGuyGirl}, I'm a voodoo ${playerGuyGirl}")
     table.insert(danceLines, "TroLolololo trolol,trolololol, trolololol.")
   end
 
   -- from
-  if (playerRace == "Worgen" or playerRace == "Gilnean" or playerRace == "Tauren" or playerRace == "Vulpera" or playerRace == "Pandaren" or playerRace == "Highmountain Tauren") then  end
+  if (playerRace == Race.Worgen or playerRace == Race.Gilnean or playerRace == Race.Tauren or playerRace == Race.Vulpera or playerRace == Race.Pandaren or playerRace == Race.HighmountainTauren) then  end
 
-  if (playerRace == "Scourge" or playerRace == "Undead" or playerClass == "Death Knight") then  end
+  if (playerRace == Race.Scourge or playerRace == Race.Undead or playerClass == Class.DeathKnight) then  end
 
-  if (playerClass == "Hunter") then  end
+  if (playerClass == Class.Hunter) then  end
 
-  if (playerRace == "Void Elf" or playerClass == "Warlock") then  end
+  if (playerRace == Race.VoidElf or playerClass == Class.Warlock) then  end
 
-  if (playerClass == "Warlock") then  end
+  if (playerClass == Class.Warlock) then  end
 
-  if (playerClass == "Rogue") then  end
+  if (playerClass == Class.Rogue) then  end
 
-  if (playerClass == "Shaman") then  end
+  if (playerClass == Class.Shaman) then  end
 
-  if (playerClass == "Paladin") then  end
+  if (playerClass == Class.Paladin) then  end
 
-  if (playerClass == "Priest") then  end
+  if (playerClass == Class.Priest) then  end
 
-  if (playerClass == "Warrior") then  end
+  if (playerClass == Class.Warrior) then  end
 
-  if (playerRace == "Lightforged Draenei" or playerClass == "Paladin" or playerClass == "Priest") then  end
+  if (playerRace == Race.LightforgedDraenei or playerClass == Class.Paladin or playerClass == Class.Priest) then  end
 
-  if (playerGender == "male" and (playerClass == "Warrior" or playerClass == "Paladin" or playerClass == "Demon Hunter" or playerClass == "Death Knight" or playerRace == "Mechagnome")) then  end
+  if (playerGender == "male" and (playerClass == Class.Warrior or playerClass == Class.Paladin or playerClass == Class.DemonHunter or playerClass == Class.DeathKnight or playerRace == Race.Mechagnome)) then  end
 
-  if (playerRace == "Mechagnome") then  end
+  if (playerRace == Race.Mechagnome) then  end
 
-  if (playerClass == "Death Knight" or playerRace == "Mechagnome") then  end
+  if (playerClass == Class.DeathKnight or playerRace == Race.Mechagnome) then  end
 
-  if (playerClass == "Druid") then  end
+  if (playerClass == Class.Druid) then  end
 
-  if (playerRace == "Goblin" and playerGender == "male") then  end
+  if (playerRace == Race.Goblin and playerGender == "male") then  end
 
-  if (playerRace == "Goblin" or playerRace == "Gnome" or playerRace == "Mechagnome") then  end
+  if (playerRace == Race.Goblin or playerRace == Race.Gnome or playerRace == Race.Mechagnome) then  end
 
-  if (playerRace == "Zandalari Troll" or playerRace == "Troll") then  end
+  if (playerRace == Race.ZandalariTroll or playerRace == Race.Troll) then  end
 
   if (playerGender == "female") then  end
 
-  if (playerRace == "Dracthyr") then  end
+  if (playerRace == Race.Dracthyr) then  end
 
-  if (playerRace == "Mechagnome") then  end
+  if (playerRace == Race.Mechagnome) then  end
 
-  if (playerRace == "Earthen") then  end
+  if (playerRace == Race.Earthen) then  end
 
   -- Mature content
   if ExpressYourElfVars.allowMatureContent then
@@ -270,7 +323,7 @@ playerName,
     )
 
     -- all horde rces
-    if (playerRace == "Tauren" or playerRace == "Highmountain Tauren" or playerRace == "Scourge" or playerRace == "Undead" or playerRace == "Troll" or playerRace == "Zandalari Troll" or playerRace == "Orc" or playerRace == "Mag'har" or playerRace == "Goblin" or playerRace == "Blood Elf" or playerRace == "Nightborne" or playerRace == "Vulpera") then
+    if (playerRace == Race.Tauren or playerRace == Race.HighmountainTauren or playerRace == Race.Scourge or playerRace == Race.Undead or playerRace == Race.Troll or playerRace == Race.ZandalariTroll or playerRace == Race.Orc or playerRace == "Mag'har" or playerRace == Race.Goblin or playerRace == Race.BloodElf or playerRace == Race.Nightborne or playerRace == Race.Vulpera) then
       -- all horde female leaders
       table.insert(danceLines, "A little bit of Sylvanas in my life")
       table.insert(danceLines, "A little bit of Geya'rah by my side")
@@ -289,7 +342,7 @@ playerName,
     end
 
     -- all alliance factions
-    if (playerRace == "Pandaren" or playerRace == "Mechagnome" or playerRace == "Gnome" or playerRace == "Dwarf" or playerRace == "Night Elf" or playerRace == "Worgen" or playerRace == "Gilnean" or playerRace == "Draenei" or playerRace == "Void Elf" or playerRace == "Lightforged Draenei" or playerRace == "Kul Tiran" or playerRace == "Human" or playerRace == "Dark Iron Dwarf") then
+    if (playerRace == Race.Pandaren or playerRace == Race.Mechagnome or playerRace == Race.Gnome or playerRace == Race.Dwarf or playerRace == Race.NightElf or playerRace == Race.Worgen or playerRace == Race.Gilnean or playerRace == Race.Draenei or playerRace == Race.VoidElf or playerRace == Race.LightforgedDraenei or playerRace == Race.KulTiran or playerRace == Race.Human or playerRace == Race.DarkIronDwarf) then
       -- all alliance female leaders
       table.insert(danceLines, "A little bit of Jaina in my life")
       table.insert(danceLines, "A little bit of Fareeya by my side")
@@ -306,7 +359,7 @@ playerName,
     end
 
     -- all neutral classes
-    if (playerRace == "Pandaren" or playerRace == "Dracthyr" or playerRace == "Earthen") then
+    if (playerRace == Race.Pandaren or playerRace == Race.Dracthyr or playerRace == Race.Earthen) then
       table.insert(danceLines, "A little bit of Chi Chi in my life")
       table.insert(danceLines, "A little bit of Brinthe by my side")
       table.insert(danceLines, "A little bit of Adelgonn's all I need")
@@ -337,7 +390,7 @@ playerName,
     )
 
     -- all horde rces
-    if (playerRace == "Tauren" or playerRace == "Highmountain Tauren" or playerRace == "Scourge" or playerRace == "Undead" or playerRace == "Troll" or playerRace == "Zandalari Troll" or playerRace == "Orc" or playerRace == "Mag'har" or playerRace == "Goblin" or playerRace == "Blood Elf" or playerRace == "Nightborne" or playerRace == "Vulpera") then
+    if (playerRace == Race.Tauren or playerRace == Race.HighmountainTauren or playerRace == Race.Scourge or playerRace == Race.Undead or playerRace == Race.Troll or playerRace == Race.ZandalariTroll or playerRace == Race.Orc or playerRace == "Mag'har" or playerRace == Race.Goblin or playerRace == Race.BloodElf or playerRace == Race.Nightborne or playerRace == Race.Vulpera) then
       -- all horde male leaders
       table.insert(danceLines, "A little bit of Theron in my life")
       table.insert(danceLines, "A little bit of Vol'Jin by my side")
@@ -360,7 +413,7 @@ playerName,
     end
 
     -- all alliance factions
-    if (playerRace == "Pandaren" or playerRace == "Mechagnome" or playerRace == "Gnome" or playerRace == "Dwarf" or playerRace == "Night Elf" or playerRace == "Worgen" or playerRace == "Gilnean" or playerRace == "Draenei" or playerRace == "Void Elf" or playerRace == "Lightforged Draenei" or playerRace == "Kul Tiran" or playerRace == "Human" or playerRace == "Dark Iron Dwarf") then
+    if (playerRace == Race.Pandaren or playerRace == Race.Mechagnome or playerRace == Race.Gnome or playerRace == Race.Dwarf or playerRace == Race.NightElf or playerRace == Race.Worgen or playerRace == Race.Gilnean or playerRace == Race.Draenei or playerRace == Race.VoidElf or playerRace == Race.LightforgedDraenei or playerRace == Race.KulTiran or playerRace == Race.Human or playerRace == Race.DarkIronDwarf) then
       -- all alliance male leaders
       table.insert(danceLines, "A little bit of Anduin in my life")
       table.insert(danceLines, "A little bit of Genn by my side")
@@ -385,7 +438,7 @@ playerName,
     end
 
     -- all neutral classes
-    if (playerRace == "Pandaren" or playerRace == "Dracthyr" or playerRace == "Earthen") then
+    if (playerRace == Race.Pandaren or playerRace == Race.Dracthyr or playerRace == Race.Earthen) then
       table.insert(danceLines, "A little bit of Shaohao in my life")
       table.insert(danceLines, "A little bit of Azurathel by my side")
       table.insert(danceLines, "A little bit of Flint's all I need")
@@ -416,14 +469,14 @@ playerName,
     table.insert(danceLines, "I'm all ears for ${targetName}!")
   end
 
-  if (targetClass == "Priest" or targetClass == "Paladin" or targetClass == "Druid" or targetClass == "Evoker" or targetClass == "Shaman") then
+  if (targetClass == Class.Priest or targetClass == Class.Paladin or targetClass == Class.Druid or targetClass == Class.Evoker or targetClass == Class.Shaman) then
     table.insert(
       danceLines,
       "The ${targetClass} thinks I'm clever 'cause I play guitar, I think ${targetHeShe}'s clever 'cause ${targetHeShe} stops people dying"
     )
   end
 
-  if (playerRace == "Tauren" or playerRace == "Highmountain Tauren") then
+  if (playerRace == Race.Tauren or playerRace == Race.HighmountainTauren) then
     table.insert(danceLines, "I'm a cow{playerGuyGirl}, dead or alive!")
     table.insert(danceLines, "I treat you like milk I’ll do nothing but spoil you.")
   end
@@ -461,7 +514,7 @@ playerName,
       )
     end
 
-    if (targetClass == "Mage") then
+    if (targetClass == Class.Mage) then
       table.insert(
         danceLines,
         "${targetName} is as cold as ice, {targetHeShe}'s willing to sacrifice our love."

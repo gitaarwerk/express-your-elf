@@ -1,6 +1,8 @@
 -- init
 
 ExpressYourElf.Flirt = {}
+local Class = ExpressYourElf.Constants.Class
+local Race  = ExpressYourElf.Constants.Race
 
 function ExpressYourElf.Flirt.GetRandomPrefix(targetRace, targetName)
   local prefix =
@@ -14,7 +16,9 @@ function ExpressYourElf.Flirt.GetRandomPrefix(targetRace, targetName)
       "Hi ${targetName}, ",
     }
 
-  if (targetRace == "Dracthyr") then
+    local d = C_DateAndTime.GetCalendarTimeFromEpoch(1e6 * 60 * 60 * 24)
+
+  if (targetRace == Race.Dracthyr) then
     table.insert(prefix, "Hey there ${targetName}, you hot wings, ")
   end
 
@@ -100,20 +104,20 @@ playerName,
   end
 
   -- from
-  if (playerRace == "Worgen" or playerRace == "Gilnean" or playerRace == "Tauren" or playerRace == "Vulpera" or playerRace == "Pandaren" or playerRace == "Highmountain Tauren") then
+  if (playerRace == Race.Worgen or playerRace == Race.Gilnean or playerRace == Race.Tauren or playerRace == Race.Vulpera or playerRace == Race.Pandaren or playerRace == Race.HighmountainTauren) then
     table.insert(flirtLines, "Wanna see me comb my hair, really fast?")
     table.insert(flirtLines, "My name isn’t Elmo, but you can tickle me any time you want to.")
   end
 
-  if (targetRace == "Worgen" or targetRace == "Gilnean" or targetRace == "Tauren" or targetRace == "Vulpera" or targetRace == "Pandaren" or targetRace == "Highmountain Tauren") then
+  if (targetRace == Race.Worgen or targetRace == Race.Gilnean or targetRace == Race.Tauren or targetRace == Race.Vulpera or targetRace == Race.Pandaren or targetRace == Race.HighmountainTauren) then
     table.insert(flirtLines, "I like your fur, it's so soft and fluffy.")
   end
 
-  if (targetRace == "Vulpera") then
+  if (targetRace == Race.Vulpera) then
     table.insert(flirtLines, "hey there foxy ${targetManWoman}")
   end
 
-  if (playerRace == "Scourge" or playerRace == "Undead" or playerClass == "Death Knight") then
+  if (playerRace == Race.Scourge or playerRace == Race.Undead or playerClass == Class.DeathKnight) then
     table.insert(flirtLines, "You have lovely skin. I can’t wait to wear it.")
     table.insert(
       flirtLines,
@@ -121,16 +125,16 @@ playerName,
     )
   end
 
-  if (playerClass == "Hunter") then
+  if (playerClass == Class.Hunter) then
     table.insert(flirtLines, "I tracked your Heartstone back to me.")
     table.insert(flirtLines, "I'm great with a comb. Wanna watch me comb my hair really fast?'.")
   end
 
-  if (playerRace == "Void Elf" or playerClass == "Warlock") then
+  if (playerRace == Race.VoidElf or playerClass == Class.Warlock) then
     table.insert(flirtLines, "If the void is eternal, will you be my void?")
   end
 
-  if (playerClass == "Warlock") then
+  if (playerClass == Class.Warlock) then
     table.insert(
       flirtLines,
       "The last time I saw a body like yours, I was burying it in my basement."
@@ -138,50 +142,50 @@ playerName,
     table.insert(flirtLines, "I put the romance in necromancy.")
   end
 
-  if (playerClass == "Rogue") then
+  if (playerClass == Class.Rogue) then
     table.insert(flirtLines, "I’m here to steal your Heartstone.")
   end
 
-  if (playerClass == "Shaman") then
+  if (playerClass == Class.Shaman) then
     table.insert(
       flirtLines,
       "If i could learn any new spell, it would be a love totem to entangle you."
     )
   end
 
-  if (playerClass == "Paladin") then
+  if (playerClass == Class.Paladin) then
     table.insert(flirtLines, "${targetGuyGirl}, I have the blessing of protection!")
     table.insert(flirtLines, "Do you feel it? And that just my Devotion Aura.")
   end
 
-  if (playerClass == "Priest") then
+  if (playerClass == Class.Priest) then
     table.insert(flirtLines, "You taught me a new spell; Power Word: Love")
   end
 
-  if (playerClass == "Warrior") then
+  if (playerClass == Class.Warrior) then
     table.insert(flirtLines, "If you say yes now, I will never cleave your side!")
   end
 
-  if (playerRace == "Lightforged Draenei" or playerClass == "Paladin" or playerClass == "Priest") then
+  if (playerRace == Race.LightforgedDraenei or playerClass == Class.Paladin or playerClass == Class.Priest) then
     table.insert(flirtLines, "You're my light in the darkness.")
   end
 
-  if (playerGender == "male" and (playerClass == "Warrior" or playerClass == "Paladin" or playerClass == "Demon Hunter" or playerClass == "Death Knight" or playerRace == "Mechagnome")) then
+  if (playerGender == "male" and (playerClass == Class.Warrior or playerClass == Class.Paladin or playerClass == Class.DemonHunter or playerClass == Class.DeathKnight or playerRace == Race.Mechagnome)) then
     table.insert(flirtLines, "My armor is bending bending just by looking at you!")
   end
 
-  if (playerRace == "Mechagnome") then
+  if (playerRace == Race.Mechagnome) then
     table.insert(flirtLines, "You know, I have over 200 Bionicles.")
   end
 
-  if (playerClass == "Death Knight" or playerRace == "Mechagnome") then
+  if (playerClass == Class.DeathKnight or playerRace == Race.Mechagnome) then
     table.insert(
       flirtLines,
       "Let's be ${playerManWoman} and ${targetManWoman} until decay makes us fall apart."
     )
   end
 
-  if (playerClass == "Druid") then
+  if (playerClass == Class.Druid) then
     table.insert(
       flirtLines,
       "Did you ever had the chance to hug a tree without feeling you are the only one?, now is your chance!"
@@ -193,19 +197,19 @@ playerName,
     table.insert(flirtLines, "I'll always be your beast of burden.")
   end
 
-  if (targetRace == "Goblin") then
+  if (targetRace == Race.Goblin) then
     table.insert(flirtLines, "I don't care if you are a gold digger.")
   end
 
-  if (playerRace == "Goblin" and playerGender == "male") then
+  if (playerRace == Race.Goblin and playerGender == "male") then
     table.insert(flirtLines, "I'm no Kobald, but you can take my candle anytime!")
   end
 
-  if (playerRace == "Goblin" or playerRace == "Gnome" or playerRace == "Mechagnome") then
+  if (playerRace == Race.Goblin or playerRace == Race.Gnome or playerRace == Race.Mechagnome) then
     table.insert(flirtLines, "Fly away in my space rocket. You no need put money in my pocket.")
   end
 
-  if (playerRace == "Zandalari Troll" or playerRace == "Troll") then
+  if (playerRace == Race.ZandalariTroll or playerRace == Race.Troll) then
     table.insert(flirtLines, "Don't jinx it and do some voodoo with me.")
   end
 
@@ -216,35 +220,35 @@ playerName,
     )
   end
 
-  if (playerRace == "Dracthyr") then
+  if (playerRace == Race.Dracthyr) then
     table.insert(flirtLines, "Do you think it's hot to know that I am a member of Imagine Dragons?")
   end
 
-  if (targetRace == "Earthen") then
+  if (targetRace == Race.Earthen) then
     table.insert(flirtLines, "I will make you feel like a rockstar.")
     table.insert(flirtLines, "I will make you rock in both minor and major scales.")
   end
 
   -- to
-  if (targetClass == "Druid" or targetRace == "Dracthyr" or targetRace == "Tauren" or targetRace == "Highmountain Tauren") then
+  if (targetClass == Class.Druid or targetRace == Race.Dracthyr or targetRace == Race.Tauren or targetRace == Race.HighmountainTauren) then
     table.insert(flirtLines, "It was obvious that you were the beast of the show!")
   end
 
-  if (targetClass == "Druid") then
+  if (targetClass == Class.Druid) then
     table.insert(
       flirtLines,
       "I seem to have lost my teddy bear. Would you like to be my teddy bear tonight?"
     )
   end
 
-  if (targetClass == "Druid" and playerClass == "Druid") then
+  if (targetClass == Class.Druid and playerClass == Class.Druid) then
     table.insert(
       flirtLines,
       "Did I see you in the Emrald Dream last night? Or was it just perhaps my own."
     )
   end
 
-  if (targetRace == "Dracthyr") then
+  if (targetRace == Race.Dracthyr) then
     table.insert(
       flirtLines,
       "Are you one of those fiery Dragonborn, because it's getting hot in here."
@@ -253,49 +257,49 @@ playerName,
     table.insert(flirtLines, "let’s hatch an egg together.")
   end
 
-  if (targetClass == "Demon Hunter") then
+  if (targetClass == Class.DemonHunter) then
     table.insert(flirtLines, "For you, I AM prepared")
     table.insert(flirtLines, "Aren't you a handsome devil.")
     table.insert(flirtLines, "No need to be green with envy, because I'm all yours.")
     table.insert(flirtLines, "Demonic power or not, I was already obsessed by you!")
   end
 
-  if (targetRace == "Night Elf" or targetRace == "Void Elf" or targetRace == "Blood Elf" or targetRace == "Nightborne") then
+  if (targetRace == Race.NightElf or targetRace == Race.VoidElf or targetRace == Race.BloodElf or targetRace == Race.Nightborne) then
     table.insert(flirtLines, "Your leafy long ears remind of the trees at my mother's home")
     table.insert(flirtLines, "I really like your eyebrows")
   end
 
-  if (targetRace == "Vulpera") then
+  if (targetRace == Race.Vulpera) then
     table.insert(
       flirtLines,
       "Foxy ${targetPoppaMomma}, You smell kinda pretty. Wanna smell me? Hoo-hah!"
     )
   end
 
-  if (targetRace == "Draenei" and targetRace == "Lightforged Draenei") then
+  if (targetRace == Race.Draenei and targetRace == Race.LightforgedDraenei) then
     table.insert(
       flirtLines,
       "Was you father an Draenei? Because there’s nothing else like you on Azeroth!"
     )
   end
 
-  if (targetClass == "Hunter") then
+  if (targetClass == Class.Hunter) then
     table.insert(flirtLines, "Your arrow hit my heart.")
   end
 
-  if (targetClass == "Warlock") then
+  if (targetClass == Class.Warlock) then
     table.insert(flirtLines, "Talk Demonic to me!")
   end
 
-  if (targetClass == "Priest") then
+  if (targetClass == Class.Priest) then
     table.insert(flirtLines, "Your prayers make me feel divine.")
   end
 
-  if ((targetClass == "Mage" or playerClass == "Mage") and not (playerGender == targetGender)) then
+  if ((targetClass == Class.Mage or playerClass == Class.Mage) and not (playerGender == targetGender)) then
     table.insert(flirtLines, "Wanna help me conjure a new life form?")
   end
 
-  if (targetClass == "Priest" or targetClass == "Paladin" or targetClass == "Monk" or targetClass == "Warlock" or targetClass == "Mage") then
+  if (targetClass == Class.Priest or targetClass == Class.Paladin or targetClass == Class.Monk or targetClass == Class.Warlock or targetClass == Class.Mage) then
     table.insert(
       flirtLines,
       "They say that you have spells of love, so would you mind starting to cast one on me?"
@@ -306,7 +310,7 @@ playerName,
     )
   end
 
-  if (targetRace == "Scourge" or targetRace == "Undead") then
+  if (targetRace == Race.Scourge or targetRace == Race.Undead) then
     table.insert(flirtLines, "Do you have a shovel? Because I’m digging you.")
     table.insert(
       flirtLines,
@@ -318,19 +322,19 @@ playerName,
     )
   end
 
-  if (playerClass == "Paladin" and targetClass == "Paladin") then
+  if (playerClass == Class.Paladin and targetClass == Class.Paladin) then
     table.insert(flirtLines, "I can swing my hammer and you read your divine libram.")
   end
 
-  if (playerRace == "Mechagnome") then
+  if (playerRace == Race.Mechagnome) then
     table.insert(flirtLines, "I'm not programmed for love, but I'm willing to learn.")
   end
 
-  if (targetRace == "Earthen") then
+  if (targetRace == Race.Earthen) then
     table.insert(flirtLines, "I would leave no rock unturned.")
   end
 
-  if (playerRace == "Earthen") then
+  if (playerRace == Race.Earthen) then
     table.insert(flirtLines, "Would you like to see my rock collection?")
     table.insert(flirtLines, "Would you like to rock my sharp edges off?")
     table.insert(flirtLines, "I'm ready to get rubbled.")
@@ -346,19 +350,73 @@ playerName,
     table.insert(flirtLines, "I'm not the Easter Bunny, but I can still make you hop.")
   end
 
+  -- New Year's Day
+  if (d.month == 1 and d.day == 1) then  end
+
+  -- Epiphany / Three Kings' Day
+  if (d.month == 1 and d.day == 6) then  end
+
+  -- Valentine's Day
+  if (d.month == 2 and d.day == 14) then  end
+
+  -- International Women's Day
+  if (d.month == 3 and d.day == 8) then  end
+
+  -- St. Patrick's Day
+  if (d.month == 3 and d.day == 17) then  end
+
+  -- April Fools' Day
+  if (d.month == 4 and d.day == 1) then  end
+
+  -- Earth Day
+  if (d.month == 4 and d.day == 22) then  end
+
+  -- International Workers' Day / May Day
+  if (d.month == 5 and d.day == 1) then  end
+
+  -- Star Wars Day
+  if (d.month == 5 and d.day == 4) then  end
+
+  -- Pride Day
+  if (d.month == 6 and d.day == 28) then  end
+
+  -- Independence Day (US)
+  if (d.month == 7 and d.day == 4) then  end
+
+  -- Bastille Day (France)
+  if (d.month == 7 and d.day == 14) then  end
+
+  -- International Cat Day
+  if (d.month == 8 and d.day == 8) then  end
+
+  -- Halloween
+  if (d.month == 10 and d.day == 31) then  end
+
+  -- Guy Fawkes Night (UK)
+  if (d.month == 11 and d.day == 5) then  end
+
+  -- Remembrance Day / Veterans Day
+  if (d.month == 11 and d.day == 11) then  end
+
+  -- Thanksgiving (US, ~4th Thursday of November)
+  if (d.month == 11 and d.day >= 22 and d.day <= 28) then  end
+
+  -- New Year's Eve
+  if (d.month == 12 and d.day == 31) then  end
+
   -- Mature content
   if ExpressYourElfVars.allowMatureContent then
     if (d.month == 4 and d.day == 12) then
       table.insert(flirtLines, "I'm not the Easter Bunny, but I can still make you hop.")
     end
-    if (playerRace == "Orc") then
+    if (playerRace == Race.Orc) then
       table.insert(
         flirtLines,
         "I'm a lot like Thrall, I'm a warchief in the streets and a world shaman in the sheets."
       )
     end
 
-    if (playerClass == "Warlock") then
+    if (playerClass == Class.Warlock) then
       table.insert(flirtLines, "I'm not wearing any armor. I hope you don't crit.")
       table.insert(
         flirtLines,
@@ -366,7 +424,7 @@ playerName,
       )
     end
 
-    if (playerRace == "Draenei" and playerRace == "Lightforged Draenei") then
+    if (playerRace == Race.Draenei and playerRace == Race.LightforgedDraenei) then
       table.insert(
         flirtLines,
         "I'm not tentacled, but I'm sure you'd love to get your hands on me."
@@ -376,7 +434,7 @@ playerName,
 
   -- Add removed flirt lines, that Blizard removed
   if (ExpressYourElfVars.allowMatureContent and ExpressYourElfVars.bringBackRemoved) then
-    if (playerRace == "Blood Elf" and playerGender == "female") then
+    if (playerRace == Race.BloodElf and playerGender == "female") then
       table.insert(
         flirtLines,
         "Is that a mana wyrm in your pocket, or are you just happy to see me?"
@@ -384,7 +442,7 @@ playerName,
       table.insert(flirtLines, "Normally, I only ride on epic mounts... But, let's talk.")
     end
 
-    if (playerRace == "Demon Hunter" and playerRace == "Blood Elf" and playerGender == "female") then
+    if (playerRace == Class.DemonHunter and playerRace == Race.BloodElf and playerGender == "female") then
       table.insert(
         flirtLines,
         "Are you sure you're not part-demon? I find myself wanting to stalk you."
@@ -395,28 +453,28 @@ playerName,
       )
     end
 
-    if (playerRace == "Goblin" and playerGender == "female") then
+    if (playerRace == Race.Goblin and playerGender == "female") then
       table.insert(flirtLines, "I'm short and good with my hands... how can you resist?")
     end
 
-    if (playerRace == "Goblin" and targetGender == "male") then
+    if (playerRace == Race.Goblin and targetGender == "male") then
       table.insert(flirtLines, "Is that your wallet? Or are you just glad to see me? Both I hope!")
       table.insert(flirtLines, "So then, he asked me to go up on him!")
     end
 
-    if (playerRace == "Goblin" and playerGender == "male") then
+    if (playerRace == Race.Goblin and playerGender == "male") then
       table.insert(flirtLines, "Ever rode a rocket before? Mine's huge.")
       table.insert(flirtLines, "I got what you need. *sound of zipper*")
     end
 
-    if (playerRace == "Goblin" and playerGender == "male" and targetGender == "female") then
+    if (playerRace == Race.Goblin and playerGender == "male" and targetGender == "female") then
       table.insert(
         flirtLines,
         "I like my ${targetRace} the way I like my fuses: Short, fast and ready to blow."
       )
     end
 
-    if (playerRace == "Orc" and playerGender == "male") then
+    if (playerRace == Race.Orc and playerGender == "male") then
       table.insert(
         flirtLines,
         "That armor looks good on you. It would look even better on my floor."
@@ -424,41 +482,41 @@ playerName,
       table.insert(flirtLines, "Um... You look like a lady.")
     end
 
-    if (playerRace == "Tauren" and playerGender == "female" and targetGender == "male") then
+    if (playerRace == Race.Tauren and playerGender == "female" and targetGender == "male") then
       table.insert(
         flirtLines,
         "I've got big, soulful eyes, long eyelashes and a wet tongue. What more could a guy want?"
       )
     end
 
-    if (playerRace == "Tauren" and playerGender == "male" and targetGender == "female") then
+    if (playerRace == Race.Tauren and playerGender == "male" and targetGender == "female") then
       table.insert(flirtLines, "Free rides for the ladies.")
       table.insert(flirtLines, "Y'know, older bulls really only have one function.")
     end
 
-    if (playerRace == "Troll" and playerGender == "female") then
+    if (playerRace == Race.Troll and playerGender == "female") then
       table.insert(
         flirtLines,
         "When enraged, and in heat, a female troll can mate over 80 times in one night. Be you prepared?"
       )
     end
 
-    if (playerRace == "Troll" and playerGender == "male") then
+    if (playerRace == Race.Troll and playerGender == "male") then
       table.insert(flirtLines, "Want some of my jungle love?")
     end
 
-    if (playerRace == "Undead" and playerGender == "female") then
+    if (playerRace == Race.Undead and playerGender == "female") then
       table.insert(
         flirtLines,
         "Us undead girls really know how to have a good time, because after all, what's the worst thing that could happen?"
       )
     end
 
-    if (playerRace == "Undead" and playerGender == "male") then
+    if (playerRace == Race.Undead and playerGender == "male") then
       table.insert(flirtLines, "Once you go dead, you never go back. ")
     end
 
-    if (playerRace == "Highmountain Tauren" and playerGender == "female") then
+    if (playerRace == Race.HighmountainTauren and playerGender == "female") then
       table.insert(flirtLines, "Are you staring at my rack?")
       table.insert(
         flirtLines,
@@ -466,26 +524,26 @@ playerName,
       )
     end
 
-    if (playerRace == "Highmountain Tauren" and playerGender == "male") then
+    if (playerRace == Race.HighmountainTauren and playerGender == "male") then
       table.insert(flirtLines, "Trust me... I have experience at exploring deep places.")
     end
 
-    if (playerRace == "Nightborne" and playerGender == "female" and targetGender == "male") then
+    if (playerRace == Race.Nightborne and playerGender == "female" and targetGender == "male") then
       table.insert(
         flirtLines,
         "Is that an illusion in your pocket, or are you just happy to see me?"
       )
     end
 
-    if (playerRace == "Nightborne" and playerGender == "female") then
+    if (playerRace == Race.Nightborne and playerGender == "female") then
       table.insert(flirtLines, "There's no area denial in this raid.")
     end
 
-    if (playerRace == "Nightborne" and playerGender == "male") then
+    if (playerRace == Race.Nightborne and playerGender == "male") then
       table.insert(flirtLines, "Mmmm, I wanna tap that ley line.")
     end
 
-    if (playerRace == "Draenei" and playerGender == "female") then
+    if (playerRace == Race.Draenei and playerGender == "female") then
       table.insert(
         flirtLines,
         "I want you to *lick and splat* my *gurgling noises* *slurping noises*"
@@ -493,18 +551,18 @@ playerName,
       table.insert(flirtLines, "You have heard of the Exodar? I will show you the Sexodar!")
     end
 
-    if (playerRace == "Draenei" and playerGender == "male") then
+    if (playerRace == Race.Draenei and playerGender == "male") then
       table.insert(
         flirtLines,
         "Would you be offended if I said that you had a beautiful transgoto? The other one, that's not bad either."
       )
     end
 
-    if (playerRace == "Dwarf" and playerGender == "female") then
+    if (playerRace == Race.Dwarf and playerGender == "female") then
       table.insert(flirtLines, "I'll have you know I can flatten steel with my thighs.")
     end
 
-    if (playerRace == "Dwarf" and playerGender == "male") then
+    if (playerRace == Race.Dwarf and playerGender == "male") then
       table.insert(
         flirtLines,
         "You look pretty, I like your hair, here's a drink... Are you ready now?"
@@ -515,26 +573,26 @@ playerName,
       )
     end
 
-    if (playerRace == "Night Elf" and playerGender == "female") then
+    if (playerRace == Race.NightElf and playerGender == "female") then
       table.insert(flirtLines, "Sure, I've got exotic piercings.")
     end
 
-    if (playerRace == "Night Elf" and playerGender == "male") then
+    if (playerRace == Race.NightElf and playerGender == "male") then
       table.insert(flirtLines, "I hope you're not afraid of snakes.")
     end
 
-    if (playerRace == "Haranir" and playerGender == "female") then
+    if (playerRace == Race.Haranir and playerGender == "female") then
       table.insert(
         flirtLines,
         "Sure, I've got exotic piercings. They're just a little older than the ones you see on the Night Elves."
       )
     end
 
-    if (playerRace == "Haranir" and playerGender == "male") then
+    if (playerRace == Race.Haranir and playerGender == "male") then
       table.insert(flirtLines, "I hope you're not afraid of some mature snakes.")
     end
 
-    if ((playerRace == "Worgen" or playerRace == "Gilnean") and playerGender == "female") then
+    if ((playerRace == Race.Worgen or playerRace == Race.Gilnean) and playerGender == "female") then
       table.insert(flirtLines, "Being bitchy is in my blood. Don't pretend you don't like it.")
       table.insert(flirtLines, "Don't worry,... the fur is just something to hold onto.")
       table.insert(flirtLines, "(sniffs), Well, hello... ")
@@ -543,7 +601,7 @@ playerName,
       table.insert(flirtLines, "It all matches. Trust me.")
     end
 
-    if ((playerRace == "Worgen" or playerRace == "Gilnean") and playerGender == "male") then
+    if ((playerRace == Race.Worgen or playerRace == Race.Gilnean) and playerGender == "male") then
       table.insert(flirtLines, "I hope you like it 'ruff'.")
       table.insert(flirtLines, "Being with me is like having two guys in one.")
       table.insert(flirtLines, "I'd like to mark your territory.")
@@ -551,24 +609,24 @@ playerName,
       table.insert(flirtLines, "If you play nice, I'll share my bone with you...")
     end
 
-    if (playerRace == "Dark Iron Dwarf" and playerGender == "male") then
+    if (playerRace == Race.DarkIronDwarf and playerGender == "male") then
       table.insert(flirtLines, "Interested in joining the mile deep club?")
     end
 
-    if (playerRace == "Lightforged Draenei" and playerGender == "female") then
+    if (playerRace == Race.LightforgedDraenei and playerGender == "female") then
       table.insert(flirtLines, "When in doubt... touch anything that glows.")
       table.insert(flirtLines, "Let's go back to my ship and twist our nethers.")
     end
 
-    if (playerRace == "Lightforged Draenei" and playerGender == "female" and targetGender == "male") then
+    if (playerRace == Race.LightforgedDraenei and playerGender == "female" and targetGender == "male") then
       table.insert(flirtLines, "I admire a soldier who can... remain... at attention.")
     end
 
-    if (playerRace == "Mechagnome" and playerGender == "female") then
+    if (playerRace == Race.Mechagnome and playerGender == "female") then
       table.insert(flirtLines, "I used to be a ten, but then I upgraded to an eleven.")
     end
 
-    if (playerRace == "Pandaren" and playerGender == "female") then
+    if (playerRace == Race.Pandaren and playerGender == "female") then
       table.insert(
         flirtLines,
         "Oh, I've never done THAT before.. Uh... You're not doing it right... "
@@ -576,7 +634,7 @@ playerName,
       table.insert(flirtLines, "Let me show you my kung fu grip.")
     end
 
-    if (playerRace == "Pandaren" and playerGender == "male") then
+    if (playerRace == Race.Pandaren and playerGender == "male") then
       table.insert(flirtLines, "Yeah, I would tap dat keg.")
       table.insert(flirtLines, "Want to try breeding in captivity?")
       table.insert(flirtLines, "Nice pants. What's the drop rate?")
@@ -585,7 +643,7 @@ playerName,
   end
 
   -- Oh no, too soon!
-  if (playerClass == "Priest" and targetLevel < 18) then
+  if (playerClass == Class.Priest and targetLevel < 18) then
     print("You should wait with flirting until ${targtName} is higher than level 18.")
     return nil
   end
