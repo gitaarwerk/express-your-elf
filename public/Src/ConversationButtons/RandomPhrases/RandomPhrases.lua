@@ -413,6 +413,12 @@ playerName,
   targetHeShe,
   targetHimHer
 )
+  local rawTime = date("*t")
+  local d = {
+    day = rawTime.day,
+    month = rawTime.month,
+    year = rawTime.year,
+  }
   local pickedPhrase
   local zoneName = GetZoneText()
   local nameScoreInScrabble = ExpressYourElf.Helpers.GetScrabbleScore(targetName)
