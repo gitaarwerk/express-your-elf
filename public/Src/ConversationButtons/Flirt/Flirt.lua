@@ -16,14 +16,8 @@ function ExpressYourElf.Flirt.GetRandomPrefix(targetRace, targetName)
       "Hi ${targetName}, ",
     }
 
-  -- dateFormat
-  local rawTime = date("*t")
-  local d = {
-    day = rawTime.day,
-    month = rawTime.month,
-    year = rawTime.year,
-  }
-  
+  local d = C_DateAndTime.GetCalendarTimeFromEpoch(1e6 * 60 * 60 * 24)
+
   if (targetRace == Race.Dracthyr) then
     table.insert(prefix, "Hey there ${targetName}, you hot wings, ")
   end

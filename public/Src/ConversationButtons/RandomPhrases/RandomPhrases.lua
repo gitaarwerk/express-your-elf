@@ -14,14 +14,7 @@ playerName,
 )
   -- opposite
   local oppositeSex = "men"
-
-  -- dateFormat
-  local rawTime = date("*t")
-  local d = {
-    day = rawTime.day,
-    month = rawTime.month,
-    year = rawTime.year,
-  }
+  local d = C_DateAndTime.GetCalendarTimeFromEpoch(1e6 * 60 * 60 * 24)
   local zoneName = GetZoneText()
   local nameScoreInScrabble = ExpressYourElf.Helpers.GetScrabbleScore(playerName)
 
@@ -415,14 +408,6 @@ playerName,
   targetHeShe,
   targetHimHer
 )
-  -- dateFormat
-  local rawTime = date("*t")
-  local d = {
-    day = rawTime.day,
-    month = rawTime.month,
-    year = rawTime.year,
-  }
-  
   local pickedPhrase
   local zoneName = GetZoneText()
   local nameScoreInScrabble = ExpressYourElf.Helpers.GetScrabbleScore(targetName)

@@ -29,13 +29,7 @@ playerName,
   targetPoppaMomma
 )
   local randomWorld = ExpressYourElf.Helpers.GetRandomWorld()
-  -- dateFormat
-  local rawTime = date("*t")
-  local d = {
-    day = rawTime.day,
-    month = rawTime.month,
-    year = rawTime.year,
-  }
+  local d = C_DateAndTime.GetCalendarTimeFromEpoch(1e6 * 60 * 60 * 24)
   local zoneName = GetZoneText()
   local playerSex = "girls"
   local oppositeSex = "boys"
