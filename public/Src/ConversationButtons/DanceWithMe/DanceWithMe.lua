@@ -38,7 +38,7 @@ playerName,
     month = rawTime.month,
     year = rawTime.year,
   }
-  
+
   local playerSex = "girl"
   local oppositeSex = "guys"
   local oppositeBfGf = "boyfriend"
@@ -302,8 +302,13 @@ playerName,
   end
 
   local pickedLine
-  local d = C_DateAndTime.GetCalendarTimeFromEpoch(1e6 * 60 * 60 * 24)
-
+  -- dateFormat
+  local rawTime = date("*t")
+  local d = {
+    day = rawTime.day,
+    month = rawTime.month,
+    year = rawTime.year,
+  }
   local danceLines =
     {
       "Beats so big I'm stepping on ${targetRace}.",

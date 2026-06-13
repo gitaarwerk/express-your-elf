@@ -21,7 +21,7 @@ playerName,
     month = rawTime.month,
     year = rawTime.year,
   }
-  
+
   local playerSex = "girls"
   local oppositeSex = "boys"
 

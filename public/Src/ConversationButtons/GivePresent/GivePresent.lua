@@ -24,7 +24,7 @@ playerName,
     month = rawTime.month,
     year = rawTime.year,
   }
-  
+
   local splitName = targetName
   local pickedGift
   local listOfGifts =

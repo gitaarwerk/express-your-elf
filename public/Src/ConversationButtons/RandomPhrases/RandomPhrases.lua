@@ -14,7 +14,12 @@ playerName,
 )
   -- opposite
   local oppositeSex = "men"
-  local d = C_DateAndTime.GetCalendarTimeFromEpoch(1e6 * 60 * 60 * 24)
+  local rawTime = date("*t")
+  local d = {
+    day = rawTime.day,
+    month = rawTime.month,
+    year = rawTime.year,
+  }
   local zoneName = GetZoneText()
   local nameScoreInScrabble = ExpressYourElf.Helpers.GetScrabbleScore(playerName)
 

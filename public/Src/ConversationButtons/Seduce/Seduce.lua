@@ -40,14 +40,14 @@ playerName,
 )
   local randomWorld = ExpressYourElf.Helpers.GetRandomWorld()
 
-    -- dateFormat
+  -- dateFormat
   local rawTime = date("*t")
   local d = {
     day = rawTime.day,
     month = rawTime.month,
     year = rawTime.year,
   }
-  
+
   -- common
   local pickedLine
   local seduceLines =

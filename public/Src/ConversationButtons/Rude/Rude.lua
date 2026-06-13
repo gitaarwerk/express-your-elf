@@ -24,7 +24,7 @@ playerName,
   local targetHisHer = "her"
   local targetHeShe = "she"
   local targetCowGirlBoy = "cowgirl"
-  
+
   -- dateFormat
   local rawTime = date("*t")
   local d = {
