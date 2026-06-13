@@ -1,8 +1,6 @@
 -- Shared randomization utility for contextual cycling
 ExpressYourElf.RandomizeUtil = {}
 
-local contextStates = {}
-
 -- Get a randomized item from a data table with intelligent cycling
 -- @param contextKey - unique identifier (e.g., "compliment_prefix", "flirt_message")
 -- @param dataTable - array to pick from
@@ -13,14 +11,18 @@ function ExpressYourElf.RandomizeUtil.GetRandomized(contextKey, dataTable, conte
     return nil
   end
 
-  if not contextStates[contextKey] then
-    contextStates[contextKey] = {
+  if not ExpressYourElfVars.RandomizeState then
+    ExpressYourElfVars.RandomizeState = {}
+  end
+
+  if not ExpressYourElfVars.RandomizeState[contextKey] then
+    ExpressYourElfVars.RandomizeState[contextKey] = {
       lastIndex = 0,
       lastSalt = contextSalt,
     }
   end
 
-  local state = contextStates[contextKey]
+  local state = ExpressYourElfVars.RandomizeState[contextKey]
 
   -- Reset cycling if context changed
   if state.lastSalt ~= contextSalt then
@@ -61,10 +63,12 @@ end
 
 -- Reset all context states (useful when restarting interactions)
 function ExpressYourElf.RandomizeUtil.ResetAll()
-  contextStates = {}
+  ExpressYourElfVars.RandomizeState = {}
 end
 
 -- Reset a specific context
 function ExpressYourElf.RandomizeUtil.ResetContext(contextKey)
-  contextStates[contextKey] = nil
+  if ExpressYourElfVars.RandomizeState then
+    ExpressYourElfVars.RandomizeState[contextKey] = nil
+  end
 end

@@ -52,7 +52,7 @@ playerName,
     "It’s happening again!",
     "My nipple is broken.",
     "My hair hurts.",
-    "Buy buying 'The War Within' you are supporting the war within.",
+    "By buying 'The War Within' you are supporting the war within.",
     "Playing 'The War Within' is like going to a psychologist. I've learned so much about myself.",
     "I'm not a doctor, but I play one on TV.",
     "The fact that I have a large brain is scary.",
@@ -136,7 +136,7 @@ playerName,
   table.insert(listOfPhrases, "I am part of an organisation called the Greeters Guild.")
   table.insert(
     listOfPhrases,
-    "Essentially, I the head of non-consensual customer service in the ${zoneName}."
+    "Essentially, I am the head of non-consensual customer service in the ${zoneName}."
   )
   table.insert(
     listOfPhrases,
