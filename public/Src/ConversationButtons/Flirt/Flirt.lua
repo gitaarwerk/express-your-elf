@@ -2,7 +2,7 @@
 
 ExpressYourElf.Flirt = {}
 local Class = ExpressYourElf.Constants.Class
-local Race  = ExpressYourElf.Constants.Race
+local Race = ExpressYourElf.Constants.Race
 
 function ExpressYourElf.Flirt.GetRandomPrefix(targetRace, targetName)
   local prefix =
@@ -16,7 +16,7 @@ function ExpressYourElf.Flirt.GetRandomPrefix(targetRace, targetName)
       "Hi ${targetName}, ",
     }
 
-    local d = C_DateAndTime.GetCalendarTimeFromEpoch(1e6 * 60 * 60 * 24)
+  local d = C_DateAndTime.GetCalendarTimeFromEpoch(1e6 * 60 * 60 * 24)
 
   if (targetRace == Race.Dracthyr) then
     table.insert(prefix, "Hey there ${targetName}, you hot wings, ")

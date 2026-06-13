@@ -2,7 +2,7 @@
 
 ExpressYourElf.DanceWithMe = {}
 local Class = ExpressYourElf.Constants.Class
-local Race  = ExpressYourElf.Constants.Race
+local Race = ExpressYourElf.Constants.Race
 
 local function getRandomPrefix(playerName)
   local prefix =
@@ -571,6 +571,7 @@ function ExpressYourElf.DanceWithMe.run()
     targetSirMam,
     targetGuyGirl,
     targetManWoman
+
 
   local playerName,
     playerGender,

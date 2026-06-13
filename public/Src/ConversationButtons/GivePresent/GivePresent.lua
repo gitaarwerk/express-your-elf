@@ -1,7 +1,7 @@
 -- init
 ExpressYourElf.GivePresent = {}
 local Class = ExpressYourElf.Constants.Class
-local Race  = ExpressYourElf.Constants.Race
+local Race = ExpressYourElf.Constants.Race
 
 function ExpressYourElf.GivePresent.GetRandomGift(
 playerName,

@@ -2,7 +2,7 @@
 
 ExpressYourElf.Seduce = {}
 local Class = ExpressYourElf.Constants.Class
-local Race  = ExpressYourElf.Constants.Race
+local Race = ExpressYourElf.Constants.Race
 
 function ExpressYourElf.Seduce.GetRandomPrefix()
   local prefix =
@@ -356,31 +356,26 @@ playerName,
   end
 
   -- valentine
-  if ((d.month == 2 and d.day == 13) or (d.month == 2 and d.day == 14)) then
-  end
+  if ((d.month == 2 and d.day == 13) or (d.month == 2 and d.day == 14)) then  end
 
   -- eastern
   if ((d.month == 4 and d.day == 4) or (d.month == 4 and d.day == 5)) then
-    if (
-      playerClass == Class.Druid 
-      or playerRace == Race.Vulpera 
-      or playerRace == Race.Tauren 
-      or playerRace == Race.Gilnean
-    or playerRace == Race.Worgen
-  or playerRace == Race.HighmountainTauren
-) then
-    table.insert(seduceLines, "If you hand me some bunny ears, you can hunt for my eggs all night long.")
+    if (playerClass == Class.Druid or playerRace == Race.Vulpera or playerRace == Race.Tauren or playerRace == Race.Gilnean or playerRace == Race.Worgen or playerRace == Race.HighmountainTauren) then
+      table.insert(
+        seduceLines,
+        "If you hand me some bunny ears, you can hunt for my eggs all night long."
+      )
     end
   end
 
   -- halloween
   if ((d.month == 10 and d.day == 30) or (d.month == 10 and d.day == 31)) then
     if (targetGender == "male") then
-    table.insert(seduceLines, "I'll make you scream like the Headless Horseman")
+      table.insert(seduceLines, "I'll make you scream like the Headless Horseman")
     end
   end
 
-    -- New Year's Day
+  -- New Year's Day
   if (d.month == 1 and d.day == 1) then  end
 
   -- Epiphany / Three Kings' Day
@@ -433,7 +428,6 @@ playerName,
 
   -- New Year's Eve
   if (d.month == 12 and d.day == 31) then  end
-
 
   -- randomize result
   pickedLine = ExpressYourElf.RandomizeUtil.GetRandomized("seduce", seduceLines, targetName)

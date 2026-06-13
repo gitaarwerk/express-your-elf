@@ -2,7 +2,7 @@
 
 ExpressYourElf.Joke = {}
 local Class = ExpressYourElf.Constants.Class
-local Race  = ExpressYourElf.Constants.Race
+local Race = ExpressYourElf.Constants.Race
 
 function ExpressYourElf.Joke.GetMessage(
 playerName,
@@ -40,22 +40,18 @@ playerName,
     }
 
   --christmas
-  if ((d.month == 12 and d.day == 24) or (d.month == 12 and d.day == 25)) then
-  end
+  if ((d.month == 12 and d.day == 24) or (d.month == 12 and d.day == 25)) then  end
 
   -- eastern
-  if ((d.month == 4 and d.day == 4) or (d.month == 4 and d.day == 5)) then
-  end
+  if ((d.month == 4 and d.day == 4) or (d.month == 4 and d.day == 5)) then  end
 
   -- halloween
-  if ((d.month == 10 and d.day == 30) or (d.month == 10 and d.day == 31)) then
-  end
+  if ((d.month == 10 and d.day == 30) or (d.month == 10 and d.day == 31)) then  end
 
   -- valentine
-  if (d.month == 2 and d.day == 14) then
-  end
+  if (d.month == 2 and d.day == 14) then  end
 
-    -- New Year's Day
+  -- New Year's Day
   if (d.month == 1 and d.day == 1) then  end
 
   -- Epiphany / Three Kings' Day

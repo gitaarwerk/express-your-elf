@@ -83,7 +83,7 @@ function ExpressYourElf.Helpers.GetPoppaMomma(gender)
   return "momma"
 end
 
-function getCharacterinfo(target)
+local function getCharacterinfo(target)
   local genderTable = { "neuter or unknown", "male", "female" }
   local playerClass, englishClass, classIndex = UnitClass(target)
   local name, upName, level = UnitName(target)
@@ -113,6 +113,44 @@ end
 
 function ExpressYourElf.Helpers.GetPlayerInformation()
   return getCharacterinfo("player")
+end
+
+function ExpressYourElf.Helpers.GetScrabbleScore(input)
+  local values = {
+    A = 1,
+    E = 1,
+    I = 1,
+    O = 1,
+    U = 1,
+    L = 1,
+    N = 1,
+    S = 1,
+    T = 1,
+    R = 1,
+    D = 2,
+    G = 2,
+    B = 3,
+    C = 3,
+    M = 3,
+    P = 3,
+    F = 4,
+    H = 4,
+    V = 4,
+    W = 4,
+    Y = 4,
+    K = 5,
+    J = 8,
+    X = 8,
+    Q = 10,
+    Z = 10,
+  }
+
+  local total = 0
+  for i = 1, #input do
+    local char = string.upper(string.sub(input, i, i))
+    total = total + (values[char] or 0)
+  end
+  return total
 end
 
 function ExpressYourElf.Helpers.tableContainsValue(table, val)

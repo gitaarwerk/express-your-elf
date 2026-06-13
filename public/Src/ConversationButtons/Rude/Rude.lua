@@ -1,7 +1,7 @@
 -- init
 ExpressYourElf.IAmRude = {}
 local Class = ExpressYourElf.Constants.Class
-local Race  = ExpressYourElf.Constants.Race
+local Race = ExpressYourElf.Constants.Race
 
 function ExpressYourElf.IAmRude.GetMessage(
 playerName,
@@ -92,7 +92,7 @@ playerName,
       "I can’t say I’ve seen ${targetName} actively, but I sure notice when ${targetHeShe} is not around.",
     }
 
---christmas
+  --christmas
   if ((d.month == 12 and d.day == 24) or (d.month == 12 and d.day == 25)) then
     table.insert(rudeLines, "Merry Christmas, ${targetName}. I hope you get coal in your stocking.")
     table.insert(rudeLines, "Even my old stocking is looking more alive than ${targetName}.")
@@ -123,10 +123,9 @@ playerName,
   end
 
   -- halloween
-  if ((d.month == 10 and d.day == 30) or (d.month == 10 and d.day == 31)) then
-  end
+  if ((d.month == 10 and d.day == 30) or (d.month == 10 and d.day == 31)) then  end
 
-    -- New Year's Day
+  -- New Year's Day
   if (d.month == 1 and d.day == 1) then  end
 
   -- Epiphany / Three Kings' Day
@@ -289,8 +288,6 @@ playerName,
     table.insert(rudeLines, "Is That... Fur? Coming Out Of Your Ears?")
     table.insert(rudeLines, "You'll make a fine rug, ${targetName}!")
   end
-
-  
 
   -- Mature content
   if ExpressYourElfVars.allowYoMamaContent then

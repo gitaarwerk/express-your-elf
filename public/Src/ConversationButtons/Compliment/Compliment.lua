@@ -2,7 +2,7 @@
 
 ExpressYourElf.Compliment = {}
 local Class = ExpressYourElf.Constants.Class
-local Race  = ExpressYourElf.Constants.Race
+local Race = ExpressYourElf.Constants.Race
 
 function ExpressYourElf.Compliment.GetRandomPrefix(targetName)
   local prefix =
@@ -30,7 +30,7 @@ playerName,
 )
   local randomWorld = ExpressYourElf.Helpers.GetRandomWorld()
   local d = C_DateAndTime.GetCalendarTimeFromEpoch(1e6 * 60 * 60 * 24)
-
+  local zoneName = GetZoneText()
   local playerSex = "girls"
   local oppositeSex = "boys"
 
@@ -65,6 +65,26 @@ playerName,
       "I love how you move your elbows. It's like you're a professional elbow mover!",
       "Your oral cavity is wonderful to work with.",
     }
+
+  -- The greeters guild
+  table.insert(ComplimentLines, "I'm enjoying the way you’re enunciating with your hands.")
+  table.insert(ComplimentLines, "You’re physically gynamstic with your expression.")
+  table.insert(
+    ComplimentLines,
+    "Don't think I haven’t noticed you tieing your eye color with your armor perfectly."
+  )
+  table.insert(ComplimentLines, "Thank you for shopping at ${zoneName}, have the best time!")
+  table.insert(ComplimentLines, "You are unflinchingly modest!")
+  table.insert(ComplimentLines, "You've got a fantastic collage of armor!")
+
+  if (targetClass == Class.Hunter) then
+    table.insert(
+      ComplimentLines,
+      "You're walking into ${zoneName} like a gunslinger from the wild west!"
+    )
+  end
+
+  -- more contextual
 
   if (targetGender == "female") then
     table.insert(ComplimentLines, "You look just like that girl from Natural Born Killers!")
@@ -397,6 +417,7 @@ playerName,
       targetPoppaMomma = targetPoppaMomma,
       oppositeSex = oppositeSex,
       randomWorld = randomWorld,
+      zoneName = zoneName,
     }
   )
 end

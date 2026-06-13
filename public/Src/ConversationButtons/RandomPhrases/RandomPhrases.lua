@@ -1,7 +1,7 @@
 -- init
 ExpressYourElf.RandomPhrases = {}
 local Class = ExpressYourElf.Constants.Class
-local Race  = ExpressYourElf.Constants.Race
+local Race = ExpressYourElf.Constants.Race
 
 function ExpressYourElf.RandomPhrases.GetRandomMessage(
 playerName,
@@ -15,6 +15,8 @@ playerName,
   -- opposite
   local oppositeSex = "men"
   local d = C_DateAndTime.GetCalendarTimeFromEpoch(1e6 * 60 * 60 * 24)
+  local zoneName = GetZoneText()
+  local nameScoreInScrabble = ExpressYourElf.Helpers.GetScrabbleScore(playerName)
 
   if (playerGender == "male") then
     oppositeSex = "women"
@@ -124,25 +126,44 @@ playerName,
     "How was the weekend, someone asked? Well, on my first date, ${oppositHeShe} said, “I want to take you to the cemetery to meet my parents, you might be the one.”",
   }
 
+  -- The greeters guild
+  table.insert(listOfPhrases, "Jan Mølby sent me here.")
+  table.insert(listOfPhrases, "I am part of an organisation called the Greeters Guild.")
+  table.insert(
+    listOfPhrases,
+    "Essentially, I the head of non-consensual customer service in the ${zoneName}."
+  )
+  table.insert(
+    listOfPhrases,
+    "You know, my name ${playerName} is ${nameScoreInScrabble} in scrabble."
+  )
+
+  -- other randomness
+  table.insert(listOfPhrases, "I am part of an organisation called the Awkward Agents Anonymous.")
+
   --christmas
-  if ((d.month == 12 and d.day == 24) or (d.month == 12 and d.day == 25)) then
-  end
+  if ((d.month == 12 and d.day == 24) or (d.month == 12 and d.day == 25)) then  end
 
   -- eastern
-  if ((d.month == 4 and d.day == 4) or (d.month == 4 and d.day == 5)) then
-  end
+  if ((d.month == 4 and d.day == 4) or (d.month == 4 and d.day == 5)) then  end
 
   -- halloween
   if ((d.month == 10 and d.day == 30) or (d.month == 10 and d.day == 31)) then
-    table.insert(listOfPhrases, "CANDY!!?? WHERE IS THE CANDY!? They promised me, there would be candy out here!");
+    table.insert(
+      listOfPhrases,
+      "CANDY!!?? WHERE IS THE CANDY!? They promised me, there would be candy out here!"
+    )
   end
 
   -- valentine
   if (d.month == 2 and d.day == 14) then
-        table.insert(listOfPhrases, "CHOCOLATE!!?? WHERE IS THE CHOCOLATE!? They promised me, there would be chocolate out here!");
+    table.insert(
+      listOfPhrases,
+      "CHOCOLATE!!?? WHERE IS THE CHOCOLATE!? They promised me, there would be chocolate out here!"
+    )
   end
 
-    -- New Year's Day
+  -- New Year's Day
   if (d.month == 1 and d.day == 1) then  end
 
   -- Epiphany / Three Kings' Day
@@ -350,6 +371,8 @@ playerName,
     oppositeSex = oppositeSex,
     randomWorld = randomWorld,
     oppositHeShe = oppositHeShe,
+    zoneName = zoneName,
+    nameScoreInScrabble = nameScoreInScrabble,
   })
 
   if #parsedPhrase > 254 then
@@ -386,6 +409,8 @@ playerName,
   targetHimHer
 )
   local pickedPhrase
+  local zoneName = GetZoneText()
+  local nameScoreInScrabble = ExpressYourElf.Helpers.GetScrabbleScore(targetName)
   local listOfPhrases =
     {
       "Despite the outcome in the guild, we cannot lose hope and we must all work very hard for a friend and a great person named ${targetName}.",
@@ -416,23 +441,23 @@ playerName,
       "People like the Pandaren, abusing their dual factionship and smuggling in illegal ${targetRace} among other disgusting deplorables, how sad their lives must be.",
     }
 
---christmas
-  if ((d.month == 12 and d.day == 24) or (d.month == 12 and d.day == 25)) then
-  end
+  -- The greeters guild
+  table.insert(listOfPhrases, "This is ${targetName}, ${targetHeShe} deploys me.")
+  table.insert(listOfPhrases, "Your name is ${nameScoreInScrabble} in scrabble.")
+
+  --christmas
+  if ((d.month == 12 and d.day == 24) or (d.month == 12 and d.day == 25)) then  end
 
   -- eastern
-  if ((d.month == 4 and d.day == 4) or (d.month == 4 and d.day == 5)) then
-  end
+  if ((d.month == 4 and d.day == 4) or (d.month == 4 and d.day == 5)) then  end
 
   -- halloween
-  if ((d.month == 10 and d.day == 30) or (d.month == 10 and d.day == 31)) then
-  end
+  if ((d.month == 10 and d.day == 30) or (d.month == 10 and d.day == 31)) then  end
 
   -- valentine
-  if (d.month == 2 and d.day == 14) then
-  end
+  if (d.month == 2 and d.day == 14) then  end
 
-    -- New Year's Day
+  -- New Year's Day
   if (d.month == 1 and d.day == 1) then  end
 
   -- Epiphany / Three Kings' Day
@@ -543,6 +568,8 @@ playerName,
     targetHisHer = targetHisHer,
     targetHeShe = targetHeShe,
     targetHimHer = targetHimHer,
+    zoneName = zoneName,
+    nameScoreInScrabble = nameScoreInScrabble,
   })
 
   if #parsedPhrase > 254 then
@@ -580,6 +607,7 @@ function ExpressYourElf.RandomPhrases.run()
     targetHisHer,
     targetHeShe,
     targetHimHer
+
 
   local playerHisHer = string.lower(ExpressYourElf.Helpers.GetHisHer(playerGender))
   local playerSirMam = string.lower(ExpressYourElf.Helpers.GetSirMam(playerGender))
