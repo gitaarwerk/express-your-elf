@@ -526,6 +526,11 @@ playerName,
     table.insert(listOfPhrases, "ally ally ally! OI OI OI!")
   end
 
+if (playerRace == Race.Pandaren) then
+    table.insert(listOfPhrases, "Did you know Pandaren poop a hundred times a day. So give me a break, OK!?")
+      table.insert(listOfPhrases, "Did you know we Pandaren are still useful in battle? Because we have an extra trigger finger!")
+end
+
   if (targetRace == Race.Worgen or targetRace == Race.Gilnean) then
     table.insert("Yes, ${targetName},... you howled?")
   end

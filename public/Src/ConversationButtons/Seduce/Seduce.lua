@@ -103,6 +103,10 @@ playerName,
     table.insert(seduceLines, "What may surprise you, I'm a beast when I'm onto you.")
   end
 
+  if (playerRace == Race.Pandaren and targetRace ~= Undead) then
+    table.insert(seduceLines, "I would turn into a carnivore, just to eat you.")
+  end
+
   if (playerRace == Race.Worgen or playerRace == Race.Tauren or playerRace == Race.Vulpera or playerRace == Race.Pandaren or playerRace == Race.HighmountainTauren) then
     table.insert(
       seduceLines,
